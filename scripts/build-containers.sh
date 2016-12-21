@@ -2,23 +2,7 @@
 
 BASE_DIR=$(cd $(dirname $0)/../ && pwd)
 
-log () {
-  tput setaf 2
-  echo "${1}"
-  tput sgr0
-}
-
-fold_start () {
-  if [ ! -z "${TRAVIS}" ]; then
-    echo -en "travis_fold:start:${1}\\r"
-  fi
-}
-
-fold_end () {
-  if [ ! -z "${TRAVIS}" ]; then
-    echo -en "travis_fold:end:${1}\\r"
-  fi
-}
+source ${BASE_DIR}/scripts/common.sh
 
 if [ -z ${VERSION} ]; then
   echo "Refusing to build without VERSION. Stop"
@@ -31,6 +15,7 @@ fold_start "Dependencies"
 log "Downloading Dependencies"
 docker pull docker.ttio.cloud:5000/library/php
 docker pull docker.ttio.cloud:5000/library/fpm
+fold_end "Dependencies"
 
 fold_start "Worker"
 log "Building worker"

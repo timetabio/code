@@ -2,12 +2,17 @@
 
 set -e
 
+source $(cd $(dirname $0) && pwd)/common.sh
+
 BUILD_DIR="/data/code"
 PACKAGE_DIR="${BUILD_DIR}/packages"
 
 for PACKAGE in ${PACKAGE_DIR}/*; do
   RPM_DIR="${PACKAGE}/rpm"
   SPEC_FILE="${PACKAGE}/package.spec"
+
+  fold_start "RPM ${PACKAGE}"
+  log "Building RPM package ${PACKAGE}"
 
   rm -rf ${RPM_DIR}
   mkdir -p ${RPM_DIR}
@@ -26,8 +31,6 @@ for PACKAGE in ${PACKAGE_DIR}/*; do
 
   mv ${RPM_DIR}/noarch/*.rpm ${RPM_DIR}/
   rm -rf ${RPM_DIR}/noarch
-done
 
-tput setaf 2
-echo "Build complete."
-tput sgr0
+  fold_end "RPM ${PACKAGE}"
+done
