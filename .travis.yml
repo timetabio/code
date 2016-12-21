@@ -12,7 +12,6 @@ notifications:
   email: false
 
 before_install:
-- 'openssl aes-256-cbc -K $encrypted_b3a2ec95562f_key -iv $encrypted_b3a2ec95562f_iv -in data/timetabio-bot.enc -out data/timetabio-bot -d'
 - docker login -p ${TTIO_DOCKER_PASSWORD} -u bot https://docker.ttio.cloud:5000
 
 addons:

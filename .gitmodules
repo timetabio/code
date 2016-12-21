@@ -1,7 +1,7 @@
 [submodule "Ink"]
 	path = Ink
-	url = git@github.com:timetabio/Ink
+	url = ../Ink.git
 	branch = master
 [submodule "Framework/lib/S3Helper"]
 	path = Framework/lib/S3Helper
-	url = git@github.com:timetabio/S3Helper.git
+	url = ../S3Helper.git
