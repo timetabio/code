@@ -23,6 +23,11 @@ fi
 
 set -e
 
+fold_start "Dependencies"
+log "Downloading Dependencies"
+docker pull docker.ttio.cloud:5000/library/php
+docker pull docker.ttio.cloud:5000/library/fpm
+
 fold_start "Worker"
 log "Building worker"
 docker build -t docker.ttio.cloud:5000/web/worker:latest -f "${BASE_DIR}/containers/ttio-worker/Dockerfile" ${BASE_DIR}
