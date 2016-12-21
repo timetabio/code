@@ -4,10 +4,6 @@ set -e
 
 HOST='root@timetab.io'
 
-if [ -z ${TTIO_SSH_KEY} ]; then
-  TTIO_SSH_KEY="${TRAVIS_BUILD_DIR}/data/timetabio-bot"
-fi
-
 if [ -z ${TTIO_RELEASE_TARGET} ]; then
   TTIO_RELEASE_TARGET='ssh'
 fi
@@ -22,7 +18,7 @@ exec_command () {
   if [ ${TTIO_RELEASE_TARGET} = 'docker' ]; then
     docker exec -it ttio-staging bash -c "${1}"
   else
-    ssh -i ${TTIO_SSH_KEY} -t ${HOST} "${1}"
+    ssh -t ${HOST} "${1}"
   fi
 }
 
@@ -30,7 +26,7 @@ upload_file () {
   if [ ${TTIO_RELEASE_TARGET} = 'docker' ]; then
     docker cp ${1} ttio-staging:${2}
   else
-    scp -i ${TTIO_SSH_KEY} ${1} ${HOST}:${2}
+    scp ${1} ${HOST}:${2}
   fi
 }
 
