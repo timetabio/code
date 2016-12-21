@@ -1,0 +1,67 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+.feed-header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: @margin-xl @margin-l (@margin-xl - @margin-l) @margin-l;
+
+  > .title {
+    margin-bottom: @margin-xs-v;
+  }
+
+  > .title > .text {
+    font-size: @font-size-l;
+    font-weight: bold;
+    display: inline;
+    vertical-align: middle;
+  }
+
+  > .title > .verified {
+    width: 25px;
+    height: 25px;
+    margin-left: @margin-xs-v;
+    margin-top: 3px;
+    color: @brand-green;
+    vertical-align: middle;
+  }
+
+  > .description {
+    font-size: @font-size-sm;
+    font-weight: bold;
+    margin-bottom: @margin-s;
+  }
+
+  @media (max-width: @smaller-device-width-max) {
+    @margin-between: (@margin-xs-v / 2);
+
+    & {
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: (@margin-l - @margin-between)
+               (@margin-sm - @margin-between)
+               (@margin-sm - @margin-between)
+               (@margin-sm - @margin-between);
+    }
+
+    > .title {
+      width: 100%;
+    }
+
+    > .description {
+      margin-bottom: 0;
+    }
+
+    > .title,
+    > .description,
+    > .button {
+      margin: @margin-between;
+    }
+
+    > .button {
+      order: 1;
+    }
+  }
+}

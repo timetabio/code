@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans:400,600,400i,700" />
+        <link rel="stylesheet" href="/css/application.css" />
+        <link rel="icon" href="/favicon.ico" />
+        <title>Showcase &middot; timetab.io</title>
+    </head>
+    <body>
+        <section class="page-banner">
+            The Showcase: A place to show the beauty of the components.
+        </section>
+        <header class="page-header">
+            <div class="content">
+                <a href="/" class="logo logo-link">
+                    <img src="/images/text-logo.svg" height="20px" alt="timetab.io" />
+                </a>
+
+                <div class="search">
+                    <form class="search-form form">
+                        <input type="search" name="q" placeholder="Search" class="input" />
+                        <button class="button">
+                            <svg class="icon">
+                                <use xlink:href="/icons/search.svg#icon"></use>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+
+                <a href="#login" class="basic-link right">
+                    <translate>Sign in</translate>
+                </a>
+            </div>
+        </header>
+
+        <main>
+
+            <div class="page-wrapper -padding">
+
+                <section class="_margin-after">
+                    <nav class="tab-nav">
+
+                        <a href="#all" class="item -active">
+                            <svg class="icon">
+                                <use xlink:href="/icons/search.svg#icon"></use>
+                            </svg>
+                            <span class="label">
+                        Everything
+                    </span>
+                        </a>
+
+                        <a href="#all" class="item">
+                            <svg class="icon">
+                                <use xlink:href="/icons/note.svg#icon"></use>
+                            </svg>
+                            <span class="label">
+                        Posts
+                    </span>
+                        </a>
+
+                        <a href="#all" class="item">
+                            <svg class="icon">
+                                <use xlink:href="/icons/feed.svg#icon"></use>
+                            </svg>
+                            <span class="label">
+                        Feeds
+                    </span>
+                        </a>
+
+                    </nav>
+                </section>
+
+                <section class="_margin-after">
+                    <h1>Title</h1>
+
+                    <a href="/">Link</a>
+                </section>
+
+                <section class="_margin-after">
+
+                    <button class="light-button -color">
+                        Create
+                    </button>
+
+                </section>
+
+                <section class="_margin-after">
+                    <input type="email" placeholder="peanuts@timetab.io" class="basic-input"/>
+                    <button class="basic-button">Click Me</button>
+                </section>
+
+                <section>
+                    <label class="form-field">
+                        <span class="label">Email</span>
+                        <input type="email" placeholder="peanuts@timetab.io" class="basic-input input"/>
+                    </label>
+                </section>
+            </div>
+        </main>
+
+        <section class="toast-container">
+            <toast-message class="toast-message -error">
+                The user "bash" does not exist
+            </toast-message>
+        </section>
+
+        <script src="/js/polyfills.js"></script>
+        <script src="/js/application.js"></script>
+    </body>
+</html>

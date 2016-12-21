@@ -1,0 +1,84 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+.post-attachment {
+  display: flex;
+  align-items: center;
+  padding: @margin-s @margin-m;
+  border-bottom: 2px solid @default-divider-color;
+  font-size: @font-size-xs;
+
+  > .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  > .name:hover,
+  > .name:focus,
+  > .download:focus,
+  > .download:hover {
+    text-decoration: underline;
+  }
+
+  > .name,
+  > .icon {
+    margin-right: @margin-xs-h;
+  }
+
+  > .icon {
+    &:extend(.basic-icon);
+    &:extend(.basic-icon.-in-text);
+    flex-shrink: 0;
+  }
+
+  > .download {
+    color: @brand-dark-grey;
+  }
+
+  > .progress {
+    margin-left: @margin-xs-v;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  > .progress > .bar {
+    border-radius: 8px;
+    height: 6px;
+    width: 170px;
+    background-color: @default-divider-color;
+    background-image: linear-gradient(@brand-light-grey, @brand-light-grey);
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size .125s;
+  }
+
+  > .progress > .done {
+    color: @brand-green;
+    width: 1em;
+    height: 1em;
+    margin-left: @margin-xs-v;
+    opacity: 0;
+    transition: opacity .2s;
+  }
+
+  &.-uploaded > .progress > .done {
+    opacity: 1;
+  }
+
+  @media (max-width: @smaller-device-width-max) {
+    & {
+      flex-wrap: wrap;
+    }
+
+    > .progress {
+      width: 100%;
+      justify-content: flex-start;
+      margin-top: 4px;
+      margin-left: (@font-size-xs + @margin-xs-h);
+    }
+  }
+}

@@ -1,0 +1,85 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+.light-button-mixin() {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: @button-border-radius;
+  font-size: @font-size-xs;
+  transition: color .125s, box-shadow .125s, opacity .125s;
+  max-width: 100%;
+}
+
+.light-button-color(@color, @text-color) {
+  color: @text-color;
+  background-color: @color;
+
+  &:hover {
+    background-color: lighten(@color, 5%);
+  }
+
+  &:active {
+    background-color: darken(@color, 5%);
+  }
+
+  &:focus {
+    .focus-ring(@color);
+  }
+}
+
+.light-button-default-color() {
+  color: @brand-black;
+  background-color: @brand-grey;
+
+  &:hover {
+    color: lighten(@brand-black, 5%);
+  }
+
+  &:active {
+    color: darken(@brand-black, 5%);
+  }
+
+  &:focus {
+    .focus-ring(@brand-light-grey);
+  }
+}
+
+// TODO: rename
+.light-button {
+  .light-button-mixin();
+  .light-button-default-color();
+
+  > .inner {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  > .inner > .icon {
+    &:extend(.basic-icon, .basic-icon.-in-text);
+    margin-right: @margin-xs-h;
+    flex-shrink: 0;
+  }
+
+  > .inner > .label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  > .inner > .label > .name {
+    font-weight: bold;
+  }
+
+  &.-color {
+    .light-button-color(@brand-green, #fff);
+  }
+
+  &[disabled] {
+    opacity: .2;
+  }
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+}

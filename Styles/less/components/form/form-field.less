@@ -1,0 +1,26 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+.form-field {
+  display: block;
+
+  > .label {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  &.-required > .label::after {
+    content: ' *';
+    font-weight: bold;
+  }
+
+  > .input,
+  > .label {
+    display: block;
+  }
+
+  &.-margin-after {
+    margin-bottom: 24px;
+  }
+}

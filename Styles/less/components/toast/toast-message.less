@@ -1,0 +1,39 @@
+@keyframes toast-message-appear {
+  from {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-message-disappear {
+  from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+}
+
+.toast-message {
+  color: #fff;
+  background-color: rgba(red(@brand-black), green(@brand-black), blue(@brand-black), .98);
+  padding: 14px 32px;
+  border-radius: @card-border-radius;
+  width: 100%;
+  max-width: @card-max-width;
+  margin: 0 auto @margin-sm auto;
+
+  animation: toast-message-appear ease-in .3s;
+
+  &.-disappear {
+    animation: toast-message-disappear ease-out .1s;
+  }
+}

@@ -1,0 +1,48 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+       "Content-Type: text/plain; charset=UTF-8\n"
+       "Content-Transfer-Encoding: 8bit\n"
+
+# API Errors
+
+msgid "invalid_login"
+msgstr "Invalid credentials"
+
+msgid "invalid_email"
+msgstr "Please enter a valid email address"
+
+msgid "invalid_username"
+msgstr "Please enter a valid username (letters, numbers, -, _)"
+
+msgid "invalid_password"
+msgstr "Your password must be at least 8 characters long"
+
+msgid "email_already_registered"
+msgstr "This email is already registered"
+
+msgid "email_not_found"
+msgstr "No user found with this email"
+
+msgid "invalid_feed_name"
+msgstr "Please enter a name for your new feed"
+
+msgid "user_not_verified"
+msgstr "Your account is not verified"
+
+msgid "empty_post_title"
+msgstr "You have to enter a post title"
+
+msgid "email_already_added"
+msgstr "This email has already been added"
+
+msgid "email_not_invited"
+msgstr "This email has not been approved for the private beta"
+
+msgid "invitation_exists"
+msgstr "This user is already invited"
+
+msgid "already_added"
+msgstr "This user is already added"
+
+msgid "user_not_found"
+msgstr "No user found with this username"

@@ -1,0 +1,18 @@
+require 'rake/clean'
+require '../rake/gen_autoload'
+
+TARGETS = [
+    gen_autoload('src')
+]
+
+task default: TARGETS
+
+desc 'Run tests'
+task :test do
+  # run tests here
+end
+
+desc 'Install dependencies'
+task :deps do
+  # install dependencies here
+end

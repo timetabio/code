@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans:400,400i,700|Vollkorn:500"/>
+        <link rel="stylesheet" href="/css/application.css"/>
+        <link rel="icon" href="/favicon.ico"/>
+        <title>Showcase &middot; timetab.io</title>
+    </head>
+    <body>
+        <header class="page-header">
+            <div class="content">
+                <a href="/">
+                    <img src="/images/logo.svg" width="40px" height="40px" alt="ttio">
+                </a>
+
+                <a class="basic-link" href="#">
+                    Mr. Ruby
+                </a>
+            </div>
+        </header>
+
+        <main>
+
+            <nav class="floating-buttons">
+
+                <a href="#note" class="floating-button">
+                    <svg class="icon"><use xlink:href="/icons/note.svg#icon"></use></svg>
+                    <span class="label">Note</span>
+                </a>
+
+                <a href="#task" class="floating-button">
+                    <svg class="icon"><use xlink:href="/icons/task.svg#icon"></use></svg>
+                    <span class="label">Task</span>
+                </a>
+
+                <a href="#event" class="floating-button">
+                    <svg class="icon"><use xlink:href="/icons/event.svg#icon"></use></svg>
+                    <span class="label">Event</span>
+                </a>
+
+            </nav>
+
+            <header class="feed-header">
+
+                <div class="title">
+                    <h1 class="text">Mr. Ruby's Amazing Blog</h1>
+
+                    <button class="button basic-button -small">Follow</button>
+                </div>
+
+                <div class="owner">
+                    by Mr. Ruby
+                </div>
+
+            </header>
+
+            <div class="page-wrapper -padding">
+
+                <article class="post-card" repeat="4">
+
+                    <header class="header">
+                        <div class="author">
+                            <img src="https://avatars1.githubusercontent.com/u/4602612?v=3&s=466" alt="Mr. Ruby"
+                                 class="avatar"/>
+
+                            <span class="text">
+                                Mr. Ruby
+                            </span>
+                        </div>
+
+                        <div class="time">
+                            24 hours ago
+                        </div>
+
+                        <div class="label">
+                            <svg class="icon"><use xlink:href="/icons/label.svg#icon"></use></svg>
+                            <span class="text">Adventures</span>
+                        </div>
+                    </header>
+
+
+
+                    <div class="body">
+
+                        <h2 class="title">
+
+                            <label class="task-checkbox checkbox">
+                                <input class="checkbox" type="checkbox" />
+                                <svg class="icon"><use xlink:href="/icons/task.svg#icon"></use></svg>
+                            </label>
+
+                            The Story of Hipster Ipsum
+                        </h2>
+
+                        <p class="paragraph">
+                            Butcher hexagon jean shorts raclette, art party squid deep v meggings YOLO. Semiotics salvia
+                            truffaut, locavore gluten-free before they sold out gentrify vexillologist.
+                        </p>
+
+                        <p class="paragraph">
+                            Before they sold out cliche fashion axe, vexillologist disrupt subway tile pork belly celiac
+                            seitan pour-over hexagon ethical selfies live-edge tacos. 3 wolf moon cronut VHS, bicycle
+                            rights food truck PBR&B slow-carb marfa gastropub before they sold out.
+                        </p>
+
+                        <p class="paragraph">
+                            ...
+                        </p>
+                    </div>
+
+                    <ul class="attachments">
+                        <li>
+                            <a class="post-attachment" href="#Lorem_Ipsum">
+                                <svg class="icon"><use xlink:href="/icons/attachment.svg#icon"></use></svg>
+                                <span class="name">Lorem_Ipsum.txt</span>
+                                <span class="size">28MiB</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="post-attachment" href="#Lorem_Ipsum_2">
+                                <svg class="icon"><use xlink:href="/icons/attachment.svg#icon"></use></svg>
+                                <span class="name">Lorem_Ipsum.txt</span>
+                                <span class="size">28MiB</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="buttons">
+
+                        <a class="light-button" href="#repost">
+                            <svg class="icon"><use xlink:href="/icons/attachment.svg#icon"></use></svg>
+                            <span class="text">Repost</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+        </main>
+
+        <script>
+            var repeats = Array.from(document.querySelectorAll('[repeat]'));
+
+            repeats.forEach((original) => {
+                for (let i = 0; i < original.getAttribute('repeat'); i++) {
+                    const clone = original.cloneNode(true);
+
+                    original.parentNode.insertBefore(clone, original);
+                }
+            })
+
+        </script>
+
+        <script src="/js/polyfills.js" defer></script>
+        <script src="/js/application.js" defer></script>
+    </body>
+</html>

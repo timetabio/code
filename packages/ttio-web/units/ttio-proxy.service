@@ -1,0 +1,21 @@
+[Unit]
+Description=timetab.io Proxy
+After=ttio-frontend.service ttio-api.service docker.service
+Requires=ttio-frontend.service ttio-api.service docker.service
+BindsTo=ttio-web.target
+
+[Service]
+Restart=always
+ExecStartPre=-/usr/bin/docker rm -f ttio-proxy
+ExecStartPre=/usr/bin/docker run -d \
+          --name ttio-proxy \
+          --net ttio-net \
+          -p 80:80 \
+          -p 443:443 \
+          -v /var/www/letsencrypt:/var/www/letsencrypt \
+          -v /etc/letsencrypt:/data/certs \
+          -v /data/ssl:/data/ssl \
+          docker.ttio.cloud:5000/web/proxy:current
+ExecStart=/usr/bin/docker logs -f ttio-proxy
+ExecStop=/usr/bin/docker stop ttio-proxy
+ExecStopPost=/usr/bin/docker rm -f ttio-proxy

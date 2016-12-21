@@ -1,0 +1,31 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+// TODO: rename to record-list or idk what, but not fucking post-list
+.post-list {
+  // The approach with :last-child did not work out well in combination
+  // with chrome and loading dynamically
+
+  .post-card:not(:first-child),
+  .feed-card:not(:first-child) {
+    margin-top: @margin-l;
+  }
+
+  &.-smaller-margin .post-card:not(:first-child),
+  &.-smaller-margin .feed-card:not(:first-child) {
+    margin-top: @margin-s;
+  }
+
+  @media (max-width: @smaller-device-width-max) {
+    > .post-card:not(:first-child),
+    > .feed-card:not(:first-child) {
+      margin-top: @margin-m;
+    }
+
+    &.-smaller-margin .post-card:not(:first-child),
+    &.-smaller-margin .feed-card:not(:first-child) {
+      margin-top: @margin-s;
+    }
+  }
+}

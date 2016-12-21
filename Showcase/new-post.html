@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans:400,400i,700|Vollkorn:500"/>
+        <link rel="stylesheet" href="/css/application.css"/>
+        <link rel="icon" href="/favicon.ico"/>
+        <title>Showcase &middot; timetab.io</title>
+    </head>
+    <body>
+        <header class="page-header">
+            <div class="content">
+                <a href="/">
+                    <img src="/images/logo.svg" width="40px" height="40px" alt="ttio">
+                </a>
+
+                <a class="basic-link" href="#">
+                    Mr. Ruby
+                </a>
+            </div>
+        </header>
+
+        <main>
+
+            <nav class="floating-buttons">
+
+                <a href="#note" class="floating-button">
+                    <svg class="icon">
+                        <use xlink:href="/icons/note.svg#icon"></use>
+                    </svg>
+                    <span class="label">Note</span>
+                </a>
+
+                <a href="#task" class="floating-button">
+                    <svg class="icon">
+                        <use xlink:href="/icons/task.svg#icon"></use>
+                    </svg>
+                    <span class="label">Task</span>
+                </a>
+
+                <a href="#event" class="floating-button">
+                    <svg class="icon">
+                        <use xlink:href="/icons/event.svg#icon"></use>
+                    </svg>
+                    <span class="label">Event</span>
+                </a>
+
+            </nav>
+
+            <div class="page-wrapper -padding">
+
+                <file-drop append-to=".attachments" file-element="post-attachment" class="post-card">
+
+                    <header class="header">
+                        <div class="author">
+                            <img src="https://avatars1.githubusercontent.com/u/4602612?v=3&s=466" alt="Mr. Ruby"
+                                 class="avatar"/>
+
+                            <span class="text">
+                                Mr. Ruby
+                            </span>
+                        </div>
+
+                        <div class="time">
+                            November 9, 2016
+                        </div>
+                    </header>
+
+                    <div class="body">
+                        <input class="title" placeholder="Title"/>
+
+                        <textarea is="auto-textarea" class="textarea" placeholder="Write something..."></textarea>
+                    </div>
+
+                    <div class="attachments">
+                    </div>
+
+                    <div class="buttons">
+
+                        <a class="light-button" href="#post">
+                            <svg class="icon">
+                                <use xlink:href="/icons/actions/post.svg#icon"></use>
+                            </svg>
+                            <span class="text">Post to <strong class="name">Mr. Ruby's Amazing Blog</strong></span>
+                        </a>
+
+                    </div>
+
+                </file-drop>
+
+            </div>
+        </main>
+
+        <script>
+            var repeats = Array.from(document.querySelectorAll('[repeat]'));
+
+            repeats.forEach((original) => {
+                for (let i = 0; i < original.getAttribute('repeat'); i++) {
+                    const clone = original.cloneNode(true);
+
+                    original.parentNode.insertBefore(clone, original);
+                }
+            })
+
+        </script>
+
+        <script src="/js/polyfills.js" defer></script>
+        <script src="/js/application.js" defer></script>
+    </body>
+</html>

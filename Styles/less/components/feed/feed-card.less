@@ -1,0 +1,28 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+.feed-card {
+  background-color: #fff;
+  width: @card-max-width;
+  max-width: 100%;
+  padding: @margin-m;
+  border-radius: @card-border-radius;
+  box-shadow: @card-box-shadow;
+  overflow: hidden;
+
+  > .name {
+    font-size: @font-size-m;
+    font-weight: bold;
+  }
+
+  > .name > .icon {
+    width: @font-size-s;
+    height: @font-size-s;
+    margin-right: @margin-xs-v;
+  }
+
+  > .description {
+    margin-top: @margin-xs-v;
+  }
+}

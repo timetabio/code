@@ -1,0 +1,39 @@
+<div class="page-wrapper -padding">
+    <h1 class="basic-heading-a _margin-after">
+        <translate>Create a new Feed</translate>
+    </h1>
+
+    <form action="/action/account/feeds/new" method="post" is="ajax-form">
+        <label class="form-field -required _margin-after">
+            <span class="label">
+                <translate>Name</translate>
+            </span>
+            <input type="text" placeholder="Name your feed" is="validated-input" max-byte-size="64" name="name" class="basic-input input" required />
+        </label>
+
+        <label class="form-field _margin-after">
+            <span class="label">
+                <translate>Description</translate>
+            </span>
+            <input type="text" placeholder="Give a short description" is="validated-input" max-byte-size="140" name="description" class="basic-input input" />
+        </label>
+
+        <label class="form-checkbox">
+            <input type="radio" checked="checked" class="checkbox" name="visibility" value="private" />
+
+            <span class="label">
+                <translate>Private</translate>
+            </span>
+        </label>
+
+        <label class="form-checkbox _margin-after">
+            <input type="radio" class="checkbox" name="visibility" value="public" />
+
+            <span class="label">
+                <translate>Public</translate>
+            </span>
+        </label>
+
+        <button type="submit" class="basic-button" disabled>Create Feed</button>
+    </form>
+</div>

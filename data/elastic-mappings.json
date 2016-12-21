@@ -1,0 +1,127 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "ttio_text": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "standard",
+            "lowercase",
+            "ttio_ascii_folding",
+            "ttio_word_delimiter"
+          ]
+        },
+        "ttio_ngram": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "standard",
+            "lowercase",
+            "ttio_ascii_folding",
+            "ttio_word_delimiter",
+            "ttio_ngram"
+          ]
+        }
+      },
+      "filter": {
+        "ttio_ascii_folding": {
+          "type": "asciifolding",
+          "preserve_original": true
+        },
+        "ttio_word_delimiter": {
+          "type": "word_delimiter",
+          "preserve_original": true,
+          "stem_english_possessive": true
+        },
+        "ttio_ngram": {
+          "type": "edgeNGram",
+          "min_gram": 1,
+          "max_gram": 6,
+          "preserve_original": true
+        }
+      }
+    }
+  },
+  "mappings": {
+    "feed": {
+      "_all": {
+        "enabled": false
+      },
+      "properties": {
+        "name": {
+          "type": "text",
+          "analyzer": "ttio_text",
+          "fields": {
+            "ngram": {
+              "type": "text",
+              "analyzer": "ttio_ngram"
+            }
+          }
+        },
+        "description": {
+          "type": "text",
+          "analyzer": "ttio_text",
+          "fields": {
+            "ngram": {
+              "type": "text",
+              "analyzer": "ttio_ngram"
+            }
+          }
+        },
+        "created": {
+          "type": "date",
+          "format": "epoch_second"
+        },
+        "updated": {
+          "type": "date",
+          "format": "epoch_second"
+        },
+        "is_private": {
+          "type": "boolean"
+        },
+        "_feed_id": {
+          "type": "keyword"
+        }
+      }
+    },
+    "post": {
+      "_all": {
+        "enabled": false
+      },
+      "properties": {
+        "title": {
+          "type": "text",
+          "analyzer": "ttio_text",
+          "fields": {
+            "ngram": {
+              "type": "text",
+              "analyzer": "ttio_ngram"
+            }
+          }
+        },
+        "body": {
+          "type": "text",
+          "analyzer": "ttio_text",
+          "fields": {
+            "ngram": {
+              "type": "text",
+              "analyzer": "ttio_ngram"
+            }
+          }
+        },
+        "created": {
+          "type": "date",
+          "format": "epoch_second"
+        },
+        "updated": {
+          "type": "date",
+          "format": "epoch_second"
+        },
+        "_feed_id": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}

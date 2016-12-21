@@ -1,0 +1,16 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+.user-list {
+  border-radius: @card-border-radius;
+  overflow: hidden;
+
+  > .user-list-item {
+    border-radius: 0;
+  }
+
+  > .user-list-item:not(:last-child) {
+    border-bottom: 2px solid @default-divider-color;
+  }
+}

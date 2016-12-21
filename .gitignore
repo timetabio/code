@@ -1,0 +1,11 @@
+autoload.php
+*.mo
+/Framework/build/
+/API/build/
+/Styles/css/
+/Application/build/
+/packages/**/rpm/
+/.idea
+/persistent/
+npm-debug.log
+/config

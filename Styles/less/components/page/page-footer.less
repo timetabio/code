@@ -1,0 +1,64 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+.page-footer {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  width: (@card-max-width + @margin-l * 2);
+  padding-right: @margin-l;
+  padding-left: @margin-l;
+  margin: @margin-sm 0;
+  max-width: 100%;
+
+  > .nav,
+  > .copyright {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+
+  > .nav > .item:not(:last-child) {
+    margin-right: @margin-xs-h;
+  }
+
+  > .copyright {
+    text-align: right;
+  }
+
+  > .logo {
+    text-align: center;
+    line-height: 0;
+  }
+
+  > .logo > .image {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (max-width: @smaller-device-width-max) {
+    & {
+      width: (@card-max-width + @margin-m * 2);
+      padding-right: @margin-m;
+      padding-left: @margin-m;
+      flex-wrap: wrap;
+    }
+
+    > .logo {
+      display: none;
+    }
+
+    > .nav,
+    > .copyright {
+      flex-basis: auto;
+    }
+
+    > .copyright {
+      flex-grow: 0;
+    }
+
+    > .nav {
+      text-align: left;
+    }
+  }
+}

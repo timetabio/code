@@ -1,0 +1,25 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+.page-wrapper {
+  width: @content-width;
+  max-width: 100%;
+  margin: auto;
+
+  &.-padding {
+    width: (@content-width + 2 * @margin-l);
+    padding: @margin-l;
+  }
+
+  &.-padding.-no-padding-top {
+    padding-top: 0;
+  }
+
+  @media (max-width: @smaller-device-width-max) {
+    &.-padding {
+      width: (@content-width + 2 * @margin-sm);
+      padding: @margin-m @margin-sm;
+    }
+  }
+}

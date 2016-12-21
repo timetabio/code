@@ -1,0 +1,16 @@
+[Unit]
+Description=timetab.io Postgres
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStartPre=-/usr/bin/docker rm -f ttio-postgres
+ExecStartPre=/usr/bin/docker run -d \
+          --name ttio-postgres \
+          --net ttio-net \
+          -v /data/postgres:/var/lib/postgresql/data \
+          docker.ttio.cloud:5000/library/postgres:current
+ExecStart=/usr/bin/docker logs -f ttio-postgres
+ExecStop=/usr/bin/docker stop ttio-postgres
+ExecStopPost=/usr/bin/docker rm -f ttio-postgres

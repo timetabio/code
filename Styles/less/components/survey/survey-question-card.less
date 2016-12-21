@@ -1,0 +1,33 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+.survey-question-card {
+  background-color: #fff;
+  width: @card-max-width;
+  max-width: 100%;
+  padding: @margin-m;
+  border-radius: @card-border-radius;
+  box-shadow: @card-box-shadow;
+  margin-bottom: @margin-l;
+  font-family: @font-mono;
+
+  > .title {
+    font-size: @font-size-m;
+    margin-bottom: @margin-sm;
+    line-height: 1.3;
+  }
+
+  > .choice {
+    display: flex;
+    align-items: center;
+  }
+
+  > .choice:not(:last-child) {
+    margin-bottom: @margin-xs-h;
+  }
+
+  > .choice > .input {
+    margin-right: @margin-xs-h;
+  }
+}

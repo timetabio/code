@@ -1,0 +1,16 @@
+[Unit]
+Description=timetab.io Elasticsearch
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStartPre=-/usr/bin/docker rm -f ttio-elastic
+ExecStartPre=/usr/bin/docker run -d \
+          --name ttio-elastic \
+          --net ttio-net \
+          -v /data/elastic:/usr/share/elasticsearch/data \
+          docker.ttio.cloud:5000/library/elastic:current
+ExecStart=/usr/bin/docker logs -f ttio-elastic
+ExecStop=/usr/bin/docker stop ttio-elastic
+ExecStopPost=/usr/bin/docker rm -f ttio-elastic

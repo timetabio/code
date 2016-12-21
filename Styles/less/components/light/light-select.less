@@ -1,0 +1,19 @@
+.light-select {
+  appearance: none;
+
+  .light-button-mixin();
+  .light-button-default-color();
+
+  @select-triangle-size: 8px;
+  @select-padding: 12px;
+
+  padding-right: (@select-padding * 1.5 + @select-triangle-size);
+  background-image: url(/images/triangle.svg);
+  background-repeat: no-repeat;
+  background-size: @select-triangle-size;
+  background-position: center right @select-padding;
+
+  &[disabled] {
+    opacity: .2;
+  }
+}

@@ -1,0 +1,42 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+.search-form {
+  display: flex;
+  width: 100%;
+  max-width: 470px;
+
+  > .input,
+  > .button {
+    background-color: @brand-grey;
+  }
+
+  > .input {
+    flex-grow: 1;
+    width: 0;
+    align-items: stretch;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 0; // ios safari
+    border-top-right-radius: 0; // ios safari
+    padding: 6px 20px;
+  }
+
+  > .input::placeholder {
+    color: rgba(0, 0, 0, .5);
+  }
+
+  > .button {
+    cursor: pointer;
+    padding: 9px 20px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  > .button > .icon {
+    display: block;
+    width: 1em;
+    height: 1em;
+  }
+}

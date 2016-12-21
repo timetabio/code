@@ -1,0 +1,56 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+.basic-button {
+  display: inline-block;
+  background-color: @brand-green;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 20px;
+  transition: background-color .125s, box-shadow .1s;
+
+  &.-full-width {
+    width: 100%;
+  }
+
+  &.-small {
+    font-size: 14px;
+    padding: 4px 12px;
+  }
+
+  &:hover {
+    background-color: lighten(@brand-green, 10%);
+  }
+
+  &:active {
+    background-color: darken(@brand-green, 10%);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px fade(@brand-green, 70%);
+  }
+
+  &[disabled] {
+    background-color: @brand-light-grey;
+  }
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+
+  &.-mono {
+    background-color: @default-text-color;
+  }
+
+  &.-mono:hover {
+    background-color: lighten(@default-text-color, 10%);
+  }
+
+  &.-mono:active {
+    background-color: darken(@default-text-color, 10%);
+  }
+
+  &.-mono:focus {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px fade(@default-text-color, 70%);
+  }
+}

@@ -1,0 +1,18 @@
+[Unit]
+Description=timetab.io API
+After=ttio-redis.service ttio-postgres.service docker.service
+Requires=ttio-redis.service ttio-postgres.service ttio-elastic.service docker.service
+BindsTo=ttio-web.target
+
+[Service]
+Restart=always
+ExecStartPre=/usr/bin/touch /data/nsalog/api.txt
+ExecStartPre=-/usr/bin/docker rm -f ttio-api
+ExecStartPre=/usr/bin/docker run -d \
+          --name ttio-api \
+          --net ttio-net \
+          -v /data/nsalog/api.txt:/data/nsalog.txt \
+          docker.ttio.cloud:5000/web/api:current
+ExecStart=/usr/bin/docker logs -f ttio-api
+ExecStop=/usr/bin/docker stop ttio-api
+ExecStopPost=/usr/bin/docker rm -f ttio-api

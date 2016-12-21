@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>LogoMonochrome</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="2" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="LogoMonochrome">
+            <g id="Group-2">
+                <path d="M23,46 C35.7025492,46 46,35.7025492 46,23 C46,10.2974508 35.7025492,0 23,0 C10.2974508,0 0,10.2974508 0,23 C0,35.7025492 10.2974508,46 23,46 Z" id="Oval" fill="#8C8C8C"></path>
+                <path d="M20.6640625,31.625 C16.2525575,30.609193 7.90625,27.4921875 7.90625,27.4921875 L23,25.515625 L35.21875,33.7812497 C35.21875,33.7812497 25.3567242,32.7055471 20.6640625,31.625 Z" id="Path-3" fill-opacity="0.335541214" fill="#000000" filter="url(#filter-1)"></path>
+                <g id="Group" transform="translate(7.546875, 8.265625)">
+                    <path d="M27.7564338,25.599734 L13.7408088,20.3696809 L19.5119485,0 L27.7564338,25.599734 Z M13.7408088,20.3696809 L19.5119485,0 L0.274816176,19.268617 L13.7408088,20.3696809 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                    <polygon id="Path-6" fill="#E2E2E2" points="13.7408088 20.3696809 19.5119485 0 0.274816176 19.268617"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

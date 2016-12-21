@@ -1,0 +1,18 @@
+[Unit]
+Description=timetab.io Worker
+After=ttio-redis.service docker.service
+Requires=ttio-redis.service ttio-postgres.service ttio-elastic.service docker.service
+BindsTo=ttio-workers.target
+
+[Service]
+Restart=always
+ExecStartPre=/usr/bin/touch /data/nsalog/worker-%I.txt
+ExecStartPre=-/usr/bin/docker rm -f ttio-worker-%I
+ExecStartPre=/usr/bin/docker run -d \
+          --name ttio-worker-%I \
+          --net ttio-net \
+          -v /data/nsalog/worker-%I.txt:/data/nsalog.txt \
+          docker.ttio.cloud:5000/web/worker:current
+ExecStart=/usr/bin/docker logs -f ttio-worker-%I
+ExecStop=/usr/bin/docker stop ttio-worker-%I
+ExecStopPost=/usr/bin/docker rm -f ttio-worker-%I

@@ -1,0 +1,33 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+.user-list-item {
+  display: flex;
+  align-items: center;
+  border-radius: @card-border-radius;
+  background-color: #fff;
+  padding: @margin-s @margin-sm;
+  font-weight: 600;
+
+  > .name {
+    flex-grow: 1;
+    margin-right: @margin-xs-v;
+  }
+
+  > .role {
+    margin-right: @margin-xs-h;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: @smaller-device-width-max) {
+    & {
+      flex-wrap: wrap;
+    }
+
+    > .name {
+      width: 100%;
+      margin-bottom: @margin-xs-v;
+    }
+  }
+}

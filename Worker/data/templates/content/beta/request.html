@@ -1,0 +1,29 @@
+<div class="page-wrapper -padding">
+    <div class="flex-container -column -center-items">
+
+        <a href="/" class="_margin-before _margin-after">
+            <img src="/images/logo.svg" width="60px" height="60px"/>
+        </a>
+
+        <h1 class="basic-heading-a _margin-after">
+            <translate>Request Beta Invite</translate>
+        </h1>
+
+        <form action="/action/beta-request" method="post" is="ajax-form" class="form-box">
+
+            <label is="form-field" class="form-field -margin-after" input-name="username">
+                <span class="label">
+                    <translate>Email</translate>
+                </span>
+                <input type="email" class="input basic-input" name="email" required="" placeholder="name@example.com"
+                       autocomplete="email"/>
+            </label>
+
+            <form-error class="form-error _margin-after"></form-error>
+
+            <button type="submit" class="basic-button -full-width" disabled>
+                <translate>Request Invite</translate>
+            </button>
+        </form>
+    </div>
+</div>

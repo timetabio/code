@@ -1,0 +1,4 @@
+[Unit]
+Description=timetab.io Workers
+Requires=ttio-worker@0.service ttio-worker@1.service ttio-worker@2.service ttio-worker@3.service ttio-worker@4.service
+BindsTo=ttio-web.target

@@ -1,0 +1,18 @@
+[Unit]
+Description=timetab.io Frontend
+After=ttio-redis.service ttio-api.service docker.service
+Requires=ttio-redis.service ttio-api.service docker.service
+BindsTo=ttio-web.target
+
+[Service]
+Restart=always
+ExecStartPre=/usr/bin/touch /data/nsalog/frontend.txt
+ExecStartPre=-/usr/bin/docker rm -f ttio-frontend
+ExecStartPre=/usr/bin/docker run -d \
+          --name ttio-frontend \
+          --net ttio-net \
+          -v /data/nsalog/frontend.txt:/data/nsalog.txt \
+          docker.ttio.cloud:5000/web/frontend:current
+ExecStart=/usr/bin/docker logs -f ttio-frontend
+ExecStop=/usr/bin/docker stop ttio-frontend
+ExecStopPost=/usr/bin/docker rm -f ttio-frontend

@@ -1,0 +1,6 @@
+{
+  "title": "Internal Server Error",
+  "content": "content/error.html",
+  "code": 500,
+  "header": false
+}

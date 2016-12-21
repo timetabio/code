@@ -1,0 +1,72 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+       "Content-Type: text/plain; charset=UTF-8\n"
+       "Content-Transfer-Encoding: 8bit\n"
+
+# API Errors
+
+msgid "invalid_login"
+msgstr "Ungültige Anmeldedaten"
+
+msgid "invalid_email"
+msgstr "Ungültige E-Mail"
+
+msgid "email_not_found"
+msgstr "Kein Benutzer mit dieser E-Mail gefunden"
+
+msgid "invalid_feed_name"
+msgstr "Bitte gib einen gültigen Namen für Deinen neuen Feed eint"
+
+msgid "user_not_verified"
+msgstr "Dieses Konto ist noch nicht bestätigt"
+
+
+# Messages
+
+msgid "Welcome"
+msgstr "Willkommen"
+
+msgid "Sign in"
+msgstr "Anmelden"
+
+msgid "Sign In"
+msgstr "Anmelden"
+
+msgid "Register"
+msgstr "Konto erstellen"
+
+msgid "Sign in to timetab.io"
+msgstr "Bei timetab.io anmelden"
+
+msgid "Username or Email"
+msgstr "Benutzername oder E-Mail"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Don't have an account?"
+msgstr "Noch kein Konto?"
+
+msgid "Create an Account"
+msgstr "Konto erstellen"
+
+msgid "Username"
+msgstr "Benutzername"
+
+msgid "Email"
+msgstr "E-Mail"
+
+msgid "Already have an account?"
+msgstr "Du hast schon ein Konto?"
+
+msgid "Create account"
+msgstr "Konto erstellen"
+
+msgid "Not Found"
+msgstr "Seite nicht gefunden"
+
+msgid "Create Feed"
+msgstr "Feed erstellen"
+
+msgid "Create New Post"
+msgstr "Neuen Post erstellen"

@@ -1,0 +1,68 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+html {
+  // Fix IOS Safari's behaviour in landscape mode
+  -webkit-text-size-adjust: 100%;
+}
+
+[hidden] {
+  // make sure all browsers hide elements with [hidden]
+  display: none !important;
+}
+
+fieldset,
+img {
+  // in webkit browsers this defaults to -webkit-min-content for fieldsets
+  // ... and for some reason the safari technology preview needs this for images
+  min-width: 0;
+}
+
+input {
+  min-width: 0;
+}
+
+input:not([type=radio]):not([type=checkbox]) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+// fixes issues with additional height coming from the shadow dom
+input::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+input::-webkit-datetime-edit-ampm-field,
+input::-webkit-datetime-edit-day-field,
+input::-webkit-datetime-edit-hour-field,
+input::-webkit-datetime-edit-millisecond-field,
+input::-webkit-datetime-edit-minute-field,
+input::-webkit-datetime-edit-month-field,
+input::-webkit-datetime-edit-second-field,
+input::-webkit-datetime-edit-week-field,
+input::-webkit-datetime-edit-year-field {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="datetime"]::-webkit-inner-spin-button,
+input[type="datetime-local"]::-webkit-inner-spin-button,
+input[type="month"]::-webkit-inner-spin-button,
+input[type="time"]::-webkit-inner-spin-button,
+input[type="week"]::-webkit-inner-spin-button {
+  height: 100%;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
+:-moz-ui-invalid:not(output) {
+  box-shadow: none;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}

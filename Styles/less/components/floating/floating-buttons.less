@@ -1,0 +1,27 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+.floating-buttons {
+  @media (min-width: @smaller-device-width-min) {
+    & {
+      position: fixed;
+      right: 0;
+      top: 100px;
+    }
+
+    > .floating-button:not(:first-child) {
+      margin-top: 8px;
+    }
+  }
+
+  @media (max-width: @smaller-device-width-max) {
+    & {
+      display: flex;
+      align-items: center;
+    }
+
+    > .floating-button:not(:first-child) {
+      border-left: 2px solid rgba(0, 0, 0, .1)
+    }
+  }
+}

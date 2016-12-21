@@ -1,0 +1,30 @@
+require 'rake/clean'
+
+def locale_file(language)
+    file_name = "#{language}/LC_MESSAGES/messages.mo"
+
+    file file_name => "#{language}/LC_MESSAGES/messages.po" do |t|
+        sh 'msgfmt', t.prerequisites[0], '-o', t.name
+    end
+
+    CLEAN.include(file_name)
+
+    file_name
+end
+
+TARGETS = [
+    locale_file('de_CH'),
+    locale_file('en_GB')
+]
+
+task default: TARGETS
+
+desc 'Run tests'
+task :test do
+  # run tests here
+end
+
+desc 'Install dependencies'
+task :deps do
+  # install dependencies here
+end

@@ -1,0 +1,19 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+img {
+  max-width: 100%;
+}
+
+body {
+  background-color: @body-background-color;
+  color: @default-text-color;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  > main {
+    flex-grow: 1;
+  }
+}

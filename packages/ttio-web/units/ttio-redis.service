@@ -1,0 +1,16 @@
+[Unit]
+Description=timetab.io Redis
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStartPre=-/usr/bin/docker rm -f ttio-redis
+ExecStartPre=/usr/bin/docker run -d \
+          --name ttio-redis \
+          --net ttio-net \
+          -v /data/redis:/data \
+          docker.ttio.cloud:5000/library/redis:current
+ExecStart=/usr/bin/docker logs -f ttio-redis
+ExecStop=/usr/bin/docker stop ttio-redis
+ExecStopPost=/usr/bin/docker rm -f ttio-redis

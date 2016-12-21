@@ -1,0 +1,28 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+.feed-list {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: @card-border-radius;
+
+  > .item {
+    .basic-link();
+
+    display: flex;
+    align-items: center;
+    padding: @margin-s @margin-sm;
+  }
+
+  > .item > .icon {
+    &:extend(.basic-icon, .basic-icon.-in-text);
+
+    margin-right: @margin-xs-h;
+  }
+
+  > .item:not(:last-child) {
+    border-bottom: 2px solid @default-divider-color;
+  }
+}

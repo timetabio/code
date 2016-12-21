@@ -1,0 +1,25 @@
+[Unit]
+Description=timetab.io Docker Registry
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run \
+  -a stdin -a stdout -a stderr \
+  -p 5000:5000 \
+  -v /etc/ttio/docker-registry/auth:/auth \
+  -v /etc/letsencrypt:/certs \
+  -v /etc/ttio/docker-registry/data:/var/lib/registry \
+  --name ttio-docker-registry \
+  -e REGISTRY_AUTH=htpasswd \
+  -e REGISTRY_AUTH_HTPASSWD_REALM=ttio-docker-registry \
+  -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \
+  -e REGISTRY_HTTP_HOST=https://docker.ttio.cloud:5000 \
+  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/live/docker.ttio.cloud/fullchain.pem \
+  -e REGISTRY_HTTP_TLS_KEY=/certs/live/docker.ttio.cloud/privkey.pem \
+  registry:2
+ExecStopPost=/usr/bin/docker rm -f ttio-docker-registry
+
+[Install]
+WantedBy=default.target

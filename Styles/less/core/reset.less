@@ -1,0 +1,49 @@
+/**
+ * (c) 2016 Ruben Schmidmeister
+ */
+
+a, abbr, address, area, article, aside, audio, b, bdi, bdo, blockquote, body, br, button, canvas, caption, cite, code, col, colgroup, datalist, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hr, html, i, iframe, img, input, ins, kbd, keygen, label, legend, li, map, mark, main, menu, meter, nav, object, ol, optgroup, option, output, p, param, pre, progress, q, rp, rt, ruby, s, samp, section, select, small, source, span, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, track, u, ul, var, video, wbr,
+@{custom-tags},
+::before,
+::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+:-moz-focusring {
+  outline: none;
+}
+
+:focus {
+  outline: none;
+}
+
+form-field {
+  display: inline-block;
+}
+
+file-drop,
+paginated-list,
+paginated-view,
+toast-message {
+  display: block;
+}

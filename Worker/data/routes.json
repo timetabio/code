@@ -1,0 +1,13 @@
+{
+  "/": "homepage",
+  "/404": "404",
+  "/error": "error",
+  "/register": "register",
+  "/register/confirmation": "register-confirmation",
+  "/login": "login",
+  "/register/resend-verification": "resend-verification",
+  "/account/feeds/new": "create-feed",
+  "/beta": "beta",
+  "/beta/thanks": "beta-thanks",
+  "/survey/thanks": "survey-thanks"
+}

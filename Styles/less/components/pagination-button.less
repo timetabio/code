@@ -1,0 +1,25 @@
+.pagination-button {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid @brand-light-grey;
+  border-radius: 6px;
+  margin-top: @margin-l;
+  color: @brand-dark-grey;
+  cursor: pointer;
+  transition: background-color .125s;
+
+  &:hover {
+    background-color: @default-divider-color;
+  }
+
+  &:focus {
+    .focus-ring(@brand-light-grey);
+  }
+
+  @media (max-width: @smaller-device-width-max) {
+    & {
+      margin-top: @margin-m;
+    }
+  }
+}

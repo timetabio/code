@@ -1,0 +1,51 @@
+<div class="page-wrapper -padding">
+    <div class="flex-container -column -center-items">
+
+        <a href="/" class="_margin-before _margin-after">
+            <img src="/images/logo.svg" width="60px" height="60px"/>
+        </a>
+
+        <h1 class="basic-heading-a _margin-after">
+            <translate>Create an Account</translate>
+        </h1>
+
+        <form action="/action/register" method="post" is="ajax-form" class="form-box _margin-after">
+
+            <label is="form-field" class="form-field -margin-after" input-name="username">
+                <span class="label">
+                    <translate>Username</translate>
+                </span>
+                <input type="text" class="input basic-input" name="username" placeholder="peanut-butter"
+                       autocomplete="username"/>
+            </label>
+
+            <label is="form-field" class="form-field -margin-after" input-name="email">
+                <span class="label">
+                    <translate>Email</translate>
+                </span>
+                <input type="text" class="input basic-input" name="email" placeholder="peanut-butter@timetab.io"
+                       autocomplete="email"/>
+            </label>
+
+            <label is="form-field" class="form-field -margin-after" input-name="password">
+                <span class="label">
+                    <translate>Password</translate>
+                </span>
+                <input type="password" class="input basic-input" name="password"
+                       placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+                       autocomplete="new-password"/>
+            </label>
+
+            <form-error class="form-error _margin-after"></form-error>
+
+            <button type="submit" class="basic-button -full-width">
+                <translate>Create account</translate>
+            </button>
+        </form>
+
+        <p>
+            <translate>Already have an account?</translate>
+            <a href="/login" class="basic-link"><translate>Sign in</translate></a>
+        </p>
+    </div>
+</div>

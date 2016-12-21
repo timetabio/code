@@ -1,0 +1,1 @@
+Typeface: »Vollkorn« by Friedrich Althausen, [vollkorn-typeface.com](vollkorn-typeface.com) (Licensed under the [“SIL Open Font License” (OFL)](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web))
