@@ -42,7 +42,7 @@ fold_start "API"
 log "Building api"
 docker build -t docker.ttio.cloud:5000/web/api:latest -f "${BASE_DIR}/containers/ttio-api/Dockerfile" ${BASE_DIR}
 docker tag docker.ttio.cloud:5000/web/api:latest docker.ttio.cloud:5000/web/api:${VERSION}
-fold_end
+fold_end "API"
 
 fold_start "Frontend"
 log "Building frontend"
