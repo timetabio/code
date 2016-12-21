@@ -4,16 +4,20 @@ BASE_DIR=$(cd $(dirname $0)/../ && pwd)
 
 log () {
   tput setaf 2
-  echo "--> ${1}..."
+  echo "${1}"
   tput sgr0
 }
 
 fold_start () {
-  echo -en "travis_fold:start:${1}\r"
+  if [ ! -z "${TRAVIS}" ]; then
+    echo -en "travis_fold:start:${1}\\r"
+  fi
 }
 
 fold_end () {
-  echo -en "travis_fold:end:${1}\r"
+  if [ ! -z "${TRAVIS}" ]; then
+    echo -en "travis_fold:end:${1}\\r"
+  fi
 }
 
 if [ -z ${VERSION} ]; then
