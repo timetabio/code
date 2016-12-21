@@ -11,7 +11,7 @@ for PACKAGE in ${PACKAGE_DIR}/*; do
   RPM_DIR="${PACKAGE}/rpm"
   SPEC_FILE="${PACKAGE}/package.spec"
 
-  fold_start "RPM ${PACKAGE}"
+  fold_start "${PACKAGE}"
   log "Building RPM package ${PACKAGE}"
 
   rm -rf ${RPM_DIR}
@@ -32,5 +32,5 @@ for PACKAGE in ${PACKAGE_DIR}/*; do
   mv ${RPM_DIR}/noarch/*.rpm ${RPM_DIR}/
   rm -rf ${RPM_DIR}/noarch
 
-  fold_end "RPM ${PACKAGE}"
+  fold_end "${PACKAGE}"
 done
