@@ -152,8 +152,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\Page\FeedPostsPageModel(
-                    new \Timetabio\Frontend\ValueObjects\Feed($feed),
-                    new \Timetabio\Frontend\Tabs\FeedPage\Posts
+                    new \Timetabio\Frontend\ValueObjects\Feed($feed)
                 ),
                 $this->getMasterFactory()->createGetPagePreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
@@ -335,8 +334,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\Page\FeedPeoplePageModel(
-                    new \Timetabio\Frontend\ValueObjects\Feed($feed),
-                    new \Timetabio\Frontend\Tabs\FeedPage\People
+                    new \Timetabio\Frontend\ValueObjects\Feed($feed)
                 ),
                 $this->getMasterFactory()->createGetPagePreHandler(),
                 $this->getMasterFactory()->createGetFeedPeoplePageRequestHandler(),
