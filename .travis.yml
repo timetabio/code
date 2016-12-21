@@ -26,8 +26,8 @@ script:
 - ./scripts/rake.sh test
 
 before_deploy:
-- chmod 600 $TRAVIS_BUILD_DIR/data/timetabio-bot
-- ./scripts/
+- 'eval ./.travis/setup.sh'
+- ./scripts/setup.sh
 
 deploy:
   provider: script
