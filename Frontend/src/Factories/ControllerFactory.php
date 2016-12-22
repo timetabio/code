@@ -337,10 +337,27 @@ namespace Timetabio\Frontend\Factories
                     new \Timetabio\Frontend\ValueObjects\Feed($feed)
                 ),
                 $this->getMasterFactory()->createGetPagePreHandler(),
-                $this->getMasterFactory()->createGetFeedPeoplePageRequestHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createGetFeedPeoplePageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
                 $this->getMasterFactory()->createGetFeedPeoplePageTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new HtmlResponse
+            );
+        }
+
+        public function createFeedSettingsPageController(array $feed): \Timetabio\Framework\Controllers\GetController
+        {
+            return new \Timetabio\Framework\Controllers\GetController(
+                new \Timetabio\Frontend\Models\Page\FeedSettingsPageModel(
+                    new \Timetabio\Frontend\ValueObjects\Feed($feed)
+                ),
+                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createCommandHandler(),
+                $this->getMasterFactory()->createFeedSettingsPageTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
                 new HtmlResponse

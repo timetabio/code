@@ -26,6 +26,11 @@ namespace Timetabio\Frontend\Models\Page
             return $this->feed;
         }
 
+        public function getTitle(): string
+        {
+            return $this->feed->getName();
+        }
+
         abstract public function getActiveTab(): Tab;
     }
 }

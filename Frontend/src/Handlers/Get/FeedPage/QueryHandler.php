@@ -37,7 +37,6 @@ namespace Timetabio\Frontend\Handlers\Get\FeedPage
 
             $posts = $this->fetchFeedPostsQuery->execute($feedId);
 
-            $model->setTitle($feed->getName());
             $model->setFeedPosts($posts);
             $model->setCanonicalUri($this->uriBuilder->buildFeedPageUri($feedId));
         }

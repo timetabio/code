@@ -48,8 +48,6 @@ namespace Timetabio\Frontend\Handlers\Get\FeedPeoplePage
             if ($users !== null) {
                 $model->setFeedUsers($users);
             }
-
-            $model->setTitle($feed->getName());
         }
     }
 }

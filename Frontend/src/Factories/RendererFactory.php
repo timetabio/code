@@ -179,6 +179,24 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createFeedSettingsPageRenderer(): \Timetabio\Frontend\Renderers\Renderer
+        {
+            return new \Timetabio\Frontend\Renderers\FeedPageRenderer(
+                $this->getTemplate(),
+                $this->getMasterFactory()->createFeedSettingsPageContentRenderer(),
+                $this->getMasterFactory()->createTransformer(),
+                $this->getMasterFactory()->createFeedHeaderSnippet(),
+                $this->getMasterFactory()->createFeedButtonsSnippet(),
+                $this->getMasterFactory()->createFeedInvitationBannerSnippet(),
+                $this->getMasterFactory()->createFeedNavigationSnippet()
+            );
+        }
+
+        public function createFeedSettingsPageContentRenderer(): \Timetabio\Frontend\Renderers\Page\Feed\FeedSettingsPageRenderer
+        {
+            return new \Timetabio\Frontend\Renderers\Page\Feed\FeedSettingsPageRenderer;
+        }
+
         public function createFeedListSnippet(): \Timetabio\Frontend\Renderers\Snippet\FeedListSnippet
         {
             return new \Timetabio\Frontend\Renderers\Snippet\FeedListSnippet(

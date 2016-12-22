@@ -365,15 +365,17 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createGetFeedPeoplePageRequestHandler(): \Timetabio\Frontend\Handlers\Get\FeedPeoplePage\RequestHandler
-        {
-            return new \Timetabio\Frontend\Handlers\Get\FeedPeoplePage\RequestHandler;
-        }
-
         public function createGetFeedPeoplePageTransformationHandler(): \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler
         {
             return new \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler(
                 $this->getMasterFactory()->createFeedPeoplePageRenderer()
+            );
+        }
+
+        public function createFeedSettingsPageTransformationHandler(): \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler(
+                $this->getMasterFactory()->createFeedSettingsPageRenderer()
             );
         }
 
