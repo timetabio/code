@@ -44,6 +44,8 @@ export class PostAttachment extends FileUpload {
     this.appendChild($input)
 
     setTimeout(() => {
+      // This timeout delays the event dispatch until the element is attached to the dom,
+      // so it can bubble up to the <ajax-form />
       this.dispatchEvent(new CustomEvent(EventName.formValidityChange, { bubbles: true }))
     })
   }
