@@ -4,6 +4,7 @@
 import { getCsrfToken } from '../dom/environment'
 import { formData } from '../dom/form'
 import { Uploader } from '../dom/uploader'
+import { createReloadLock } from '../dom/document'
 
 /**
  *
@@ -62,10 +63,13 @@ export class FileUpload extends HTMLElement {
     this._renderUpload()
     this._renderInput()
 
+    const lock = createReloadLock()
+
     const uploader = new Uploader()
     uploader.onProgress.addListener(this._onProgress)
 
     const credentials = createUpload(this._file)
+
     const upload = credentials.then((data) => {
       const form = formData(Object.assign(data.params, { file: this._file }))
 
@@ -78,8 +82,12 @@ export class FileUpload extends HTMLElement {
     })
 
     Promise.all([ credentials, upload ])
-      .then(([data]) => {
+      .then(([ data ]) => {
+        lock.release()
         this._onDone(data)
+      })
+      .catch(() => {
+        lock.release()
       })
 
     return upload

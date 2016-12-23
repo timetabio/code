@@ -7,7 +7,7 @@ export class Uploader {
   constructor () {
     /**
      *
-     * @type {Signal}
+     * @type {Signal<{ loaded: number, total: number }>}
      */
     this.onProgress = new Signal()
 
