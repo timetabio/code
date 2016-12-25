@@ -18,6 +18,15 @@ This repository contains the code of our IDPA project in the vocational school B
 
 We would like to thank our family, friends and classmates for their time and inputs to our project **timetab.io**!
 
+## License
+
+If not mentioned otherwise, code in this repository comes without any warranty, to
+the extent permitted by applicable law. You can redistribute it
+and/or modify it under the terms of the GNU Affero General Public License, version 3, as published by the Free Software Foundation.
+
+
+A copy of the GNU Affero General Public License, version 3 is provided in [LICENSE](LICENSE).
+
 ## Beta
 
 If you would like to join our upcoming beta, a sign up form can be found [here](https://beta.timetab.io).

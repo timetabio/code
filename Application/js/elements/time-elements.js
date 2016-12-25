@@ -1,3 +1,11 @@
+/**
+ * This code has been taken from https://github.com/github/time-elements,
+ * which is released under the MIT license.
+ *
+ * The custom element definitions have been upgraded to custom elements v1,
+ * everything else should be the same as the original.
+ */
+
 // Shout out to https://github.com/basecamp/local_time/blob/master/app/assets/javascripts/local_time.js.coffee
 var weekdays = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
 var months = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
