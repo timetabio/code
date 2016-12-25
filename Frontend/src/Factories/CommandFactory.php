@@ -136,5 +136,12 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createApiGateway()
             );
         }
+
+        public function createUpdateFeedNameCommand(): Commands\Feed\UpdateFeedNameCommand
+        {
+            return new Commands\Feed\UpdateFeedNameCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
     }
 }
