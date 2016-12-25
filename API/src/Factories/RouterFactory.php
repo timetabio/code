@@ -25,6 +25,8 @@ namespace Timetabio\API\Factories
             $router->registerEndpoint($this->getMasterFactory()->createVerifyEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createGetUserEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createUpdateUserPasswordEndpoint());
+            $router->registerEndpoint($this->getMasterFactory()->createResetPasswordEndpoint());
+            $router->registerEndpoint($this->getMasterFactory()->createForgotPasswordEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createUpdateUserEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createGetProfileEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createGetCollectionEndpoint());

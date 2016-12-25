@@ -7,13 +7,13 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
-namespace Timetabio\API\Handlers\Put\User
+namespace Timetabio\API\Handlers\Post\Reset
 {
     use Timetabio\API\Exceptions\BadRequest;
-    use Timetabio\API\Models\User\UpdateUserPasswordModel;
+    use Timetabio\API\Models\ResetPasswordModel;
     use Timetabio\API\ValueObjects\Password;
     use Timetabio\Framework\Handlers\RequestHandlerInterface;
-    use Timetabio\Framework\Http\Request\PutRequest;
+    use Timetabio\Framework\Http\Request\PostRequest;
     use Timetabio\Framework\Http\Request\RequestInterface;
     use Timetabio\Framework\Models\AbstractModel;
 
@@ -21,11 +21,11 @@ namespace Timetabio\API\Handlers\Put\User
     {
         public function execute(RequestInterface $request, AbstractModel $model)
         {
-            /** @var PutRequest $request */
-            /** @var UpdateUserPasswordModel $model */
+            /** @var PostRequest $request */
+            /** @var ResetPasswordModel $model */
 
-            if (!$request->hasParam('old_password')) {
-                throw new BadRequest('missing parameter \'old_password\'', 'missing_parameter');
+            if (!$request->hasParam('token')) {
+                throw new BadRequest('missing parameter \'token\'', 'missing_parameter');
             }
 
             if (!$request->hasParam('password')) {
@@ -38,8 +38,8 @@ namespace Timetabio\API\Handlers\Put\User
                 throw new BadRequest('password must be between 8 and 72 characters', 'invalid_password');
             }
 
-            $model->setOldPassword($request->getParam('old_password'));
             $model->setNewPassword($password);
+            $model->setToken($request->getParam('token'));
         }
     }
 }

@@ -151,6 +151,45 @@ namespace Timetabio\API\Factories
             );
         }
 
+        public function createResetPasswordRequestHandler(): \Timetabio\API\Handlers\Post\Reset\RequestHandler
+        {
+            return new \Timetabio\API\Handlers\Post\Reset\RequestHandler;
+        }
+
+        public function createResetPasswordQueryHandler(): \Timetabio\API\Handlers\Post\Reset\QueryHandler
+        {
+            return new \Timetabio\API\Handlers\Post\Reset\QueryHandler(
+                $this->getMasterFactory()->createDataStoreReader()
+            );
+        }
+
+        public function createResetPasswordCommandHandler(): \Timetabio\API\Handlers\Post\Reset\CommandHandler
+        {
+            return new \Timetabio\API\Handlers\Post\Reset\CommandHandler(
+                $this->getMasterFactory()->createUpdateUserCommand(),
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
+
+        public function createForgotPasswordRequestHandler(): \Timetabio\API\Handlers\Post\Forgot\RequestHandler
+        {
+            return new \Timetabio\API\Handlers\Post\Forgot\RequestHandler;
+        }
+
+        public function createForgotPasswordQueryHandler(): \Timetabio\API\Handlers\Post\Forgot\QueryHandler
+        {
+            return new \Timetabio\API\Handlers\Post\Forgot\QueryHandler(
+                $this->getMasterFactory()->createFetchAuthUserQuery()
+            );
+        }
+
+        public function createForgotPasswordCommandHandler(): \Timetabio\API\Handlers\Post\Forgot\CommandHandler
+        {
+            return new \Timetabio\API\Handlers\Post\Forgot\CommandHandler(
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
+
         public function createUpdateUserPasswordQueryHandler(): \Timetabio\API\Handlers\Put\User\QueryHandler
         {
             return new \Timetabio\API\Handlers\Put\User\QueryHandler(
