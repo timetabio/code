@@ -56,6 +56,12 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
             $feedNameInput->setAttribute('value', $feed->getName());
             $feedNameForm->appendChild($feedNameInput);
 
+            $feedIdInput = $template->createElement('input');
+            $feedIdInput->setAttribute('type', 'hidden');
+            $feedIdInput->setAttribute('name', 'feed_id');
+            $feedIdInput->setAttribute('value', $feed->getId());
+            $feedNameForm->appendChild($feedIdInput);
+
             $feedNameSaveButton = $this->iconButtonSnippet->render($template, 'done', 'Save', '-color');
             $feedNameSaveButton->setAttribute('type', 'submit');
             $feedNameForm->appendChild($feedNameSaveButton);

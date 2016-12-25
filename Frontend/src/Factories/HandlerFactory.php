@@ -431,5 +431,17 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Frontend\Handlers\Post\UpdateFeedUserRole\RequestHandler;
         }
+
+        public function createUpdateFeedNameCommandHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedName\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedName\CommandHandler(
+                $this->getMasterFactory()->createUpdateFeedNameCommand()
+            );
+        }
+
+        public function createUpdateFeedNameRequestHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedName\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedName\RequestHandler;
+        }
     }
 }

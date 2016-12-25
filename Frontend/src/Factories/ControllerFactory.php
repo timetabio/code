@@ -11,6 +11,7 @@ namespace Timetabio\Frontend\Factories
 {
     use Timetabio\Framework\Factories\AbstractChildFactory;
     use Timetabio\Framework\Http\Response\HtmlResponse;
+    use Timetabio\Framework\Http\Response\JsonResponse;
     use Timetabio\Framework\Languages\LanguageInterface;
     use Timetabio\Library\SearchTypes\SearchType;
 
@@ -426,6 +427,21 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
                 new HtmlResponse
+            );
+        }
+
+        public function createUpdateFeedNameController(): \Timetabio\Framework\Controllers\PostController
+        {
+            return new \Timetabio\Framework\Controllers\PostController(
+                new \Timetabio\Frontend\Models\Action\UpdateFeedNameModel,
+                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createUpdateFeedNameRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createUpdateFeedNameCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
             );
         }
     }
