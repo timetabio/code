@@ -43,7 +43,7 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
             $wrapper->appendChild($feedNameTitle);
 
             $feedNameForm = $template->createElement('form');
-            $feedNameForm->setClassName('form-card');
+            $feedNameForm->setClassName('form-card _margin-after-l');
             $feedNameForm->setAttribute('is', 'ajax-form');
             $feedNameForm->setAttribute('action', '/action/feed/update-name');
             $wrapper->appendChild($feedNameForm);
@@ -65,6 +65,34 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
             $feedNameSaveButton = $this->iconButtonSnippet->render($template, 'done', 'Save', '-color');
             $feedNameSaveButton->setAttribute('type', 'submit');
             $feedNameForm->appendChild($feedNameSaveButton);
+
+            $feedDescriptionTitle = $template->createElement('h2');
+            $feedDescriptionTitle->setClassName('basic-heading-b _margin-after-s');
+            $feedDescriptionTitle->appendText('Feed Description');
+            $wrapper->appendChild($feedDescriptionTitle);
+
+            $feedDescriptionForm = $template->createElement('form');
+            $feedDescriptionForm->setClassName('form-card');
+            $feedDescriptionForm->setAttribute('is', 'ajax-form');
+            $feedDescriptionForm->setAttribute('action', '/action/feed/update-description');
+            $wrapper->appendChild($feedDescriptionForm);
+
+            $feedDescriptionInput = $template->createElement('input');
+            $feedDescriptionInput->setClassName('text');
+            $feedDescriptionInput->setAttribute('name', 'description');
+            $feedDescriptionInput->setAttribute('placeholder', 'Describe your feed in a few short words');
+            $feedDescriptionInput->setAttribute('value', $feed->getDescription());
+            $feedDescriptionForm->appendChild($feedDescriptionInput);
+
+            $feedIdInput = $template->createElement('input');
+            $feedIdInput->setAttribute('type', 'hidden');
+            $feedIdInput->setAttribute('name', 'feed_id');
+            $feedIdInput->setAttribute('value', $feed->getId());
+            $feedDescriptionForm->appendChild($feedIdInput);
+
+            $feedDescriptionSaveButton = $this->iconButtonSnippet->render($template, 'done', 'Save', '-color');
+            $feedDescriptionSaveButton->setAttribute('type', 'submit');
+            $feedDescriptionForm->appendChild($feedDescriptionSaveButton);
         }
     }
 }

@@ -444,5 +444,20 @@ namespace Timetabio\Frontend\Factories
                 new JsonResponse
             );
         }
+
+        public function createUpdateFeedDescriptionController(): \Timetabio\Framework\Controllers\PostController
+        {
+            return new \Timetabio\Framework\Controllers\PostController(
+                new \Timetabio\Frontend\Models\Action\UpdateFeedDescriptionModel,
+                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createUpdateFeedDescriptionRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createUpdateFeedDescriptionCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
     }
 }

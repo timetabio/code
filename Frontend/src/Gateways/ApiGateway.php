@@ -293,6 +293,17 @@ namespace Timetabio\Frontend\Gateways
             );
         }
 
+        public function updateFeedDescription(string $feedId, string $description): ApiResponse
+        {
+            return $this->apiBackend->patch(
+                '/feeds/' . urlencode($feedId),
+                [
+                    'description' => $description
+                ],
+                $this->getAccessToken()
+            );
+        }
+
         protected function getAccessToken()
         {
             if (!$this->session->hasAccessToken()) {

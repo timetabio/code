@@ -443,5 +443,17 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Frontend\Handlers\Post\UpdateFeedName\RequestHandler;
         }
+
+        public function createUpdateFeedDescriptionCommandHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedDescription\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedDescription\CommandHandler(
+                $this->getMasterFactory()->createUpdateFeedDescriptionCommand()
+            );
+        }
+
+        public function createUpdateFeedDescriptionRequestHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedDescription\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedDescription\RequestHandler;
+        }
     }
 }
