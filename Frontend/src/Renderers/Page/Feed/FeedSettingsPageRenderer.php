@@ -51,6 +51,7 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
             $feedNameInput = $template->createElement('input');
             $feedNameInput->setClassName('text');
             $feedNameInput->setAttribute('name', 'name');
+            $feedNameInput->setAttribute('placeholder', 'Explorations of Space-Time');
             $feedNameInput->setAttribute('required', '');
             $feedNameInput->setAttribute('value', $feed->getName());
             $feedNameForm->appendChild($feedNameInput);
