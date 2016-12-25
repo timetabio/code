@@ -84,7 +84,7 @@ export class AjaxForm extends window.HTMLFormElement {
     data.append('token', getCsrfToken())
 
     const params = {
-      method: this.method,
+      method: 'post',
       credentials: 'same-origin',
       body: data
     }

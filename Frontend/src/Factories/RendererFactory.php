@@ -194,7 +194,9 @@ namespace Timetabio\Frontend\Factories
 
         public function createFeedSettingsPageContentRenderer(): \Timetabio\Frontend\Renderers\Page\Feed\FeedSettingsPageRenderer
         {
-            return new \Timetabio\Frontend\Renderers\Page\Feed\FeedSettingsPageRenderer;
+            return new \Timetabio\Frontend\Renderers\Page\Feed\FeedSettingsPageRenderer(
+                $this->getMasterFactory()->createIconButtonSnippet()
+            );
         }
 
         public function createFeedListSnippet(): \Timetabio\Frontend\Renderers\Snippet\FeedListSnippet
