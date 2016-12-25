@@ -1,9 +1,16 @@
 /**
- * (c) 2016 Ruben Schmidmeister
+ * Copyright (c) 2016 Ruben Schmidmeister <ruben.schmidmeister@icloud.com>
+ *
+ * This program is free software. It comes without any warranty, to
+ * the extent permitted by applicable law. You can redistribute it
+ * and/or modify it under the terms of the GNU Affero General Public License,
+ * version 3, as published by the Free Software Foundation.
  */
+
 import { getCsrfToken } from '../dom/environment'
 import { formData } from '../dom/form'
 import { Uploader } from '../dom/uploader'
+import { createReloadLock } from '../dom/document'
 
 /**
  *
@@ -62,10 +69,13 @@ export class FileUpload extends HTMLElement {
     this._renderUpload()
     this._renderInput()
 
+    const lock = createReloadLock()
+
     const uploader = new Uploader()
     uploader.onProgress.addListener(this._onProgress)
 
     const credentials = createUpload(this._file)
+
     const upload = credentials.then((data) => {
       const form = formData(Object.assign(data.params, { file: this._file }))
 
@@ -78,8 +88,12 @@ export class FileUpload extends HTMLElement {
     })
 
     Promise.all([ credentials, upload ])
-      .then(([data]) => {
+      .then(([ data ]) => {
+        lock.release()
         this._onDone(data)
+      })
+      .catch(() => {
+        lock.release()
       })
 
     return upload
