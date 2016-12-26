@@ -19,6 +19,11 @@ namespace Timetabio\API\Models\Verify
          */
         private $token;
 
+        public function hasToken(): bool
+        {
+            return $this->token !== null;
+        }
+
         public function getToken(): Token
         {
             return $this->token;
