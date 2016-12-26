@@ -9,19 +9,19 @@
  */
 namespace Timetabio\Frontend\Factories
 {
+    use Timetabio\Framework\Controllers\GetController;
+    use Timetabio\Framework\Controllers\PostController;
     use Timetabio\Framework\Factories\AbstractChildFactory;
     use Timetabio\Framework\Http\Response\HtmlResponse;
     use Timetabio\Framework\Http\Response\JsonResponse;
-    use Timetabio\Framework\Languages\LanguageInterface;
-    use Timetabio\Library\SearchTypes\SearchType;
 
     class ControllerFactory extends AbstractChildFactory
     {
         use FactoryTypeHintTrait;
 
-        public function createStaticPageController(string $name, LanguageInterface $language): \Timetabio\Framework\Controllers\GetController
+        public function createStaticPageController(string $name, \Timetabio\Framework\Languages\LanguageInterface $language): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\StaticPageModel($name, $language),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
@@ -34,9 +34,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createRegisterController(): \Timetabio\Framework\Controllers\PostController
+        public function createRegisterController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\RegisterModel,
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createPostRegisterRequestHandler(),
@@ -49,9 +49,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createVerifyAccountController(): \Timetabio\Framework\Controllers\GetController
+        public function createVerifyAccountController(): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\Account\VerifyModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createGetVerifyAccountRequestHandler(),
@@ -64,9 +64,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createLoginController(): \Timetabio\Framework\Controllers\PostController
+        public function createLoginController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\LoginModel,
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createLoginRequestHandler(),
@@ -79,9 +79,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createResendVerificationController(): \Timetabio\Framework\Controllers\PostController
+        public function createResendVerificationController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\ResendVerificationModel(),
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createResendVerificationRequestHandler(),
@@ -94,9 +94,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createLogoutController(): \Timetabio\Framework\Controllers\PostController
+        public function createLogoutController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\ActionModel,
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
@@ -109,9 +109,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createHomepageController(): \Timetabio\Framework\Controllers\GetController
+        public function createHomepageController(): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\HomepageModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
@@ -124,9 +124,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createFeedsPageController(): \Timetabio\Framework\Controllers\GetController
+        public function createFeedsPageController(): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\FeedsPageModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
@@ -139,9 +139,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createNewFeedController(): \Timetabio\Framework\Controllers\PostController
+        public function createNewFeedController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Account\NewFeedModel,
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createNewFeedRequestHandler(),
@@ -154,9 +154,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createGetFeedPageController(array $feed): \Timetabio\Framework\Controllers\GetController
+        public function createGetFeedPageController(array $feed): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\Page\FeedPostsPageModel(
                     new \Timetabio\Frontend\ValueObjects\Feed($feed)
                 ),
@@ -171,9 +171,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createGetCreatePostPageController(array $feed): \Timetabio\Framework\Controllers\GetController
+        public function createGetCreatePostPageController(array $feed): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\CreatePostPageModel($feed),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
@@ -186,9 +186,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createCreateNoteController(): \Timetabio\Framework\Controllers\PostController
+        public function createCreateNoteController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\CreateNoteModel,
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createCreateNoteRequestHandler(),
@@ -201,9 +201,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createFollowController(): \Timetabio\Framework\Controllers\PostController
+        public function createFollowController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\FollowModel,
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createFollowRequestHandler(),
@@ -216,9 +216,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createUnfollowController(): \Timetabio\Framework\Controllers\PostController
+        public function createUnfollowController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\FollowModel,
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createFollowRequestHandler(),
@@ -231,9 +231,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createDeletePostController(): \Timetabio\Framework\Controllers\PostController
+        public function createDeletePostController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\DeletePostModel,
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createDeletePostRequestHandler(),
@@ -246,9 +246,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createCreateUploadController(): \Timetabio\Framework\Controllers\PostController
+        public function createCreateUploadController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\UploadModel,
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createCreateUploadRequestHandler(),
@@ -261,9 +261,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createGetPostPageController(array $post): \Timetabio\Framework\Controllers\GetController
+        public function createGetPostPageController(array $post): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\PostPageModel($post),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
@@ -276,9 +276,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createCreateBetaRequestController(): \Timetabio\Framework\Controllers\PostController
+        public function createCreateBetaRequestController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\CreateBetaRequestModel,
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createCreateBetaRequestRequestHandler(),
@@ -291,9 +291,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createSearchPageController(SearchType $type): \Timetabio\Framework\Controllers\GetController
+        public function createSearchPageController(\Timetabio\Library\SearchTypes\SearchType $type): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\Page\SearchPageModel($type),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createSearchPageRequestHandler(),
@@ -306,9 +306,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createGetFeedPostsFragmentController(): \Timetabio\Framework\Controllers\GetController
+        public function createGetFeedPostsFragmentController(): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\Fragment\FeedPostsFragmentModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createGetFeedPostsFragmentRequestHandler(),
@@ -321,9 +321,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createGetHomepagePostsFragmentController(): \Timetabio\Framework\Controllers\GetController
+        public function createGetHomepagePostsFragmentController(): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\Fragment\HomepagePostsFragmentModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createGetHomepagePostsFragmentRequestHandler(),
@@ -336,9 +336,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createGetFeedPeoplePageController(array $feed): \Timetabio\Framework\Controllers\GetController
+        public function createGetFeedPeoplePageController(array $feed): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\Page\FeedPeoplePageModel(
                     new \Timetabio\Frontend\ValueObjects\Feed($feed)
                 ),
@@ -353,9 +353,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createFeedSettingsPageController(array $feed): \Timetabio\Framework\Controllers\GetController
+        public function createFeedSettingsPageController(array $feed): GetController
         {
-            return new \Timetabio\Framework\Controllers\GetController(
+            return new GetController(
                 new \Timetabio\Frontend\Models\Page\FeedSettingsPageModel(
                     new \Timetabio\Frontend\ValueObjects\Feed($feed)
                 ),
@@ -370,9 +370,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createDeleteFeedUserController(): \Timetabio\Framework\Controllers\PostController
+        public function createDeleteFeedUserController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\DeleteFeedUserModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createDeleteFeedUserRequestHandler(),
@@ -385,9 +385,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createInviteFeedUserController(): \Timetabio\Framework\Controllers\PostController
+        public function createInviteFeedUserController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\InviteFeedUserModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createInviteFeedUserRequestHandler(),
@@ -400,9 +400,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createDeleteFeedInvitationController(): \Timetabio\Framework\Controllers\PostController
+        public function createDeleteFeedInvitationController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\DeleteFeedUserModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createDeleteFeedInvitationRequestHandler(),
@@ -415,9 +415,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createUpdateFeedUserRoleController(): \Timetabio\Framework\Controllers\PostController
+        public function createUpdateFeedUserRoleController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\UpdateFeedUserRoleModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createUpdateFeedUserRoleRequestHandler(),
@@ -430,9 +430,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createUpdateFeedNameController(): \Timetabio\Framework\Controllers\PostController
+        public function createUpdateFeedNameController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\UpdateFeedNameModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createUpdateFeedNameRequestHandler(),
@@ -445,9 +445,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createUpdateFeedDescriptionController(): \Timetabio\Framework\Controllers\PostController
+        public function createUpdateFeedDescriptionController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\UpdateFeedDescriptionModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createUpdateFeedDescriptionRequestHandler(),
@@ -460,9 +460,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createUpdateFeedVanityController(): \Timetabio\Framework\Controllers\PostController
+        public function createUpdateFeedVanityController(): PostController
         {
-            return new \Timetabio\Framework\Controllers\PostController(
+            return new PostController(
                 new \Timetabio\Frontend\Models\Action\UpdateFeedVanityModel,
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createUpdateFeedVanityRequestHandler(),
