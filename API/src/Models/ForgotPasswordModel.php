@@ -9,13 +9,17 @@
  */
 namespace Timetabio\API\Models
 {
-
     class ForgotPasswordModel extends APIModel
     {
         /**
          * @var string
          */
         private $user;
+
+        /**
+         * @var array
+         */
+        private $userData;
 
         public function getUser() : string
         {
@@ -25,6 +29,21 @@ namespace Timetabio\API\Models
         public function setUser(string $user)
         {
             $this->user = $user;
+        }
+
+        public function hasUserData(): bool
+        {
+            return $this->userData !== null;
+        }
+
+        public function getUserData(): array
+        {
+            return $this->userData;
+        }
+
+        public function setUserData(array $userData)
+        {
+            $this->userData = $userData;
         }
     }
 }

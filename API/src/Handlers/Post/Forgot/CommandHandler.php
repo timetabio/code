@@ -35,13 +35,15 @@ namespace Timetabio\API\Handlers\Post\Forgot
         {
             /** @var ForgotPasswordModel $model */
 
-            if($model->getUser() === null) {
+            if(!$model->hasUserData()) {
                 return;
             }
 
-            $token = new Token();
-            $this->dataStoreWriter->addResetToken($model->getUser(), $token);
-            $this->dataStoreWriter->queueTask(new SendResetPasswordEmailTask($token));
+            $token = new Token;
+            $user = $model->getUserData();
+
+            $this->dataStoreWriter->saveResetToken($model->getUser(), $token);
+            $this->dataStoreWriter->queueTask(new SendResetPasswordEmailTask($token, $user['id']));
         }
     }
 }

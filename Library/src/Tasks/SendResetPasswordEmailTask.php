@@ -16,9 +16,20 @@ namespace Timetabio\Library\Tasks
          */
         private $token;
 
-        public function __construct(string $token)
+        /**
+         * @var string
+         */
+        private $userId;
+
+        public function __construct(string $token, string $userId)
         {
             $this->token = $token;
+            $this->userId = $userId;
+        }
+
+        public function getUserId(): string
+        {
+            return $this->userId;
         }
 
         public function getToken(): string

@@ -37,14 +37,17 @@ namespace Timetabio\API\DataStore
             $this->getDataStore()->remove('access_token_' . $token->getToken());
         }
 
-        public function addResetToken(string $userId, Token $token)
+        public function saveResetToken(string $userId, Token $token)
         {
-            $this->getDataStore()->set($token, $userId);
+            $key = 'reset_token:' . $token;
+
+            $this->getDataStore()->set($key, $userId);
+            $this->getDataStore()->setTimeout($key, 7200);
         }
 
         public function removeResetToken(string $token)
         {
-            $this->getDataStore()->remove('reset_token_' . $token);
+            $this->getDataStore()->remove('reset_token:' . $token);
         }
 
         /**

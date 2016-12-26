@@ -32,8 +32,8 @@ namespace Timetabio\API\Handlers\Post\Forgot
 
             $userId = $this->fetchAuthUserQuery->execute($model->getUser());
 
-            if($userId !== null) {
-                $model->setUser($userId);
+            if ($userId !== null) {
+                $model->setUserData($userId);
             }
         }
     }
