@@ -35,6 +35,10 @@ namespace Timetabio\API\Handlers\Post\Forgot
             if ($userId !== null) {
                 $model->setUserData($userId);
             }
+
+            $model->setData([
+                'acknowledged' => true
+            ]);
         }
     }
 }
