@@ -15,12 +15,12 @@ export class ValidatedInput extends HTMLInputElement {
     super()
 
     this._validate = this._validate.bind(this)
-
-    defer(() => this._validate())
   }
 
   connectedCallback () {
     this.addEventListener('input', this._validate)
+
+    defer(() => this._validate())
   }
 
   disconnectedCallback () {
