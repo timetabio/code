@@ -97,11 +97,14 @@ namespace Timetabio\API\Handlers\Get\Feed
             $hasWriteAccess = $this->accessCheck->hasWriteAccess($feedId, $token);
 
             $feed['vanity'] = $this->fetchFeedVanityQuery->execute($feedId);
+
             $feed['access']['post'] = $this->accessCheck->hasPostAccess($feedId, $token);
             $feed['access']['manage_users'] = $hasWriteAccess;
+            $feed['access']['edit'] = $hasWriteAccess;
 
             if ($userId !== null) {
                 $feed['user']['invited'] = $isInvited;
+                $feed['user']['can_unfollow'] = $this->accessCheck->canUnfollow($feedId, $token);
             }
 
             $model->setData($this->feedMapper->map($feed));

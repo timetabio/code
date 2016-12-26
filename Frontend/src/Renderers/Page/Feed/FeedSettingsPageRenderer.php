@@ -1,6 +1,11 @@
 <?php
 /**
- * (c) 2016 Ruben Schmidmeister
+ * Copyright (c) 2016 Ruben Schmidmeister <ruben.schmidmeister@icloud.com>
+ *
+ * This program is free software. It comes without any warranty, to
+ * the extent permitted by applicable law. You can redistribute it
+ * and/or modify it under the terms of the GNU Affero General Public License,
+ * version 3, as published by the Free Software Foundation.
  */
 namespace Timetabio\Frontend\Renderers\Page\Feed
 {
@@ -11,6 +16,7 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
     use Timetabio\Frontend\Models\PageModel;
     use Timetabio\Frontend\Renderers\Page\PageRendererInterface;
     use Timetabio\Frontend\Renderers\Snippet\IconButtonSnippet;
+    use Timetabio\Frontend\ValueObjects\Feed;
 
     class FeedSettingsPageRenderer implements PageRendererInterface, TranslatorAwareInterface
     {
@@ -37,20 +43,31 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
             $wrapper->setClassName('page-wrapper -padding');
             $main->appendChild($wrapper);
 
+            if ($feed->hasEditAccess()) {
+                $wrapper->appendChild($this->renderNameForm($template, $feed));
+                $wrapper->appendChild($this->renderDescriptionForm($template, $feed));
+                $wrapper->appendChild($this->renderVanityForm($template, $feed));
+            }
+
+            if ($feed->canUserUnfollow()) {
+                $wrapper->appendChild($this->renderUnfollowForm($template, $feed));
+            }
+        }
+
+        private function renderNameForm(Document $template, Feed $feed): \DOMNode
+        {
+            $fragment = $template->createDocumentFragment();
+
             $feedNameTitle = $template->createElement('h2');
             $feedNameTitle->setClassName('basic-heading-b _margin-after-s');
             $feedNameTitle->appendText('Feed Name');
-            $wrapper->appendChild($feedNameTitle);
-
-            //
-            // Feed Name
-            //
+            $fragment->appendChild($feedNameTitle);
 
             $feedNameForm = $template->createElement('form');
             $feedNameForm->setClassName('form-card _margin-after-l');
             $feedNameForm->setAttribute('is', 'ajax-form');
             $feedNameForm->setAttribute('action', '/action/feed/update-name');
-            $wrapper->appendChild($feedNameForm);
+            $fragment->appendChild($feedNameForm);
 
             $feedNameInput = $template->createElement('input');
             $feedNameInput->setClassName('text');
@@ -72,21 +89,23 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
             $feedNameSaveButton->setAttribute('type', 'submit');
             $feedNameForm->appendChild($feedNameSaveButton);
 
+            return $fragment;
+        }
 
-            //
-            // Feed Description
-            //
+        private function renderDescriptionForm(Document $template, Feed $feed): \DOMNode
+        {
+            $fragment = $template->createDocumentFragment();
 
             $feedDescriptionTitle = $template->createElement('h2');
             $feedDescriptionTitle->setClassName('basic-heading-b _margin-after-s');
             $feedDescriptionTitle->appendText('Feed Description');
-            $wrapper->appendChild($feedDescriptionTitle);
+            $fragment->appendChild($feedDescriptionTitle);
 
             $feedDescriptionForm = $template->createElement('form');
             $feedDescriptionForm->setClassName('form-card _margin-after-l');
             $feedDescriptionForm->setAttribute('is', 'ajax-form');
             $feedDescriptionForm->setAttribute('action', '/action/feed/update-description');
-            $wrapper->appendChild($feedDescriptionForm);
+            $fragment->appendChild($feedDescriptionForm);
 
             $feedDescriptionInput = $template->createElement('input');
             $feedDescriptionInput->setClassName('text');
@@ -107,20 +126,23 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
             $feedDescriptionSaveButton->setAttribute('type', 'submit');
             $feedDescriptionForm->appendChild($feedDescriptionSaveButton);
 
-            //
-            // Feed URL
-            //
+            return $fragment;
+        }
+
+        private function renderVanityForm(Document $template, Feed $feed): \DOMNode
+        {
+            $fragment = $template->createDocumentFragment();
 
             $feedUrlTitle = $template->createElement('h2');
             $feedUrlTitle->setClassName('basic-heading-b _margin-after-s');
             $feedUrlTitle->appendText('URL');
-            $wrapper->appendChild($feedUrlTitle);
+            $fragment->appendChild($feedUrlTitle);
 
             $feedUrlForm = $template->createElement('form');
-            $feedUrlForm->setClassName('form-card');
+            $feedUrlForm->setClassName('form-card _margin-after-l');
             $feedUrlForm->setAttribute('is', 'ajax-form');
             $feedUrlForm->setAttribute('action', '/action/feed/update-vanity');
-            $wrapper->appendChild($feedUrlForm);
+            $fragment->appendChild($feedUrlForm);
 
             $feedUrlText = $template->createElement('span');
             $feedUrlText->setClassName('text');
@@ -150,6 +172,48 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
             $feedUrlSaveButton = $this->iconButtonSnippet->render($template, 'done', 'Save', '-color');
             $feedUrlSaveButton->setAttribute('type', 'submit');
             $feedUrlForm->appendChild($feedUrlSaveButton);
+
+            return $fragment;
+        }
+
+        private function renderUnfollowForm(Document $template, Feed $feed): \DOMNode
+        {
+            $fragment = $template->createDocumentFragment();
+
+            $feedUnfollowTitle = $template->createElement('h2');
+            $feedUnfollowTitle->setClassName('basic-heading-b _margin-after-s');
+            $feedUnfollowTitle->appendText('Unfollow');
+            $fragment->appendChild($feedUnfollowTitle);
+
+            $feedUnfollowForm = $template->createElement('form');
+            $feedUnfollowForm->setClassName('form-card _margin-after-l');
+            $feedUnfollowForm->setAttribute('is', 'ajax-form');
+            $feedUnfollowForm->setAttribute('action', '/action/unfollow');
+            $feedUnfollowForm->setAttribute('autocomplete', 'off');
+            $fragment->appendChild($feedUnfollowForm);
+
+            $feedUnfollowInput = $template->createElement('input');
+            $feedUnfollowInput->setClassName('text');
+            $feedUnfollowInput->setAttribute('is', 'validated-input');
+            $feedUnfollowInput->setAttribute('string-match', $feed->getName());
+            $feedUnfollowInput->setAttribute('name', 'unfollow');
+            $feedUnfollowInput->setAttribute('placeholder', 'Enter the feed\'s name to confirm');
+            $feedUnfollowForm->appendChild($feedUnfollowInput);
+
+            $feedIdInput = $template->createElement('input');
+            $feedIdInput->setAttribute('type', 'hidden');
+            $feedIdInput->setAttribute('name', 'feed_id');
+            $feedIdInput->setAttribute('value', $feed->getId());
+            $feedUnfollowForm->appendChild($feedIdInput);
+
+            $feedUnfollowButton = $template->createElement('button');
+            $feedUnfollowButton->setClassName('light-button -color');
+            $feedUnfollowButton->setAttribute('type', 'submit');
+            $feedUnfollowButton->setAttribute('disabled', '');
+            $feedUnfollowButton->appendText('Unfollow');
+            $feedUnfollowForm->appendChild($feedUnfollowButton);
+
+            return $fragment;
         }
     }
 }

@@ -56,6 +56,11 @@ namespace Timetabio\Frontend\ValueObjects
             return isset($this->feed['access']['manage_users']) && $this->feed['access']['manage_users'];
         }
 
+        public function hasEditAccess(): bool
+        {
+            return isset($this->feed['access']['edit']) && $this->feed['access']['edit'];
+        }
+
         public function isUserInvited(): bool
         {
             return isset($this->feed['user']['invited']) && $this->feed['user']['invited'];
@@ -69,6 +74,11 @@ namespace Timetabio\Frontend\ValueObjects
         public function hasUserAdded(): bool
         {
             return isset($this->feed['user']['has_added']) && $this->feed['user']['has_added'];
+        }
+
+        public function canUserUnfollow(): bool
+        {
+            return isset($this->feed['user']['can_unfollow']) && $this->feed['user']['can_unfollow'];
         }
 
         public function isPrivate(): bool

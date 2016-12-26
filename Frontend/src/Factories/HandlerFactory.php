@@ -248,7 +248,8 @@ namespace Timetabio\Frontend\Factories
         public function createUnfollowCommandHandler(): \Timetabio\Frontend\Handlers\Post\Unfollow\CommandHandler
         {
             return new \Timetabio\Frontend\Handlers\Post\Unfollow\CommandHandler(
-                $this->getMasterFactory()->createUnfollowFeedCommand()
+                $this->getMasterFactory()->createUnfollowFeedCommand(),
+                $this->getMasterFactory()->createUriBuilder()
             );
         }
 

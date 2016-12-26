@@ -14,6 +14,7 @@ namespace Timetabio\Frontend\Handlers\Post\Unfollow
     use Timetabio\Frontend\Commands\Feed\UnfollowFeedCommand;
     use Timetabio\Frontend\Exceptions\BadRequest;
     use Timetabio\Frontend\Models\Action\FollowModel;
+    use Timetabio\Library\Builders\UriBuilder;
 
     class CommandHandler implements CommandHandlerInterface
     {
@@ -22,9 +23,15 @@ namespace Timetabio\Frontend\Handlers\Post\Unfollow
          */
         private $unfollowFeedCommand;
 
-        public function __construct(UnfollowFeedCommand $unfollowFeedCommand)
+        /**
+         * @var UriBuilder
+         */
+        private $uriBuilder;
+
+        public function __construct(UnfollowFeedCommand $unfollowFeedCommand, UriBuilder $uriBuilder)
         {
             $this->unfollowFeedCommand = $unfollowFeedCommand;
+            $this->uriBuilder = $uriBuilder;
         }
 
         public function execute(AbstractModel $model)
@@ -38,7 +45,7 @@ namespace Timetabio\Frontend\Handlers\Post\Unfollow
             }
 
             $model->setData([
-                'reload' => true
+                'redirect' => $this->uriBuilder->buildFeedPageUri($model->getFeedId())
             ]);
         }
     }
