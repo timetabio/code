@@ -35,15 +35,8 @@ namespace Timetabio\API\Services
                    feeds.description,
                    feeds.is_verified,
                    feeds.created,
-                   feeds.updated,
-                   users.id AS owner_id,
-                   users.name AS owner_name,
-                   users.username AS owner_username
+                   feeds.updated
                  FROM feeds
-                 JOIN feed_users
-                   ON feeds.id = feed_users.feed_id AND is_owner(feed_users.role)
-                 JOIN users
-                   ON feed_users.user_id = users.id
                  WHERE feeds.id = :feed_id',
                 [
                     'feed_id' => $feedId
