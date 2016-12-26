@@ -43,7 +43,7 @@ namespace Timetabio\Worker\Mails
 
         public function getSubject(): string
         {
-            return 'You have requested to reset your password';
+            return 'Password Reset';
         }
 
         public function render(): string
