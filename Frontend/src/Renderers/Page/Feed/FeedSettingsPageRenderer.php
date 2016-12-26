@@ -54,6 +54,8 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
 
             $feedNameInput = $template->createElement('input');
             $feedNameInput->setClassName('text');
+            $feedNameInput->setAttribute('is', 'validated-input');
+            $feedNameInput->setAttribute('max-byte-size', '64');
             $feedNameInput->setAttribute('name', 'name');
             $feedNameInput->setAttribute('placeholder', 'Explorations of Space-Time');
             $feedNameInput->setAttribute('required', '');
@@ -88,6 +90,8 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
 
             $feedDescriptionInput = $template->createElement('input');
             $feedDescriptionInput->setClassName('text');
+            $feedDescriptionInput->setAttribute('is', 'validated-input');
+            $feedDescriptionInput->setAttribute('max-byte-size', '140');
             $feedDescriptionInput->setAttribute('name', 'description');
             $feedDescriptionInput->setAttribute('placeholder', 'Describe your feed in a few short words');
             $feedDescriptionInput->setAttribute('value', $feed->getDescription());
