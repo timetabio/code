@@ -34,8 +34,8 @@ namespace Timetabio\API\Handlers\Put\User
 
             try {
                 $password = new Password($request->getParam('password'));
-            } catch(\Exception $exception) {
-                throw new BadRequest('password must be between 8 and 72 characters', 'invalid_password');
+            } catch (\Exception $exception) {
+                throw new BadRequest($exception->getMessage(), 'invalid_password');
             }
 
             $model->setOldPassword($request->getParam('old_password'));
