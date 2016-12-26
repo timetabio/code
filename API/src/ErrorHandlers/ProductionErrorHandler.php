@@ -26,7 +26,7 @@ namespace Timetabio\API\ErrorHandlers
             echo json_encode([
                 'error' => $this->getError($exception),
                 'message' => $this->getMessage($exception),
-            ], JSON_PRETTY_PRINT);
+            ], JSON_PRETTY_PRINT) . PHP_EOL;
 
             $this->logException($exception);
 
