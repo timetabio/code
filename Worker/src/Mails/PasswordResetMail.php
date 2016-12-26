@@ -12,7 +12,7 @@ namespace Timetabio\Worker\Mails
     use Timetabio\Framework\Dom\Document;
     use Timetabio\Library\Builders\UriBuilder;
 
-    class ResetPasswordMail extends AbstractMail
+    class PasswordResetMail extends AbstractMail
     {
         /**
          * @var UriBuilder

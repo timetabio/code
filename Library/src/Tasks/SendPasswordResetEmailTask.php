@@ -9,7 +9,7 @@
  */
 namespace Timetabio\Library\Tasks
 {
-    class SendResetPasswordEmailTask implements TaskInterface
+    class SendPasswordResetEmailTask implements TaskInterface
     {
         /**
          * @var string

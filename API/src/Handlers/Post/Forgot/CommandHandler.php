@@ -14,7 +14,7 @@ namespace Timetabio\API\Handlers\Post\Forgot
     use Timetabio\Framework\Handlers\CommandHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;
     use Timetabio\Framework\ValueObjects\Token;
-    use Timetabio\Library\Tasks\SendResetPasswordEmailTask;
+    use Timetabio\Library\Tasks\SendPasswordResetEmailTask;
 
     class CommandHandler implements CommandHandlerInterface
     {
@@ -43,7 +43,7 @@ namespace Timetabio\API\Handlers\Post\Forgot
             $user = $model->getUserData();
 
             $this->dataStoreWriter->saveResetToken($model->getUser(), $token);
-            $this->dataStoreWriter->queueTask(new SendResetPasswordEmailTask($token, $user['id']));
+            $this->dataStoreWriter->queueTask(new SendPasswordResetEmailTask($token, $user['id']));
         }
     }
 }
