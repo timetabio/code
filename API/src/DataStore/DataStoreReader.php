@@ -26,12 +26,12 @@ namespace Timetabio\API\DataStore
 
         public function hasResetToken(string $token): bool
         {
-            return $this->getDataStore()->has('reset_token_' . $token);
+            return $this->getDataStore()->has('reset_token:' . $token);
         }
 
         public function getResetToken(string $token): string
         {
-            return $this->getDataStore()->get('reset_token_' . $token);
+            return $this->getDataStore()->get('reset_token:' . $token);
         }
 
         /**
