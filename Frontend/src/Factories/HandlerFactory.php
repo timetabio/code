@@ -459,7 +459,8 @@ namespace Timetabio\Frontend\Factories
         public function createUpdateFeedVanityCommandHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\CommandHandler
         {
             return new \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\CommandHandler(
-                $this->getMasterFactory()->createUpdateFeedVanityCommand()
+                $this->getMasterFactory()->createUpdateFeedVanityCommand(),
+                $this->getMasterFactory()->createUriBuilder()
             );
         }
 

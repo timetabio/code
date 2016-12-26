@@ -11,32 +11,50 @@ namespace Timetabio\Frontend\Handlers\Post\UpdateFeedVanity
 {
     use Timetabio\Framework\Handlers\CommandHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;
+    use Timetabio\Framework\Translation\TranslatorAwareInterface;
+    use Timetabio\Framework\Translation\TranslatorAwareTrait;
     use Timetabio\Frontend\Commands\Feed\UpdateFeedVanityCommand;
+    use Timetabio\Frontend\Exceptions\ApiException;
     use Timetabio\Frontend\Models\Action\UpdateFeedVanityModel;
+    use Timetabio\Library\Builders\UriBuilder;
 
-    class CommandHandler implements CommandHandlerInterface
+    class CommandHandler implements CommandHandlerInterface, TranslatorAwareInterface
     {
+        use TranslatorAwareTrait;
+
         /**
          * @var UpdateFeedVanityCommand
          */
         private $updateFeedVanityCommand;
 
-        public function __construct(UpdateFeedVanityCommand $updateFeedVanityCommand)
+        /**
+         * @var UriBuilder
+         */
+        private $uriBuilder;
+
+        public function __construct(UpdateFeedVanityCommand $updateFeedVanityCommand, UriBuilder $uriBuilder)
         {
             $this->updateFeedVanityCommand = $updateFeedVanityCommand;
+            $this->uriBuilder = $uriBuilder;
         }
 
         public function execute(AbstractModel $model)
         {
             /** @var UpdateFeedVanityModel $model */
 
-            $this->updateFeedVanityCommand->execute(
-                $model->getFeedId(),
-                $model->getFeedVanity()
-            );
+            try {
+                $this->updateFeedVanityCommand->execute(
+                    $model->getFeedId(),
+                    $model->getFeedVanity()
+                );
+            } catch (ApiException $exception) {
+                return $model->setData([
+                    'error' => $this->translator->translate($exception)
+                ]);
+            }
 
             $model->setData([
-                'reload' => true
+                'redirect' => $this->uriBuilder->buildFeedSettingsPageUri($model->getFeedId())
             ]);
         }
     }

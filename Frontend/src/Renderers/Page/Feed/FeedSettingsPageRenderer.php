@@ -129,6 +129,9 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
 
             $feedUrlInput = $template->createElement('input');
             $feedUrlInput->setClassName('content');
+            $feedUrlInput->setAttribute('is', 'validated-input');
+            $feedUrlInput->setAttribute('max-byte-size', '20');
+            $feedUrlInput->setAttribute('pattern', '[\w-]+');
             $feedUrlInput->setAttribute('name', 'vanity');
             $feedUrlInput->setAttribute('placeholder', 'your-feed-name');
             $feedUrlInput->setAttribute('value', $feed->getVanity());

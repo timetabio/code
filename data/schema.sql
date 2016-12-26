@@ -53,7 +53,9 @@ CREATE INDEX IF NOT EXISTS feeds_owner_id ON feeds (owner_id);
 CREATE TABLE feed_vanities (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name VARCHAR(255) NOT NULL,
-  feed_id UUID NOT NULL UNIQUE REFERENCES feeds (id)
+  feed_id UUID NOT NULL UNIQUE REFERENCES feeds (id),
+  created TIMESTAMP NOT NULL DEFAULT utc_now(),
+  updated TIMESTAMP NOT NULL DEFAULT utc_now()
 );
 
 CREATE UNIQUE INDEX feed_vanities_name ON feed_vanities (lower(name));

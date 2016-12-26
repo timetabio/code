@@ -37,11 +37,17 @@ export class ValidatedInput extends HTMLInputElement {
    * @private
    */
   _getValidity () {
+    let result = ''
+
     if (this.maxByteSize) {
-      return this._validateMaxByteSize()
+      result = result || this._validateMaxByteSize()
     }
 
-    return ''
+    if (this.minByteSize) {
+      result = result || this._validateMinByteSize()
+    }
+
+    return result
   }
 
   /**
@@ -59,9 +65,30 @@ export class ValidatedInput extends HTMLInputElement {
 
   /**
    *
+   * @returns {string}
+   * @private
+   */
+  _validateMinByteSize () {
+    if (getByteSize(this.value) < this.minByteSize) {
+      return `min size of ${this.minByteSize} not reached`
+    }
+
+    return ''
+  }
+
+  /**
+   *
    * @returns {number|null}
    */
   get maxByteSize () {
     return Number.parseInt(this.getAttribute('max-byte-size')) || null;
+  }
+
+  /**
+   *
+   * @returns {number|null}
+   */
+  get minByteSize () {
+    return Number.parseInt(this.getAttribute('min-byte-size')) || null;
   }
 }
