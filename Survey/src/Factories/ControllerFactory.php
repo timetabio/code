@@ -18,7 +18,7 @@ namespace Timetabio\Survey\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Survey\Models\Page\SurveyPageModel($survey),
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createSurveyPageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),

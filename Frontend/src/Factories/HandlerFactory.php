@@ -59,13 +59,6 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createGetPagePreHandler(): \Timetabio\Frontend\Handlers\Get\Page\PreHandler
-        {
-            return new \Timetabio\Frontend\Handlers\Get\Page\PreHandler(
-                $this->getMasterFactory()->createSession()
-            );
-        }
-
         public function createGetStaticPageQueryHandler(): \Timetabio\Frontend\Handlers\Get\StaticPage\QueryHandler
         {
             return new \Timetabio\Frontend\Handlers\Get\StaticPage\QueryHandler(

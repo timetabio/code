@@ -23,7 +23,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\StaticPageModel($name, $language),
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createGetStaticPageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -53,7 +53,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\Account\VerifyModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createGetVerifyAccountRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
                 $this->getMasterFactory()->createGetVerifyAccountCommandHandler(),
@@ -113,7 +113,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\HomepageModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createGetHomepageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -128,7 +128,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\FeedsPageModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createFeedsPageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -160,7 +160,7 @@ namespace Timetabio\Frontend\Factories
                 new \Timetabio\Frontend\Models\Page\FeedPostsPageModel(
                     new \Timetabio\Frontend\ValueObjects\Feed($feed)
                 ),
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createGetFeedPageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -175,7 +175,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\CreatePostPageModel($feed),
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createGetCreatePostPageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -265,7 +265,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\PostPageModel($post),
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createGetPostPageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -295,7 +295,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\Page\SearchPageModel($type),
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createSearchPageRequestHandler(),
                 $this->getMasterFactory()->createSearchPageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -310,7 +310,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\Fragment\FeedPostsFragmentModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createGetFeedPostsFragmentRequestHandler(),
                 $this->getMasterFactory()->createGetFeedPostsFragmentQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -325,7 +325,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\Fragment\HomepagePostsFragmentModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createGetHomepagePostsFragmentRequestHandler(),
                 $this->getMasterFactory()->createGetHomepagePostsFragmentQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -342,7 +342,7 @@ namespace Timetabio\Frontend\Factories
                 new \Timetabio\Frontend\Models\Page\FeedPeoplePageModel(
                     new \Timetabio\Frontend\ValueObjects\Feed($feed)
                 ),
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createGetFeedPeoplePageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -359,7 +359,7 @@ namespace Timetabio\Frontend\Factories
                 new \Timetabio\Frontend\Models\Page\FeedSettingsPageModel(
                     new \Timetabio\Frontend\ValueObjects\Feed($feed)
                 ),
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -374,7 +374,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\PostController(
                 new \Timetabio\Frontend\Models\Action\DeleteFeedUserModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createDeleteFeedUserRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
                 $this->getMasterFactory()->createDeleteFeedUserCommandHandler(),
@@ -389,7 +389,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\PostController(
                 new \Timetabio\Frontend\Models\Action\InviteFeedUserModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createInviteFeedUserRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
                 $this->getMasterFactory()->createInviteFeedUserCommandHandler(),
@@ -404,7 +404,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\PostController(
                 new \Timetabio\Frontend\Models\Action\DeleteFeedUserModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createDeleteFeedInvitationRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
                 $this->getMasterFactory()->createDeleteFeedInvitationCommandHandler(),
@@ -419,7 +419,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\PostController(
                 new \Timetabio\Frontend\Models\Action\UpdateFeedUserRoleModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createUpdateFeedUserRoleRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
                 $this->getMasterFactory()->createUpdateFeedUserRoleCommandHandler(),
@@ -434,7 +434,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\PostController(
                 new \Timetabio\Frontend\Models\Action\UpdateFeedNameModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createUpdateFeedNameRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
                 $this->getMasterFactory()->createUpdateFeedNameCommandHandler(),
@@ -449,7 +449,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\PostController(
                 new \Timetabio\Frontend\Models\Action\UpdateFeedDescriptionModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createUpdateFeedDescriptionRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
                 $this->getMasterFactory()->createUpdateFeedDescriptionCommandHandler(),
@@ -464,7 +464,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\PostController(
                 new \Timetabio\Frontend\Models\Action\UpdateFeedVanityModel,
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createUpdateFeedVanityRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
                 $this->getMasterFactory()->createUpdateFeedVanityCommandHandler(),
