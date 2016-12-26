@@ -27,6 +27,7 @@ install -m 755 -d ${RPM_BUILD_ROOT}/data/patches
 cp ${RPM_BUILD_DIR}/units/* ${RPM_BUILD_ROOT}/etc/systemd/system/
 cp ${RPM_BUILD_DIR}/cron.d/* ${RPM_BUILD_ROOT}/etc/cron.d/
 cp ${RPM_BUILD_DIR}/data/patches/*.sql ${RPM_BUILD_ROOT}/data/patches/
+cp ${RPM_BUILD_DIR}/data/elastic-mappings.json ${RPM_BUILD_ROOT}/data/elastic-mappings.json
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}
@@ -97,3 +98,4 @@ docker run --rm \
 /etc/systemd/system/*
 /etc/cron.d/*
 /data/patches/*
+/data/elastic-mappings.json
