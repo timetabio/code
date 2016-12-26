@@ -126,19 +126,7 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createGetVerifyAccountRequestHandler(): \Timetabio\Frontend\Handlers\Get\Account\Verify\RequestHandler
-        {
-            return new \Timetabio\Frontend\Handlers\Get\Account\Verify\RequestHandler;
-        }
-
-        public function createGetVerifyAccountCommandHandler(): \Timetabio\Frontend\Handlers\Get\Account\Verify\CommandHandler
-        {
-            return new \Timetabio\Frontend\Handlers\Get\Account\Verify\CommandHandler(
-                $this->getMasterFactory()->createVerifyCommand()
-            );
-        }
-
-        public function createGetVerifyAccountTransformationHandler(): \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler
+        public function createVerifyAccountPageTransformationHandler(): \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler
         {
             return new \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler(
                 $this->getMasterFactory()->createVerifyAccountPageRenderer()

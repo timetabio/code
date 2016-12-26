@@ -49,15 +49,15 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createVerifyAccountController(): GetController
+        public function createVerifyAccountPageController(): GetController
         {
             return new GetController(
                 new \Timetabio\Frontend\Models\Account\VerifyModel,
                 $this->getMasterFactory()->createPreHandler(),
-                $this->getMasterFactory()->createGetVerifyAccountRequestHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
-                $this->getMasterFactory()->createGetVerifyAccountCommandHandler(),
-                $this->getMasterFactory()->createGetVerifyAccountTransformationHandler(),
+                $this->getMasterFactory()->createCommandHandler(),
+                $this->getMasterFactory()->createVerifyAccountPageTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
                 new HtmlResponse

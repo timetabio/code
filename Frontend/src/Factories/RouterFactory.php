@@ -45,14 +45,6 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createPageRouter(): \Timetabio\Frontend\Routers\PageRouter
-        {
-            return new \Timetabio\Frontend\Routers\PageRouter(
-                $this->getMasterFactory(),
-                $this->getMasterFactory()->createIsLoggedInQuery()
-            );
-        }
-
         public function createUserPageRouter(): \Timetabio\Frontend\Routers\UserPageRouter
         {
             return new \Timetabio\Frontend\Routers\UserPageRouter(
@@ -91,6 +83,14 @@ namespace Timetabio\Frontend\Factories
             return new \Timetabio\Frontend\Routers\UserFragmentRouter(
                 $this->getMasterFactory(),
                 $this->getMasterFactory()->createIsLoggedInQuery()
+            );
+        }
+
+        public function createVerifyAccountPageRouter(): \Timetabio\Frontend\Routers\VerifyAccountPageRouter
+        {
+            return new \Timetabio\Frontend\Routers\VerifyAccountPageRouter(
+                $this->getMasterFactory(),
+                $this->getMasterFactory()->createVerifyCommand()
             );
         }
     }
