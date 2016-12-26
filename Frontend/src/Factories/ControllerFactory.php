@@ -459,5 +459,20 @@ namespace Timetabio\Frontend\Factories
                 new JsonResponse
             );
         }
+
+        public function createUpdateFeedVanityController(): \Timetabio\Framework\Controllers\PostController
+        {
+            return new \Timetabio\Framework\Controllers\PostController(
+                new \Timetabio\Frontend\Models\Action\UpdateFeedVanityModel,
+                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createUpdateFeedVanityRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createUpdateFeedVanityCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
     }
 }

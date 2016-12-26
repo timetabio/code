@@ -42,6 +42,10 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
             $feedNameTitle->appendText('Feed Name');
             $wrapper->appendChild($feedNameTitle);
 
+            //
+            // Feed Name
+            //
+
             $feedNameForm = $template->createElement('form');
             $feedNameForm->setClassName('form-card _margin-after-l');
             $feedNameForm->setAttribute('is', 'ajax-form');
@@ -66,13 +70,18 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
             $feedNameSaveButton->setAttribute('type', 'submit');
             $feedNameForm->appendChild($feedNameSaveButton);
 
+
+            //
+            // Feed Description
+            //
+
             $feedDescriptionTitle = $template->createElement('h2');
             $feedDescriptionTitle->setClassName('basic-heading-b _margin-after-s');
             $feedDescriptionTitle->appendText('Feed Description');
             $wrapper->appendChild($feedDescriptionTitle);
 
             $feedDescriptionForm = $template->createElement('form');
-            $feedDescriptionForm->setClassName('form-card');
+            $feedDescriptionForm->setClassName('form-card _margin-after-l');
             $feedDescriptionForm->setAttribute('is', 'ajax-form');
             $feedDescriptionForm->setAttribute('action', '/action/feed/update-description');
             $wrapper->appendChild($feedDescriptionForm);
@@ -93,6 +102,47 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
             $feedDescriptionSaveButton = $this->iconButtonSnippet->render($template, 'done', 'Save', '-color');
             $feedDescriptionSaveButton->setAttribute('type', 'submit');
             $feedDescriptionForm->appendChild($feedDescriptionSaveButton);
+
+            //
+            // Feed URL
+            //
+
+            $feedUrlTitle = $template->createElement('h2');
+            $feedUrlTitle->setClassName('basic-heading-b _margin-after-s');
+            $feedUrlTitle->appendText('URL');
+            $wrapper->appendChild($feedUrlTitle);
+
+            $feedUrlForm = $template->createElement('form');
+            $feedUrlForm->setClassName('form-card');
+            $feedUrlForm->setAttribute('is', 'ajax-form');
+            $feedUrlForm->setAttribute('action', '/action/feed/update-vanity');
+            $wrapper->appendChild($feedUrlForm);
+
+            $feedUrlText = $template->createElement('span');
+            $feedUrlText->setClassName('text');
+            $feedUrlForm->appendChild($feedUrlText);
+
+            $feedUrlMeta = $template->createElement('span');
+            $feedUrlMeta->setClassName('meta');
+            $feedUrlMeta->appendText('timetab.io/feed/');
+            $feedUrlText->appendChild($feedUrlMeta);
+
+            $feedUrlInput = $template->createElement('input');
+            $feedUrlInput->setClassName('content');
+            $feedUrlInput->setAttribute('name', 'vanity');
+            $feedUrlInput->setAttribute('placeholder', 'your-feed-name');
+            $feedUrlInput->setAttribute('value', $feed->getVanity());
+            $feedUrlText->appendChild($feedUrlInput);
+
+            $feedIdInput = $template->createElement('input');
+            $feedIdInput->setAttribute('type', 'hidden');
+            $feedIdInput->setAttribute('name', 'feed_id');
+            $feedIdInput->setAttribute('value', $feed->getId());
+            $feedUrlForm->appendChild($feedIdInput);
+
+            $feedUrlSaveButton = $this->iconButtonSnippet->render($template, 'done', 'Save', '-color');
+            $feedUrlSaveButton->setAttribute('type', 'submit');
+            $feedUrlForm->appendChild($feedUrlSaveButton);
         }
     }
 }

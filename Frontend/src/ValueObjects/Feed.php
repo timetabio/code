@@ -41,6 +41,11 @@ namespace Timetabio\Frontend\ValueObjects
             return $this->feed['description'];
         }
 
+        public function getVanity(): ?string
+        {
+            return isset($this->feed['vanity']) ? $this->feed['vanity'] : null;
+        }
+
         public function hasPostAccess(): bool
         {
             return isset($this->feed['access']['post']) && $this->feed['access']['post'];

@@ -150,5 +150,12 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createApiGateway()
             );
         }
+
+        public function createUpdateFeedVanityCommand(): Commands\Feed\UpdateFeedVanityCommand
+        {
+            return new Commands\Feed\UpdateFeedVanityCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
     }
 }

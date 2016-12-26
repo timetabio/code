@@ -455,5 +455,17 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Frontend\Handlers\Post\UpdateFeedDescription\RequestHandler;
         }
+
+        public function createUpdateFeedVanityCommandHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\CommandHandler(
+                $this->getMasterFactory()->createUpdateFeedVanityCommand()
+            );
+        }
+
+        public function createUpdateFeedVanityRequestHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\RequestHandler;
+        }
     }
 }

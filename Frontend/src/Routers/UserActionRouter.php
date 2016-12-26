@@ -65,6 +65,8 @@ namespace Timetabio\Frontend\Routers
                     return $this->factory->createUpdateFeedNameController();
                 case '/action/feed/update-description':
                     return $this->factory->createUpdateFeedDescriptionController();
+                case '/action/feed/update-vanity':
+                    return $this->factory->createUpdateFeedVanityController();
                 case '/action/upload':
                     return $this->factory->createCreateUploadController();
             }

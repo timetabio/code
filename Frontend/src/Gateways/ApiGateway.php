@@ -304,6 +304,17 @@ namespace Timetabio\Frontend\Gateways
             );
         }
 
+        public function updateFeedVanity(string $feedId, string $vanity): ApiResponse
+        {
+            return $this->apiBackend->patch(
+                '/feeds/' . urlencode($feedId),
+                [
+                    'vanity' => $vanity
+                ],
+                $this->getAccessToken()
+            );
+        }
+
         protected function getAccessToken()
         {
             if (!$this->session->hasAccessToken()) {

@@ -17,7 +17,18 @@
 
   > .text {
     flex-grow: 1;
+    display: flex;
+    align-items: center;
     margin-right: @margin-xs-v;
+  }
+
+  > .text > .meta {
+    color: @brand-light-grey;
+    user-select: none;
+  }
+
+  > .text > .content {
+    flex-grow: 1;
   }
 
   > .button {
