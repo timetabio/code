@@ -38,15 +38,14 @@ namespace Timetabio\API\Handlers\Post\Verify\Resend
             $token = $this->fetchTokenQuery->execute($email);
 
             if ($token === null) {
-                throw new BadRequest('no token found for email', 'email_not_found');
+                return;
             }
 
             $model->setEmailPerson(new EmailPerson($email));
             $model->setToken(new Token($token['token']));
 
             $model->setData([
-                'id' => $token['user_id'],
-                'verified' => false
+                'queued' => true
             ]);
         }
     }

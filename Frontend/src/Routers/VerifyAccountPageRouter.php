@@ -14,27 +14,47 @@ namespace Timetabio\Frontend\Routers
     use Timetabio\Framework\Factories\MasterFactoryInterface;
     use Timetabio\Framework\Http\Request\RequestInterface;
     use Timetabio\Framework\Routers\RouterInterface;
+    use Timetabio\Frontend\Commands\VerifyCommand;
+    use Timetabio\Frontend\Exceptions\ApiException;
+    use Timetabio\Frontend\Factories\FactoryTypeHint;
 
-    class PageRouter implements RouterInterface
+    class VerifyAccountPageRouter implements RouterInterface
     {
         /**
-         * @var MasterFactoryInterface
+         * @var FactoryTypeHint
          */
         private $factory;
 
-        public function __construct(MasterFactoryInterface $factory)
+        /**
+         * @var VerifyCommand
+         */
+        private $verifyCommand;
+
+        public function __construct(MasterFactoryInterface $factory, VerifyCommand $verifyCommand)
         {
             $this->factory = $factory;
+            $this->verifyCommand = $verifyCommand;
         }
 
         public function route(RequestInterface $request): ControllerInterface
         {
-            switch ($request->getUri()->getPath()) {
-                case '/account/verify':
-                    return $this->factory->createVerifyAccountController();
+            if ($request->getUri()->getPath() !== '/account/verify') {
+                throw new RouterException;
             }
 
-            throw new RouterException;
+            if (!$request->hasQueryParam('token')) {
+                throw new RouterException;
+            }
+
+            $token = $request->getQueryParam('token');
+
+            try {
+                $this->verifyCommand->execute($token);
+            } catch (ApiException $exception) {
+                throw new RouterException;
+            }
+
+            return $this->factory->createVerifyAccountPageController();
         }
 
         public function canHandle(RequestInterface $request): bool

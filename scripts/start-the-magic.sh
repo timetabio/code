@@ -6,6 +6,7 @@ STOP=0
 BUILD=0
 WORKER=0
 INITIAL=0
+RESET_ELASTIC=0
 
 CONTAINERS=(
   ttio-dev-proxy
@@ -31,6 +32,9 @@ for ARG in $@; do
       ;;
     --initial)
       INITIAL=1
+      ;;
+    --reset-elastic)
+      RESET_ELASTIC=1
       ;;
     *)
       echo "Unknown flag ${ARG}"
@@ -188,6 +192,17 @@ docker run -d \
   -v ${ROOT}/persistent/nsalog/worker.txt:/data/nsalog.txt \
   docker.ttio.cloud:5000/web/worker
 
+if [ ${RESET_ELASTIC} -eq 1 ]; then
+  docker run --rm \
+    --net ttio-dev-net \
+    -v ${ROOT}/data/elastic-mappings.json:/mappings.json \
+    docker.ttio.cloud:5000/library/elastic \
+    sh -c 'curl -X DELETE http://ttio-elastic:9200/ttio'
+  echo ""
+
+  sleep 5
+fi
+
 log "Bootstrapping elastic"
 docker run --rm \
   --net ttio-dev-net \
@@ -195,6 +210,11 @@ docker run --rm \
   docker.ttio.cloud:5000/library/elastic \
   sh -c 'curl -X PUT http://ttio-elastic:9200/ttio -d @/mappings.json'
 echo ""
+
+if [ ${RESET_ELASTIC} -eq 1 ]; then
+  docker exec ttio-dev-worker /data/code/Worker/push.php IndexUsers
+  docker exec ttio-dev-worker /data/code/Worker/push.php IndexFeeds
+fi
 
 if [ ${WORKER} -eq 0 ]; then
   log "Running initial task"

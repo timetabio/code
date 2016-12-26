@@ -66,15 +66,8 @@ CREATE VIEW public_feeds AS
     feeds.name,
     feeds.is_verified,
     feeds.created,
-    feeds.updated,
-    users.id AS owner_id,
-    users.name AS owner_name,
-    users.username AS owner_username
+    feeds.updated
   FROM feeds
-  JOIN feed_users
-    ON feeds.id = feed_users.feed_id AND is_owner(feed_users.role)
-  JOIN users
-    ON feed_users.user_id = users.id
   WHERE is_private = FALSE;
 
 CREATE TYPE post_type AS ENUM ('note', 'task', 'event');
@@ -169,20 +162,11 @@ CREATE TABLE IF NOT EXISTS feed_users (
   PRIMARY KEY(feed_id, user_id)
 );
 
-CREATE INDEX feed_users_owner ON feed_users (feed_id, is_owner(role));
-
 CREATE TRIGGER update_feed_users_timestamp_column BEFORE UPDATE ON feed_users FOR EACH ROW EXECUTE PROCEDURE update_timestamp_column();
 
 CREATE VIEW aggregated_feeds AS
-  SELECT feeds.*,
-    users.id AS owner_id,
-    users.username AS owner_username,
-    users.name AS owner_name
-  FROM feeds
-  JOIN feed_users
-    ON feeds.id = feed_users.feed_id AND is_owner(feed_users.role)
-  JOIN users
-    ON feed_users.user_id = users.id;
+  SELECT *
+  FROM feeds;
 
 CREATE VIEW user_feeds AS
   SELECT feeds.*, feed_users.user_id

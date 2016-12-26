@@ -1,6 +1,5 @@
 {
   "title": "Not Found",
   "content": "content/404.html",
-  "code": 404,
-  "header": false
+  "code": 404
 }
