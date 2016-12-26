@@ -11,7 +11,6 @@ import { AjaxForm } from '../elements/ajax-form'
 import { AjaxSelect } from '../elements/ajax-select'
 import { FormError } from '../elements/form-error'
 import { AutoTextarea } from '../elements/auto-textarea'
-import { FollowButton } from '../elements/follow-button'
 import { AjaxButton } from '../elements/ajax-button'
 import { FileDrop } from '../elements/file-drop'
 import { FileUpload } from '../elements/file-upload'
@@ -28,7 +27,6 @@ window.customElements.define('ajax-form', AjaxForm, { extends: 'form' })
 window.customElements.define('ajax-select', AjaxSelect, { extends: 'select' })
 window.customElements.define('form-error', FormError)
 window.customElements.define('auto-textarea', AutoTextarea, { extends: 'textarea' })
-window.customElements.define('follow-button', FollowButton, { extends: 'button' })
 window.customElements.define('ajax-button', AjaxButton, { extends: 'button' })
 window.customElements.define('file-drop', FileDrop)
 window.customElements.define('file-pick', FilePick)

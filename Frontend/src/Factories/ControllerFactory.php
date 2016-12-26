@@ -11,6 +11,7 @@ namespace Timetabio\Frontend\Factories
 {
     use Timetabio\Framework\Factories\AbstractChildFactory;
     use Timetabio\Framework\Http\Response\HtmlResponse;
+    use Timetabio\Framework\Http\Response\JsonResponse;
     use Timetabio\Framework\Languages\LanguageInterface;
     use Timetabio\Library\SearchTypes\SearchType;
 
@@ -157,8 +158,7 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\Page\FeedPostsPageModel(
-                    new \Timetabio\Frontend\ValueObjects\Feed($feed),
-                    new \Timetabio\Frontend\Tabs\FeedPage\Posts
+                    new \Timetabio\Frontend\ValueObjects\Feed($feed)
                 ),
                 $this->getMasterFactory()->createGetPagePreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
@@ -340,14 +340,30 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Frontend\Models\Page\FeedPeoplePageModel(
-                    new \Timetabio\Frontend\ValueObjects\Feed($feed),
-                    new \Timetabio\Frontend\Tabs\FeedPage\People
+                    new \Timetabio\Frontend\ValueObjects\Feed($feed)
                 ),
                 $this->getMasterFactory()->createGetPagePreHandler(),
-                $this->getMasterFactory()->createGetFeedPeoplePageRequestHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createGetFeedPeoplePageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
                 $this->getMasterFactory()->createGetFeedPeoplePageTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new HtmlResponse
+            );
+        }
+
+        public function createFeedSettingsPageController(array $feed): \Timetabio\Framework\Controllers\GetController
+        {
+            return new \Timetabio\Framework\Controllers\GetController(
+                new \Timetabio\Frontend\Models\Page\FeedSettingsPageModel(
+                    new \Timetabio\Frontend\ValueObjects\Feed($feed)
+                ),
+                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createCommandHandler(),
+                $this->getMasterFactory()->createFeedSettingsPageTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
                 new HtmlResponse
@@ -411,6 +427,51 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
                 new HtmlResponse
+            );
+        }
+
+        public function createUpdateFeedNameController(): \Timetabio\Framework\Controllers\PostController
+        {
+            return new \Timetabio\Framework\Controllers\PostController(
+                new \Timetabio\Frontend\Models\Action\UpdateFeedNameModel,
+                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createUpdateFeedNameRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createUpdateFeedNameCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
+        public function createUpdateFeedDescriptionController(): \Timetabio\Framework\Controllers\PostController
+        {
+            return new \Timetabio\Framework\Controllers\PostController(
+                new \Timetabio\Frontend\Models\Action\UpdateFeedDescriptionModel,
+                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createUpdateFeedDescriptionRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createUpdateFeedDescriptionCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
+        public function createUpdateFeedVanityController(): \Timetabio\Framework\Controllers\PostController
+        {
+            return new \Timetabio\Framework\Controllers\PostController(
+                new \Timetabio\Frontend\Models\Action\UpdateFeedVanityModel,
+                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createUpdateFeedVanityRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createUpdateFeedVanityCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
             );
         }
     }

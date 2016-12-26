@@ -49,9 +49,9 @@ namespace Timetabio\Library\Builders
             return $this->uriHost . '/feed/' . $this->getFeedUriPart($feedId) . '/people';
         }
 
-        public function buildFeedOptionsPageUri(string $feedId): string
+        public function buildFeedSettingsPageUri(string $feedId): string
         {
-            return $this->uriHost . '/feed/' . $this->getFeedUriPart($feedId) . '/options';
+            return $this->uriHost . '/feed/' . $this->getFeedUriPart($feedId) . '/settings';
         }
 
         public function buildPostPageUri(string $postId): string

@@ -61,6 +61,12 @@ namespace Timetabio\Frontend\Routers
                     return $this->factory->createInviteFeedUserController();
                 case '/action/feed/delete-invitation':
                     return $this->factory->createDeleteFeedInvitationController();
+                case '/action/feed/update-name':
+                    return $this->factory->createUpdateFeedNameController();
+                case '/action/feed/update-description':
+                    return $this->factory->createUpdateFeedDescriptionController();
+                case '/action/feed/update-vanity':
+                    return $this->factory->createUpdateFeedVanityController();
                 case '/action/upload':
                     return $this->factory->createCreateUploadController();
             }

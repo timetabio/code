@@ -7,8 +7,7 @@
  * version 3, as published by the Free Software Foundation.
  */
 
-// TODO: DEPRECATED: use .form-card instead
-.user-list-item {
+.form-card {
   display: flex;
   align-items: center;
   border-radius: @card-border-radius;
@@ -16,12 +15,23 @@
   padding: @margin-s @margin-sm;
   font-weight: 600;
 
-  > .name {
+  > .text {
     flex-grow: 1;
+    display: flex;
+    align-items: center;
     margin-right: @margin-xs-v;
   }
 
-  > .role {
+  > .text > .meta {
+    color: @brand-light-grey;
+    user-select: none;
+  }
+
+  > .text > .content {
+    flex-grow: 1;
+  }
+
+  > .button {
     margin-right: @margin-xs-h;
     flex-shrink: 0;
   }
@@ -31,7 +41,7 @@
       flex-wrap: wrap;
     }
 
-    > .name {
+    > .text {
       width: 100%;
       margin-bottom: @margin-xs-v;
     }

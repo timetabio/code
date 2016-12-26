@@ -9,6 +9,7 @@
  */
 namespace Timetabio\Frontend\Models\Page
 {
+    use Timetabio\Frontend\Tabs\Tab;
     use Timetabio\Frontend\ValueObjects\PaginatedResult;
 
     class FeedPostsPageModel extends FeedPageModel
@@ -26,6 +27,11 @@ namespace Timetabio\Frontend\Models\Page
         public function setFeedPosts(PaginatedResult $feedPosts)
         {
             $this->feedPosts = $feedPosts;
+        }
+
+        public function getActiveTab(): Tab
+        {
+            return new \Timetabio\Frontend\Tabs\FeedPage\Posts;
         }
     }
 }

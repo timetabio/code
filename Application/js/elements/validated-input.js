@@ -10,17 +10,73 @@
 import { defer } from '../dom/next-render.js'
 import { getByteSize } from '../dom/string.js'
 
+/**
+ *
+ * @typedef {{property: string, validate: (function($: ValidatedInput): string)}} Validator
+ */
+
+/**
+ *
+ * @type {Validator}
+ */
+const maxByteSize = {
+  property: 'maxByteSize',
+  validate ($) {
+    if (getByteSize($.value) > $.maxByteSize) {
+      return `max size of ${$.maxByteSize} exceeded`
+    }
+
+    return ''
+  }
+}
+
+/**
+ *
+ * @type {Validator}
+ */
+const minByteSize = {
+  property: 'minByteSize',
+  validate ($) {
+    if (getByteSize($.value) < $.minByteSize) {
+      return `min size of ${$.minByteSize} not reached`
+    }
+
+    return ''
+  }
+}
+
+/**
+ *
+ * @type {Validator}
+ */
+const stringMatch = {
+  property: 'stringMatch',
+  validate ($) {
+    return $.value.toLowerCase() !== $.stringMatch.toLowerCase()
+      ? `Value does not match ${$.stringMatch}`
+      : '';
+  }
+}
+
+/**
+ *
+ * @type {Array<Validator>}
+ */
+const validators = [
+  maxByteSize, minByteSize, stringMatch
+]
+
 export class ValidatedInput extends HTMLInputElement {
   constructor () {
     super()
 
     this._validate = this._validate.bind(this)
-
-    defer(() => this._validate())
   }
 
   connectedCallback () {
     this.addEventListener('input', this._validate)
+
+    defer(() => this._validate())
   }
 
   disconnectedCallback () {
@@ -37,24 +93,11 @@ export class ValidatedInput extends HTMLInputElement {
    * @private
    */
   _getValidity () {
-    if (this.maxByteSize) {
-      return this._validateMaxByteSize()
-    }
+    const result = validators
+      .filter((validator) => this[ validator.property ])
+      .find((validator) => validator.validate(this))
 
-    return ''
-  }
-
-  /**
-   *
-   * @returns {string}
-   * @private
-   */
-  _validateMaxByteSize () {
-    if (getByteSize(this.value) > this.maxByteSize) {
-      return `max size of ${this.maxByteSize} exceeded`
-    }
-
-    return ''
+    return result || ''
   }
 
   /**
@@ -63,5 +106,21 @@ export class ValidatedInput extends HTMLInputElement {
    */
   get maxByteSize () {
     return Number.parseInt(this.getAttribute('max-byte-size')) || null;
+  }
+
+  /**
+   *
+   * @returns {number|null}
+   */
+  get minByteSize () {
+    return Number.parseInt(this.getAttribute('min-byte-size')) || null;
+  }
+
+  /**
+   *
+   * @returns {string|null}
+   */
+  get stringMatch () {
+    return this.getAttribute('string-match');
   }
 }

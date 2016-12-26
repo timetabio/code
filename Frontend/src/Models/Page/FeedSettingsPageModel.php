@@ -7,16 +7,15 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
-namespace Timetabio\Frontend\Handlers\Get\FeedPeoplePage
+namespace Timetabio\Frontend\Models\Page
 {
-    use Timetabio\Framework\Handlers\CommandHandlerInterface;
-    use Timetabio\Framework\Models\AbstractModel;
+    use Timetabio\Frontend\Tabs\Tab;
 
-    class CommandHandler implements CommandHandlerInterface
+    class FeedSettingsPageModel extends FeedPageModel
     {
-        public function execute(AbstractModel $model)
+        public function getActiveTab(): Tab
         {
-            /** @var \Timetabio\Frontend\Models\Page\FeedPeoplePageModel $model */
+            return new \Timetabio\Frontend\Tabs\FeedPage\Settings;
         }
     }
 }

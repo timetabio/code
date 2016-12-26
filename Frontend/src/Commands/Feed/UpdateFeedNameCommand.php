@@ -1,3 +1,4 @@
+<?php
 /**
  * Copyright (c) 2016 Ruben Schmidmeister <ruben.schmidmeister@icloud.com>
  *
@@ -6,14 +7,15 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
+namespace Timetabio\Frontend\Commands\Feed
+{
+    use Timetabio\Frontend\Commands\AbstractApiCommand;
 
-// TODO: this needs renaming (possibly merge with .generic-card)
-.form-box {
-  background-color: #fff;
-  padding: @margin-m;
-  margin: auto;
-  width: (@default-input-width + @default-margin * 2);
-  max-width: 100%;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12);
-  border-radius: @card-border-radius;
+    class UpdateFeedNameCommand extends AbstractApiCommand
+    {
+        public function execute(string $feedId, string $name)
+        {
+            return $this->getApiGateway()->updateFeedName($feedId, $name)->unwrap();
+        }
+    }
 }

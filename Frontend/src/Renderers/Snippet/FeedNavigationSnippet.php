@@ -49,7 +49,7 @@ namespace Timetabio\Frontend\Renderers\Snippet
             ];
 
             if ($feed->hasUserAdded()) {
-                $items[] = new Settings($this->uriBuilder->buildFeedOptionsPageUri($feedId));
+                $items[] = new Settings($this->uriBuilder->buildFeedSettingsPageUri($feedId));
             }
 
             $nav = $this->tabNavSnippet->render($document, $current, ...$items);

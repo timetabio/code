@@ -7,17 +7,28 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
-namespace Timetabio\Frontend\Handlers\Get\FeedPeoplePage
+namespace Timetabio\Frontend\Handlers\Post\UpdateFeedVanity
 {
     use Timetabio\Framework\Handlers\RequestHandlerInterface;
+    use Timetabio\Framework\Http\Request\PostRequest;
     use Timetabio\Framework\Http\Request\RequestInterface;
     use Timetabio\Framework\Models\AbstractModel;
+    use Timetabio\Frontend\Exceptions\BadRequest;
+    use Timetabio\Frontend\Models\Action\UpdateFeedVanityModel;
 
     class RequestHandler implements RequestHandlerInterface
     {
         public function execute(RequestInterface $request, AbstractModel $model)
         {
-            /** @var \Timetabio\Frontend\Models\Page\FeedPeoplePageModel $model */
+            /** @var UpdateFeedVanityModel $model */
+            /** @var PostRequest $request */
+
+            try {
+                $model->setFeedId($request->getParam('feed_id'));
+                $model->setFeedVanity($request->getParam('vanity'));
+            } catch (\Exception $exception) {
+                throw new BadRequest('missing fields');
+            }
         }
     }
 }

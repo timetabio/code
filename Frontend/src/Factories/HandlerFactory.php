@@ -248,7 +248,8 @@ namespace Timetabio\Frontend\Factories
         public function createUnfollowCommandHandler(): \Timetabio\Frontend\Handlers\Post\Unfollow\CommandHandler
         {
             return new \Timetabio\Frontend\Handlers\Post\Unfollow\CommandHandler(
-                $this->getMasterFactory()->createUnfollowFeedCommand()
+                $this->getMasterFactory()->createUnfollowFeedCommand(),
+                $this->getMasterFactory()->createUriBuilder()
             );
         }
 
@@ -370,15 +371,17 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createGetFeedPeoplePageRequestHandler(): \Timetabio\Frontend\Handlers\Get\FeedPeoplePage\RequestHandler
-        {
-            return new \Timetabio\Frontend\Handlers\Get\FeedPeoplePage\RequestHandler;
-        }
-
         public function createGetFeedPeoplePageTransformationHandler(): \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler
         {
             return new \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler(
                 $this->getMasterFactory()->createFeedPeoplePageRenderer()
+            );
+        }
+
+        public function createFeedSettingsPageTransformationHandler(): \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler(
+                $this->getMasterFactory()->createFeedSettingsPageRenderer()
             );
         }
 
@@ -428,6 +431,43 @@ namespace Timetabio\Frontend\Factories
         public function createUpdateFeedUserRoleRequestHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedUserRole\RequestHandler
         {
             return new \Timetabio\Frontend\Handlers\Post\UpdateFeedUserRole\RequestHandler;
+        }
+
+        public function createUpdateFeedNameCommandHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedName\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedName\CommandHandler(
+                $this->getMasterFactory()->createUpdateFeedNameCommand()
+            );
+        }
+
+        public function createUpdateFeedNameRequestHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedName\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedName\RequestHandler;
+        }
+
+        public function createUpdateFeedDescriptionCommandHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedDescription\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedDescription\CommandHandler(
+                $this->getMasterFactory()->createUpdateFeedDescriptionCommand()
+            );
+        }
+
+        public function createUpdateFeedDescriptionRequestHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedDescription\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedDescription\RequestHandler;
+        }
+
+        public function createUpdateFeedVanityCommandHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\CommandHandler(
+                $this->getMasterFactory()->createUpdateFeedVanityCommand(),
+                $this->getMasterFactory()->createUriBuilder()
+            );
+        }
+
+        public function createUpdateFeedVanityRequestHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\RequestHandler;
         }
     }
 }

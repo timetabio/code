@@ -76,6 +76,10 @@ namespace Timetabio\Frontend\Routers
                 return $this->factory->createGetFeedPeoplePageController($feed);
             }
 
+            if ($count === 3 && $parts[2] === 'settings') {
+                return $this->factory->createFeedSettingsPageController($feed);
+            }
+
             if (!$feed['access']['post']) {
                 throw new RouterException;
             }
