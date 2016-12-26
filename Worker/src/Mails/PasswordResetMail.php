@@ -51,17 +51,17 @@ namespace Timetabio\Worker\Mails
             $template = $this->getTemplate();
             $template->getXpath()->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
-            $feedUri = $this->uriBuilder->buildResetPasswordPageUri($this->token);
+            $resetUri = $this->uriBuilder->buildResetPasswordPageUri($this->token);
 
             $greeting = $template->queryOne('//*[@id="greeting"]');
             $greeting->appendText($this->getRecipient()->getName());
 
-            $action = $template->queryOne('//*[@id="action"]');
-            $action->appendText($this->getAction());
+            $button = $template->queryOne('//*[@id="button"]');
+            $button->setAttribute('href', $resetUri);
 
-            $feedNames = $template->query('//*[@class="feed-name"]');
-
-            //todo: Create mail
+            $link = $template->queryOne('//*[@id="link"]');
+            $link->setAttribute('href', $resetUri);
+            $link->appendText($resetUri);
 
             return $template->saveHTML();
         }
