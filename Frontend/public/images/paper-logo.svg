@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="139px" height="130px" viewBox="0 0 139 130" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>timetab.io</title>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="2" in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-650.000000, -137.000000)" id="Group-2">
+            <g transform="translate(651.000000, 136.000000)">
+                <path d="M64.2909091,115.781818 C42.8645957,110.848128 2.32727273,95.7090909 2.32727273,95.7090909 L75.6363636,86.1090909 L134.981818,126.254544 C134.981818,126.254544 87.0827775,121.029946 64.2909091,115.781818 Z"
+                      id="Shadow" fill-opacity="0.335541214" fill="#000000" filter="url(#filter-1)"/>
+                <g id="Paper">
+                    <polygon id="Path-2" fill="#FFFFFF"
+                             points="93.6727273 1.74545455 135.563636 127.418182 65.7454545 99.4909091 0.581818182 94.8363636"/>
+                    <polygon id="Path-6" fill="#E2E2E2"
+                             points="65.7454545 99.4909091 93.6727273 1.74545455 0.581818182 94.8363636"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

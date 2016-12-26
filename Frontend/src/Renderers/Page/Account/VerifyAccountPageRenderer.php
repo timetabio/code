@@ -29,13 +29,7 @@ namespace Timetabio\Frontend\Renderers\Page\Account
 
         public function render(PageModel $model, Document $template)
         {
-            $fileName = 'templates://content/verify/success.html';
-
-            if ($model->hasStatusCode() && $model->getStatusCode() instanceof NotFound) {
-                $fileName = 'templates://content/verify/error.html';
-            }
-
-            $content = $this->domBackend->loadHtml($fileName);
+            $content = $this->domBackend->loadHtml('templates://content/verify/success.html');
             $contentElement = $template->importDocument($content);
 
             $template->getMainElement()->appendChild($contentElement);
