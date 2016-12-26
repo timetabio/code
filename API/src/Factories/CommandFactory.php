@@ -199,5 +199,12 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()->createDataStoreWriter()
             );
         }
+
+        public function createUpdateUserPasswordCommand(): \Timetabio\API\Commands\User\UpdateUserPasswordCommand
+        {
+            return new \Timetabio\API\Commands\User\UpdateUserPasswordCommand(
+                $this->getMasterFactory()->createUserService()
+            );
+        }
     }
 }

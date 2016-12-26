@@ -161,6 +161,17 @@ namespace Timetabio\API\Services
             $this->databaseBackend->commitTransaction();
         }
 
+        public function updateUserPassword(string $userId, Password $password): void
+        {
+            $this->databaseBackend->execute(
+                'UPDATE users SET password = :password WHERE id = :id',
+                [
+                    'id' => $userId,
+                    'password' => (string) new Hash($password)
+                ]
+            );
+        }
+
         public function updateUser(string $userId, array $updates)
         {
             $fields = [];

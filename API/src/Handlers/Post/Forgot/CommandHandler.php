@@ -42,7 +42,7 @@ namespace Timetabio\API\Handlers\Post\Forgot
             $token = new Token;
             $user = $model->getUserData();
 
-            $this->dataStoreWriter->saveResetToken($model->getUser(), $token);
+            $this->dataStoreWriter->saveResetToken($user['id'], $token);
             $this->dataStoreWriter->queueTask(new SendPasswordResetEmailTask($token, $user['id']));
         }
     }

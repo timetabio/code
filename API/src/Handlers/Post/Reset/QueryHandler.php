@@ -31,11 +31,13 @@ namespace Timetabio\API\Handlers\Post\Reset
         {
             /** @var ResetPasswordModel $model */
 
-            if(!$this->dataStoreReader->hasResetToken($model->getToken())) {
+            $token = $model->getToken();
+
+            if (!$this->dataStoreReader->hasResetToken($token)) {
                 throw new BadRequest('invalid token', 'invalid_token');
             }
 
-            $model->setUserId($this->dataStoreReader->getResetToken($model->getToken()));
+            $model->setUserId($this->dataStoreReader->getResetToken($token));
         }
     }
 }

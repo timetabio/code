@@ -9,8 +9,7 @@
  */
 namespace Timetabio\API\Handlers\Put\User
 {
-    use Timetabio\API\Commands\User\UpdateUserCommand;
-    use Timetabio\API\ValueObjects\Hash;
+    use Timetabio\API\Commands\User\UpdateUserPasswordCommand;
     use Timetabio\API\Models\User\UpdateUserPasswordModel;
     use Timetabio\Framework\Handlers\CommandHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;
@@ -18,24 +17,24 @@ namespace Timetabio\API\Handlers\Put\User
     class CommandHandler implements CommandHandlerInterface
     {
         /**
-         * @var UpdateUserCommand
+         * @var UpdateUserPasswordCommand
          */
-        private $updateUserCommand;
+        private $updateUserPasswordCommand;
 
-        public function __construct(
-            UpdateUserCommand $updateUserCommand
-        )
+        public function __construct(UpdateUserPasswordCommand $updateUserPasswordCommand)
         {
-            $this->updateUserCommand = $updateUserCommand;
+            $this->updateUserPasswordCommand = $updateUserPasswordCommand;
         }
 
         public function execute(AbstractModel $model)
         {
             /** @var UpdateUserPasswordModel $model */
 
-            $this->updateUserCommand->execute($model->getAuthUserId(), ['password' => (string) new Hash($model->getNewPassword())]);
+            $this->updateUserPasswordCommand->execute($model->getAuthUserId(), $model->getNewPassword());
 
-            $model->setData(['updated' => true]);
+            $model->setData([
+                'updated' => true
+            ]);
         }
     }
 }

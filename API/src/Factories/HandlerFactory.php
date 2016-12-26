@@ -166,7 +166,7 @@ namespace Timetabio\API\Factories
         public function createResetPasswordCommandHandler(): \Timetabio\API\Handlers\Post\Reset\CommandHandler
         {
             return new \Timetabio\API\Handlers\Post\Reset\CommandHandler(
-                $this->getMasterFactory()->createUpdateUserCommand(),
+                $this->getMasterFactory()->createUpdateUserPasswordCommand(),
                 $this->getMasterFactory()->createDataStoreWriter()
             );
         }
@@ -200,7 +200,7 @@ namespace Timetabio\API\Factories
         public function createUpdateUserPasswordCommandHandler(): \Timetabio\API\Handlers\Put\User\CommandHandler
         {
             return new \Timetabio\API\Handlers\Put\User\CommandHandler(
-                $this->getMasterFactory()->createUpdateUserCommand()
+                $this->getMasterFactory()->createUpdateUserPasswordCommand()
             );
         }
 

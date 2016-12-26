@@ -9,19 +9,18 @@
  */
 namespace Timetabio\API\Handlers\Post\Reset
 {
-    use Timetabio\API\Commands\User\UpdateUserCommand;
+    use Timetabio\API\Commands\User\UpdateUserPasswordCommand;
     use Timetabio\API\DataStore\DataStoreWriter;
     use Timetabio\API\Models\ResetPasswordModel;
-    use Timetabio\API\ValueObjects\Hash;
     use Timetabio\Framework\Handlers\CommandHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;
 
     class CommandHandler implements CommandHandlerInterface
     {
         /**
-         * @var UpdateUserCommand
+         * @var UpdateUserPasswordCommand
          */
-        private $updateUserCommand;
+        private $updateUserPasswordCommand;
 
         /**
          * @var DataStoreWriter
@@ -29,11 +28,11 @@ namespace Timetabio\API\Handlers\Post\Reset
         private $dataStoreWriter;
 
         public function __construct(
-            UpdateUserCommand $updateUserCommand,
+            UpdateUserPasswordCommand $updateUserPasswordCommand,
             DataStoreWriter $dataStoreWriter
         )
         {
-            $this->updateUserCommand = $updateUserCommand;
+            $this->updateUserPasswordCommand = $updateUserPasswordCommand;
             $this->dataStoreWriter = $dataStoreWriter;
         }
 
@@ -41,10 +40,12 @@ namespace Timetabio\API\Handlers\Post\Reset
         {
             /** @var ResetPasswordModel $model */
 
-            $this->updateUserCommand->execute($model->getUserId(), ['password' => (string) new Hash($model->getNewPassword())]);
+            $this->updateUserPasswordCommand->execute($model->getUserId(), $model->getNewPassword());
             $this->dataStoreWriter->removeResetToken($model->getToken());
 
-            $model->setData(['updated' => true]);
+            $model->setData([
+                'updated' => true
+            ]);
         }
     }
 }
