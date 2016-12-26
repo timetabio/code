@@ -45,7 +45,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -75,7 +75,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -90,7 +90,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -105,7 +105,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -150,7 +150,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -197,7 +197,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -212,7 +212,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -227,7 +227,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -242,7 +242,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -257,7 +257,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -287,7 +287,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -381,7 +381,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -396,7 +396,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -411,7 +411,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
@@ -426,7 +426,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 
