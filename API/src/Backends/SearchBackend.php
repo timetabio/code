@@ -27,6 +27,10 @@ namespace Timetabio\API\Backends
         public function search(string $query, SearchType $type, string $userId, int $limit, int $page): array
         {
             return $this->elasticBackend->search($type->getElasticType(), $limit * ($page - 1), $limit, [
+                'sort' => [
+                    '_score',
+                    ['created' => 'desc']
+                ],
                 'query' => [
                     'bool' => [
                         'should' => [
