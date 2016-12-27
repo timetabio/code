@@ -77,7 +77,8 @@ namespace Timetabio\Framework\Backends
                 'type' => $type,
                 'from' => $from,
                 'size' => $size,
-                'body' => $body
+                'body' => $body,
+                'search_type' => 'dfs_query_then_fetch'
             ]);
         }
     }
