@@ -47,8 +47,7 @@
         "ttio_ngram": {
           "type": "edgeNGram",
           "min_gram": 1,
-          "max_gram": 6,
-          "preserve_original": true
+          "max_gram": 6
         }
       }
     }
