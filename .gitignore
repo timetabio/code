@@ -9,3 +9,4 @@ autoload.php
 /persistent/
 npm-debug.log
 /config
+/.devrc
