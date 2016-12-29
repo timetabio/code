@@ -7,6 +7,10 @@
  * version 3, as published by the Free Software Foundation.
  */
 
-import './bootstrap/info'
-import './bootstrap/browser'
-import './bootstrap/elements'
+console.log(`Hey there, nice to meet you!
+
+If you're interested in checking out the full source code
+it's available at https://github.com/timetabio/code.
+
+We're currently in beta, so if you need a login, sign up at https://beta.timetab.io
+`)
