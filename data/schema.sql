@@ -81,13 +81,24 @@ CREATE TABLE IF NOT EXISTS posts (
   body TEXT NOT NULL DEFAULT '',
   timestamp TIMESTAMP,
   created TIMESTAMP NOT NULL DEFAULT utc_now(),
-  updated TIMESTAMP NOT NULL DEFAULT utc_now()
+  updated TIMESTAMP NOT NULL DEFAULT utc_now(),
+  archived TIMESTAMP DEFAULT NULL
 );
 
 CREATE INDEX IF NOT EXISTS posts_feed_id ON posts (feed_id);
 CREATE INDEX IF NOT EXISTS posts_timestamp ON posts (timestamp);
 CREATE INDEX IF NOT EXISTS posts_type ON posts (type);
+CREATE INDEX IF NOT EXISTS posts_archived ON posts (archived);
 CREATE INDEX IF NOT EXISTS posts_type_timestamp ON posts (type, timestamp ASC);
+
+CREATE VIEW archived_posts AS
+  SELECT * FROM posts
+  WHERE archived IS NOT NULL;
+
+CREATE VIEW expired_archived_posts AS
+  SELECT * FROM posts
+  WHERE archived IS NOT NULL
+    AND archived < (utc_now() - INTERVAL '30 days');
 
 CREATE VIEW aggregated_posts AS
   SELECT posts.*,
