@@ -201,5 +201,13 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()->createDataStoreWriter()
             );
         }
+
+        public function createArchivePostCommand(): \Timetabio\API\Commands\Posts\ArchivePostCommand
+        {
+            return new \Timetabio\API\Commands\Posts\ArchivePostCommand(
+                $this->getMasterFactory()->createPostService(),
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
     }
 }
