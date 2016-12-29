@@ -13,6 +13,8 @@ namespace Timetabio\API\Factories
 
     class RouterFactory extends AbstractChildFactory
     {
+        use FactoryTypeHintTrait;
+
         public function createEndpointRouter(): \Timetabio\API\Routers\EndpointRouter
         {
             $router = new \Timetabio\API\Routers\EndpointRouter(

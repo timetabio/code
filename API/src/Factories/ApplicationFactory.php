@@ -13,6 +13,8 @@ namespace Timetabio\API\Factories
 
     class ApplicationFactory extends AbstractChildFactory
     {
+        use FactoryTypeHintTrait;
+
         public function createAccessControl(): \Timetabio\API\Access\AccessControl
         {
             return new \Timetabio\API\Access\AccessControl(

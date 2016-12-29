@@ -13,6 +13,8 @@ namespace Timetabio\API\Factories
 
     class MapperFactory extends AbstractChildFactory
     {
+        use FactoryTypeHintTrait;
+
         public function createFeedUserMapper(): \Timetabio\API\Mappers\FeedUserMapper
         {
             return new \Timetabio\API\Mappers\FeedUserMapper(

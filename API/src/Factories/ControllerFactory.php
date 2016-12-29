@@ -20,6 +20,8 @@ namespace Timetabio\API\Factories
 
     class ControllerFactory extends AbstractChildFactory
     {
+        use FactoryTypeHintTrait;
+
         public function createGetIndexController(): GetController
         {
             return new GetController(

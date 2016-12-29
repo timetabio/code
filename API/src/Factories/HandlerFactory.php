@@ -13,6 +13,8 @@ namespace Timetabio\API\Factories
 
     class HandlerFactory extends AbstractChildFactory
     {
+        use FactoryTypeHintTrait;
+
         public function createCommandHandler(): \Timetabio\API\Handlers\CommandHandler
         {
             return new \Timetabio\API\Handlers\CommandHandler;

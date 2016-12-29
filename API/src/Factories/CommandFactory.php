@@ -13,6 +13,8 @@ namespace Timetabio\API\Factories
 
     class CommandFactory extends AbstractChildFactory
     {
+        use FactoryTypeHintTrait;
+
         public function createCreateUserCommand(): \Timetabio\API\Commands\User\CreateUserCommand
         {
             return new \Timetabio\API\Commands\User\CreateUserCommand(
