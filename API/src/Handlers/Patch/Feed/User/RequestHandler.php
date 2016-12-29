@@ -35,8 +35,6 @@ namespace Timetabio\API\Handlers\Patch\Feed\User
             /** @var PostRequest $request */
             /** @var UpdateModel $model */
 
-            $parts = $request->getUri()->getExplodedPath();
-
             if (!$request->hasParam('role')) {
                 throw new BadRequest('missing parameter \'role\'', 'missing_parameter');
             }
@@ -47,8 +45,6 @@ namespace Timetabio\API\Handlers\Patch\Feed\User
                 throw new BadRequest('invalid user role', 'invalid_role');
             }
 
-            $model->setFeedId(new FeedId($parts[2]));
-            $model->setUserId($parts[4]);
             $model->setRole($role);
         }
     }

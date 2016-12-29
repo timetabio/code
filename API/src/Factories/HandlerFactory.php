@@ -201,11 +201,6 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createGetFeedRequestHandler(): \Timetabio\API\Handlers\Get\Feed\RequestHandler
-        {
-            return new \Timetabio\API\Handlers\Get\Feed\RequestHandler;
-        }
-
         public function createGetFeedQueryHandler(): \Timetabio\API\Handlers\Get\Feed\QueryHandler
         {
             return new \Timetabio\API\Handlers\Get\Feed\QueryHandler(
@@ -404,11 +399,6 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createDeleteFeedPeopleRequestHandler(): \Timetabio\API\Handlers\Delete\Feed\People\RequestHandler
-        {
-            return new \Timetabio\API\Handlers\Delete\Feed\People\RequestHandler;
-        }
-
         public function createGetFeedPeopleRequestHandler(): \Timetabio\API\Handlers\Get\Feed\People\RequestHandler
         {
             return new \Timetabio\API\Handlers\Get\Feed\People\RequestHandler;
@@ -446,11 +436,6 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createGetFeedPostsRequestHandler(): \Timetabio\API\Handlers\Get\Feed\Posts\RequestHandler
-        {
-            return new \Timetabio\API\Handlers\Get\Feed\Posts\RequestHandler;
-        }
-
         public function createGetFeedPostsQueryHandler(): \Timetabio\API\Handlers\Get\Feed\Posts\QueryHandler
         {
             return new \Timetabio\API\Handlers\Get\Feed\Posts\QueryHandler(
@@ -458,11 +443,6 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()->createFeedAccessControl(),
                 $this->getMasterFactory()->createResultsMapper()
             );
-        }
-
-        public function createGetPostRequestHandler(): \Timetabio\API\Handlers\Get\Post\RequestHandler
-        {
-            return new \Timetabio\API\Handlers\Get\Post\RequestHandler;
         }
 
         public function createGetPostQueryHandler(): \Timetabio\API\Handlers\Get\Post\QueryHandler
@@ -505,11 +485,6 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()->createFetchPostInfoQuery(),
                 $this->getMasterFactory()->createFeedAccessControl()
             );
-        }
-
-        public function createDeletePostRequestHandler(): \Timetabio\API\Handlers\Delete\Post\RequestHandler
-        {
-            return new \Timetabio\API\Handlers\Delete\Post\RequestHandler;
         }
 
         public function createCreateFeedUploadRequestHandler(): \Timetabio\API\Handlers\Post\Feed\Upload\RequestHandler
@@ -605,11 +580,6 @@ namespace Timetabio\API\Factories
             return new \Timetabio\API\Handlers\Patch\Feed\Invitation\CommandHandler(
                 $this->getMasterFactory()->createUpdateInvitationCommand()
             );
-        }
-
-        public function createDeleteFeedInvitationRequestHandler(): \Timetabio\API\Handlers\Delete\Feed\Invitation\RequestHandler
-        {
-            return new \Timetabio\API\Handlers\Delete\Feed\Invitation\RequestHandler;
         }
 
         public function createDeleteFeedInvitationQueryHandler(): \Timetabio\API\Handlers\Delete\Feed\Invitation\QueryHandler

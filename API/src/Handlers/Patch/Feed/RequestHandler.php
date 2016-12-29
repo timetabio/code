@@ -28,11 +28,6 @@ namespace Timetabio\API\Handlers\Patch\Feed
             /** @var PatchRequest $request */
             /** @var UpdateModel $model */
 
-            $parts = $request->getUri()->getExplodedPath();
-            $feedId = new FeedId($parts[2]);
-
-            $model->setFeedId($feedId);
-
             if ($request->hasParam('name')) {
                 $model->addUpdate('name', $this->getName($request));
             }

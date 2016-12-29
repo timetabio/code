@@ -18,14 +18,14 @@ namespace Timetabio\API\Models\Post
          */
         private $postId;
 
+        public function __construct(string $postId)
+        {
+            $this->postId = $postId;
+        }
+
         public function getPostId(): string
         {
             return $this->postId;
-        }
-
-        public function setPostId(string $postId)
-        {
-            $this->postId = $postId;
         }
     }
 }

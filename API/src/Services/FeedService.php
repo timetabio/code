@@ -126,7 +126,7 @@ namespace Timetabio\API\Services
             return $feed;
         }
 
-        public function updateFeed(FeedId $feedId, array $updates)
+        public function updateFeed(string $feedId, array $updates)
         {
             $fields = [];
 

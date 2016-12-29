@@ -24,14 +24,16 @@ namespace Timetabio\API\Models\Feed\User
          */
         private $role;
 
+        public function __construct(string $feedId, string $userId)
+        {
+            parent::__construct($feedId);
+
+            $this->userId = $userId;
+        }
+
         public function getUserId(): string
         {
             return $this->userId;
-        }
-
-        public function setUserId(string $userId)
-        {
-            $this->userId = $userId;
         }
 
         public function getRole(): UserRole

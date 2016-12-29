@@ -10,23 +10,24 @@
 namespace Timetabio\API\Models\Feed\People
 {
     use Timetabio\API\Models\Feed\FeedModel;
-    use Timetabio\API\ValueObjects\UserId;
 
     class DeleteModel extends FeedModel
     {
         /**
-         * @var UserId
+         * @var string
          */
         private $userId;
 
-        public function getUserId(): UserId
+        public function __construct(string $feedId, string $userId)
         {
-            return $this->userId;
+            parent::__construct($feedId);
+
+            $this->userId = $userId;
         }
 
-        public function setUserId(UserId $userId)
+        public function getUserId(): string
         {
-            $this->userId = $userId;
+            return $this->userId;
         }
     }
 }
