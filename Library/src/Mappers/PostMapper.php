@@ -60,11 +60,13 @@ namespace Timetabio\Library\Mappers
                 $mapped['timestamp'] = (new StringDateTime($mapped['timestamp']))->getTimestamp();
             }
 
-            $mapped['archived'] = false;
+            if (isset($mapped['archived'])) {
+                $mapped['archived'] = (new StringDateTime($mapped['archived']))->getTimestamp();
 
-            if (isset($post['archived'])) {
-                $mapped['archived'] = true;
-                $mapped['archived_timestamp'] = (new StringDateTime($post['archived']))->getTimestamp();
+                // TODO: need a better name for this, also is this the correct place to do this?
+                $mapped['meta']['delete_timestamp'] = $mapped['archived'] + 3600 * 24 * 30;
+            } else {
+                unset($mapped['archived']);
             }
 
             if (isset($mapped['user_id'])) {

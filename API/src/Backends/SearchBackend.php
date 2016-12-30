@@ -59,23 +59,12 @@ namespace Timetabio\API\Backends
                         ],
                         'minimum_should_match' => 1,
                         'filter' => [
-                            'bool' => [
-                                'must' => [
-                                    [
-                                        'terms' => [
-                                            '_feed_id' => [
-                                                'index' => 'ttio',
-                                                'type' => 'user',
-                                                'id' => $userId,
-                                                'path' => 'feeds'
-                                            ]
-                                        ]
-                                    ],
-                                    [
-                                        'term' => [
-                                            'archived' => false
-                                        ]
-                                    ]
+                            'terms' => [
+                                '_feed_id' => [
+                                    'index' => 'ttio',
+                                    'type' => 'user',
+                                    'id' => $userId,
+                                    'path' => 'feeds'
                                 ]
                             ]
                         ]
@@ -99,10 +88,12 @@ namespace Timetabio\API\Backends
                                         'term' => [
                                             '_feed_id' => $feedId
                                         ]
-                                    ],
+                                    ]
+                                ],
+                                'must_not' => [
                                     [
-                                        'term' => [
-                                            'archived' => false
+                                        'exists' => [
+                                            'field' => 'archived'
                                         ]
                                     ]
                                 ]
@@ -152,10 +143,12 @@ namespace Timetabio\API\Backends
                                                 'path' => 'feeds'
                                             ]
                                         ]
-                                    ],
+                                    ]
+                                ],
+                                'must_not' => [
                                     [
-                                        'term' => [
-                                            'archived' => false
+                                        'exists' => [
+                                            'field' => 'archived'
                                         ]
                                     ]
                                 ]
