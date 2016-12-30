@@ -11,7 +11,6 @@ namespace Timetabio\API\Handlers\Patch\Feed\User
 {
     use Timetabio\API\Exceptions\BadRequest;
     use Timetabio\API\Models\Feed\User\UpdateModel;
-    use Timetabio\API\ValueObjects\FeedId;
     use Timetabio\Framework\Handlers\RequestHandlerInterface;
     use Timetabio\Framework\Http\Request\PostRequest;
     use Timetabio\Framework\Http\Request\RequestInterface;

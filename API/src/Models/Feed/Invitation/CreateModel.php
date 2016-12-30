@@ -10,7 +10,6 @@
 namespace Timetabio\API\Models\Feed\Invitation
 {
     use Timetabio\API\Models\APIModel;
-    use Timetabio\Library\DataObjects\FeedInvitation;
     use Timetabio\Library\UserRoles\UserRole;
 
     class CreateModel extends APIModel

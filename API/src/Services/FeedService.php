@@ -9,7 +9,6 @@
  */
 namespace Timetabio\API\Services
 {
-    use Timetabio\API\ValueObjects\FeedId;
     use Timetabio\Framework\Backends\PostgresBackend;
     use Timetabio\Framework\Pdo\Value\Boolean;
     use Timetabio\Library\UserRoles\UserRole;

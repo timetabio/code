@@ -12,7 +12,6 @@ namespace Timetabio\API\Handlers\Patch\Feed
     use Timetabio\API\Exceptions\BadRequest;
     use Timetabio\API\Models\Feed\UpdateModel;
     use Timetabio\API\ValueObjects\FeedDescription;
-    use Timetabio\API\ValueObjects\FeedId;
     use Timetabio\API\ValueObjects\FeedName;
     use Timetabio\API\ValueObjects\FeedVanity;
     use Timetabio\API\ValueObjects\StringBoolean;
