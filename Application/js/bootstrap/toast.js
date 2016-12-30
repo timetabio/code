@@ -7,7 +7,17 @@
  * version 3, as published by the Free Software Foundation.
  */
 
-import './bootstrap/info'
-import './bootstrap/browser'
-import './bootstrap/elements'
-import './bootstrap/toast'
+import { sessionStorage, StorageKey } from '../dom/storage'
+import { createToastMessage } from '../dom/toast'
+
+(() => {
+  if (!sessionStorage.has(StorageKey.Toast)) {
+    return
+  }
+
+  const toast = sessionStorage.get(StorageKey.Toast)
+
+  sessionStorage.delete(StorageKey.Toast)
+
+  return createToastMessage(toast).show()
+})()

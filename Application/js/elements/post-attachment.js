@@ -9,6 +9,7 @@
 
 import { FileUpload } from './file-upload'
 import { EventName } from '../dom/custom-events'
+import { createIcon } from '../app/icon'
 
 export class PostAttachment extends FileUpload {
   /**
@@ -18,13 +19,7 @@ export class PostAttachment extends FileUpload {
   _render () {
     this.classList.add('post-attachment')
 
-    const $svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-    $svg.classList.add('icon')
-    this.appendChild($svg)
-
-    const $use = document.createElementNS('http://www.w3.org/2000/svg', 'use')
-    $use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/icons/attachment.svg#icon')
-    $svg.appendChild($use)
+    this.appendChild(createIcon('attachment'))
 
     const $name = document.createElement('span')
     $name.classList.add('name')

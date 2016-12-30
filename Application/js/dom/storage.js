@@ -7,7 +7,18 @@
  * version 3, as published by the Free Software Foundation.
  */
 
-import './bootstrap/info'
-import './bootstrap/browser'
-import './bootstrap/elements'
-import './bootstrap/toast'
+import { StorageWrapper } from './storage/wrapper'
+
+/**
+ *
+ * @type {StorageWrapper}
+ */
+export const sessionStorage = new StorageWrapper(window.sessionStorage)
+
+/**
+ *
+ * @const
+ */
+export const StorageKey = Object.freeze({
+  Toast: 'toast'
+})
