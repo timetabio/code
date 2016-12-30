@@ -306,5 +306,12 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()
             );
         }
+
+        public function createRestorePostEndpoint(): \Timetabio\API\Endpoints\Posts\RestorePostEndpoint
+        {
+            return new \Timetabio\API\Endpoints\Posts\RestorePostEndpoint(
+                $this->getMasterFactory()
+            );
+        }
     }
 }

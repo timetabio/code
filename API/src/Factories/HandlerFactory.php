@@ -656,5 +656,12 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()->createArchivePostCommand()
             );
         }
+
+        public function createRestorePostCommandHandler(): \Timetabio\API\Handlers\Post\Post\Restore\CommandHandler
+        {
+            return new \Timetabio\API\Handlers\Post\Post\Restore\CommandHandler(
+                $this->getMasterFactory()->createArchivePostCommand()
+            );
+        }
     }
 }

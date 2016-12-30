@@ -64,6 +64,7 @@ namespace Timetabio\API\Factories
             $router->registerEndpoint($this->getMasterFactory()->createSearchEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createGetUserFeedEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createArchivePostEndpoint());
+            $router->registerEndpoint($this->getMasterFactory()->createRestorePostEndpoint());
 
             return $router;
         }
