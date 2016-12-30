@@ -17,7 +17,7 @@ namespace Timetabio\Frontend\Handlers\Post\Forgot
             /** @var ForgotModel $model */
 
             try {
-                $model->setUser($request->getParam('user'));
+                $model->setInputUser($request->getParam('user'));
             } catch (\Exception $exception) {
                 throw new BadRequest('missing fields');
             }

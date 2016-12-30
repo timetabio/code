@@ -5,7 +5,7 @@
   "/register": "register",
   "/register/confirmation": "register-confirmation",
   "/forgot": "forgot",
-  "/forgot-confirmation": "forgot-confirmation",
+  "/forgot/confirmation": "forgot-confirmation",
   "/login": "login",
   "/register/resend-verification": "resend-verification",
   "/account/feeds/new": "create-feed",

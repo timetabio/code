@@ -8,16 +8,16 @@ namespace Timetabio\Frontend\Models\Action
         /**
          * @var string
          */
-        private $user;
+        private $inputUser;
 
-        public function getUser(): string
+        public function getInputUser(): string
         {
-            return $this->user;
+            return $this->inputUser;
         }
 
-        public function setUser(string $user)
+        public function setInputUser(string $user)
         {
-            $this->user = $user;
+            $this->inputUser = $user;
         }
     }
 }

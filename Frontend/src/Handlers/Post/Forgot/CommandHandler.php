@@ -26,7 +26,7 @@ namespace Timetabio\Frontend\Handlers\Post\Forgot
             $data = ['redirect' => '/forgot/confirmation'];
 
             try {
-                $this->forgotCommand->execute($model->getUser());
+                $this->forgotCommand->execute($model->getInputUser());
             } catch (ApiException $exception) {
                 $data = [
                     'error' => $exception->getMessage()
