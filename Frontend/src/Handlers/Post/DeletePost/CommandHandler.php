@@ -43,7 +43,7 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
                         'label' => 'Undo',
                         'uri' => '/action/post/restore',
                         'data' => [
-                            'post-id' => $model->getPostId()
+                            'post_id' => $model->getPostId()
                         ]
                     ]
                 ]

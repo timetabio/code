@@ -246,6 +246,21 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createRestorePostController(): PostController
+        {
+            return new PostController(
+                new \Timetabio\Frontend\Models\Action\PostModel,
+                $this->getMasterFactory()->createPostPreHandler(),
+                $this->getMasterFactory()->createDeletePostRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createRestorePostCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
         public function createCreateUploadController(): PostController
         {
             return new PostController(

@@ -161,17 +161,16 @@ namespace Timetabio\Frontend\Renderers\Snippet
             $card->appendChild($buttons);
 
             if (isset($feed['access']['post']) && $feed['access']['post']) {
-                $buttons->appendChild($this->renderDeleteButton($template, $post, $feed));
+                $buttons->appendChild($this->renderDeleteButton($template, $post));
             }
 
             return $card;
         }
 
-        private function renderDeleteButton(Dom\Document $template, array $post, array $feed): Dom\Element
+        private function renderDeleteButton(Dom\Document $template, array $post): Dom\Element
         {
             $buttonData = [
-                'post_id' => $post['id'],
-                'feed_id' => $feed['id']
+                'post_id' => $post['id']
             ];
 
             $icon = 'actions/delete';

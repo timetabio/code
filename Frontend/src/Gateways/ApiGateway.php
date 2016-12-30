@@ -148,6 +148,15 @@ namespace Timetabio\Frontend\Gateways
             );
         }
 
+        public function restorePost(string $postId): ApiResponse
+        {
+            return $this->apiBackend->post(
+                '/posts/' . urlencode($postId) . '/restore',
+                [],
+                $this->getAccessToken()
+            );
+        }
+
         public function followFeed(string $feedId): ApiResponse
         {
             return $this->apiBackend->post(

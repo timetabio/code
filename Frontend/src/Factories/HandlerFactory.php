@@ -246,6 +246,13 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createRestorePostCommandHandler(): \Timetabio\Frontend\Handlers\Post\RestorePost\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\RestorePost\CommandHandler(
+                $this->getMasterFactory()->createRestorePostCommand()
+            );
+        }
+
         public function createCreateUploadRequestHandler(): \Timetabio\Frontend\Handlers\Post\Upload\RequestHandler
         {
             return new \Timetabio\Frontend\Handlers\Post\Upload\RequestHandler;
