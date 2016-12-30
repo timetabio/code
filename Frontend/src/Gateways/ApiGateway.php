@@ -98,6 +98,11 @@ namespace Timetabio\Frontend\Gateways
             return $this->apiBackend->post('/verify/resend', ['email' => $email], $this->systemToken);
         }
 
+        public function forgot(string $user): ApiResponse
+        {
+            return $this->apiBackend->post('/forgot', ['user' => $user], $this->systemToken);
+        }
+
         public function createFeed(string $name, string $description, bool $isPrivate): ApiResponse
         {
             return $this->apiBackend->post(

@@ -112,6 +112,18 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createForgotRequestHandler(): \Timetabio\Frontend\Handlers\Post\Forgot\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\Forgot\RequestHandler;
+        }
+
+        public function createForgotCommandHandler(): \Timetabio\Frontend\Handlers\Post\Forgot\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\Forgot\CommandHandler(
+                $this->getMasterFactory()->createForgotCommand()
+            );
+        }
+
         public function createLoginCommandHandler(): \Timetabio\Frontend\Handlers\Post\Login\CommandHandler
         {
             return new \Timetabio\Frontend\Handlers\Post\Login\CommandHandler(

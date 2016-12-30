@@ -52,6 +52,13 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createForgotCommand(): \Timetabio\Frontend\Commands\ForgotCommand
+        {
+            return new \Timetabio\Frontend\Commands\ForgotCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
+
         public function createLogoutCommand(): \Timetabio\Frontend\Commands\LogoutCommand
         {
             return new \Timetabio\Frontend\Commands\LogoutCommand(

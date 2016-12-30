@@ -94,6 +94,21 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createForgotController(): PostController
+        {
+            return new PostController(
+                new \Timetabio\Frontend\Models\Action\ForgotModel(),
+                $this->getMasterFactory()->createPostPreHandler(),
+                $this->getMasterFactory()->createForgotRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createForgotCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
         public function createLogoutController(): PostController
         {
             return new PostController(

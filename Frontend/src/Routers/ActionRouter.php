@@ -38,6 +38,8 @@ namespace Timetabio\Frontend\Routers
                     return $this->factory->createResendVerificationController();
                 case '/action/beta-request':
                     return $this->factory->createCreateBetaRequestController();
+                case '/action/forgot':
+                    return $this->factory->createForgotController();
             }
 
             throw new RouterException;
