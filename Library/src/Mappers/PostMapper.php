@@ -60,8 +60,11 @@ namespace Timetabio\Library\Mappers
                 $mapped['timestamp'] = (new StringDateTime($mapped['timestamp']))->getTimestamp();
             }
 
-            if (isset($mapped['archived']) && $mapped['archived'] !== null) {
-                $mapped['archived'] = (new StringDateTime($mapped['archived']))->getTimestamp();
+            $mapped['archived'] = false;
+
+            if (isset($post['archived'])) {
+                $mapped['archived'] = true;
+                $mapped['archived_timestamp'] = (new StringDateTime($post['archived']))->getTimestamp();
             }
 
             if (isset($mapped['user_id'])) {

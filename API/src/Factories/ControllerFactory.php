@@ -621,5 +621,20 @@ namespace Timetabio\API\Factories
                 new JsonResponse
             );
         }
+
+        public function createArchivePostController(string $postId): PostController
+        {
+            return new PostController(
+                new \Timetabio\API\Models\Post\ArchiveModel($postId),
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
+                $this->getMasterFactory()->createArchivePostQueryHandler(),
+                $this->getMasterFactory()->createArchivePostCommandHandler(),
+                $this->getMasterFactory()->createTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
     }
 }

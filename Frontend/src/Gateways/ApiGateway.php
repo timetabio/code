@@ -139,10 +139,10 @@ namespace Timetabio\Frontend\Gateways
             );
         }
 
-        public function deletePost(string $postId): ApiResponse
+        public function archivePost(string $postId): ApiResponse
         {
-            return $this->apiBackend->delete(
-                '/posts/' . urlencode($postId),
+            return $this->apiBackend->post(
+                '/posts/' . urlencode($postId) . '/archive',
                 [],
                 $this->getAccessToken()
             );

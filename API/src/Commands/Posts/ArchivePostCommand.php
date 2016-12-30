@@ -30,10 +30,13 @@ namespace Timetabio\API\Commands\Posts
             $this->dataStoreWriter = $dataStoreWriter;
         }
 
-        public function execute(string $postId)
+        public function execute(string $postId): string
         {
-            $this->postService->archivePost($postId);
+            $archived = $this->postService->archivePost($postId);
+
             $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\IndexPostTask($postId));
+
+            return $archived;
         }
     }
 }

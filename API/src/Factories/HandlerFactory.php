@@ -641,5 +641,20 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()->createResultsMapper()
             );
         }
+
+        public function createArchivePostQueryHandler(): \Timetabio\API\Handlers\Post\Post\Archive\QueryHandler
+        {
+            return new \Timetabio\API\Handlers\Post\Post\Archive\QueryHandler(
+                $this->getMasterFactory()->createFetchPostInfoQuery(),
+                $this->getMasterFactory()->createFeedAccessControl()
+            );
+        }
+
+        public function createArchivePostCommandHandler(): \Timetabio\API\Handlers\Post\Post\Archive\CommandHandler
+        {
+            return new \Timetabio\API\Handlers\Post\Post\Archive\CommandHandler(
+                $this->getMasterFactory()->createArchivePostCommand()
+            );
+        }
     }
 }

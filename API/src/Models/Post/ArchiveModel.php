@@ -7,25 +7,23 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
-namespace Timetabio\Frontend\Commands
+namespace Timetabio\API\Models\Post
 {
-    use Timetabio\Frontend\Gateways\ApiGateway;
-
-    class DeletePostCommand
+    class ArchiveModel extends PostModel
     {
         /**
-         * @var ApiGateway
+         * @var array
          */
-        private $apiGateway;
+        private $postInfo;
 
-        public function __construct(ApiGateway $apiGateway)
+        public function getPostInfo(): array
         {
-            $this->apiGateway = $apiGateway;
+            return $this->postInfo;
         }
 
-        public function execute(string $postId)
+        public function setPostInfo(array $postInfo)
         {
-            return $this->apiGateway->archivePost($postId)->unwrap();
+            $this->postInfo = $postInfo;
         }
     }
 }
