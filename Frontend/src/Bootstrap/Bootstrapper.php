@@ -19,7 +19,6 @@ namespace Timetabio\Frontend\Bootstrap
     use Timetabio\Framework\Routers\RouterInterface;
     use Timetabio\Framework\Translation\Gettext;
     use Timetabio\Frontend\Session\Session;
-    use Timetabio\Library\Backends\Streams\PagesStreamWrapper;
     use Timetabio\Library\Backends\Streams\TemplatesStreamWrapper;
 
     class Bootstrapper extends AbstractBootstrapper

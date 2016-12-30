@@ -13,7 +13,6 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
     use Timetabio\Framework\Models\AbstractModel;
     use Timetabio\Frontend\Commands\DeletePostCommand;
     use Timetabio\Frontend\Models\Action\PostModel;
-    use Timetabio\Library\Builders\UriBuilder;
 
     class CommandHandler implements CommandHandlerInterface
     {
