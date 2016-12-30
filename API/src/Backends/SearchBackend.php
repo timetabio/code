@@ -72,7 +72,9 @@ namespace Timetabio\API\Backends
                                         ]
                                     ],
                                     [
-                                        'term' => ['archived' => false]
+                                        'term' => [
+                                            'archived' => false
+                                        ]
                                     ]
                                 ]
                             ]
@@ -93,8 +95,16 @@ namespace Timetabio\API\Backends
                         'filter' => [
                             'bool' => [
                                 'must' => [
-                                    ['term' => ['_feed_id' => $feedId]],
-                                    ['term' => ['archived' => false]]
+                                    [
+                                        'term' => [
+                                            '_feed_id' => $feedId
+                                        ]
+                                    ],
+                                    [
+                                        'term' => [
+                                            'archived' => false
+                                        ]
+                                    ]
                                 ]
                             ]
                         ]
@@ -144,7 +154,9 @@ namespace Timetabio\API\Backends
                                         ]
                                     ],
                                     [
-                                        'term' => ['archived' => false]
+                                        'term' => [
+                                            'archived' => false
+                                        ]
                                     ]
                                 ]
                             ]
