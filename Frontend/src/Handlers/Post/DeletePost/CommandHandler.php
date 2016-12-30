@@ -22,15 +22,9 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
          */
         private $deletePostCommand;
 
-        /**
-         * @var UriBuilder
-         */
-        private $uriBuilder;
-
-        public function __construct(DeletePostCommand $deletePostCommand, UriBuilder $uriBuilder)
+        public function __construct(DeletePostCommand $deletePostCommand)
         {
             $this->deletePostCommand = $deletePostCommand;
-            $this->uriBuilder = $uriBuilder;
         }
 
         public function execute(AbstractModel $model)
@@ -40,7 +34,19 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
             $this->deletePostCommand->execute($model->getPostId());
 
             $model->setData([
-                'redirect' => $this->uriBuilder->buildFeedPageUri($model->getFeedId())
+                'toast' => [
+                    'reload' => true,
+                    'message' => 'The post has been archived, it will be deleted after 30 days.',
+                    'action' => [
+                        'icon' => 'action/revert',
+                        'label' => 'Undo',
+                        'uri' => '/action/restore',
+                        'data' => [
+                            'feed-id' => $model->getFeedId(),
+                            'post-id' => $model->getPostId()
+                        ]
+                    ]
+                ]
             ]);
         }
     }
