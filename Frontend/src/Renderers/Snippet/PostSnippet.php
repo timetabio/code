@@ -176,12 +176,12 @@ namespace Timetabio\Frontend\Renderers\Snippet
 
             $icon = 'actions/delete';
             $label = 'Delete';
-            $action = '/action/posts/delete';
+            $action = '/action/post/delete';
 
             if (isset($post['archived'])) {
                 $icon = 'actions/revert';
                 $label = 'Restore';
-                $action = '/action/posts/restore';
+                $action = '/action/post/restore';
             }
 
             $button = $this->iconButtonSnippet->render($template, $icon, $label);

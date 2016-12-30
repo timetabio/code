@@ -25,7 +25,6 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
 
             try {
                 $model->setPostId($request->getParam('post_id'));
-                $model->setFeedId($request->getParam('feed_id'));
             } catch (\Exception $exception) {
                 throw new BadRequest('missing fields');
             }

@@ -40,9 +40,8 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
                     'action' => [
                         'icon' => 'action/revert',
                         'label' => 'Undo',
-                        'uri' => '/action/restore',
+                        'uri' => '/action/post/restore',
                         'data' => [
-                            'feed-id' => $model->getFeedId(),
                             'post-id' => $model->getPostId()
                         ]
                     ]

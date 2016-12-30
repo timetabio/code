@@ -51,7 +51,7 @@ namespace Timetabio\Frontend\Routers
                     return $this->factory->createFollowController();
                 case '/action/unfollow':
                     return $this->factory->createUnfollowController();
-                case '/action/posts/delete':
+                case '/action/post/delete':
                     return $this->factory->createDeletePostController();
                 case '/action/feed/delete-user':
                     return $this->factory->createDeleteFeedUserController();
