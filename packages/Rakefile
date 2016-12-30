@@ -1,5 +1,7 @@
 require 'rake/clean'
 
+task default: []
+
 desc 'Run tests'
 task :test do
     sh 'chkcrontab ttio-web/cron.d/*'
