@@ -195,6 +195,17 @@ namespace Timetabio\API\Services
             );
         }
 
+        public function restorePost(string $postId): void
+        {
+            $this->databaseBackend->execute(
+                'UPDATE posts SET archived = NULL
+                 WHERE id = :id',
+                [
+                    'id' => $postId
+                ]
+            );
+        }
+
         public function deletePost(string $postId)
         {
             $this->databaseBackend->execute('DELETE FROM posts WHERE id = :id', [

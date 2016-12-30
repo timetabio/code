@@ -209,5 +209,13 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()->createDataStoreWriter()
             );
         }
+
+        public function createRestorePostCommand(): \Timetabio\API\Commands\Posts\RestorePostCommand
+        {
+            return new \Timetabio\API\Commands\Posts\RestorePostCommand(
+                $this->getMasterFactory()->createPostService(),
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
     }
 }
