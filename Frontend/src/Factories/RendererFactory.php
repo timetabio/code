@@ -223,7 +223,8 @@ namespace Timetabio\Frontend\Factories
             return new \Timetabio\Frontend\Renderers\Snippet\PostSnippet(
                 $this->getMasterFactory()->createIconSnippet(),
                 $this->getMasterFactory()->createUriBuilder(),
-                $this->getMasterFactory()->createPostAttachmentSnippet()
+                $this->getMasterFactory()->createPostAttachmentSnippet(),
+                $this->getMasterFactory()->createIconButtonSnippet()
             );
         }
 

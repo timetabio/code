@@ -95,6 +95,13 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createRestorePostCommand(): \Timetabio\Frontend\Commands\RestorePostCommand
+        {
+            return new \Timetabio\Frontend\Commands\RestorePostCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
+
         public function createCreateUploadCommand(): \Timetabio\Frontend\Commands\CreateUploadCommand
         {
             return new \Timetabio\Frontend\Commands\CreateUploadCommand(

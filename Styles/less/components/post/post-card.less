@@ -11,7 +11,6 @@
   background-color: #fff;
   width: @card-max-width;
   max-width: 100%;
-  padding-top: @margin-m;
   border-radius: @card-border-radius;
   box-shadow: @card-box-shadow;
   overflow: hidden;
@@ -51,6 +50,7 @@
     display: flex;
     align-items: center;
     font-size: @font-size-xs;
+    margin-top: @margin-m;
   }
 
   > .header > .time {
@@ -94,5 +94,12 @@
 
   > .attachments > .post-attachment:first-child {
     border-top: 2px solid @default-divider-color;
+  }
+
+  > .banner {
+    text-align: center;
+    padding: @margin-xs-v;
+    font-size: @font-size-xs;
+    background-color: @brand-light-grey;
   }
 }

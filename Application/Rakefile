@@ -9,11 +9,6 @@ CLEAN.concat(TARGETS)
 
 task default: TARGETS
 
-desc 'Install dependencies'
-task :deps do
-    # install deps here
-end
-
 desc 'Run tests'
 task :test do
     # sh 'standard', 'js/**/*.js'

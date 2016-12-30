@@ -13,7 +13,6 @@ namespace Timetabio\API\Handlers\Post\Feed\Invitations
     use Timetabio\Framework\Handlers\RequestHandlerInterface;
     use Timetabio\Framework\Http\Request\RequestInterface;
     use Timetabio\Framework\Models\AbstractModel;
-    use Timetabio\Library\DataObjects\FeedInvitation;
     use Timetabio\Library\Locators\UserRoleLocator;
 
     class RequestHandler implements RequestHandlerInterface

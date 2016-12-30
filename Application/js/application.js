@@ -10,3 +10,4 @@
 import './bootstrap/info'
 import './bootstrap/browser'
 import './bootstrap/elements'
+import './bootstrap/toast'

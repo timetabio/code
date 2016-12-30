@@ -128,6 +128,10 @@
           "type": "date",
           "format": "epoch_second"
         },
+        "archived": {
+          "type": "date",
+          "format": "epoch_second"
+        },
         "_feed_id": {
           "type": "keyword"
         }

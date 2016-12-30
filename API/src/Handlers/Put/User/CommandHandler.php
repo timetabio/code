@@ -2,8 +2,8 @@
 namespace Timetabio\API\Handlers\Put\User
 {
     use Timetabio\API\Commands\User\UpdateUserCommand;
-    use Timetabio\API\ValueObjects\Hash;
     use Timetabio\API\Models\User\UpdateUserPasswordModel;
+    use Timetabio\API\ValueObjects\Hash;
     use Timetabio\Framework\Handlers\CommandHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;
 

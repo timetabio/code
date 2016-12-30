@@ -11,7 +11,6 @@ namespace Timetabio\Frontend\Renderers\Page\Account
 {
     use Timetabio\Framework\Backends\DomBackend;
     use Timetabio\Framework\Dom\Document;
-    use Timetabio\Framework\Http\StatusCodes\NotFound;
     use Timetabio\Frontend\Models\PageModel;
     use Timetabio\Frontend\Renderers\Page\PageRendererInterface;
 

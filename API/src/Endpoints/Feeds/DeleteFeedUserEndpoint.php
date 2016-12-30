@@ -20,7 +20,7 @@ namespace Timetabio\API\Endpoints\Feeds
     {
         public function getEndpoint(): string
         {
-            return '/v1/feeds/:feed_id/users/:person_id';
+            return '/v1/feeds/:feed_id/users/:user_id';
         }
 
         public function getRequestType(): string
@@ -43,7 +43,10 @@ namespace Timetabio\API\Endpoints\Feeds
 
         protected function doHandle(RequestInterface $request): ControllerInterface
         {
-            return $this->getFactory()->createDeleteFeedPersonController();
+            return $this->getFactory()->createDeleteFeedPersonController(
+                $request->getUri()->getPathSegment(2),
+                $request->getUri()->getPathSegment(4)
+            );
         }
     }
 }

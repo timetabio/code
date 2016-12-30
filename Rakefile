@@ -1,4 +1,4 @@
-DIRS = %w(API Framework Frontend Styles Application Worker Library Ink Locale Survey)
+DIRS = %w(API Framework Frontend Styles Application Worker Library Ink Locale Survey packages)
 
 task default: DIRS.map(&:downcase)
 
@@ -9,7 +9,7 @@ DIRS.each do |dir|
     end
 end
 
-%w(clean deps test).each do |task_name|
+%w(clean test).each do |task_name|
   desc "Run #{task_name} for all subdirectories"
 
   task task_name do

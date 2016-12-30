@@ -11,17 +11,12 @@ namespace Timetabio\Frontend\Models\Action
 {
     use Timetabio\Frontend\Models\ActionModel;
 
-    class DeletePostModel extends ActionModel
+    class PostModel extends ActionModel
     {
         /**
          * @var string
          */
         private $postId;
-
-        /**
-         * @var string
-         */
-        private $feedId;
 
         public function getPostId(): string
         {
@@ -31,16 +26,6 @@ namespace Timetabio\Frontend\Models\Action
         public function setPostId(string $postId)
         {
             $this->postId = $postId;
-        }
-
-        public function getFeedId(): string
-        {
-            return $this->feedId;
-        }
-
-        public function setFeedId(string $feedId)
-        {
-            $this->feedId = $feedId;
         }
     }
 }

@@ -242,8 +242,14 @@ namespace Timetabio\Frontend\Factories
         public function createDeletePostCommandHandler(): \Timetabio\Frontend\Handlers\Post\DeletePost\CommandHandler
         {
             return new \Timetabio\Frontend\Handlers\Post\DeletePost\CommandHandler(
-                $this->getMasterFactory()->createDeletePostCommand(),
-                $this->getMasterFactory()->createUriBuilder()
+                $this->getMasterFactory()->createDeletePostCommand()
+            );
+        }
+
+        public function createRestorePostCommandHandler(): \Timetabio\Frontend\Handlers\Post\RestorePost\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\RestorePost\CommandHandler(
+                $this->getMasterFactory()->createRestorePostCommand()
             );
         }
 

@@ -66,6 +66,9 @@ namespace Timetabio\API\Endpoints
             return true;
         }
 
+        /**
+         * @return \Timetabio\API\Factories\FactoryTypeHint
+         */
         protected function getFactory(): MasterFactoryInterface
         {
             return $this->factory;

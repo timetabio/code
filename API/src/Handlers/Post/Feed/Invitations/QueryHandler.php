@@ -15,7 +15,6 @@ namespace Timetabio\API\Handlers\Post\Feed\Invitations
     use Timetabio\API\Exceptions\NotFound;
     use Timetabio\API\Queries\Feed\FetchFeedUserQuery;
     use Timetabio\API\Queries\Feed\InvitationExistsQuery;
-    use Timetabio\API\Queries\User\FetchUserByIdQuery;
     use Timetabio\API\Queries\User\FetchUserByUsernameQuery;
     use Timetabio\Framework\Handlers\QueryHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;

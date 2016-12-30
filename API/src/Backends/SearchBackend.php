@@ -80,8 +80,25 @@ namespace Timetabio\API\Backends
                     'created' => 'desc'
                 ],
                 'query' => [
-                    'term' => [
-                        '_feed_id' => $feedId
+                    'constant_score' => [
+                        'filter' => [
+                            'bool' => [
+                                'must' => [
+                                    [
+                                        'term' => [
+                                            '_feed_id' => $feedId
+                                        ]
+                                    ]
+                                ],
+                                'must_not' => [
+                                    [
+                                        'exists' => [
+                                            'field' => 'archived'
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
                     ]
                 ]
             ]);
@@ -113,12 +130,29 @@ namespace Timetabio\API\Backends
                     'created' => 'desc'
                 ],
                 'query' => [
-                    'terms' => [
-                        '_feed_id' => [
-                            'index' => 'ttio',
-                            'type' => 'user',
-                            'id' => $userId,
-                            'path' => 'feeds'
+                    'constant_score' => [
+                        'filter' => [
+                            'bool' => [
+                                'must' => [
+                                    [
+                                        'terms' => [
+                                            '_feed_id' => [
+                                                'index' => 'ttio',
+                                                'type' => 'user',
+                                                'id' => $userId,
+                                                'path' => 'feeds'
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                'must_not' => [
+                                    [
+                                        'exists' => [
+                                            'field' => 'archived'
+                                        ]
+                                    ]
+                                ]
+                            ]
                         ]
                     ]
                 ]

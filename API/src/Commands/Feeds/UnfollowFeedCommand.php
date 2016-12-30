@@ -11,8 +11,6 @@ namespace Timetabio\API\Commands\Feeds
 {
     use Timetabio\API\DataStore\DataStoreWriter;
     use Timetabio\API\Services\FollowerService;
-    use Timetabio\API\ValueObjects\FeedId;
-    use Timetabio\API\ValueObjects\UserId;
     use Timetabio\Library\Tasks\IndexUserTask;
 
     class UnfollowFeedCommand
@@ -33,7 +31,7 @@ namespace Timetabio\API\Commands\Feeds
             $this->dataStoreWriter = $dataStoreWriter;
         }
 
-        public function execute(FeedId $feedId, UserId $userId)
+        public function execute(string $feedId, string $userId)
         {
             $this->followerService->unfollowFeed($feedId, $userId);
             $this->dataStoreWriter->removeFeedAccess($feedId, $userId);

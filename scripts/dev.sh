@@ -252,7 +252,7 @@ bootstrap_elastic () {
       --net ttio-dev-net \
       -v ${ROOT}/data/elastic-mappings.json:/mappings.json \
       docker.ttio.cloud:5000/library/elastic \
-      sh -c 'curl -X DELETE http://ttio-elastic:9200/ttio'
+      sh -c 'curl -s -X DELETE http://ttio-elastic:9200/ttio'
     echo ""
 
     sleep 5
@@ -264,7 +264,7 @@ bootstrap_elastic () {
       --net ttio-dev-net \
       -v ${ROOT}/data/elastic-mappings.json:/mappings.json \
       docker.ttio.cloud:5000/library/elastic \
-      sh -c 'curl -X PUT http://ttio-elastic:9200/ttio -d @/mappings.json'
+      sh -c 'curl -s -X PUT http://ttio-elastic:9200/ttio -d @/mappings.json'
     echo ""
   fi
 

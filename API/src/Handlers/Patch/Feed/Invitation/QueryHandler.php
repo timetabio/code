@@ -12,7 +12,7 @@ namespace Timetabio\API\Handlers\Patch\Feed\Invitation
     use Timetabio\API\Access\AccessControl\FeedAccessControl;
     use Timetabio\API\Exceptions\Forbidden;
     use Timetabio\API\Exceptions\NotFound;
-    use Timetabio\API\Models\Feed\Invitation\UpdateModel;
+    use Timetabio\API\Models\Feed\User\UpdateModel;
     use Timetabio\API\Queries\Feed\FetchInvitationQuery;
     use Timetabio\Framework\Handlers\QueryHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;

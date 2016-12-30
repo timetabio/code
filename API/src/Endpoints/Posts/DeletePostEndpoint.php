@@ -43,7 +43,9 @@ namespace Timetabio\API\Endpoints\Posts
 
         protected function doHandle(RequestInterface $request): ControllerInterface
         {
-            return $this->getFactory()->createDeletePostController();
+            return $this->getFactory()->createDeletePostController(
+                $request->getUri()->getPathSegment(2)
+            );
         }
     }
 }

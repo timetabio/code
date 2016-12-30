@@ -299,5 +299,19 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()
             );
         }
+
+        public function createArchivePostEndpoint(): \Timetabio\API\Endpoints\Posts\ArchivePostEndpoint
+        {
+            return new \Timetabio\API\Endpoints\Posts\ArchivePostEndpoint(
+                $this->getMasterFactory()
+            );
+        }
+
+        public function createRestorePostEndpoint(): \Timetabio\API\Endpoints\Posts\RestorePostEndpoint
+        {
+            return new \Timetabio\API\Endpoints\Posts\RestorePostEndpoint(
+                $this->getMasterFactory()
+            );
+        }
     }
 }
