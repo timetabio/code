@@ -1,5 +1,5 @@
 <?php
-namespace Timetabio\API\Handlers\Put\User
+namespace Timetabio\API\Handlers\Put\User\Password
 {
     use Timetabio\API\Commands\User\UpdateUserCommand;
     use Timetabio\API\ValueObjects\Hash;

@@ -1,5 +1,5 @@
 <?php
-namespace Timetabio\API\Handlers\Put\User
+namespace Timetabio\API\Handlers\Put\User\Password
 {
     use Timetabio\API\Exceptions\BadRequest;
     use Timetabio\API\Models\User\UpdateUserPasswordModel;
