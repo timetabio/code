@@ -42,5 +42,10 @@ namespace Timetabio\Library\Tasks
 
             return $this->priority;
         }
+
+        public function __sleep(): array
+        {
+            return ['postId'];
+        }
     }
 }

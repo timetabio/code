@@ -16,7 +16,7 @@ namespace Timetabio\Library\Tasks
          */
         private $postId;
 
-        public function __construct($postId)
+        public function __construct(string $postId)
         {
             $this->postId = $postId;
         }
