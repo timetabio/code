@@ -13,7 +13,7 @@ trap cleanup SIGINT SIGTERM EXIT
 WORKERS=$(docker ps -q --filter="name=ttio-dev-worker-")
 
 for WORKER in ${WORKERS[@]}; do
-  docker logs --since $(date +%s) -f ${WORKER} &
+  docker logs --since $(date -u +%s) -f ${WORKER} &
   PIDS+=("${!}")
 done
 
