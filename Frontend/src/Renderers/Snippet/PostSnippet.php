@@ -178,7 +178,7 @@ namespace Timetabio\Frontend\Renderers\Snippet
             $label = 'Delete';
             $action = '/action/posts/delete';
 
-            if ($post['archived']) {
+            if (isset($post['archived'])) {
                 $icon = 'actions/revert';
                 $label = 'Restore';
                 $action = '/action/posts/restore';
