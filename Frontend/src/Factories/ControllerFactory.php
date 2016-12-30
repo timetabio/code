@@ -234,7 +234,7 @@ namespace Timetabio\Frontend\Factories
         public function createDeletePostController(): PostController
         {
             return new PostController(
-                new \Timetabio\Frontend\Models\Action\DeletePostModel,
+                new \Timetabio\Frontend\Models\Action\PostModel,
                 $this->getMasterFactory()->createPostPreHandler(),
                 $this->getMasterFactory()->createDeletePostRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),

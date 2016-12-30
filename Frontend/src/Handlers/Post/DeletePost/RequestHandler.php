@@ -14,13 +14,13 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
     use Timetabio\Framework\Http\Request\RequestInterface;
     use Timetabio\Framework\Models\AbstractModel;
     use Timetabio\Frontend\Exceptions\BadRequest;
-    use Timetabio\Frontend\Models\Action\DeletePostModel;
+    use Timetabio\Frontend\Models\Action\PostModel;
 
     class RequestHandler implements RequestHandlerInterface
     {
         public function execute(RequestInterface $request, AbstractModel $model)
         {
-            /** @var DeletePostModel $model */
+            /** @var PostModel $model */
             /** @var PostRequest $request */
 
             try {

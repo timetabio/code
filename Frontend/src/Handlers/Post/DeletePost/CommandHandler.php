@@ -12,7 +12,7 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
     use Timetabio\Framework\Handlers\CommandHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;
     use Timetabio\Frontend\Commands\DeletePostCommand;
-    use Timetabio\Frontend\Models\Action\DeletePostModel;
+    use Timetabio\Frontend\Models\Action\PostModel;
     use Timetabio\Library\Builders\UriBuilder;
 
     class CommandHandler implements CommandHandlerInterface
@@ -29,7 +29,7 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
 
         public function execute(AbstractModel $model)
         {
-            /** @var DeletePostModel $model */
+            /** @var PostModel $model */
 
             $this->deletePostCommand->execute($model->getPostId());
 

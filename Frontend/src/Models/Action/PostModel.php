@@ -11,7 +11,7 @@ namespace Timetabio\Frontend\Models\Action
 {
     use Timetabio\Frontend\Models\ActionModel;
 
-    class DeletePostModel extends ActionModel
+    class PostModel extends ActionModel
     {
         /**
          * @var string
