@@ -8,6 +8,11 @@ BUILD_DIR="/data/code"
 PACKAGE_DIR="${BUILD_DIR}/packages"
 
 for PACKAGE in ${PACKAGE_DIR}/*; do
+
+  if [ ! -d ${PACKAGE} ]; then
+    continue
+  fi
+
   RPM_DIR="${PACKAGE}/rpm"
   SPEC_FILE="${PACKAGE}/package.spec"
 
