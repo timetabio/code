@@ -1,0 +1,12 @@
+require 'rake/clean'
+
+desc 'Install dependencies'
+task :deps do
+    # install deps here
+end
+
+desc 'Run tests'
+task :test do
+    sh 'chkcrontab ttio-web/cron.d/*'
+    sh 'chkcrontab ttio-server/cron.d/*'
+end
