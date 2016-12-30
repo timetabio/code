@@ -35,10 +35,11 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
 
             $model->setData([
                 'toast' => [
-                    'reload' => true,
                     'message' => 'The post has been archived, it will be deleted after 30 days.',
+                    'ttl' => 5000,
+                    'reload' => true,
                     'action' => [
-                        'icon' => 'action/revert',
+                        'icon' => 'actions/revert',
                         'label' => 'Undo',
                         'uri' => '/action/post/restore',
                         'data' => [
