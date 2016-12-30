@@ -139,10 +139,19 @@ namespace Timetabio\Frontend\Gateways
             );
         }
 
-        public function deletePost(string $postId): ApiResponse
+        public function archivePost(string $postId): ApiResponse
         {
-            return $this->apiBackend->delete(
-                '/posts/' . urlencode($postId),
+            return $this->apiBackend->post(
+                '/posts/' . urlencode($postId) . '/archive',
+                [],
+                $this->getAccessToken()
+            );
+        }
+
+        public function restorePost(string $postId): ApiResponse
+        {
+            return $this->apiBackend->post(
+                '/posts/' . urlencode($postId) . '/restore',
                 [],
                 $this->getAccessToken()
             );
@@ -262,7 +271,7 @@ namespace Timetabio\Frontend\Gateways
             );
         }
 
-        public function deleteFeedInvitation(string $feedId, string $userId)
+        public function deleteFeedInvitation(string $feedId, string $userId): ApiResponse
         {
             return $this->apiBackend->delete(
                 '/feeds/' . urlencode($feedId) . '/invitations/' . urlencode($userId),
@@ -271,12 +280,45 @@ namespace Timetabio\Frontend\Gateways
             );
         }
 
-        public function updateFeedUser(string $feedId, string $userId, string $role)
+        public function updateFeedUser(string $feedId, string $userId, string $role): ApiResponse
         {
             return $this->apiBackend->patch(
                 '/feeds/' . urlencode($feedId) . '/users/' . urlencode($userId),
                 [
                     'role' => $role
+                ],
+                $this->getAccessToken()
+            );
+        }
+
+        public function updateFeedName(string $feedId, string $name): ApiResponse
+        {
+            return $this->apiBackend->patch(
+                '/feeds/' . urlencode($feedId),
+                [
+                    'name' => $name
+                ],
+                $this->getAccessToken()
+            );
+        }
+
+        public function updateFeedDescription(string $feedId, string $description): ApiResponse
+        {
+            return $this->apiBackend->patch(
+                '/feeds/' . urlencode($feedId),
+                [
+                    'description' => $description
+                ],
+                $this->getAccessToken()
+            );
+        }
+
+        public function updateFeedVanity(string $feedId, string $vanity): ApiResponse
+        {
+            return $this->apiBackend->patch(
+                '/feeds/' . urlencode($feedId),
+                [
+                    'vanity' => $vanity
                 ],
                 $this->getAccessToken()
             );

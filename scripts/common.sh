@@ -17,3 +17,12 @@ fold_end () {
     echo -en "travis_fold:end:${1}\\r"
   fi
 }
+
+await_output () {
+  FILE=$(mktemp)
+  docker logs -f "${1}" > ${FILE} 2>&1 &
+  PID=$!
+  grep -m 1 "${2}" <(tail -f ${FILE})
+  kill ${PID}
+  rm ${FILE}
+}

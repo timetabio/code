@@ -8,18 +8,49 @@
  */
 
 import { ToastMessage } from '../elements/toast-message'
+import { AjaxButton } from '../elements/ajax-button'
+import { createIcon } from '../app/icon'
 
 /**
  *
  * @param {string} message
  * @param {number} ttl
+ * @param {{ icon?: string, label: string, uri: string, data: {} }|null} action
  * @returns {ToastMessage}
  */
-export function createToastMessage(message, { ttl = 3000 } = {}) {
+export function createToastMessage({ message, ttl = 3000, action = null }) {
   const $message = new ToastMessage()
 
-  $message.innerText = message
   $message.toastTtl = ttl
+
+  console.log(action)
+
+  if (action !== null) {
+    const $button = new AjaxButton()
+
+    $button.className = 'action'
+    $button.postUri = action.uri
+    $button.postData = action.data
+
+    $message.appendChild($button)
+
+    const $inner = document.createElement('span')
+    $inner.className = 'inner'
+    $button.appendChild($inner)
+
+    const $icon = createIcon(action.icon)
+    $inner.appendChild($icon)
+
+    const $label = document.createElement('span')
+    $label.className = 'label'
+    $label.innerText = action.label
+    $inner.appendChild($label)
+  }
+
+  const $text = document.createElement('span')
+  $text.className = 'message'
+  $text.innerText = message
+  $message.appendChild($text)
 
   return $message
 }

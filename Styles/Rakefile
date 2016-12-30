@@ -7,11 +7,6 @@ CLEAN.concat(TARGETS)
 
 task :default => TARGETS
 
-desc 'Install dependencies'
-task :deps do
-    sh 'npm', 'install', '-g'
-end
-
 desc 'Run tests'
 task :test do
     # run tests here

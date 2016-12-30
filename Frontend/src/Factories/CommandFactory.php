@@ -95,6 +95,13 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createRestorePostCommand(): \Timetabio\Frontend\Commands\RestorePostCommand
+        {
+            return new \Timetabio\Frontend\Commands\RestorePostCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
+
         public function createCreateUploadCommand(): \Timetabio\Frontend\Commands\CreateUploadCommand
         {
             return new \Timetabio\Frontend\Commands\CreateUploadCommand(
@@ -133,6 +140,27 @@ namespace Timetabio\Frontend\Factories
         public function createUpdateFeedUserRoleCommand(): Commands\Feed\UpdateFeedUserRoleCommand
         {
             return new Commands\Feed\UpdateFeedUserRoleCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
+
+        public function createUpdateFeedNameCommand(): Commands\Feed\UpdateFeedNameCommand
+        {
+            return new Commands\Feed\UpdateFeedNameCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
+
+        public function createUpdateFeedDescriptionCommand(): Commands\Feed\UpdateFeedDescriptionCommand
+        {
+            return new Commands\Feed\UpdateFeedDescriptionCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
+
+        public function createUpdateFeedVanityCommand(): Commands\Feed\UpdateFeedVanityCommand
+        {
+            return new Commands\Feed\UpdateFeedVanityCommand(
                 $this->getMasterFactory()->createApiGateway()
             );
         }

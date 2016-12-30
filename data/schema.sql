@@ -53,7 +53,9 @@ CREATE INDEX IF NOT EXISTS feeds_owner_id ON feeds (owner_id);
 CREATE TABLE feed_vanities (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name VARCHAR(255) NOT NULL,
-  feed_id UUID NOT NULL UNIQUE REFERENCES feeds (id)
+  feed_id UUID NOT NULL UNIQUE REFERENCES feeds (id),
+  created TIMESTAMP NOT NULL DEFAULT utc_now(),
+  updated TIMESTAMP NOT NULL DEFAULT utc_now()
 );
 
 CREATE UNIQUE INDEX feed_vanities_name ON feed_vanities (lower(name));
@@ -64,15 +66,8 @@ CREATE VIEW public_feeds AS
     feeds.name,
     feeds.is_verified,
     feeds.created,
-    feeds.updated,
-    users.id AS owner_id,
-    users.name AS owner_name,
-    users.username AS owner_username
+    feeds.updated
   FROM feeds
-  JOIN feed_users
-    ON feeds.id = feed_users.feed_id AND is_owner(feed_users.role)
-  JOIN users
-    ON feed_users.user_id = users.id
   WHERE is_private = FALSE;
 
 CREATE TYPE post_type AS ENUM ('note', 'task', 'event');
@@ -86,13 +81,24 @@ CREATE TABLE IF NOT EXISTS posts (
   body TEXT NOT NULL DEFAULT '',
   timestamp TIMESTAMP,
   created TIMESTAMP NOT NULL DEFAULT utc_now(),
-  updated TIMESTAMP NOT NULL DEFAULT utc_now()
+  updated TIMESTAMP NOT NULL DEFAULT utc_now(),
+  archived TIMESTAMP DEFAULT NULL
 );
 
 CREATE INDEX IF NOT EXISTS posts_feed_id ON posts (feed_id);
 CREATE INDEX IF NOT EXISTS posts_timestamp ON posts (timestamp);
 CREATE INDEX IF NOT EXISTS posts_type ON posts (type);
+CREATE INDEX IF NOT EXISTS posts_archived ON posts (archived);
 CREATE INDEX IF NOT EXISTS posts_type_timestamp ON posts (type, timestamp ASC);
+
+CREATE VIEW archived_posts AS
+  SELECT * FROM posts
+  WHERE archived IS NOT NULL;
+
+CREATE VIEW expired_archived_posts AS
+  SELECT * FROM posts
+  WHERE archived IS NOT NULL
+    AND archived < (utc_now() - INTERVAL '30 days');
 
 CREATE VIEW aggregated_posts AS
   SELECT posts.*,
@@ -167,20 +173,11 @@ CREATE TABLE IF NOT EXISTS feed_users (
   PRIMARY KEY(feed_id, user_id)
 );
 
-CREATE INDEX feed_users_owner ON feed_users (feed_id, is_owner(role));
-
 CREATE TRIGGER update_feed_users_timestamp_column BEFORE UPDATE ON feed_users FOR EACH ROW EXECUTE PROCEDURE update_timestamp_column();
 
 CREATE VIEW aggregated_feeds AS
-  SELECT feeds.*,
-    users.id AS owner_id,
-    users.username AS owner_username,
-    users.name AS owner_name
-  FROM feeds
-  JOIN feed_users
-    ON feeds.id = feed_users.feed_id AND is_owner(feed_users.role)
-  JOIN users
-    ON feed_users.user_id = users.id;
+  SELECT *
+  FROM feeds;
 
 CREATE VIEW user_feeds AS
   SELECT feeds.*, feed_users.user_id

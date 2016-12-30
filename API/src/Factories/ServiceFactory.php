@@ -13,6 +13,8 @@ namespace Timetabio\API\Factories
 
     class ServiceFactory extends AbstractChildFactory
     {
+        use FactoryTypeHintTrait;
+
         public function createUserService(): \Timetabio\API\Services\UserService
         {
             return new \Timetabio\API\Services\UserService(

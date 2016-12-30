@@ -14,6 +14,9 @@ msgstr "Please enter a valid email address"
 msgid "invalid_username"
 msgstr "Please enter a valid username (letters, numbers, -, _)"
 
+msgid "invalid_vanity"
+msgstr "Please enter a vanity name between 3 and 20 characters (letters, numbers, -, _)"
+
 msgid "invalid_password"
 msgstr "Your password must be at least 8 characters long"
 

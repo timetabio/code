@@ -11,7 +11,6 @@ namespace Timetabio\API\Commands\Feeds
 {
     use Timetabio\API\DataStore\DataStoreWriter;
     use Timetabio\API\Services\FeedService;
-    use Timetabio\API\ValueObjects\FeedId;
 
     class UpdateFeedCommand
     {
@@ -31,7 +30,7 @@ namespace Timetabio\API\Commands\Feeds
             $this->dataStoreWriter = $dataStoreWriter;
         }
 
-        public function execute(FeedId $feedId, array $updates)
+        public function execute(string $feedId, array $updates)
         {
             $this->feedService->updateFeed($feedId, $updates);
             $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\IndexFeedTask($feedId));

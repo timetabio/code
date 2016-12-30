@@ -30,7 +30,7 @@ namespace Timetabio\API\ErrorHandlers
                 'file' => $exception->getFile(),
                 'line' => $exception->getLine(),
                 'trace' => $exception->getTrace()
-            ], JSON_PRETTY_PRINT);
+            ], JSON_PRETTY_PRINT) . PHP_EOL;
 
             if (!($exception instanceof AbstractException)) {
                 $this->logger->error($exception);

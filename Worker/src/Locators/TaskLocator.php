@@ -32,6 +32,8 @@ namespace Timetabio\Worker\Locators
                     return new \Timetabio\Library\Tasks\IndexFeedsTask;
                 case 'IndexUsers':
                     return new \Timetabio\Library\Tasks\IndexUsersTask;
+                case 'DeleteArchivedPosts':
+                    return new \Timetabio\Library\Tasks\DeleteArchivedPostsTask;
             }
 
             throw new \Exception('could not locate task \'' . $taskName . '\'');

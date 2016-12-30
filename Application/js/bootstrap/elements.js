@@ -11,14 +11,13 @@ import { AjaxForm } from '../elements/ajax-form'
 import { AjaxSelect } from '../elements/ajax-select'
 import { FormError } from '../elements/form-error'
 import { AutoTextarea } from '../elements/auto-textarea'
-import { FollowButton } from '../elements/follow-button'
 import { AjaxButton } from '../elements/ajax-button'
 import { FileDrop } from '../elements/file-drop'
 import { FileUpload } from '../elements/file-upload'
 import { PostAttachment } from '../elements/post-attachment'
 import { FilePick } from '../elements/file-pick'
 import { ValidatedInput } from '../elements/validated-input'
-import { LocalTimeElement, TimeAgoElement } from '../elements/time-elements'
+import { LocalTimeElement, TimeAgoElement, TimeUntilElement, RelativeTimeElement } from '../elements/time-elements'
 import { PaginatedView } from '../elements/paginated-view'
 import { PaginatedList } from '../elements/paginated-list'
 import { PaginationButton } from '../elements/pagination-button'
@@ -28,7 +27,6 @@ window.customElements.define('ajax-form', AjaxForm, { extends: 'form' })
 window.customElements.define('ajax-select', AjaxSelect, { extends: 'select' })
 window.customElements.define('form-error', FormError)
 window.customElements.define('auto-textarea', AutoTextarea, { extends: 'textarea' })
-window.customElements.define('follow-button', FollowButton, { extends: 'button' })
 window.customElements.define('ajax-button', AjaxButton, { extends: 'button' })
 window.customElements.define('file-drop', FileDrop)
 window.customElements.define('file-pick', FilePick)
@@ -43,5 +41,7 @@ window.customElements.define('pagination-button', PaginationButton, { extends: '
 window.customElements.define('file-upload', FileUpload)
 window.customElements.define('post-attachment', PostAttachment)
 
+window.customElements.define('relative-time', RelativeTimeElement)
 window.customElements.define('time-ago', TimeAgoElement)
+window.customElements.define('time-until', TimeUntilElement)
 window.customElements.define('local-time', LocalTimeElement)

@@ -19,7 +19,6 @@ namespace Timetabio\Frontend\Bootstrap
     use Timetabio\Framework\Routers\RouterInterface;
     use Timetabio\Framework\Translation\Gettext;
     use Timetabio\Frontend\Session\Session;
-    use Timetabio\Library\Backends\Streams\PagesStreamWrapper;
     use Timetabio\Library\Backends\Streams\TemplatesStreamWrapper;
 
     class Bootstrapper extends AbstractBootstrapper
@@ -90,13 +89,13 @@ namespace Timetabio\Frontend\Bootstrap
             // because it overrides the / route from the static page renderer
             $router->addRouter($this->getFactory()->createUserPageRouter());
             $router->addRouter($this->getFactory()->createStaticPageRouter());
-            $router->addRouter($this->getFactory()->createPageRouter());
             $router->addRouter($this->getFactory()->createFeedPageRouter());
             $router->addRouter($this->getFactory()->createPostPageRouter());
             $router->addRouter($this->getFactory()->createUserActionRouter());
             $router->addRouter($this->getFactory()->createActionRouter());
             $router->addRouter($this->getFactory()->createUserFragmentRouter());
             $router->addRouter($this->getFactory()->createFragmentRouter());
+            $router->addRouter($this->getFactory()->createVerifyAccountPageRouter());
 
             $router->addRouter($this->getFactory()->createNotFoundRouter());
 

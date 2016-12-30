@@ -34,12 +34,24 @@ namespace Timetabio\Frontend\Renderers\Snippet
          */
         private $postAttachmentSnippet;
 
-        public function __construct(IconSnippet $iconSnippet, UriBuilder $uriBuilder, PostAttachmentSnippet $postAttachmentSnippet)
+        /**
+         * @var IconButtonSnippet
+         */
+        private $iconButtonSnippet;
+
+        public function __construct(
+            IconSnippet $iconSnippet,
+            UriBuilder $uriBuilder,
+            PostAttachmentSnippet $postAttachmentSnippet,
+            IconButtonSnippet $iconButtonSnippet
+        )
         {
             $this->iconSnippet = $iconSnippet;
             $this->uriBuilder = $uriBuilder;
             $this->postAttachmentSnippet = $postAttachmentSnippet;
+            $this->iconButtonSnippet = $iconButtonSnippet;
         }
+
 
         public function render(Dom\Document $template, array $post, array $feed = []): Dom\Element
         {
@@ -51,6 +63,20 @@ namespace Timetabio\Frontend\Renderers\Snippet
 
             $card = $template->createElement('article');
             $card->setClassName($cardClass);
+
+            if (isset($post['archived']) && $post['archived']) {
+                $banner = $template->createElement('div');
+                $banner->setClassName('banner');
+                $banner->appendText('This post is archived. It will be deleted ');
+                $card->appendChild($banner);
+
+                $deleteTime = $template->createElement('relative-time');
+                $deleteTime->setAttribute('datetime', gmdate('c', $post['meta']['delete_timestamp']));
+                $deleteTime->appendText(date('d.m.Y H:i:s', $post['meta']['delete_timestamp']));
+                $banner->appendChild($deleteTime);
+
+                $banner->appendText('.');
+            }
 
             $header = $template->createElement('header');
             $header->setClassName('header');
@@ -135,30 +161,35 @@ namespace Timetabio\Frontend\Renderers\Snippet
             $card->appendChild($buttons);
 
             if (isset($feed['access']['post']) && $feed['access']['post']) {
-                $deleteButtonData = [
-                    'post_id' => $post['id'],
-                    'feed_id' => $post['feed']['id']
-                ];
-
-                $deleteButton = $template->createElement('button');
-                $deleteButton->setClassName('light-button');
-                $deleteButton->setAttribute('is', 'ajax-button');
-                $deleteButton->setAttribute('post-uri', '/action/posts/delete');
-                $deleteButton->setAttribute('post-data', json_encode($deleteButtonData));
-
-                $deleteButtonInner = $template->createElement('span');
-                $deleteButtonInner->setClassName('inner');
-                $deleteButton->appendChild($deleteButtonInner);
-
-                $deleteIcon = $this->iconSnippet->render($template, 'actions/delete', 'icon');
-                $deleteButtonInner->appendChild($deleteIcon);
-
-                $deleteButtonInner->appendText($this->getTranslator()->translate('Delete'));
-
-                $buttons->appendChild($deleteButton);
+                $buttons->appendChild($this->renderDeleteButton($template, $post));
             }
 
             return $card;
+        }
+
+        private function renderDeleteButton(Dom\Document $template, array $post): Dom\Element
+        {
+            $buttonData = [
+                'post_id' => $post['id']
+            ];
+
+            $icon = 'actions/delete';
+            $label = 'Delete';
+            $action = '/action/post/delete';
+
+            if (isset($post['archived'])) {
+                $icon = 'actions/revert';
+                $label = 'Restore';
+                $action = '/action/post/restore';
+            }
+
+            $button = $this->iconButtonSnippet->render($template, $icon, $label);
+
+            $button->setAttribute('is', 'ajax-button');
+            $button->setAttribute('post-uri', $action);
+            $button->setAttribute('post-data', json_encode($buttonData));
+
+            return $button;
         }
     }
 }

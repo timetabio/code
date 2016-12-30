@@ -13,7 +13,6 @@ namespace Timetabio\API\Handlers\Get\Feed
     use Timetabio\API\Exceptions\NotFound;
     use Timetabio\API\Models\Feed\FeedModel;
     use Timetabio\API\Queries\Feed\FetchFeedVanityQuery;
-    use Timetabio\API\Queries\Feed\FetchVanityByNameQuery;
     use Timetabio\API\Queries\Feed\InvitationExistsQuery;
     use Timetabio\API\Queries\Feeds\FetchFeedQuery;
     use Timetabio\Framework\Handlers\QueryHandlerInterface;
@@ -97,11 +96,14 @@ namespace Timetabio\API\Handlers\Get\Feed
             $hasWriteAccess = $this->accessCheck->hasWriteAccess($feedId, $token);
 
             $feed['vanity'] = $this->fetchFeedVanityQuery->execute($feedId);
+
             $feed['access']['post'] = $this->accessCheck->hasPostAccess($feedId, $token);
             $feed['access']['manage_users'] = $hasWriteAccess;
+            $feed['access']['edit'] = $hasWriteAccess;
 
             if ($userId !== null) {
                 $feed['user']['invited'] = $isInvited;
+                $feed['user']['can_unfollow'] = $this->accessCheck->canUnfollow($feedId, $token);
             }
 
             $model->setData($this->feedMapper->map($feed));

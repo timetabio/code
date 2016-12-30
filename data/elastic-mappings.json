@@ -2,37 +2,47 @@
   "settings": {
     "analysis": {
       "analyzer": {
-        "ttio_text": {
+        "ttio_search_text": {
           "type": "custom",
-          "tokenizer": "standard",
+          "tokenizer": "icu_tokenizer",
           "filter": [
             "standard",
-            "lowercase",
-            "ttio_ascii_folding",
+            "ttio_icu",
+            "ttio_word_delimiter"
+          ]
+        },
+        "ttio_text": {
+          "type": "custom",
+          "tokenizer": "icu_tokenizer",
+          "filter": [
+            "standard",
+            "ttio_icu",
             "ttio_word_delimiter"
           ]
         },
         "ttio_ngram": {
           "type": "custom",
-          "tokenizer": "standard",
+          "tokenizer": "icu_tokenizer",
           "filter": [
             "standard",
-            "lowercase",
-            "ttio_ascii_folding",
+            "ttio_icu",
             "ttio_word_delimiter",
             "ttio_ngram"
           ]
         }
       },
       "filter": {
-        "ttio_ascii_folding": {
-          "type": "asciifolding",
-          "preserve_original": true
+        "ttio_icu": {
+          "type": "icu_folding"
         },
         "ttio_word_delimiter": {
           "type": "word_delimiter",
           "preserve_original": true,
-          "stem_english_possessive": true
+          "stem_english_possessive": true,
+          "split_on_numerics": false,
+          "generate_word_parts": false,
+          "split_on_case_change": false,
+          "generate_number_parts": false
         },
         "ttio_ngram": {
           "type": "edgeNGram",
@@ -115,6 +125,10 @@
           "format": "epoch_second"
         },
         "updated": {
+          "type": "date",
+          "format": "epoch_second"
+        },
+        "archived": {
           "type": "date",
           "format": "epoch_second"
         },

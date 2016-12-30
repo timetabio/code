@@ -125,30 +125,6 @@ namespace Timetabio\API\DataStore
         /**
          * @deprecated
          */
-        public function removePostBody(string $postId)
-        {
-            $this->getDataStore()->remove('post_body:' . $postId);
-        }
-
-        /**
-         * @deprecated
-         */
-        public function removePostPreview(string $postId)
-        {
-            $this->getDataStore()->remove('post_preview:' . $postId);
-        }
-
-        /**
-         * @deprecated
-         */
-        public function removePostText(string $postId)
-        {
-            $this->getDataStore()->remove('post_text:' . $postId);
-        }
-
-        /**
-         * @deprecated
-         */
         public function removeVanity(string $feedId)
         {
             $key = 'feed_vanity:' . $feedId;

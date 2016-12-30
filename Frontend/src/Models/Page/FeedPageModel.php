@@ -14,22 +14,16 @@ namespace Timetabio\Frontend\Models\Page
     use Timetabio\Frontend\Tabs\Tab;
     use Timetabio\Frontend\ValueObjects\Feed;
 
-    class FeedPageModel extends PageModel
+    abstract class FeedPageModel extends PageModel
     {
         /**
          * @var Feed
          */
         private $feed;
 
-        /**
-         * @var Tab
-         */
-        private $activeTab;
-
-        public function __construct(Feed $feed, Tab $activeTab)
+        public function __construct(Feed $feed)
         {
             $this->feed = $feed;
-            $this->activeTab = $activeTab;
         }
 
         public function getFeed(): Feed
@@ -37,9 +31,11 @@ namespace Timetabio\Frontend\Models\Page
             return $this->feed;
         }
 
-        public function getActiveTab(): Tab
+        public function getTitle(): string
         {
-            return $this->activeTab;
+            return $this->feed->getName();
         }
+
+        abstract public function getActiveTab(): Tab;
     }
 }

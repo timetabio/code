@@ -150,5 +150,13 @@ namespace Timetabio\Worker\Factories
                 $this->getMasterFactory()->createPasswordResetEmail()
             );
         }
+
+        public function createDeleteArchivedPostsRunner(): \Timetabio\Worker\Runners\DeleteArchivedPostsRunner
+        {
+            return new \Timetabio\Worker\Runners\DeleteArchivedPostsRunner(
+                $this->getMasterFactory()->createPostService(),
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
     }
 }

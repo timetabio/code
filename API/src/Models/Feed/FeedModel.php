@@ -10,21 +10,25 @@
 namespace Timetabio\API\Models\Feed
 {
     use Timetabio\API\Models\APIModel;
-    use Timetabio\API\ValueObjects\FeedId;
 
     class FeedModel extends APIModel
     {
         /**
-         * @var FeedId
+         * @var string
          */
         private $feedId;
 
-        public function getFeedId(): FeedId
+        public function __construct(string $feedId)
+        {
+            $this->feedId = $feedId;
+        }
+
+        public function getFeedId(): string
         {
             return $this->feedId;
         }
 
-        public function setFeedId(FeedId $feedId)
+        public function setFeedId(string $feedId)
         {
             $this->feedId = $feedId;
         }

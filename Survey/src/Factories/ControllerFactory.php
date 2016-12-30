@@ -11,6 +11,7 @@ namespace Timetabio\Survey\Factories
 {
     use Timetabio\Framework\Factories\AbstractChildFactory;
     use Timetabio\Framework\Http\Response\HtmlResponse;
+    use Timetabio\Framework\Http\Response\JsonResponse;
 
     class ControllerFactory extends AbstractChildFactory
     {
@@ -18,7 +19,7 @@ namespace Timetabio\Survey\Factories
         {
             return new \Timetabio\Framework\Controllers\GetController(
                 new \Timetabio\Survey\Models\Page\SurveyPageModel($survey),
-                $this->getMasterFactory()->createGetPagePreHandler(),
+                $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createSurveyPageQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
@@ -40,7 +41,7 @@ namespace Timetabio\Survey\Factories
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
-                new HtmlResponse
+                new JsonResponse
             );
         }
 

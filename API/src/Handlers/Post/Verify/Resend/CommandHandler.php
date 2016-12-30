@@ -30,6 +30,10 @@ namespace Timetabio\API\Handlers\Post\Verify\Resend
         {
             /** @var ResendModel $model */
 
+            if (!$model->hasToken()) {
+                return;
+            }
+
             $this->sendVerificationCommand->execute(
                 $model->getEmailPerson(),
                 $model->getToken()

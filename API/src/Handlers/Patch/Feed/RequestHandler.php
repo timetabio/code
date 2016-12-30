@@ -12,7 +12,6 @@ namespace Timetabio\API\Handlers\Patch\Feed
     use Timetabio\API\Exceptions\BadRequest;
     use Timetabio\API\Models\Feed\UpdateModel;
     use Timetabio\API\ValueObjects\FeedDescription;
-    use Timetabio\API\ValueObjects\FeedId;
     use Timetabio\API\ValueObjects\FeedName;
     use Timetabio\API\ValueObjects\FeedVanity;
     use Timetabio\API\ValueObjects\StringBoolean;
@@ -27,11 +26,6 @@ namespace Timetabio\API\Handlers\Patch\Feed
         {
             /** @var PatchRequest $request */
             /** @var UpdateModel $model */
-
-            $parts = $request->getUri()->getExplodedPath();
-            $feedId = new FeedId($parts[2]);
-
-            $model->setFeedId($feedId);
 
             if ($request->hasParam('name')) {
                 $model->addUpdate('name', $this->getName($request));

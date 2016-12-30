@@ -13,13 +13,13 @@
 
             <label is="form-field" class="form-field -margin-after" input-name="email">
                 <span class="label"><translate>Email</translate></span>
-                <input type="text" class="input basic-input" name="email" placeholder="peanut-butter@timetab.io"
+                <input type="email" required class="input basic-input" name="email" placeholder="peanut-butter@timetab.io"
                        autocomplete="email"/>
             </label>
 
             <form-error class="form-error _margin-after"></form-error>
 
-            <button type="submit" class="basic-button -full-width">
+            <button type="submit" class="basic-button -full-width" disabled>
                 <translate>Resend Verification</translate>
             </button>
         </form>

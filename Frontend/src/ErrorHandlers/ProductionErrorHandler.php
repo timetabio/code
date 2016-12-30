@@ -39,7 +39,7 @@ namespace Timetabio\Frontend\ErrorHandlers
 
             echo json_encode([
                 'error' => $exception->getMessage()
-            ]);
+            ]) . PHP_EOL;
         }
     }
 }

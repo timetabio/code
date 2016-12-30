@@ -9,8 +9,7 @@
  */
 namespace Timetabio\Frontend\Models\Page
 {
-    use Timetabio\Frontend\Models\PageModel;
-    use Timetabio\Frontend\ValueObjects\Feed;
+    use Timetabio\Frontend\Tabs\Tab;
 
     class FeedPeoplePageModel extends FeedPageModel
     {
@@ -47,6 +46,11 @@ namespace Timetabio\Frontend\Models\Page
         public function setFeedUsers(array $feedUsers)
         {
             $this->feedUsers = $feedUsers;
+        }
+
+        public function getActiveTab(): Tab
+        {
+            return new \Timetabio\Frontend\Tabs\FeedPage\People;
         }
     }
 }

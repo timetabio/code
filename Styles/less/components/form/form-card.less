@@ -1,0 +1,49 @@
+/**
+ * Copyright (c) 2016 Ruben Schmidmeister <ruben.schmidmeister@icloud.com>
+ *
+ * This program is free software. It comes without any warranty, to
+ * the extent permitted by applicable law. You can redistribute it
+ * and/or modify it under the terms of the GNU Affero General Public License,
+ * version 3, as published by the Free Software Foundation.
+ */
+
+.form-card {
+  display: flex;
+  align-items: center;
+  border-radius: @card-border-radius;
+  background-color: #fff;
+  padding: @margin-s @margin-sm;
+  font-weight: 600;
+
+  > .text {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    margin-right: @margin-xs-v;
+  }
+
+  > .text > .meta {
+    color: @brand-light-grey;
+    user-select: none;
+  }
+
+  > .text > .content {
+    flex-grow: 1;
+  }
+
+  > .button {
+    margin-right: @margin-xs-h;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: @smaller-device-width-max) {
+    & {
+      flex-wrap: wrap;
+    }
+
+    > .text {
+      width: 100%;
+      margin-bottom: @margin-xs-v;
+    }
+  }
+}
