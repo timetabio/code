@@ -80,7 +80,7 @@ for ARG in $@; do
 done
 
 print_help () {
-  echo "Usage: ${0} [OPTIONS]"
+  echo "Usage: ${0} OPTION [...OPTIONS]"
   echo ""
   echo "Options:"
   echo "--help             Show this help"
