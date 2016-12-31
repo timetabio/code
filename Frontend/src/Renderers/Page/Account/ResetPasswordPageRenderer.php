@@ -73,6 +73,12 @@ namespace Timetabio\Frontend\Renderers\Page\Account
             $input->setAttribute('autocomplete', 'new-password');
             $formField->appendChild($input);
 
+            $tokenInput = $template->createElement('input');
+            $tokenInput->setAttribute('type', 'hidden');
+            $tokenInput->setAttribute('name', 'reset-token');
+            $tokenInput->setAttribute('value', $model->getResetToken());
+            $form->appendChild($tokenInput);
+
             $error = $template->createElement('form-error');
             $error->setClassName('form-error');
             $form->appendChild($error);

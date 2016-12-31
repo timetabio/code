@@ -16,16 +16,16 @@ namespace Timetabio\Frontend\Models\Page
         /**
          * @var string
          */
-        private $token;
+        private $resetToken;
 
-        public function __construct(string $token)
+        public function __construct(string $resetToken)
         {
-            $this->token = $token;
+            $this->resetToken = $resetToken;
         }
 
-        public function getToken(): string
+        public function getResetToken(): string
         {
-            return $this->token;
+            return $this->resetToken;
         }
 
         public function getTitle(): string
