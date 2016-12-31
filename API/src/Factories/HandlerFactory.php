@@ -153,9 +153,6 @@ namespace Timetabio\API\Factories
             );
         }
 
-<<<<<<< HEAD
-        public function createUpdateUserPasswordQueryHandler(): \Timetabio\API\Handlers\Put\User\Password\QueryHandler
-=======
         public function createResetPasswordRequestHandler(): \Timetabio\API\Handlers\Post\Reset\RequestHandler
         {
             return new \Timetabio\API\Handlers\Post\Reset\RequestHandler;
@@ -195,8 +192,7 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createUpdateUserPasswordQueryHandler(): \Timetabio\API\Handlers\Put\User\QueryHandler
->>>>>>> master
+        public function createUpdateUserPasswordQueryHandler(): \Timetabio\API\Handlers\Put\User\Password\QueryHandler
         {
             return new \Timetabio\API\Handlers\Put\User\Password\QueryHandler(
                 $this->getMasterFactory()->createFetchUserPasswordQuery()
@@ -205,13 +201,8 @@ namespace Timetabio\API\Factories
 
         public function createUpdateUserPasswordCommandHandler(): \Timetabio\API\Handlers\Put\User\Password\CommandHandler
         {
-<<<<<<< HEAD
             return new \Timetabio\API\Handlers\Put\User\Password\CommandHandler(
-                $this->getMasterFactory()->createUpdateUserCommand()
-=======
-            return new \Timetabio\API\Handlers\Put\User\CommandHandler(
                 $this->getMasterFactory()->createUpdateUserPasswordCommand()
->>>>>>> master
             );
         }
 
