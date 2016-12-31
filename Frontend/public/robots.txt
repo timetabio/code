@@ -1,3 +1,3 @@
 User-agent: *
 Allow: *
-Disallow: /account/reset/*
+Disallow: /account/*
