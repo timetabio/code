@@ -20,7 +20,68 @@ namespace Timetabio\Frontend\Renderers\Page\Account
         {
             /** @var ResetPasswordPageModel $model */
 
-            var_dump($model->getToken());
+            $main = $template->getMainElement();
+
+            $header = $template->queryOne('//header[@class="page-header"]');
+            $header->parentNode->removeChild($header);
+
+            $wrapper = $template->createElement('div');
+            $wrapper->setClassName('page-wrapper -padding');
+            $main->appendChild($wrapper);
+
+            $container = $template->createElement('div');
+            $container->setClassName('flex-container -column -center-items');
+            $wrapper->appendChild($container);
+
+            $logoLink = $template->createElement('a');
+            $logoLink->setClassName('_margin-before _margin-after');
+            $logoLink->setAttribute('href', '/');
+            $container->appendChild($logoLink);
+
+            $logo = $template->createElement('img');
+            $logo->setAttribute('src', '/images/logo.svg');
+            $logo->setAttribute('width', '60px');
+            $logo->setAttribute('height', '60px');
+            $logoLink->appendChild($logo);
+
+            $title = $template->createElement('h1');
+            $title->setClassName('basic-heading-a _margin-after');
+            $title->appendText('Password Reset');
+            $container->appendChild($title);
+
+            $form = $template->createElement('form');
+            $form->setAttribute('action', '/action/reset');
+            $form->setAttribute('method', 'post');
+            $form->setAttribute('is', 'ajax-form');
+            $form->setAttribute('class', 'form-box _margin-after');
+            $container->appendChild($form);
+
+            $formField = $template->createElement('label');
+            $formField->setClassName('form-field -margin-after');
+            $form->appendChild($formField);
+
+            $label = $template->createElement('span');
+            $label->setClassName('label');
+            $label->appendText('New Password');
+            $formField->appendChild($label);
+
+            $input = $template->createElement('input');
+            $input->setClassName('input basic-input');
+            $input->setAttribute('type', 'password');
+            $input->setAttribute('name', 'password');
+            $input->setAttribute('placeholder', '•••••••••');
+            $input->setAttribute('autocomplete', 'new-password');
+            $formField->appendChild($input);
+
+            $error = $template->createElement('form-error');
+            $error->setClassName('form-error');
+            $form->appendChild($error);
+
+            $submitButton = $template->createElement('button');
+            $submitButton->setClassName('basic-button -full-width');
+            $submitButton->setAttribute('type', 'submit');
+            $submitButton->appendText('Reset Password');
+            $form->appendChild($submitButton);
         }
     }
 }
