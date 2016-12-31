@@ -7,7 +7,7 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
-namespace Timetabio\API\Handlers\Put\User
+namespace Timetabio\API\Handlers\Put\User\Password
 {
     use Timetabio\API\Exceptions\BadRequest;
     use Timetabio\API\Models\User\UpdateUserPasswordModel;
