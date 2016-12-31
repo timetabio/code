@@ -11,6 +11,7 @@ namespace Timetabio\Frontend\Models
 {
     use Timetabio\Framework\Http\Redirect\RedirectInterface;
     use Timetabio\Framework\Http\StatusCodes\StatusCodeInterface;
+    use Timetabio\Framework\ValueObjects\Uri;
     use Timetabio\Frontend\DataObjects\User;
 
     class FrontendModel extends \Timetabio\Framework\Models\AbstractModel
@@ -24,6 +25,11 @@ namespace Timetabio\Frontend\Models
          * @var RedirectInterface
          */
         private $redirect;
+
+        /**
+         * @var Uri
+         */
+        private $uri;
 
         /**
          * @var string
@@ -63,6 +69,16 @@ namespace Timetabio\Frontend\Models
         public function setRedirect(RedirectInterface $redirect)
         {
             $this->redirect = $redirect;
+        }
+
+        public function getUri(): Uri
+        {
+            return $this->uri;
+        }
+
+        public function setUri(Uri $uri)
+        {
+            $this->uri = $uri;
         }
 
         public function getCrfsToken(): string
