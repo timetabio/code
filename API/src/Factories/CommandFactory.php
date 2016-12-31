@@ -168,7 +168,8 @@ namespace Timetabio\API\Factories
         public function createCreateBetaRequestCommand(): \Timetabio\API\Commands\BetaRequest\CreateBetaRequestCommand
         {
             return new \Timetabio\API\Commands\BetaRequest\CreateBetaRequestCommand(
-                $this->getMasterFactory()->createBetaRequestService()
+                $this->getMasterFactory()->createBetaRequestService(),
+                $this->getMasterFactory()->createDataStoreWriter()
             );
         }
 

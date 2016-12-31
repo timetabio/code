@@ -72,5 +72,12 @@ namespace Timetabio\Worker\Factories
                 $this->getMasterFactory()->createPostgresBackend()
             );
         }
+
+        public function createBetaRequestService(): \Timetabio\Worker\Services\BetaRequestService
+        {
+            return new \Timetabio\Worker\Services\BetaRequestService(
+                $this->getMasterFactory()->createPostgresBackend()
+            );
+        }
     }
 }
