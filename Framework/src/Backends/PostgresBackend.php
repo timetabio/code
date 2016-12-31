@@ -47,6 +47,9 @@ namespace Timetabio\Framework\Backends
             return $stmt->fetch(\PDO::FETCH_COLUMN);
         }
 
+        /**
+         * @todo This method needs renaming
+         */
         public function fetchColumns(string $sql, array $parameters = []): \Traversable
         {
             $stmt = $this->executeStatement($sql, $parameters);

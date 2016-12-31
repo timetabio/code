@@ -10,8 +10,6 @@
 namespace Timetabio\API\Queries\Feeds
 {
     use Timetabio\API\Services\FeedService;
-    use Timetabio\API\ValueObjects\FeedId;
-    use Timetabio\API\ValueObjects\UserId;
 
     class FetchFeedQuery
     {
@@ -25,7 +23,7 @@ namespace Timetabio\API\Queries\Feeds
             $this->feedService = $feedService;
         }
 
-        public function execute(FeedId $feedId, UserId $userId = null)
+        public function execute(string $feedId, string $userId = null)
         {
             if ($userId === null) {
                 return $this->feedService->getFeedById($feedId);

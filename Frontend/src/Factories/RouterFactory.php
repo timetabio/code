@@ -93,5 +93,12 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createVerifyCommand()
             );
         }
+
+        public function createResetPasswordPageRouter(): \Timetabio\Frontend\Routers\ResetPasswordPageRouter
+        {
+            return new \Timetabio\Frontend\Routers\ResetPasswordPageRouter(
+                $this->getMasterFactory()
+            );
+        }
     }
 }

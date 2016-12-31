@@ -28,5 +28,13 @@ namespace Timetabio\Worker\Factories
                 $this->getMasterFactory()->createUriBuilder()
             );
         }
+
+        public function createPasswordResetEmail(): \Timetabio\Worker\Mails\PasswordResetMail
+        {
+            return new \Timetabio\Worker\Mails\PasswordResetMail(
+                $this->getMasterFactory()->createDomBackend()->loadXml(__DIR__ . '/../../data/mails/reset.xhtml'),
+                $this->getMasterFactory()->createUriBuilder()
+            );
+        }
     }
 }

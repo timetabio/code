@@ -55,7 +55,7 @@ namespace Timetabio\Frontend\Routers
 
         public function route(RequestInterface $request): ControllerInterface
         {
-            $parts = $request->getUri()->getExplodedPath();
+            $parts = $request->getUri()->getPathSegments();
             $count = count($parts);
 
             if ($parts[0] !== 'feed' || $count < 2) {

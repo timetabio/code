@@ -13,8 +13,3 @@ desc 'Run tests'
 task :test do
   sh 'phpunit'
 end
-
-desc 'Install dependencies'
-task :deps do
-  # install dependencies here
-end

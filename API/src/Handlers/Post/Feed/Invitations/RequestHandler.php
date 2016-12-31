@@ -13,7 +13,6 @@ namespace Timetabio\API\Handlers\Post\Feed\Invitations
     use Timetabio\Framework\Handlers\RequestHandlerInterface;
     use Timetabio\Framework\Http\Request\RequestInterface;
     use Timetabio\Framework\Models\AbstractModel;
-    use Timetabio\Library\DataObjects\FeedInvitation;
     use Timetabio\Library\Locators\UserRoleLocator;
 
     class RequestHandler implements RequestHandlerInterface
@@ -33,7 +32,7 @@ namespace Timetabio\API\Handlers\Post\Feed\Invitations
             /** @var \Timetabio\Framework\Http\Request\PostRequest $request */
             /** @var \Timetabio\API\Models\Feed\Invitation\CreateModel $model */
 
-            $parts = $request->getUri()->getExplodedPath();
+            $parts = $request->getUri()->getPathSegments();
 
             if (!$request->hasParam('username')) {
                 throw new BadRequest('required parameter \'username\' is missing', 'parameter_missing');

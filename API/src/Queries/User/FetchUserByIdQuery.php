@@ -10,7 +10,6 @@
 namespace Timetabio\API\Queries\User
 {
     use Timetabio\API\Services\UserService;
-    use Timetabio\API\ValueObjects\UserId;
 
     class FetchUserByIdQuery
     {

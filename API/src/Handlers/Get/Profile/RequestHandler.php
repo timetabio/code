@@ -22,7 +22,7 @@ namespace Timetabio\API\Handlers\Get\Profile
         {
             /** @var ProfileModel $model */
 
-            $path = $request->getUri()->getExplodedPath();
+            $path = $request->getUri()->getPathSegments();
 
             try {
                 $username = new Username($path[2]);

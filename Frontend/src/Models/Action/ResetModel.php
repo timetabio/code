@@ -11,36 +11,36 @@ namespace Timetabio\Frontend\Models\Action
 {
     use Timetabio\Frontend\Models\ActionModel;
 
-    class DeletePostModel extends ActionModel
+    class ResetModel extends ActionModel
     {
         /**
          * @var string
          */
-        private $postId;
+        private $resetToken;
 
         /**
          * @var string
          */
-        private $feedId;
+        private $password;
 
-        public function getPostId(): string
+        public function getResetToken(): string
         {
-            return $this->postId;
+            return $this->resetToken;
         }
 
-        public function setPostId(string $postId)
+        public function setResetToken(string $resetToken)
         {
-            $this->postId = $postId;
+            $this->resetToken = $resetToken;
         }
 
-        public function getFeedId(): string
+        public function getPassword(): string
         {
-            return $this->feedId;
+            return $this->password;
         }
 
-        public function setFeedId(string $feedId)
+        public function setPassword(string $password)
         {
-            $this->feedId = $feedId;
+            $this->password = $password;
         }
     }
 }

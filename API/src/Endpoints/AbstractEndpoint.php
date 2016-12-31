@@ -46,7 +46,7 @@ namespace Timetabio\API\Endpoints
                 return $this->getEndpoint() === $uri->getPath();
             }
 
-            $explodedPath = $uri->getExplodedPath();
+            $explodedPath = $uri->getPathSegments();
             $explodedEndpointPath = explode('/', ltrim($this->getEndpoint(), '/'));
 
             if (count($explodedPath) !== count($explodedEndpointPath)) {
@@ -66,6 +66,9 @@ namespace Timetabio\API\Endpoints
             return true;
         }
 
+        /**
+         * @return \Timetabio\API\Factories\FactoryTypeHint
+         */
         protected function getFactory(): MasterFactoryInterface
         {
             return $this->factory;

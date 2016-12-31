@@ -61,6 +61,10 @@ namespace Timetabio\Worker\Locators
                     return $this->factory->createIndexFeedRunner();
                 case Tasks\IndexUsersTask::class:
                     return $this->factory->createIndexUsersRunner();
+                case Tasks\SendPasswordResetEmailTask::class:
+                    return $this->factory->createSendResetPasswordEmailRunner();
+                case Tasks\DeleteArchivedPostsTask::class:
+                    return $this->factory->createDeleteArchivedPostsRunner();
             }
 
             throw new \RuntimeException('no runner found for task ' . $class);

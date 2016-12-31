@@ -10,6 +10,7 @@
 namespace Timetabio\API\DataStore
 {
     use Timetabio\API\ValueObjects\AccessToken;
+    use Timetabio\Framework\ValueObjects\Token;
     use Timetabio\Library\DataStore\AbstractDataStoreWriter;
 
     class DataStoreWriter extends AbstractDataStoreWriter
@@ -34,6 +35,19 @@ namespace Timetabio\API\DataStore
         public function removeAccessToken(AccessToken $token)
         {
             $this->getDataStore()->remove('access_token_' . $token->getToken());
+        }
+
+        public function saveResetToken(string $userId, Token $token)
+        {
+            $key = 'reset_token:' . $token;
+
+            $this->getDataStore()->set($key, $userId);
+            $this->getDataStore()->setTimeout($key, 7200);
+        }
+
+        public function removeResetToken(string $token)
+        {
+            $this->getDataStore()->remove('reset_token:' . $token);
         }
 
         /**
@@ -106,30 +120,6 @@ namespace Timetabio\API\DataStore
         public function setPostText(string $postId, string $body)
         {
             $this->getDataStore()->set('post_text:' . $postId, $body);
-        }
-
-        /**
-         * @deprecated
-         */
-        public function removePostBody(string $postId)
-        {
-            $this->getDataStore()->remove('post_body:' . $postId);
-        }
-
-        /**
-         * @deprecated
-         */
-        public function removePostPreview(string $postId)
-        {
-            $this->getDataStore()->remove('post_preview:' . $postId);
-        }
-
-        /**
-         * @deprecated
-         */
-        public function removePostText(string $postId)
-        {
-            $this->getDataStore()->remove('post_text:' . $postId);
         }
 
         /**

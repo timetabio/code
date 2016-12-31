@@ -58,7 +58,7 @@ namespace Timetabio\API\Services
 
         public function getPostInfo(string $postId)
         {
-            return $this->databaseBackend->fetch('SELECT id, feed_id, author_id FROM posts WHERE id = :id', [
+            return $this->databaseBackend->fetch('SELECT id, feed_id, author_id, archived FROM posts WHERE id = :id', [
                 'id' => $postId
             ]);
         }
@@ -179,6 +179,29 @@ namespace Timetabio\API\Services
                  WHERE post_attachments.post_id = :post_id',
                 [
                     'post_id' => $postId
+                ]
+            );
+        }
+
+        public function archivePost(string $postId): string
+        {
+            return $this->databaseBackend->fetchColumn(
+                'UPDATE posts SET archived = utc_now()
+                 WHERE id = :id
+                 RETURNING archived',
+                [
+                    'id' => $postId
+                ]
+            );
+        }
+
+        public function restorePost(string $postId): void
+        {
+            $this->databaseBackend->execute(
+                'UPDATE posts SET archived = NULL
+                 WHERE id = :id',
+                [
+                    'id' => $postId
                 ]
             );
         }

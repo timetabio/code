@@ -13,8 +13,16 @@ set -e
 
 fold_start "Dependencies"
 log "Downloading Dependencies"
-docker pull docker.ttio.cloud:5000/library/php
-docker pull docker.ttio.cloud:5000/library/fpm
+IMAGES=$(docker images --format '{{.Repository}}')
+
+if [ -z "$(echo ${IMAGES} | grep "docker.ttio.cloud:5000/library/php")" ]; then
+  docker pull docker.ttio.cloud:5000/library/php
+fi
+
+if [ -z "$(echo ${IMAGES} | grep "docker.ttio.cloud:5000/library/fpm")" ]; then
+  docker pull docker.ttio.cloud:5000/library/fpm
+fi
+
 fold_end "Dependencies"
 
 fold_start "Worker"

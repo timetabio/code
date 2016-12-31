@@ -33,7 +33,9 @@ namespace Timetabio\API\Endpoints\Posts
 
         protected function doHandle(RequestInterface $request): ControllerInterface
         {
-            return $this->getFactory()->createGetFeedPostsController();
+            return $this->getFactory()->createGetFeedPostsController(
+                $request->getUri()->getPathSegment(2)
+            );
         }
     }
 }

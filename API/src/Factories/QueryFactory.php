@@ -13,6 +13,8 @@ namespace Timetabio\API\Factories
 
     class QueryFactory extends AbstractChildFactory
     {
+        use FactoryTypeHintTrait;
+
         public function createFetchUserByEmailQuery(): \Timetabio\API\Queries\User\FetchUserByEmailQuery
         {
             return new \Timetabio\API\Queries\User\FetchUserByEmailQuery(

@@ -141,5 +141,22 @@ namespace Timetabio\Worker\Factories
                 $this->getMasterFactory()->createDataStoreWriter()
             );
         }
+
+        public function createSendResetPasswordEmailRunner(): \Timetabio\Worker\Runners\SendPasswordResetEmailRunner
+        {
+            return new \Timetabio\Worker\Runners\SendPasswordResetEmailRunner(
+                $this->getMasterFactory()->createUserService(),
+                $this->getMasterFactory()->createMailgunBackend(),
+                $this->getMasterFactory()->createPasswordResetEmail()
+            );
+        }
+
+        public function createDeleteArchivedPostsRunner(): \Timetabio\Worker\Runners\DeleteArchivedPostsRunner
+        {
+            return new \Timetabio\Worker\Runners\DeleteArchivedPostsRunner(
+                $this->getMasterFactory()->createPostService(),
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
     }
 }

@@ -52,7 +52,7 @@ namespace Timetabio\API\Handlers\Post\Posts
 
             $model->setPostType($this->getPostType($request));
 
-            $parts = $request->getUri()->getExplodedPath();
+            $parts = $request->getUri()->getPathSegments();
             $model->setFeedId($parts[2]);
 
             $model->setPostTitle($this->getPostTitle($request));

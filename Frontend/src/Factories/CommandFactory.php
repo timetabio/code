@@ -52,6 +52,13 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createBeginResetCommand(): \Timetabio\Frontend\Commands\BeginResetCommand
+        {
+            return new \Timetabio\Frontend\Commands\BeginResetCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
+
         public function createLogoutCommand(): \Timetabio\Frontend\Commands\LogoutCommand
         {
             return new \Timetabio\Frontend\Commands\LogoutCommand(
@@ -91,6 +98,13 @@ namespace Timetabio\Frontend\Factories
         public function createDeletePostCommand(): \Timetabio\Frontend\Commands\DeletePostCommand
         {
             return new \Timetabio\Frontend\Commands\DeletePostCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
+
+        public function createRestorePostCommand(): \Timetabio\Frontend\Commands\RestorePostCommand
+        {
+            return new \Timetabio\Frontend\Commands\RestorePostCommand(
                 $this->getMasterFactory()->createApiGateway()
             );
         }
@@ -154,6 +168,13 @@ namespace Timetabio\Frontend\Factories
         public function createUpdateFeedVanityCommand(): Commands\Feed\UpdateFeedVanityCommand
         {
             return new Commands\Feed\UpdateFeedVanityCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
+
+        public function createResetCommand(): Commands\ResetCommand
+        {
+            return new Commands\ResetCommand(
                 $this->getMasterFactory()->createApiGateway()
             );
         }

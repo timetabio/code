@@ -20,7 +20,7 @@ namespace Timetabio\Frontend\Handlers\Get\FeedPostsFragment
         {
             /** @var FeedPostsFragmentModel $model */
 
-            $parts = $request->getUri()->getExplodedPath();
+            $parts = $request->getUri()->getPathSegments();
 
             $model->setFeedId($parts[2]);
 

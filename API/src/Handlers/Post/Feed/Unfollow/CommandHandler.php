@@ -10,7 +10,6 @@
 namespace Timetabio\API\Handlers\Post\Feed\Unfollow
 {
     use Timetabio\API\Commands\Feeds\UnfollowFeedCommand;
-    use Timetabio\API\Exceptions\BadRequest;
     use Timetabio\API\Models\Feed\FollowModel;
     use Timetabio\Framework\Handlers\CommandHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;

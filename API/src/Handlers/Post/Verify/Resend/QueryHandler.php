@@ -9,7 +9,6 @@
  */
 namespace Timetabio\API\Handlers\Post\Verify\Resend
 {
-    use Timetabio\API\Exceptions\BadRequest;
     use Timetabio\API\Models\Verify\ResendModel;
     use Timetabio\API\Queries\User\FetchVerificationTokenByEmailQuery;
     use Timetabio\Framework\Handlers\QueryHandlerInterface;

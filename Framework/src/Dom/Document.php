@@ -75,10 +75,7 @@ namespace Timetabio\Framework\Dom
             return $this->getXpath()->query($query, $targetNode);
         }
 
-        /**
-         * @return Node|null
-         */
-        public function queryOne(string $query, \DOMNode $targetNode = null)
+        public function queryOne(string $query, \DOMNode $targetNode = null): ?Element
         {
             return $this->query($query, $targetNode)->item(0);
         }

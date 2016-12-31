@@ -10,7 +10,7 @@
 namespace Timetabio\Frontend\Renderers\Page
 {
     use Timetabio\Framework\Dom\{
-        Document, Element
+        Document
     };
     use Timetabio\Framework\Translation\TranslatorAwareInterface;
     use Timetabio\Framework\Translation\TranslatorAwareTrait;

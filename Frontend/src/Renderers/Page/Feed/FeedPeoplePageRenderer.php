@@ -15,11 +15,7 @@ namespace Timetabio\Frontend\Renderers\Page\Feed
     use Timetabio\Frontend\Models\Page\FeedPeoplePageModel;
     use Timetabio\Frontend\Models\PageModel;
     use Timetabio\Frontend\Renderers\Page\PageRendererInterface;
-    use Timetabio\Frontend\Renderers\Snippet\FeedButtonsSnippet;
-    use Timetabio\Frontend\Renderers\Snippet\FeedHeaderSnippet;
-    use Timetabio\Frontend\Renderers\Snippet\FeedInvitationBannerSnippet;
     use Timetabio\Frontend\Renderers\Snippet\FeedInvitationCardSnippet;
-    use Timetabio\Frontend\Renderers\Snippet\FeedNavigationSnippet;
     use Timetabio\Frontend\Renderers\Snippet\FeedUserCardSnippet;
     use Timetabio\Frontend\Renderers\Snippet\IconButtonSnippet;
     use Timetabio\Frontend\Renderers\Snippet\UserRolesOptionsSnippet;

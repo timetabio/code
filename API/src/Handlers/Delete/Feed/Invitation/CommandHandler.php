@@ -10,7 +10,7 @@
 namespace Timetabio\API\Handlers\Delete\Feed\Invitation
 {
     use Timetabio\API\Commands\Feed\DeleteInvitationCommand;
-    use Timetabio\API\Models\Feed\Invitation\UpdateModel;
+    use Timetabio\API\Models\Feed\User\UpdateModel;
     use Timetabio\Framework\Handlers\CommandHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;
 

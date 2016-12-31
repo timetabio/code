@@ -33,8 +33,7 @@ namespace Timetabio\Frontend\Commands
 
         public function execute(string $user, string $password)
         {
-            $response = $this->apiGateway->authenticate($user, $password);
-            $authData = $response->unwrap();
+            $authData = $this->apiGateway->authenticate($user, $password)->unwrap();
 
             $this->session->setAccessToken($authData['access_token']);
 
@@ -45,6 +44,8 @@ namespace Timetabio\Frontend\Commands
                 $userInfo['username'],
                 $userInfo['name']
             ));
+
+            $this->session->renewSessionId();
         }
     }
 }

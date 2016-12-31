@@ -20,6 +20,8 @@ namespace Timetabio\API\Factories
 
     class ControllerFactory extends AbstractChildFactory
     {
+        use FactoryTypeHintTrait;
+
         public function createGetIndexController(): GetController
         {
             return new GetController(
@@ -65,12 +67,12 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createGetFeedController(): GetController
+        public function createGetFeedController(string $feedId): GetController
         {
             return new GetController(
-                new \Timetabio\API\Models\Feed\FeedModel,
+                new \Timetabio\API\Models\Feed\FeedModel($feedId),
                 $this->getMasterFactory()->createPreHandler(),
-                $this->getMasterFactory()->createGetFeedRequestHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createGetFeedQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
@@ -125,10 +127,10 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createUpdateFeedController(): PatchController
+        public function createUpdateFeedController(string $feedId): PatchController
         {
             return new PatchController(
-                new \Timetabio\API\Models\Feed\UpdateModel,
+                new \Timetabio\API\Models\Feed\UpdateModel($feedId),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createUpdateFeedRequestHandler(),
                 $this->getMasterFactory()->createUpdateFeedQueryHandler(),
@@ -163,6 +165,36 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()->createUpdateUserPasswordRequestHandler(),
                 $this->getMasterFactory()->createUpdateUserPasswordQueryHandler(),
                 $this->getMasterFactory()->createUpdateUserPasswordCommandHandler(),
+                $this->getMasterFactory()->createTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
+        public function createResetPasswordController(): PostController
+        {
+            return new PostController(
+                new \Timetabio\API\Models\ResetPasswordModel,
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createResetPasswordRequestHandler(),
+                $this->getMasterFactory()->createResetPasswordQueryHandler(),
+                $this->getMasterFactory()->createResetPasswordCommandHandler(),
+                $this->getMasterFactory()->createTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
+        public function createForgotPasswordController(): PostController
+        {
+            return new PostController(
+                new \Timetabio\API\Models\ForgotPasswordModel,
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createForgotPasswordRequestHandler(),
+                $this->getMasterFactory()->createForgotPasswordQueryHandler(),
+                $this->getMasterFactory()->createForgotPasswordCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
@@ -350,12 +382,12 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createDeleteFeedPersonController(): DeleteController
+        public function createDeleteFeedPersonController(string $feedId, string $userId): DeleteController
         {
             return new DeleteController(
-                new \Timetabio\API\Models\Feed\People\DeleteModel,
+                new \Timetabio\API\Models\Feed\People\DeleteModel($feedId, $userId),
                 $this->getMasterFactory()->createPreHandler(),
-                $this->getMasterFactory()->createDeleteFeedPeopleRequestHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createDeleteFeedPeopleQueryHandler(),
                 $this->getMasterFactory()->createDeleteFeedPeopleCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
@@ -395,12 +427,12 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createGetFeedPostsController(): GetController
+        public function createGetFeedPostsController(string $feedId): GetController
         {
             return new GetController(
-                new \Timetabio\API\Models\Feed\Posts\ListModel,
+                new \Timetabio\API\Models\Feed\Posts\ListModel($feedId),
                 $this->getMasterFactory()->createPreHandler(),
-                $this->getMasterFactory()->createGetFeedPostsRequestHandler(),
+                $this->getMasterFactory()->createListRequestHandler(),
                 $this->getMasterFactory()->createGetFeedPostsQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
@@ -410,12 +442,12 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createGetPostController(): GetController
+        public function createGetPostController(string $postId): GetController
         {
             return new GetController(
-                new \Timetabio\API\Models\Post\PostModel,
+                new \Timetabio\API\Models\Post\PostModel($postId),
                 $this->getMasterFactory()->createPreHandler(),
-                $this->getMasterFactory()->createGetPostRequestHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createGetPostQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
@@ -455,12 +487,12 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createDeletePostController(): DeleteController
+        public function createDeletePostController(string $postId): DeleteController
         {
             return new DeleteController(
-                new \Timetabio\API\Models\Post\PostModel,
+                new \Timetabio\API\Models\Post\PostModel($postId),
                 $this->getMasterFactory()->createPreHandler(),
-                $this->getMasterFactory()->createDeletePostRequestHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createDeletePostQueryHandler(),
                 $this->getMasterFactory()->createDeletePostCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
@@ -530,12 +562,12 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createGetFeedInvitationsController(): GetController
+        public function createGetFeedInvitationsController(string $feedId): GetController
         {
             return new GetController(
-                new \Timetabio\API\Models\Feed\FeedModel,
+                new \Timetabio\API\Models\Feed\FeedModel($feedId),
                 $this->getMasterFactory()->createPreHandler(),
-                $this->getMasterFactory()->createGetFeedRequestHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createGetFeedInvitationsQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
@@ -545,10 +577,10 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createUpdateFeedInvitationController(): PatchController
+        public function createUpdateFeedInvitationController(string $feedId, string $userId): PatchController
         {
             return new PatchController(
-                new \Timetabio\API\Models\Feed\Invitation\UpdateModel,
+                new \Timetabio\API\Models\Feed\User\UpdateModel($feedId, $userId),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createUpdateFeedInvitationRequestHandler(),
                 $this->getMasterFactory()->createUpdateFeedInvitationQueryHandler(),
@@ -560,12 +592,12 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createDeleteFeedInvitationController(): DeleteController
+        public function createDeleteFeedInvitationController(string $feedId, string $userId): DeleteController
         {
             return new DeleteController(
-                new \Timetabio\API\Models\Feed\Invitation\DeleteModel,
+                new \Timetabio\API\Models\Feed\Invitation\DeleteModel($feedId, $userId),
                 $this->getMasterFactory()->createPreHandler(),
-                $this->getMasterFactory()->createDeleteFeedInvitationRequestHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createDeleteFeedInvitationQueryHandler(),
                 $this->getMasterFactory()->createDeleteFeedInvitationCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
@@ -575,10 +607,10 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createUpdateFeedUserController(): PatchController
+        public function createUpdateFeedUserController(string $feedId, string $userId): PatchController
         {
             return new PatchController(
-                new \Timetabio\API\Models\Feed\User\UpdateModel,
+                new \Timetabio\API\Models\Feed\User\UpdateModel($feedId, $userId),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createUpdateFeedUserRequestHandler(),
                 $this->getMasterFactory()->createUpdateFeedUserQueryHandler(),
@@ -613,6 +645,36 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()->createListRequestHandler(),
                 $this->getMasterFactory()->createGetUserFeedQueryHandler(),
                 $this->getMasterFactory()->createCommandHandler(),
+                $this->getMasterFactory()->createTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
+        public function createArchivePostController(string $postId): PostController
+        {
+            return new PostController(
+                new \Timetabio\API\Models\Post\ArchiveModel($postId),
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
+                $this->getMasterFactory()->createArchivePostQueryHandler(),
+                $this->getMasterFactory()->createArchivePostCommandHandler(),
+                $this->getMasterFactory()->createTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
+        public function createRestorePostController(string $postId): PostController
+        {
+            return new PostController(
+                new \Timetabio\API\Models\Post\ArchiveModel($postId),
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
+                $this->getMasterFactory()->createArchivePostQueryHandler(),
+                $this->getMasterFactory()->createRestorePostCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),

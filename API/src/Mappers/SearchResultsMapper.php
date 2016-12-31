@@ -17,6 +17,7 @@ namespace Timetabio\API\Mappers
 
             $mapped = [
                 'type' => $result['_type'],
+                'score' => $result['_score'],
                 'data' => $result['_source']
             ];
 

@@ -18,14 +18,16 @@ namespace Timetabio\API\Models\Feed\Invitation
          */
         private $userId;
 
+        public function __construct(string $feedId, string $userId)
+        {
+            parent::__construct($feedId);
+
+            $this->userId = $userId;
+        }
+
         public function getUserId(): string
         {
             return $this->userId;
-        }
-
-        public function setUserId(string $userId)
-        {
-            $this->userId = $userId;
         }
     }
 }

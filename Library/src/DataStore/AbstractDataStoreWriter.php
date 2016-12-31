@@ -84,5 +84,29 @@ namespace Timetabio\Library\DataStore
         {
             $this->getDataStore()->set('user_feeds:' . $userId, serialize($feeds));
         }
+
+        /**
+         * @deprecated
+         */
+        public function removePostBody(string $postId)
+        {
+            $this->getDataStore()->remove('post_body:' . $postId);
+        }
+
+        /**
+         * @deprecated
+         */
+        public function removePostPreview(string $postId)
+        {
+            $this->getDataStore()->remove('post_preview:' . $postId);
+        }
+
+        /**
+         * @deprecated
+         */
+        public function removePostText(string $postId)
+        {
+            $this->getDataStore()->remove('post_text:' . $postId);
+        }
     }
 }

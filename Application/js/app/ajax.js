@@ -8,13 +8,18 @@
  */
 
 import { createToastMessage } from '../dom/toast'
+import { sessionStorage, StorageKey } from '../dom/storage'
+
+/**
+ * @typedef {{ message: string, ttl?: number, reload: boolean, action?: { icon?: string, label: string, uri: string, data: {} } }} JsonToast
+ */
 
 /**
  *
  * @returns {Promise}
  */
 export function handleAjaxError () {
-  return createToastMessage('Oops. Something went wrong. Please retry a little later.', { ttl: 4000 })
+  return createToastMessage({ message: 'Oops. Something went wrong. Please retry a little later.', ttl: 4000 })
     .show()
 }
 
@@ -55,7 +60,7 @@ function handleError (error, errorFn) {
     return null
   }
 
-  return createToastMessage(error, { ttl: 4000, error: true })
+  return createToastMessage({ message: error, ttl: 4000 })
     .show()
 }
 
@@ -69,12 +74,29 @@ function handleRedirect (value) {
 
 /**
  *
- * @param {{message: string, ttl?: number}} toast
+ * @param {JsonToast} toast
  * @returns {Promise}
  */
 function handleToast (toast) {
-  return createToastMessage(toast.message, { ttl: toast.ttl })
+  if (toast.reload) {
+    return handleReloadToast(toast)
+  }
+
+  return createToastMessage(toast)
     .show()
+}
+
+/**
+ *
+ * @param {JsonToast} toast
+ * @returns {Promise}
+ */
+function handleReloadToast (toast) {
+  sessionStorage.set(StorageKey.Toast, toast)
+
+  handleReload()
+
+  return Promise.resolve()
 }
 
 function handleReload () {

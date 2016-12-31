@@ -42,6 +42,11 @@ namespace Timetabio\Frontend\Factories
             return new \Timetabio\Frontend\Transformations\CanonicalUriTransformation;
         }
 
+        public function createNextUriTransformation(): \Timetabio\Frontend\Transformations\NextUriTransformation
+        {
+            return new \Timetabio\Frontend\Transformations\NextUriTransformation;
+        }
+
         public function createTrackingTransformation(): \Timetabio\Frontend\Transformations\TrackingTransformation
         {
             return new \Timetabio\Frontend\Transformations\TrackingTransformation(
@@ -56,7 +61,8 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createCsrfTokenTransformation(),
                 $this->getMasterFactory()->createUserDropdownTransformation(),
                 $this->getMasterFactory()->createTranslateTransformation(),
-                $this->getMasterFactory()->createCanonicalUriTransformation()
+                $this->getMasterFactory()->createCanonicalUriTransformation(),
+                $this->getMasterFactory()->createNextUriTransformation()
             ];
 
             if (!$this->getMasterFactory()->getConfiguration()->isDevelopmentMode()) {
