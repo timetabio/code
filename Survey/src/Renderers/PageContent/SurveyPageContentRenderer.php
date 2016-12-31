@@ -98,7 +98,7 @@ namespace Timetabio\Survey\Renderers\PageContent
             $form->appendChild($betaRequest);
 
             $submitButton = $template->createElement('button');
-            $submitButton->setClassName('basic-button');
+            $submitButton->setClassName('basic-button -full-width');
             $submitButton->setAttribute('type', 'submit');
             $submitButton->setAttribute('disabled', '');
             $submitButton->appendText('Submit');
