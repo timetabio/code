@@ -468,5 +468,12 @@ namespace Timetabio\Frontend\Factories
         {
             return new \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\RequestHandler;
         }
+
+        public function createResetPasswordPageTransformationHandler(): \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler(
+                $this->getMasterFactory()->createResetPasswordPageRenderer()
+            );
+        }
     }
 }
