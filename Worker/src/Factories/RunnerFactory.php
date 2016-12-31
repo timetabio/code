@@ -142,6 +142,15 @@ namespace Timetabio\Worker\Factories
             );
         }
 
+        public function createSendResetPasswordEmailRunner(): \Timetabio\Worker\Runners\SendPasswordResetEmailRunner
+        {
+            return new \Timetabio\Worker\Runners\SendPasswordResetEmailRunner(
+                $this->getMasterFactory()->createUserService(),
+                $this->getMasterFactory()->createMailgunBackend(),
+                $this->getMasterFactory()->createPasswordResetEmail()
+            );
+        }
+
         public function createDeleteArchivedPostsRunner(): \Timetabio\Worker\Runners\DeleteArchivedPostsRunner
         {
             return new \Timetabio\Worker\Runners\DeleteArchivedPostsRunner(

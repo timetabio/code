@@ -161,6 +161,20 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createResetPasswordPageRenderer(): \Timetabio\Frontend\Renderers\Renderer
+        {
+            return new \Timetabio\Frontend\Renderers\PageRenderer(
+                $this->getTemplate(),
+                $this->getMasterFactory()->createResetPasswordPageContentRenderer(),
+                $this->getMasterFactory()->createTransformer()
+            );
+        }
+
+        public function createResetPasswordPageContentRenderer(): \Timetabio\Frontend\Renderers\Page\Account\ResetPasswordPageRenderer
+        {
+            return new \Timetabio\Frontend\Renderers\Page\Account\ResetPasswordPageRenderer;
+        }
+
         public function createFeedPeoplePageRenderer(): \Timetabio\Frontend\Renderers\Renderer
         {
             return new \Timetabio\Frontend\Renderers\FeedPageRenderer(

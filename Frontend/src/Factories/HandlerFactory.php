@@ -112,6 +112,18 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createBeginResetRequestHandler(): \Timetabio\Frontend\Handlers\Post\BeginReset\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\BeginReset\RequestHandler;
+        }
+
+        public function createBeginResetCommandHandler(): \Timetabio\Frontend\Handlers\Post\BeginReset\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\BeginReset\CommandHandler(
+                $this->getMasterFactory()->createBeginResetCommand()
+            );
+        }
+
         public function createLoginCommandHandler(): \Timetabio\Frontend\Handlers\Post\Login\CommandHandler
         {
             return new \Timetabio\Frontend\Handlers\Post\Login\CommandHandler(
@@ -455,6 +467,25 @@ namespace Timetabio\Frontend\Factories
         public function createUpdateFeedVanityRequestHandler(): \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\RequestHandler
         {
             return new \Timetabio\Frontend\Handlers\Post\UpdateFeedVanity\RequestHandler;
+        }
+
+        public function createResetPasswordPageTransformationHandler(): \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler(
+                $this->getMasterFactory()->createResetPasswordPageRenderer()
+            );
+        }
+
+        public function createResetRequestHandler(): \Timetabio\Frontend\Handlers\Post\Reset\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\Reset\RequestHandler;
+        }
+
+        public function createResetCommandHandler(): \Timetabio\Frontend\Handlers\Post\Reset\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\Reset\CommandHandler(
+                $this->getMasterFactory()->createResetCommand()
+            );
         }
     }
 }

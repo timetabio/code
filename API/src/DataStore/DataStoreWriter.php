@@ -10,6 +10,7 @@
 namespace Timetabio\API\DataStore
 {
     use Timetabio\API\ValueObjects\AccessToken;
+    use Timetabio\Framework\ValueObjects\Token;
     use Timetabio\Library\DataStore\AbstractDataStoreWriter;
 
     class DataStoreWriter extends AbstractDataStoreWriter
@@ -34,6 +35,19 @@ namespace Timetabio\API\DataStore
         public function removeAccessToken(AccessToken $token)
         {
             $this->getDataStore()->remove('access_token_' . $token->getToken());
+        }
+
+        public function saveResetToken(string $userId, Token $token)
+        {
+            $key = 'reset_token:' . $token;
+
+            $this->getDataStore()->set($key, $userId);
+            $this->getDataStore()->setTimeout($key, 7200);
+        }
+
+        public function removeResetToken(string $token)
+        {
+            $this->getDataStore()->remove('reset_token:' . $token);
         }
 
         /**

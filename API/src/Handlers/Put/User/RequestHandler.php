@@ -1,4 +1,12 @@
 <?php
+/**
+ * Copyright (c) 2016 Manuel Lopez <manuel.lopez@stud.bbbaden.ch>
+ *
+ * This program is free software. It comes without any warranty, to
+ * the extent permitted by applicable law. You can redistribute it
+ * and/or modify it under the terms of the GNU Affero General Public License,
+ * version 3, as published by the Free Software Foundation.
+ */
 namespace Timetabio\API\Handlers\Put\User
 {
     use Timetabio\API\Exceptions\BadRequest;
@@ -26,8 +34,8 @@ namespace Timetabio\API\Handlers\Put\User
 
             try {
                 $password = new Password($request->getParam('password'));
-            } catch(\Exception $exception) {
-                throw new BadRequest('password must be between 8 and 72 characters', 'invalid_password');
+            } catch (\Exception $exception) {
+                throw new BadRequest($exception->getMessage(), 'invalid_password');
             }
 
             $model->setOldPassword($request->getParam('old_password'));

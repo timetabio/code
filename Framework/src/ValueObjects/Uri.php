@@ -67,14 +67,14 @@ namespace Timetabio\Framework\ValueObjects
             return $this->path;
         }
 
-        public function getExplodedPath(): array
+        public function getPathSegments(): array
         {
-            return array_slice(explode('/', $this->path), 1);
+            return explode('/', ltrim($this->path, '/'));
         }
 
-        public function getPathSegment(int $index): string
+        public function getPathSegment(int $index): ?string
         {
-            return $this->getExplodedPath()[$index];
+            return $this->getPathSegments()[$index];
         }
 
         public function getQueryParam(string $parameter)

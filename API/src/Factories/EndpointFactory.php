@@ -62,6 +62,20 @@ namespace Timetabio\API\Factories
             );
         }
 
+        public function createResetPasswordEndpoint(): \Timetabio\API\Endpoints\ResetPasswordEndpoint
+        {
+            return new \Timetabio\API\Endpoints\ResetPasswordEndpoint(
+                $this->getMasterFactory()
+            );
+        }
+
+        public function createForgotPasswordEndpoint(): \Timetabio\API\Endpoints\ForgotPasswordEndpoint
+        {
+            return new \Timetabio\API\Endpoints\ForgotPasswordEndpoint(
+                $this->getMasterFactory()
+            );
+        }
+
         public function createGetProfileEndpoint(): \Timetabio\API\Endpoints\Profiles\GetProfileEndpoint
         {
             return new \Timetabio\API\Endpoints\Profiles\GetProfileEndpoint(

@@ -31,7 +31,7 @@ namespace Timetabio\Frontend\Handlers\Post\Login
         {
             /** @var LoginModel $model */
 
-            $data = ['redirect' => '/'];
+            $data = ['redirect' => $model->getNextUri()];
 
             try {
                 $this->loginCommand->execute($model->getLoginUser(), $model->getPassword());

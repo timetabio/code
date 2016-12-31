@@ -202,6 +202,13 @@ namespace Timetabio\API\Factories
             );
         }
 
+        public function createUpdateUserPasswordCommand(): \Timetabio\API\Commands\User\UpdateUserPasswordCommand
+        {
+            return new \Timetabio\API\Commands\User\UpdateUserPasswordCommand(
+                $this->getMasterFactory()->createUserService()
+            );
+        }
+
         public function createArchivePostCommand(): \Timetabio\API\Commands\Posts\ArchivePostCommand
         {
             return new \Timetabio\API\Commands\Posts\ArchivePostCommand(

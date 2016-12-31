@@ -32,7 +32,7 @@ namespace Timetabio\API\Handlers\Post\Feed\Invitations
             /** @var \Timetabio\Framework\Http\Request\PostRequest $request */
             /** @var \Timetabio\API\Models\Feed\Invitation\CreateModel $model */
 
-            $parts = $request->getUri()->getExplodedPath();
+            $parts = $request->getUri()->getPathSegments();
 
             if (!$request->hasParam('username')) {
                 throw new BadRequest('required parameter \'username\' is missing', 'parameter_missing');

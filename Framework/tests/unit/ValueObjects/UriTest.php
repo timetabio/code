@@ -24,7 +24,9 @@ namespace Timetabio\Framework\ValueObjects
             $this->assertEquals(42, $uri->getQueryParam('answer'));
             $this->assertTrue($uri->hasQueryParam('answer'));
             $this->assertFalse($uri->hasQueryParam('foo'));
-            $this->assertEquals(['foo', 'bar'], $uri->getExplodedPath());
+            $this->assertEquals(['foo', 'bar'], $uri->getPathSegments());
+            $this->assertEquals('foo', $uri->getPathSegment(0));
+            $this->assertEquals('bar', $uri->getPathSegment(1));
         }
 
         /**

@@ -36,7 +36,7 @@ namespace Timetabio\Frontend\Routers
 
         public function route(RequestInterface $request): ControllerInterface
         {
-            $parts = $request->getUri()->getExplodedPath();
+            $parts = $request->getUri()->getPathSegments();
             $count = count($parts);
 
             if ($count !== 2 || $parts[0] !== 'post') {

@@ -20,7 +20,7 @@ namespace Timetabio\API\Handlers\Get\Feed\People
         {
             /** @var ListModel $model */
 
-            $parts = $request->getUri()->getExplodedPath();
+            $parts = $request->getUri()->getPathSegments();
 
             $model->setFeedId($parts[2]);
         }

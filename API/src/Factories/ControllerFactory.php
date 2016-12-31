@@ -172,6 +172,36 @@ namespace Timetabio\API\Factories
             );
         }
 
+        public function createResetPasswordController(): PostController
+        {
+            return new PostController(
+                new \Timetabio\API\Models\ResetPasswordModel,
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createResetPasswordRequestHandler(),
+                $this->getMasterFactory()->createResetPasswordQueryHandler(),
+                $this->getMasterFactory()->createResetPasswordCommandHandler(),
+                $this->getMasterFactory()->createTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
+        public function createForgotPasswordController(): PostController
+        {
+            return new PostController(
+                new \Timetabio\API\Models\ForgotPasswordModel,
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createForgotPasswordRequestHandler(),
+                $this->getMasterFactory()->createForgotPasswordQueryHandler(),
+                $this->getMasterFactory()->createForgotPasswordCommandHandler(),
+                $this->getMasterFactory()->createTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
         public function createAuthController(): PostController
         {
             return new PostController(

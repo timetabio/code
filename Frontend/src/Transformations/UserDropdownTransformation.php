@@ -10,32 +10,55 @@
 namespace Timetabio\Frontend\Transformations
 {
     use Timetabio\Framework\Dom\Document;
+    use Timetabio\Framework\Dom\Element;
     use Timetabio\Frontend\Models\PageModel;
     use Timetabio\Library\Transformations\TransformationInterface;
 
+    // TODO: rename
     class UserDropdownTransformation implements TransformationInterface
     {
         public function apply(PageModel $model, Document $template)
         {
-            if (!$model->hasUser()) {
+            /** @var Element $header */
+            $headerRightDiv = $template->queryOne('//header[@class="page-header"]/div/div[3]');
+
+            if ($headerRightDiv === null) {
                 return;
             }
 
-            $user = $model->getUser();
-            $header = $template->queryOne('//header[@class="page-header"]/div');
+            if ($model->hasUser()) {
+                $headerRightDiv->appendChild($this->renderUserDropdown($model, $template));
+            } else {
+                $headerRightDiv->appendChild($this->renderLoginLink($model, $template));
+            }
+        }
 
-            if ($header === null) {
-                return;
+        private function renderLoginLink(PageModel $model, Document $template)
+        {
+            $link = $template->createElement('a');
+
+            $path = $model->getUri()->getPath();
+            $query = '';
+
+            if ($path !== '/') {
+                $query = '?' . http_build_query(['next' => $path]);
             }
 
-            $link = $header->queryOne('//a[2]');
-            $link->parentNode->removeChild($link);
+            $link->setClassName('basic-link');
+            $link->setAttribute('href', '/login' . $query);
+            $link->appendText('Login');
 
+            return $link;
+        }
+
+        private function renderUserDropdown(PageModel $model, Document $template)
+        {
             $username = $template->createElement('span');
-            $username->appendText($user->getDisplayName());
+
+            $username->appendText($model->getUser()->getDisplayName());
             $username->setClassName('username right');
 
-            $header->appendChild($username);
+            return $username;
         }
     }
 }

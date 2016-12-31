@@ -49,3 +49,6 @@ msgstr "This user is already added"
 
 msgid "user_not_found"
 msgstr "No user found with this username"
+
+msgid "invalid_reset_token"
+msgstr "The provided token does not exist or has already expired"

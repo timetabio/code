@@ -21,7 +21,7 @@ namespace Timetabio\API\Handlers\Post\Feed
         {
             /** @var FeedModel $model */
 
-            $parts = $request->getUri()->getExplodedPath();
+            $parts = $request->getUri()->getPathSegments();
             $feedId = new FeedId($parts[2]);
 
             $model->setFeedId($feedId);

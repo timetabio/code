@@ -10,6 +10,7 @@
 namespace Timetabio\Frontend\Models\Action
 {
     use Timetabio\Frontend\Models\ActionModel;
+    use Timetabio\Frontend\ValueObjects\RedirectUri;
 
     class LoginModel extends ActionModel
     {
@@ -22,6 +23,11 @@ namespace Timetabio\Frontend\Models\Action
          * @var string
          */
         private $password;
+
+        /**
+         * @var RedirectUri
+         */
+        private $nextUri;
 
         public function getLoginUser(): string
         {
@@ -41,6 +47,16 @@ namespace Timetabio\Frontend\Models\Action
         public function setPassword(string $password)
         {
             $this->password = $password;
+        }
+
+        public function getNextUri(): RedirectUri
+        {
+            return $this->nextUri;
+        }
+
+        public function setNextUri(RedirectUri $nextUri)
+        {
+            $this->nextUri = $nextUri;
         }
     }
 }

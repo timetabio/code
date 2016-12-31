@@ -29,7 +29,7 @@ namespace Timetabio\Frontend\Routers
 
         public function route(RequestInterface $request): ControllerInterface
         {
-            $parts = $request->getUri()->getExplodedPath();
+            $parts = $request->getUri()->getPathSegments();
             $count = count($parts);
 
             if (!isset($parts[0]) || $parts[0] !== 'fragment') {

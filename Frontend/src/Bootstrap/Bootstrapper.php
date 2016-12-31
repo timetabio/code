@@ -96,6 +96,7 @@ namespace Timetabio\Frontend\Bootstrap
             $router->addRouter($this->getFactory()->createUserFragmentRouter());
             $router->addRouter($this->getFactory()->createFragmentRouter());
             $router->addRouter($this->getFactory()->createVerifyAccountPageRouter());
+            $router->addRouter($this->getFactory()->createResetPasswordPageRouter());
 
             $router->addRouter($this->getFactory()->createNotFoundRouter());
 

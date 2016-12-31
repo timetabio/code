@@ -94,6 +94,21 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createBeginResetController(): PostController
+        {
+            return new PostController(
+                new \Timetabio\Frontend\Models\Action\BeginResetModel(),
+                $this->getMasterFactory()->createPostPreHandler(),
+                $this->getMasterFactory()->createBeginResetRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createBeginResetCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
         public function createLogoutController(): PostController
         {
             return new PostController(
@@ -385,6 +400,21 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createResetPasswordPageController(string $token): GetController
+        {
+            return new GetController(
+                new \Timetabio\Frontend\Models\Page\ResetPasswordPageModel($token),
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createCommandHandler(),
+                $this->getMasterFactory()->createResetPasswordPageTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new HtmlResponse
+            );
+        }
+
         public function createDeleteFeedUserController(): PostController
         {
             return new PostController(
@@ -483,6 +513,21 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createUpdateFeedVanityRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
                 $this->getMasterFactory()->createUpdateFeedVanityCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
+        public function createResetController(): PostController
+        {
+            return new PostController(
+                new \Timetabio\Frontend\Models\Action\ResetModel,
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createResetRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createResetCommandHandler(),
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
