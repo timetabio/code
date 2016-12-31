@@ -27,5 +27,10 @@ namespace Timetabio\Frontend\Models\Page
         {
             return $this->token;
         }
+
+        public function getTitle(): string
+        {
+            return 'Password Reset';
+        }
     }
 }
