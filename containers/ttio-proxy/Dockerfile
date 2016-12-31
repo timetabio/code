@@ -7,6 +7,7 @@ COPY containers/ttio-proxy/config/nginx/* /etc/nginx/
 
 COPY Frontend/public/images /var/www/html/images
 COPY Frontend/public/favicon.ico /var/www/html/favicon.ico
+COPY Frontend/public/robots.txt /var/www/html/robots.txt
 
 COPY Styles/css/application.css /var/www/html/css/application-${VERSION}.css
 COPY Styles/icons /var/www/html/icons
