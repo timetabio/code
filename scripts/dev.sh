@@ -21,6 +21,7 @@ RESET_ELASTIC=0
 HELP=0
 START=0
 PATCH=0
+CLEANUP=0
 
 CONTAINERS=(
   ttio-dev-proxy
@@ -69,6 +70,9 @@ for ARG in $@; do
       START=1
       STOP=1
       ;;
+    --cleanup)
+      CLEANUP=1
+      ;;
     *)
       echo "Unknown option ${ARG}"
       exit 1
@@ -89,7 +93,13 @@ print_help () {
   echo "--schema           Bootstraps schemas (elastic, postgres)"
   echo "--patch            Apply SQL patches"
   echo "--bootstrap        Shortcut for (--build, --schema and --restart)"
+  echo "--cleanup          Deletes sessions, tokens"
   exit
+}
+
+generate_sys_token () {
+  log "Generating system token"
+  docker exec -it ttio-dev-api /data/code/API/scripts/create-system-token.php
 }
 
 prepare_environment () {
@@ -206,8 +216,7 @@ start_containers () {
   docker exec -it ttio-dev-frontend bash -c "echo '${PROXY_IP} devapi.timetab.io' >> /etc/hosts"
   docker exec -it ttio-dev-survey bash -c "echo '${PROXY_IP} devapi.timetab.io' >> /etc/hosts"
 
-  log "Generating system token"
-  docker exec -it ttio-dev-api /data/code/API/scripts/create-system-token.php
+  generate_sys_token
 
   log "Waiting for postgres to start"
   await_output ttio-dev-postgres "database system is ready to accept connections"
@@ -283,6 +292,17 @@ apply_patches () {
     docker.ttio.cloud:5000/library/postgres \
     env TERM=xterm POSTGRES_HOST=ttio-dev-postgres ttio-patch
 }
+
+cleanup_redis () {
+  log "Deleting sessions"
+  docker exec ttio-dev-redis redis-cli --raw KEYS session* | xargs docker exec ttio-dev-redis redis-cli DEL
+  log "Deleting access tokens"
+  docker exec ttio-dev-redis redis-cli --raw KEYS access_token* | xargs docker exec ttio-dev-redis redis-cli DEL
+  log "Deleting system token"
+  docker exec ttio-dev-redis redis-cli DEL system_token
+}
+
+
 if [ -z ${1} ] || [ ${HELP} -eq 1 ]; then
   print_help
 fi
@@ -291,6 +311,11 @@ prepare_environment
 
 if [ ${BUILD} -eq 1 ]; then
   build_containers
+fi
+
+if [ ${CLEANUP} -eq 1 ]; then
+  cleanup_redis
+  generate_sys_token
 fi
 
 if [ ${STOP} -eq 1 ]; then
