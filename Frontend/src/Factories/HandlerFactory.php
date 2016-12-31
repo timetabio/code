@@ -112,15 +112,15 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createForgotRequestHandler(): \Timetabio\Frontend\Handlers\Post\Forgot\RequestHandler
+        public function createBeginResetRequestHandler(): \Timetabio\Frontend\Handlers\Post\BeginReset\RequestHandler
         {
-            return new \Timetabio\Frontend\Handlers\Post\Forgot\RequestHandler;
+            return new \Timetabio\Frontend\Handlers\Post\BeginReset\RequestHandler;
         }
 
-        public function createForgotCommandHandler(): \Timetabio\Frontend\Handlers\Post\Forgot\CommandHandler
+        public function createBeginResetCommandHandler(): \Timetabio\Frontend\Handlers\Post\BeginReset\CommandHandler
         {
-            return new \Timetabio\Frontend\Handlers\Post\Forgot\CommandHandler(
-                $this->getMasterFactory()->createForgotCommand()
+            return new \Timetabio\Frontend\Handlers\Post\BeginReset\CommandHandler(
+                $this->getMasterFactory()->createBeginResetCommand()
             );
         }
 

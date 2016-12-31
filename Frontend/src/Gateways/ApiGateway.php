@@ -98,7 +98,7 @@ namespace Timetabio\Frontend\Gateways
             return $this->apiBackend->post('/verify/resend', ['email' => $email], $this->systemToken);
         }
 
-        public function forgot(string $user): ApiResponse
+        public function beginReset(string $user): ApiResponse
         {
             return $this->apiBackend->post('/forgot', ['user' => $user], $this->systemToken);
         }

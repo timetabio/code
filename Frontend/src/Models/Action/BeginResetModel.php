@@ -3,7 +3,7 @@ namespace Timetabio\Frontend\Models\Action
 {
     use Timetabio\Frontend\Models\ActionModel;
 
-    class ForgotModel extends ActionModel
+    class BeginResetModel extends ActionModel
     {
         /**
          * @var string

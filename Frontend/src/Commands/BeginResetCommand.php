@@ -3,7 +3,7 @@ namespace Timetabio\Frontend\Commands
 {
     use Timetabio\Frontend\Gateways\ApiGateway;
 
-    class ForgotCommand
+    class BeginResetCommand
     {
         /**
          * @var ApiGateway
@@ -17,7 +17,7 @@ namespace Timetabio\Frontend\Commands
 
         public function execute(string $user)
         {
-            return $this->apiGateway->forgot($user)->unwrap();
+            return $this->apiGateway->beginReset($user)->unwrap();
         }
     }
 }

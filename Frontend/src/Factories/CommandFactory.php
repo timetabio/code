@@ -52,9 +52,9 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createForgotCommand(): \Timetabio\Frontend\Commands\ForgotCommand
+        public function createBeginResetCommand(): \Timetabio\Frontend\Commands\BeginResetCommand
         {
-            return new \Timetabio\Frontend\Commands\ForgotCommand(
+            return new \Timetabio\Frontend\Commands\BeginResetCommand(
                 $this->getMasterFactory()->createApiGateway()
             );
         }

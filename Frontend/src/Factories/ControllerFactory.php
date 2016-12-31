@@ -94,14 +94,14 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createForgotController(): PostController
+        public function createBeginResetController(): PostController
         {
             return new PostController(
-                new \Timetabio\Frontend\Models\Action\ForgotModel(),
+                new \Timetabio\Frontend\Models\Action\BeginResetModel(),
                 $this->getMasterFactory()->createPostPreHandler(),
-                $this->getMasterFactory()->createForgotRequestHandler(),
+                $this->getMasterFactory()->createBeginResetRequestHandler(),
                 $this->getMasterFactory()->createQueryHandler(),
-                $this->getMasterFactory()->createForgotCommandHandler(),
+                $this->getMasterFactory()->createBeginResetCommandHandler(),
                 $this->getMasterFactory()->createPostTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),
