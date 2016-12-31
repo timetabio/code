@@ -158,5 +158,22 @@ namespace Timetabio\Worker\Factories
                 $this->getMasterFactory()->createDataStoreWriter()
             );
         }
+
+        public function createSendBetaInvitationsRunner(): \Timetabio\Worker\Runners\SendBetaInvitationsRunner
+        {
+            return new \Timetabio\Worker\Runners\SendBetaInvitationsRunner(
+                $this->getMasterFactory()->createBetaRequestService(),
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
+
+        public function createSendBetaInvitationRunner(): \Timetabio\Worker\Runners\SendBetaInvitationRunner
+        {
+            return new \Timetabio\Worker\Runners\SendBetaInvitationRunner(
+                $this->getMasterFactory()->createBetaRequestService(),
+                $this->getMasterFactory()->createBetaInvitationMail(),
+                $this->getMasterFactory()->createMailgunBackend()
+            );
+        }
     }
 }

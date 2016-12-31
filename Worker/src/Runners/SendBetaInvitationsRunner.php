@@ -7,14 +7,14 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
-namespace Timetabio\API\Commands\BetaRequest
+namespace Timetabio\Worker\Runners
 {
-    use Timetabio\API\DataStore\DataStoreWriter;
-    use Timetabio\API\Services\BetaRequestService;
-    use Timetabio\Framework\ValueObjects\EmailAddress;
-    use Timetabio\Library\Tasks\SendBetaInvitationTask;
+    use Timetabio\Library\Tasks\SendBetaInvitationsTask;
+    use Timetabio\Library\Tasks\TaskInterface;
+    use Timetabio\Worker\DataStore\DataStoreWriter;
+    use Timetabio\Worker\Services\BetaRequestService;
 
-    class CreateBetaRequestCommand
+    class SendBetaInvitationsRunner implements RunnerInterface
     {
         /**
          * @var BetaRequestService
@@ -32,13 +32,15 @@ namespace Timetabio\API\Commands\BetaRequest
             $this->dataStoreWriter = $dataStoreWriter;
         }
 
-        public function execute(EmailAddress $email): array
+        public function run(TaskInterface $task)
         {
-            $request = $this->betaRequestService->createBetaRequest($email);
+            if (!$task instanceof SendBetaInvitationsTask) {
+                return;
+            }
 
-            $this->dataStoreWriter->queueTask(new SendBetaInvitationTask($request['id']));
-
-            return $request;
+            foreach ($this->betaRequestService->getBetaRequestIds() as $id) {
+                $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\SendBetaInvitationTask($id));
+            }
         }
     }
 }

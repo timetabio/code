@@ -13,7 +13,7 @@ namespace Timetabio\Worker\Locators
 
     class TaskLocator
     {
-        public function locate(string $taskName): TaskInterface
+        public function locate(string $taskName, string ...$args): TaskInterface
         {
             switch ($taskName) {
                 case 'BuildStaticPages':
@@ -34,6 +34,10 @@ namespace Timetabio\Worker\Locators
                     return new \Timetabio\Library\Tasks\IndexUsersTask;
                 case 'DeleteArchivedPosts':
                     return new \Timetabio\Library\Tasks\DeleteArchivedPostsTask;
+                case 'SendBetaInvitations':
+                    return new \Timetabio\Library\Tasks\SendBetaInvitationsTask;
+                case 'SendBetaInvitation':
+                    return new \Timetabio\Library\Tasks\SendBetaInvitationTask($args[0]);
             }
 
             throw new \Exception('could not locate task \'' . $taskName . '\'');

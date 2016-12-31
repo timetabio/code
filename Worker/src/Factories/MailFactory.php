@@ -36,5 +36,12 @@ namespace Timetabio\Worker\Factories
                 $this->getMasterFactory()->createUriBuilder()
             );
         }
+
+        public function createBetaInvitationMail(): \Timetabio\Worker\Mails\BetaInvitationMail
+        {
+            return new \Timetabio\Worker\Mails\BetaInvitationMail(
+                $this->getMasterFactory()->createDomBackend()->loadXml(__DIR__ . '/../../data/mails/beta-invitation.xhtml')
+            );
+        }
     }
 }

@@ -36,15 +36,17 @@ namespace Timetabio\Frontend\Handlers\Post\CreateBetaRequest
         {
             /** @var CreateBetaRequestModel $model */
 
+            $data = ['redirect' => '/beta/thanks'];
+
             try {
                 $this->createBetaRequestCommand->execute($model->getEmail());
             } catch (ApiException $exception) {
-                throw new BadRequest($this->getTranslator()->translate($exception));
+                $data = [
+                    'error' => $this->getTranslator()->translate($exception)
+                ];
             }
 
-            $model->setData([
-                'redirect' => '/beta/thanks'
-            ]);
+            $model->setData($data);
         }
     }
 }

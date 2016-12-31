@@ -23,7 +23,7 @@ namespace Timetabio\Worker
     /** @var DataStoreWriter $dataStoreWriter */
     $dataStoreWriter = $factory->createDataStoreWriter();
 
-    $task = $locator->locate($argv[1]);
+    $task = $locator->locate($argv[1], ...array_slice($argv, 2));
 
     $dataStoreWriter->queueTask($task);
 
