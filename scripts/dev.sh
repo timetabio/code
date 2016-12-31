@@ -17,7 +17,6 @@ STOP=0
 BUILD=0
 WORKER=0
 SCHEMA=0
-RESET_ELASTIC=0
 HELP=0
 START=0
 PATCH=0
@@ -49,9 +48,6 @@ for ARG in $@; do
       ;;
     --patch)
       PATCH=1
-      ;;
-    --reset-elastic)
-      RESET_ELASTIC=1
       ;;
     --bootstrap)
       BUILD=1
@@ -89,7 +85,6 @@ print_help () {
   echo "--restarts         Restarts all containers"
   echo "--worker           Restarts worker"
   echo "--build            Builds dev containers"
-  echo "--reset-elastic    Resets elasticsearch"
   echo "--schema           Bootstraps schemas (elastic, postgres)"
   echo "--patch            Apply SQL patches"
   echo "--bootstrap        Shortcut for (--build, --schema and --restart)"
@@ -221,15 +216,6 @@ start_containers () {
   log "Waiting for postgres to start"
   await_output ttio-dev-postgres "database system is ready to accept connections"
 
-  if [ ${SCHEMA} -eq 1 ]; then
-    log "Bootstrapping postgres"
-    docker run --rm \
-      --net ttio-dev-net \
-      -v ${ROOT}/data/schema.sql:/schema.sql \
-      docker.ttio.cloud:5000/library/postgres \
-      env psql -U postgres -h ttio-dev-postgres -a -f /schema.sql
-  fi
-
   log "Waiting for elastic to start"
   await_output ttio-elastic ":9200"
 
@@ -255,33 +241,17 @@ start_workers () {
 }
 
 bootstrap_elastic () {
-  if [ ${RESET_ELASTIC} -eq 1 ]; then
-    log "Resetting elastic"
-    docker run --rm \
-      --net ttio-dev-net \
-      -v ${ROOT}/data/elastic-mappings.json:/mappings.json \
-      docker.ttio.cloud:5000/library/elastic \
-      sh -c 'curl -s -X DELETE http://ttio-elastic:9200/ttio'
-    echo ""
+  log "Bootstrapping elastic"
+  ${ROOT}/scripts/elastic.sh reset
+}
 
-    sleep 5
-  fi
-
-  if [ ${RESET_ELASTIC} -eq 1 ] || [ ${SCHEMA} -eq 1 ]; then
-    log "Bootstrapping elastic"
-    docker run --rm \
-      --net ttio-dev-net \
-      -v ${ROOT}/data/elastic-mappings.json:/mappings.json \
-      docker.ttio.cloud:5000/library/elastic \
-      sh -c 'curl -s -X PUT http://ttio-elastic:9200/ttio -d @/mappings.json'
-    echo ""
-  fi
-
-  if [ ${RESET_ELASTIC} -eq 1 ]; then
-    log "Running indexer tasks"
-    ${ROOT}/scripts/push-task.sh IndexUsers
-    ${ROOT}/scripts/push-task.sh IndexFeeds
-  fi
+bootstrap_postgres () {
+  log "Bootstrapping postgres"
+  docker run --rm \
+    --net ttio-dev-net \
+    -v ${ROOT}/data/schema.sql:/schema.sql \
+    docker.ttio.cloud:5000/library/postgres \
+    env psql -U postgres -h ttio-dev-postgres -a -f /schema.sql
 }
 
 apply_patches () {
@@ -336,4 +306,7 @@ if [ ${PATCH} -eq 1 ]; then
   apply_patches
 fi
 
-bootstrap_elastic
+if [ ${SCHEMA} -eq 1 ]; then
+  bootstrap_postgres
+  bootstrap_elastic
+fi
