@@ -41,7 +41,7 @@ namespace Timetabio\Frontend\Transformations
             $query = '';
 
             if ($path !== '/') {
-                $query = http_build_query(['next' => $path]);
+                $query = '?' . http_build_query(['next' => $path]);
             }
 
             $link->setClassName('basic-link');
