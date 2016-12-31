@@ -1,5 +1,5 @@
 {
   "title": "Forgot your Password?",
-  "content": "content/forgot-confirmation.html",
+  "content": "content/account/begin-reset.html",
   "header": false
 }
