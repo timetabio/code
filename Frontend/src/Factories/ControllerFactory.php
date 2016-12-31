@@ -519,5 +519,20 @@ namespace Timetabio\Frontend\Factories
                 new JsonResponse
             );
         }
+
+        public function createResetController(): PostController
+        {
+            return new PostController(
+                new \Timetabio\Frontend\Models\Action\ResetModel,
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createResetRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createResetCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
     }
 }

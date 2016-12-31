@@ -34,7 +34,7 @@ namespace Timetabio\API\Handlers\Post\Reset
             $token = $model->getToken();
 
             if (!$this->dataStoreReader->hasResetToken($token)) {
-                throw new BadRequest('invalid token', 'invalid_token');
+                throw new BadRequest('invalid token', 'invalid_reset_token');
             }
 
             $model->setUserId($this->dataStoreReader->getResetToken($token));

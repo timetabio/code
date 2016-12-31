@@ -14,11 +14,12 @@ namespace Timetabio\Frontend\Routers
     use Timetabio\Framework\Factories\MasterFactoryInterface;
     use Timetabio\Framework\Http\Request\RequestInterface;
     use Timetabio\Framework\Routers\RouterInterface;
+    use Timetabio\Frontend\Factories\FactoryTypeHint;
 
     class ActionRouter implements RouterInterface
     {
         /**
-         * @var MasterFactoryInterface
+         * @var FactoryTypeHint
          */
         private $factory;
 
@@ -40,6 +41,8 @@ namespace Timetabio\Frontend\Routers
                     return $this->factory->createCreateBetaRequestController();
                 case '/action/begin-reset':
                     return $this->factory->createBeginResetController();
+                case '/action/reset':
+                    return $this->factory->createResetController();
             }
 
             throw new RouterException;

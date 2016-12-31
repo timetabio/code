@@ -475,5 +475,17 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createResetPasswordPageRenderer()
             );
         }
+
+        public function createResetRequestHandler(): \Timetabio\Frontend\Handlers\Post\Reset\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\Reset\RequestHandler;
+        }
+
+        public function createResetCommandHandler(): \Timetabio\Frontend\Handlers\Post\Reset\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\Reset\CommandHandler(
+                $this->getMasterFactory()->createResetCommand()
+            );
+        }
     }
 }

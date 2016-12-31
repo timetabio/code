@@ -70,22 +70,24 @@ namespace Timetabio\Frontend\Renderers\Page\Account
             $input->setAttribute('type', 'password');
             $input->setAttribute('name', 'password');
             $input->setAttribute('placeholder', '•••••••••');
+            $input->setAttribute('required', '');
             $input->setAttribute('autocomplete', 'new-password');
             $formField->appendChild($input);
 
             $tokenInput = $template->createElement('input');
             $tokenInput->setAttribute('type', 'hidden');
-            $tokenInput->setAttribute('name', 'reset-token');
+            $tokenInput->setAttribute('name', 'reset_token');
             $tokenInput->setAttribute('value', $model->getResetToken());
             $form->appendChild($tokenInput);
 
             $error = $template->createElement('form-error');
-            $error->setClassName('form-error');
+            $error->setClassName('form-error _margin-after');
             $form->appendChild($error);
 
             $submitButton = $template->createElement('button');
             $submitButton->setClassName('basic-button -full-width');
             $submitButton->setAttribute('type', 'submit');
+            $submitButton->setAttribute('disabled', '');
             $submitButton->appendText('Reset Password');
             $form->appendChild($submitButton);
         }

@@ -171,5 +171,12 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createApiGateway()
             );
         }
+
+        public function createResetCommand(): Commands\ResetCommand
+        {
+            return new Commands\ResetCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
     }
 }
