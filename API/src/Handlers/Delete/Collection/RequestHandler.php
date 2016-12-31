@@ -21,7 +21,7 @@ namespace Timetabio\API\Handlers\Delete\Collection
         {
             /** @var CollectionModel $model */
 
-            $path = $request->getUri()->getExplodedPath();
+            $path = $request->getUri()->getPathSegments();
             $model->setCollectionId(new CollectionId($path[2]));
         }
     }

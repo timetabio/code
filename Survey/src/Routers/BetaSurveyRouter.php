@@ -36,7 +36,7 @@ namespace Timetabio\Survey\Routers
 
         public function route(RequestInterface $request): ControllerInterface
         {
-           $parts = $request->getUri()->getExplodedPath();
+           $parts = $request->getUri()->getPathSegments();
 
            if ($parts[0] !== 'beta' || count($parts) !== 2) {
                throw new RouterException;

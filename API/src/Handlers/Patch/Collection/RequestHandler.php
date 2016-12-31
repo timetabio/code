@@ -23,7 +23,7 @@ namespace Timetabio\API\Handlers\Patch\Collection
             /** @var PatchRequest $request */
             /** @var UpdateModel $model */
 
-            $parts = $request->getUri()->getExplodedPath();
+            $parts = $request->getUri()->getPathSegments();
 
             $model->setCollectionId(new CollectionId($parts[2]));
 
