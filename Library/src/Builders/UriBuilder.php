@@ -36,7 +36,7 @@ namespace Timetabio\Library\Builders
 
         public function buildResetPasswordPageUri(string $token): string
         {
-            return $this->uriHost . '/account/reset?' . http_build_query(['token' => $token]);
+            return $this->uriHost . '/account/reset/' . rawurlencode($token);
         }
 
         public function buildFeedPageUri(string $feedId): string

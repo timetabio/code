@@ -23,7 +23,7 @@ namespace Timetabio\Frontend\Handlers\Post\Forgot
         {
             /** @var ForgotModel $model */
 
-            $data = ['redirect' => '/forgot/confirmation'];
+            $data = ['redirect' => '/account/begin-reset/sent'];
 
             try {
                 $this->forgotCommand->execute($model->getInputUser());
