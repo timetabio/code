@@ -19,7 +19,7 @@ namespace Timetabio\Frontend\Renderers\Page\Account
         public function render(PageModel $model, Document $template)
         {
             /** @var ResetPasswordPageModel $model */
-g
+
             var_dump($model->getToken());
         }
     }
