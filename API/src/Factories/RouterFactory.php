@@ -13,6 +13,8 @@ namespace Timetabio\API\Factories
 
     class RouterFactory extends AbstractChildFactory
     {
+        use FactoryTypeHintTrait;
+
         public function createEndpointRouter(): \Timetabio\API\Routers\EndpointRouter
         {
             $router = new \Timetabio\API\Routers\EndpointRouter(
@@ -25,6 +27,8 @@ namespace Timetabio\API\Factories
             $router->registerEndpoint($this->getMasterFactory()->createVerifyEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createGetUserEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createUpdateUserPasswordEndpoint());
+            $router->registerEndpoint($this->getMasterFactory()->createResetPasswordEndpoint());
+            $router->registerEndpoint($this->getMasterFactory()->createForgotPasswordEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createUpdateUserEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createGetProfileEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createGetCollectionEndpoint());
@@ -61,6 +65,8 @@ namespace Timetabio\API\Factories
             $router->registerEndpoint($this->getMasterFactory()->createUpdateFeedUserEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createSearchEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createGetUserFeedEndpoint());
+            $router->registerEndpoint($this->getMasterFactory()->createArchivePostEndpoint());
+            $router->registerEndpoint($this->getMasterFactory()->createRestorePostEndpoint());
 
             return $router;
         }

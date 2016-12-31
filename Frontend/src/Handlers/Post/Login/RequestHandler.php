@@ -15,6 +15,7 @@ namespace Timetabio\Frontend\Handlers\Post\Login
     use Timetabio\Framework\Models\AbstractModel;
     use Timetabio\Frontend\Exceptions\BadRequest;
     use Timetabio\Frontend\Models\Action\LoginModel;
+    use Timetabio\Frontend\ValueObjects\RedirectUri;
 
     class RequestHandler implements RequestHandlerInterface
     {
@@ -28,6 +29,17 @@ namespace Timetabio\Frontend\Handlers\Post\Login
                 $model->setPassword($request->getParam('password'));
             } catch (\Exception $exception) {
                 throw new BadRequest('missing fields');
+            }
+
+            $model->setNextUri($this->getNextUri($request));
+        }
+
+        private function getNextUri(PostRequest $request): RedirectUri
+        {
+            try {
+                return new RedirectUri($request->getParam('next_uri'));
+            } catch (\Exception $exception) {
+                return new RedirectUri('/');
             }
         }
     }

@@ -9,7 +9,6 @@
  */
 namespace Timetabio\API\Services
 {
-    use Timetabio\API\ValueObjects\FeedId;
     use Timetabio\Framework\Backends\PostgresBackend;
     use Timetabio\Framework\Pdo\Value\Boolean;
     use Timetabio\Library\UserRoles\UserRole;
@@ -126,7 +125,7 @@ namespace Timetabio\API\Services
             return $feed;
         }
 
-        public function updateFeed(FeedId $feedId, array $updates)
+        public function updateFeed(string $feedId, array $updates)
         {
             $fields = [];
 

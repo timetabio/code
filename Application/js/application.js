@@ -7,5 +7,7 @@
  * version 3, as published by the Free Software Foundation.
  */
 
+import './bootstrap/info'
 import './bootstrap/browser'
 import './bootstrap/elements'
+import './bootstrap/toast'

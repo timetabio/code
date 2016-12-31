@@ -9,6 +9,8 @@
  */
 namespace Timetabio\Frontend\Models
 {
+    use Timetabio\Frontend\ValueObjects\RedirectUri;
+
     class PageModel extends FrontendModel
     {
         /**
@@ -25,6 +27,11 @@ namespace Timetabio\Frontend\Models
          * @var boolean
          */
         private $trackingDisabled = false;
+
+        /**
+         * @var RedirectUri
+         */
+        private $nextUri;
 
         public function setTitle(string $title)
         {
@@ -59,6 +66,21 @@ namespace Timetabio\Frontend\Models
         public function disableTracking()
         {
             $this->trackingDisabled = true;
+        }
+
+        public function hasNextUri(): bool
+        {
+            return $this->nextUri !== null;
+        }
+
+        public function getNextUri(): ?RedirectUri
+        {
+            return $this->nextUri;
+        }
+
+        public function setNextUri(RedirectUri $nextUri)
+        {
+            $this->nextUri = $nextUri;
         }
     }
 }

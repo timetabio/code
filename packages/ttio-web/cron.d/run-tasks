@@ -1,1 +1,2 @@
 */5 * * * * root /usr/bin/docker run --net ttio-net --rm -i docker.ttio.cloud:5000/web/worker:current /data/code/Worker/push.php DeleteUnusedFiles
+0 */2 * * * root /usr/bin/docker run --net ttio-net --rm -i docker.ttio.cloud:5000/web/worker:current /data/code/Worker/push.php DeleteArchivedPosts

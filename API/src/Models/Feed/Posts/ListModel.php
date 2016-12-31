@@ -9,23 +9,22 @@
  */
 namespace Timetabio\API\Models\Feed\Posts
 {
-    use Timetabio\API\ValueObjects\FeedId;
 
     class ListModel extends \Timetabio\API\Models\ListModel
     {
         /**
-         * @var FeedId
+         * @var string
          */
         private $feedId;
 
-        public function getFeedId(): FeedId
-        {
-            return $this->feedId;
-        }
-
-        public function setFeedId(FeedId $feedId)
+        public function __construct(string $feedId)
         {
             $this->feedId = $feedId;
+        }
+
+        public function getFeedId(): string
+        {
+            return $this->feedId;
         }
     }
 }

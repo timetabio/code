@@ -43,6 +43,7 @@ namespace Timetabio\API\Endpoints\Posts
 
         protected function doHandle(RequestInterface $request): ControllerInterface
         {
+            // TODO: implement
             return $this->getFactory()->createUpdatePostController();
         }
     }

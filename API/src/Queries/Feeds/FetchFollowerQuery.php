@@ -10,8 +10,6 @@
 namespace Timetabio\API\Queries\Feeds
 {
     use Timetabio\API\Services\FollowerService;
-    use Timetabio\API\ValueObjects\FeedId;
-    use Timetabio\API\ValueObjects\UserId;
 
     class FetchFollowerQuery
     {
@@ -25,7 +23,7 @@ namespace Timetabio\API\Queries\Feeds
             $this->followerService = $followerService;
         }
 
-        public function execute(FeedId $feedId, UserId $userId)
+        public function execute(string $feedId, string $userId)
         {
             return $this->followerService->getFollower($feedId, $userId);
         }

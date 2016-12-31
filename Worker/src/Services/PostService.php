@@ -41,5 +41,10 @@ namespace Timetabio\Worker\Services
                 'id' => $postId
             ]);
         }
+
+        public function deleteExpiredArchivedPosts(): \Traversable
+        {
+            return $this->postgresBackend->fetchColumns('DELETE FROM expired_archived_posts RETURNING id');
+        }
     }
 }

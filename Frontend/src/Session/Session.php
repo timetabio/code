@@ -156,6 +156,11 @@ namespace Timetabio\Frontend\Session
             $this->sessionId = $sessionId;
         }
 
+        public function renewSessionId(): void
+        {
+            $this->sessionId = new Token;
+        }
+
         private function load()
         {
             if ($this->isLoaded) {

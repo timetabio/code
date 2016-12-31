@@ -67,9 +67,25 @@ export class AjaxButton extends HTMLButtonElement {
 
   /**
    *
+   * @param {string} uri
+   */
+  set postUri(uri) {
+    this.setAttribute('post-uri', uri)
+  }
+
+  /**
+   *
    * @returns {{}}
    */
   get postData () {
     return JSON.parse(this.getAttribute('post-data'))
+  }
+
+  /**
+   *
+   * @param {{}} data
+   */
+  set postData(data) {
+    this.setAttribute('post-data', JSON.stringify(data))
   }
 }

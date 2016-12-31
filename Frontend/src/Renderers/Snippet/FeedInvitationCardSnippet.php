@@ -14,7 +14,6 @@ namespace Timetabio\Frontend\Renderers\Snippet
     };
     use Timetabio\Frontend\ValueObjects\Feed;
     use Timetabio\Library\Locators\UserRoleLocator;
-    use Timetabio\Library\UserRoles\Owner;
     use Timetabio\Library\ValueObjects\DisplayName;
 
     class FeedInvitationCardSnippet

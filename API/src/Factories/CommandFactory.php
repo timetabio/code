@@ -13,6 +13,8 @@ namespace Timetabio\API\Factories
 
     class CommandFactory extends AbstractChildFactory
     {
+        use FactoryTypeHintTrait;
+
         public function createCreateUserCommand(): \Timetabio\API\Commands\User\CreateUserCommand
         {
             return new \Timetabio\API\Commands\User\CreateUserCommand(
@@ -196,6 +198,29 @@ namespace Timetabio\API\Factories
         {
             return new \Timetabio\API\Commands\Feed\UpdateFeedUserCommand(
                 $this->getMasterFactory()->createFeedService(),
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
+
+        public function createUpdateUserPasswordCommand(): \Timetabio\API\Commands\User\UpdateUserPasswordCommand
+        {
+            return new \Timetabio\API\Commands\User\UpdateUserPasswordCommand(
+                $this->getMasterFactory()->createUserService()
+            );
+        }
+
+        public function createArchivePostCommand(): \Timetabio\API\Commands\Posts\ArchivePostCommand
+        {
+            return new \Timetabio\API\Commands\Posts\ArchivePostCommand(
+                $this->getMasterFactory()->createPostService(),
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
+
+        public function createRestorePostCommand(): \Timetabio\API\Commands\Posts\RestorePostCommand
+        {
+            return new \Timetabio\API\Commands\Posts\RestorePostCommand(
+                $this->getMasterFactory()->createPostService(),
                 $this->getMasterFactory()->createDataStoreWriter()
             );
         }

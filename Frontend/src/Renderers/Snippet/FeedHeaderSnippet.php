@@ -13,7 +13,6 @@ namespace Timetabio\Frontend\Renderers\Snippet
     use Timetabio\Framework\Translation\TranslatorAwareInterface;
     use Timetabio\Framework\Translation\TranslatorAwareTrait;
     use Timetabio\Frontend\ValueObjects\Feed;
-    use Timetabio\Library\ValueObjects\DisplayName;
 
     class FeedHeaderSnippet implements TranslatorAwareInterface
     {

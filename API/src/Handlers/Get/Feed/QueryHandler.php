@@ -13,7 +13,6 @@ namespace Timetabio\API\Handlers\Get\Feed
     use Timetabio\API\Exceptions\NotFound;
     use Timetabio\API\Models\Feed\FeedModel;
     use Timetabio\API\Queries\Feed\FetchFeedVanityQuery;
-    use Timetabio\API\Queries\Feed\FetchVanityByNameQuery;
     use Timetabio\API\Queries\Feed\InvitationExistsQuery;
     use Timetabio\API\Queries\Feeds\FetchFeedQuery;
     use Timetabio\Framework\Handlers\QueryHandlerInterface;

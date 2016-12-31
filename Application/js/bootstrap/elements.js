@@ -17,7 +17,7 @@ import { FileUpload } from '../elements/file-upload'
 import { PostAttachment } from '../elements/post-attachment'
 import { FilePick } from '../elements/file-pick'
 import { ValidatedInput } from '../elements/validated-input'
-import { LocalTimeElement, TimeAgoElement } from '../elements/time-elements'
+import { LocalTimeElement, TimeAgoElement, TimeUntilElement, RelativeTimeElement } from '../elements/time-elements'
 import { PaginatedView } from '../elements/paginated-view'
 import { PaginatedList } from '../elements/paginated-list'
 import { PaginationButton } from '../elements/pagination-button'
@@ -41,5 +41,7 @@ window.customElements.define('pagination-button', PaginationButton, { extends: '
 window.customElements.define('file-upload', FileUpload)
 window.customElements.define('post-attachment', PostAttachment)
 
+window.customElements.define('relative-time', RelativeTimeElement)
 window.customElements.define('time-ago', TimeAgoElement)
+window.customElements.define('time-until', TimeUntilElement)
 window.customElements.define('local-time', LocalTimeElement)

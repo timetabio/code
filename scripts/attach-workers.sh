@@ -1,14 +1,20 @@
 #!/bin/bash
 
-ROOT=$(cd $(dirname $0)/../ && pwd)
+PIDS=()
 
-if [ -z "${1}" ]; then
-  echo "Usage ${0} COUNT"
-  exit
-fi
+cleanup () {
+  for PID in ${PIDS[@]}; do
+    kill ${PID} 2&> /dev/null
+  done
+}
 
-for i in `seq 1 ${1}`; do
-  docker logs -f ttio-dev-worker-${i} &
+trap cleanup SIGINT SIGTERM EXIT
+
+WORKERS=$(docker ps -q --filter="name=ttio-dev-worker-")
+
+for WORKER in ${WORKERS[@]}; do
+  docker logs -f ${WORKER} &
+  PIDS+=("${!}")
 done
 
 wait

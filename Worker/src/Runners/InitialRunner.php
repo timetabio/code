@@ -33,6 +33,7 @@ namespace Timetabio\Worker\Runners
 
             $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\BuildStaticPagesTask);
             $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\DeleteUnusedFilesTask);
+            $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\DeleteArchivedPostsTask);
         }
     }
 }

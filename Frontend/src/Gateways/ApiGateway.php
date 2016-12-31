@@ -98,6 +98,23 @@ namespace Timetabio\Frontend\Gateways
             return $this->apiBackend->post('/verify/resend', ['email' => $email], $this->systemToken);
         }
 
+        public function beginReset(string $user): ApiResponse
+        {
+            return $this->apiBackend->post('/forgot', ['user' => $user], $this->systemToken);
+        }
+
+        public function reset(string $token, string $password): ApiResponse
+        {
+            return $this->apiBackend->post(
+                '/reset',
+                [
+                    'token' => $token,
+                    'password' => $password
+                ],
+                $this->systemToken
+            );
+        }
+
         public function createFeed(string $name, string $description, bool $isPrivate): ApiResponse
         {
             return $this->apiBackend->post(
@@ -139,10 +156,19 @@ namespace Timetabio\Frontend\Gateways
             );
         }
 
-        public function deletePost(string $postId): ApiResponse
+        public function archivePost(string $postId): ApiResponse
         {
-            return $this->apiBackend->delete(
-                '/posts/' . urlencode($postId),
+            return $this->apiBackend->post(
+                '/posts/' . urlencode($postId) . '/archive',
+                [],
+                $this->getAccessToken()
+            );
+        }
+
+        public function restorePost(string $postId): ApiResponse
+        {
+            return $this->apiBackend->post(
+                '/posts/' . urlencode($postId) . '/restore',
                 [],
                 $this->getAccessToken()
             );

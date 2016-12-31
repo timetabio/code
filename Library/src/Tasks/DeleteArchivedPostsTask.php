@@ -7,13 +7,13 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
-namespace Timetabio\API\Models\Feed\Invitation
+namespace Timetabio\Library\Tasks
 {
-    /**
-     * @deprecated
-     */
-    class UpdateModel extends \Timetabio\API\Models\Feed\User\UpdateModel
+    class DeleteArchivedPostsTask implements TaskInterface
     {
-
+        public function getPriority(): \Timetabio\Library\TaskPriorities\Priority
+        {
+            return new \Timetabio\Library\TaskPriorities\Normal;
+        }
     }
 }

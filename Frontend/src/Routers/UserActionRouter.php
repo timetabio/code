@@ -14,12 +14,13 @@ namespace Timetabio\Frontend\Routers
     use Timetabio\Framework\Factories\MasterFactoryInterface;
     use Timetabio\Framework\Http\Request\RequestInterface;
     use Timetabio\Framework\Routers\RouterInterface;
+    use Timetabio\Frontend\Factories\FactoryTypeHint;
     use Timetabio\Frontend\Queries\IsLoggedInQuery;
 
     class UserActionRouter implements RouterInterface
     {
         /**
-         * @var MasterFactoryInterface
+         * @var FactoryTypeHint
          */
         private $factory;
 
@@ -51,8 +52,10 @@ namespace Timetabio\Frontend\Routers
                     return $this->factory->createFollowController();
                 case '/action/unfollow':
                     return $this->factory->createUnfollowController();
-                case '/action/posts/delete':
+                case '/action/post/delete':
                     return $this->factory->createDeletePostController();
+                case '/action/post/restore':
+                    return $this->factory->createRestorePostController();
                 case '/action/feed/delete-user':
                     return $this->factory->createDeleteFeedUserController();
                 case '/action/feed/update-user':

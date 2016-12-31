@@ -25,7 +25,7 @@ namespace Timetabio\Frontend\Commands
 
         public function execute(string $postId)
         {
-            return $this->apiGateway->deletePost($postId)->unwrap();
+            return $this->apiGateway->archivePost($postId)->unwrap();
         }
     }
 }

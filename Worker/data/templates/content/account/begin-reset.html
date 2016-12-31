@@ -1,0 +1,27 @@
+<div class="page-wrapper -padding">
+    <div class="flex-container -column -center-items">
+
+        <a href="/" class="_margin-before _margin-after">
+            <img src="/images/logo.svg" width="60px" height="60px"/>
+        </a>
+
+        <h1 class="basic-heading-a _margin-after">
+            <translate>Reset Your Password</translate>
+        </h1>
+
+        <form action="/action/begin-reset" method="post" is="ajax-form" class="form-box _margin-after">
+
+            <label is="form-field" class="form-field -margin-after">
+                <span class="label"><translate>Username or Email</translate></span>
+                <input type="text" name="user" required class="input basic-input" placeholder="peanut-butter@timetab.io"
+                       autocomplete="email"/>
+            </label>
+
+            <form-error class="form-error _margin-after"></form-error>
+
+            <button type="submit" class="basic-button -full-width" disabled>
+                <translate>Reset Password</translate>
+            </button>
+        </form>
+    </div>
+</div>

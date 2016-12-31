@@ -12,8 +12,7 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
     use Timetabio\Framework\Handlers\CommandHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;
     use Timetabio\Frontend\Commands\DeletePostCommand;
-    use Timetabio\Frontend\Models\Action\DeletePostModel;
-    use Timetabio\Library\Builders\UriBuilder;
+    use Timetabio\Frontend\Models\Action\PostModel;
 
     class CommandHandler implements CommandHandlerInterface
     {
@@ -22,25 +21,31 @@ namespace Timetabio\Frontend\Handlers\Post\DeletePost
          */
         private $deletePostCommand;
 
-        /**
-         * @var UriBuilder
-         */
-        private $uriBuilder;
-
-        public function __construct(DeletePostCommand $deletePostCommand, UriBuilder $uriBuilder)
+        public function __construct(DeletePostCommand $deletePostCommand)
         {
             $this->deletePostCommand = $deletePostCommand;
-            $this->uriBuilder = $uriBuilder;
         }
 
         public function execute(AbstractModel $model)
         {
-            /** @var DeletePostModel $model */
+            /** @var PostModel $model */
 
             $this->deletePostCommand->execute($model->getPostId());
 
             $model->setData([
-                'redirect' => $this->uriBuilder->buildFeedPageUri($model->getFeedId())
+                'toast' => [
+                    'message' => 'The post has been archived, it will be deleted after 30 days.',
+                    'ttl' => 5000,
+                    'reload' => true,
+                    'action' => [
+                        'icon' => 'actions/revert',
+                        'label' => 'Undo',
+                        'uri' => '/action/post/restore',
+                        'data' => [
+                            'post_id' => $model->getPostId()
+                        ]
+                    ]
+                ]
             ]);
         }
     }

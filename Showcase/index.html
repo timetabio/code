@@ -102,7 +102,17 @@
 
         <section class="toast-container">
             <toast-message class="toast-message -error">
-                The user "bash" does not exist
+
+                <button class="action">
+                    <span class="inner">
+                        <svg class="icon"><use xlink:href="/icons/actions/revert.svg#icon"></use></svg>
+                        <span class="label">Undo</span>
+                    </span>
+                </button>
+
+                <span class="message">
+                    The post has been archived, it will be deleted after 30 days.
+                </span>
             </toast-message>
         </section>
 

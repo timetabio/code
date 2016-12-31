@@ -34,13 +34,36 @@
 .toast-message {
   color: #fff;
   background-color: rgba(red(@brand-black), green(@brand-black), blue(@brand-black), .98);
-  padding: 14px 32px;
+  padding: 14px 24px;
   border-radius: @card-border-radius;
   width: 100%;
   max-width: @card-max-width;
   margin: 0 auto @margin-sm auto;
 
   animation: toast-message-appear ease-in .3s;
+
+  > .action {
+    color: @brand-green;
+    cursor: pointer;
+    vertical-align: middle;
+    font-weight: 600;
+    margin-right: @margin-xs-h;
+  }
+
+  > .action > .inner {
+    display: flex;
+    align-items: center;
+  }
+
+  > .action > .inner > .icon {
+    width: 1em;
+    height: 1em;
+    margin-right: @margin-xs-h;
+  }
+
+  > .message {
+    vertical-align: middle;
+  }
 
   &.-disappear {
     animation: toast-message-disappear ease-out .1s;
