@@ -46,19 +46,50 @@ namespace Timetabio\Frontend\Transformations
 
             $link->setClassName('basic-link');
             $link->setAttribute('href', '/login' . $query);
-            $link->appendText('Login');
+            $link->appendText('Sign In');
 
             return $link;
         }
 
         private function renderUserDropdown(PageModel $model, Document $template)
         {
-            $username = $template->createElement('span');
+            $userMenu = $template->createElement('user-menu');
+            $userMenu->setClassName('user-menu');
 
-            $username->appendText($model->getUser()->getDisplayName());
-            $username->setClassName('username right');
+            $userMenuButton = $template->createElement('button');
+            $userMenuButton->setClassName('button');
+            $userMenuButton->setAttribute('is', 'user-menu-button');
+            $userMenu->appendChild($userMenuButton);
 
-            return $username;
+            $userAvatar = $template->createElement('span');
+            $userAvatar->setClassName('user-avatar');
+            $userAvatar->appendText($model->getUser()->getUserAvatar());
+            $userMenuButton->appendChild($userAvatar);
+
+            $userNav = $template->createElement('nav');
+            $userNav->setClassName('nav');
+            $userMenu->appendChild($userNav);
+
+            $postsPageLink = $template->createElement('a');
+            $postsPageLink->setClassName('user-menu-link');
+            $postsPageLink->setAttribute('href', '/');
+            $postsPageLink->appendText('Posts');
+            $userNav->appendChild($postsPageLink);
+
+            $feedsPageLink = $template->createElement('a');
+            $feedsPageLink->setClassName('user-menu-link');
+            $feedsPageLink->setAttribute('href', '/feeds');
+            $feedsPageLink->appendText('Feeds');
+            $userNav->appendChild($feedsPageLink);
+
+            $logoutButton = $template->createElement('button');
+            $logoutButton->setClassName('user-menu-link');
+            $logoutButton->setAttribute('is', 'ajax-button');
+            $logoutButton->setAttribute('post-uri', '/action/logout');
+            $logoutButton->appendText('Sign Out');
+            $userNav->appendChild($logoutButton);
+
+            return $userMenu;
         }
     }
 }
