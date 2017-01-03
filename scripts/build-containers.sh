@@ -23,6 +23,10 @@ if [ -z "$(echo ${IMAGES} | grep "docker.ttio.cloud:5000/library/fpm")" ]; then
   docker pull docker.ttio.cloud:5000/library/fpm
 fi
 
+if [ -z "$(echo ${IMAGES} | grep "docker.ttio.cloud:5000/library/nginx")" ]; then
+  docker pull docker.ttio.cloud:5000/library/nginx
+fi
+
 fold_end "Dependencies"
 
 fold_start "Worker"
