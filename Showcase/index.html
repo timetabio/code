@@ -29,9 +29,29 @@
                     </form>
                 </div>
 
-                <a href="#login" class="basic-link right">
-                    <translate>Sign in</translate>
-                </a>
+                <div class="right">
+
+                    <user-menu class="user-menu">
+                        <button class="button" is="user-menu-button">
+                            <span class="user-avatar">
+                                UN
+                            </span>
+                        </button>
+
+                        <ul class="nav">
+                            <li class="item">
+                                <a href="/feeds"  class="user-menu-link">
+                                    Feeds
+                                </a>
+                            </li>
+
+                            <li class="item">
+                                <button is="ajax-button" post-uri="/action/logout" class="user-menu-link">Sign Out</button>
+                            </li>
+                        </ul>
+                    </user-menu>
+
+                </div>
             </div>
         </header>
 

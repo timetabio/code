@@ -1,0 +1,34 @@
+/**
+ * Copyright (c) 2016 Ruben Schmidmeister <ruben.schmidmeister@icloud.com>
+ *
+ * This program is free software. It comes without any warranty, to
+ * the extent permitted by applicable law. You can redistribute it
+ * and/or modify it under the terms of the GNU Affero General Public License,
+ * version 3, as published by the Free Software Foundation.
+ */
+
+.user-menu {
+  position: relative;
+
+  > .button {
+    cursor: pointer;
+  }
+
+  > .nav {
+    position: absolute;
+    text-align: left;
+    right: 0;
+    background-color: #fff;
+    display: block;
+    box-shadow: @card-box-shadow;
+    margin-top: 10px;
+    transition: opacity .25s, transform .25s;
+  }
+
+  &:not(.-open) > .nav {
+    opacity: 0;
+    transform: translateY(5%);
+    pointer-events: none;
+    touch-action: none;
+  }
+}
