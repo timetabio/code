@@ -50,6 +50,11 @@ namespace Timetabio\Frontend\DataObjects
             return $this->name;
         }
 
+        public function getUserAvatar(): string
+        {
+            return substr($this->username, 0, 2);
+        }
+
         public function getDisplayName(): string
         {
             return new DisplayName([

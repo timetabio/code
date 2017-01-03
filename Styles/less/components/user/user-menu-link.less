@@ -7,9 +7,15 @@
  * version 3, as published by the Free Software Foundation.
  */
 
-export const EventName = {
-  nextPage: 'nextPage',
-  filesAdded: 'filesAdded',
-  formValidityChange: 'formValidityChange',
-  userMenuToggle: 'userMenuToggle'
+.user-menu-link {
+  display: block;
+  cursor: pointer;
+  padding: 10px 30px;
+  border-left: 2px solid transparent;
+  padding-left: 28px;
+  transition: border-color .125s;
+
+  &:hover {
+    border-left-color: #e5e5e5;
+  }
 }
