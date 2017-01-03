@@ -1,4 +1,4 @@
-FROM library/nginx:alpine
+FROM docker.ttio.cloud:5000/library/nginx
 
 ARG VERSION
 

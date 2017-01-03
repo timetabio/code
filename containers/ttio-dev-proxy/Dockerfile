@@ -1,4 +1,4 @@
-FROM library/nginx:alpine
+FROM docker.ttio.cloud:5000/library/nginx
 
 COPY ./nginx/conf.d/* /etc/nginx/conf.d/
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
