@@ -22,6 +22,8 @@ import { PaginatedView } from '../elements/paginated-view'
 import { PaginatedList } from '../elements/paginated-list'
 import { PaginationButton } from '../elements/pagination-button'
 import { ToastMessage } from '../elements/toast-message'
+import { UserMenu } from '../elements/user-menu'
+import { UserMenuButton } from '../elements/user-menu-button'
 
 window.customElements.define('ajax-form', AjaxForm, { extends: 'form' })
 window.customElements.define('ajax-select', AjaxSelect, { extends: 'select' })
@@ -37,6 +39,9 @@ window.customElements.define('toast-message', ToastMessage)
 window.customElements.define('paginated-view', PaginatedView)
 window.customElements.define('paginated-list', PaginatedList)
 window.customElements.define('pagination-button', PaginationButton, { extends: 'button' })
+
+window.customElements.define('user-menu', UserMenu)
+window.customElements.define('user-menu-button', UserMenuButton, { extends: 'button' })
 
 window.customElements.define('file-upload', FileUpload)
 window.customElements.define('post-attachment', PostAttachment)

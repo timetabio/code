@@ -78,7 +78,7 @@ export class AjaxButton extends HTMLButtonElement {
    * @returns {{}}
    */
   get postData () {
-    return JSON.parse(this.getAttribute('post-data'))
+    return JSON.parse(this.getAttribute('post-data')) || {}
   }
 
   /**

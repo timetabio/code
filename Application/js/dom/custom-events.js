@@ -10,5 +10,6 @@
 export const EventName = {
   nextPage: 'nextPage',
   filesAdded: 'filesAdded',
-  formValidityChange: 'formValidityChange'
+  formValidityChange: 'formValidityChange',
+  userMenuToggle: 'userMenuToggle'
 }
