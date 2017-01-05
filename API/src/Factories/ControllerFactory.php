@@ -655,10 +655,10 @@ namespace Timetabio\API\Factories
         public function createArchivePostController(string $postId): PostController
         {
             return new PostController(
-                new \Timetabio\API\Models\Post\ArchiveModel($postId),
+                new \Timetabio\API\Models\Post\PostModel($postId),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
-                $this->getMasterFactory()->createArchivePostQueryHandler(),
+                $this->getMasterFactory()->createUpdatePostQueryHandler(),
                 $this->getMasterFactory()->createArchivePostCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
@@ -670,10 +670,10 @@ namespace Timetabio\API\Factories
         public function createRestorePostController(string $postId): PostController
         {
             return new PostController(
-                new \Timetabio\API\Models\Post\ArchiveModel($postId),
+                new \Timetabio\API\Models\Post\PostModel($postId),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
-                $this->getMasterFactory()->createArchivePostQueryHandler(),
+                $this->getMasterFactory()->createUpdatePostQueryHandler(),
                 $this->getMasterFactory()->createRestorePostCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),

@@ -10,7 +10,7 @@
 namespace Timetabio\API\Handlers\Post\Post\Archive
 {
     use Timetabio\API\Commands\Posts\ArchivePostCommand;
-    use Timetabio\API\Models\Post\ArchiveModel;
+    use Timetabio\API\Models\Post\PostModel;
     use Timetabio\Framework\Handlers\CommandHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;
     use Timetabio\Framework\ValueObjects\StringDateTime;
@@ -29,7 +29,7 @@ namespace Timetabio\API\Handlers\Post\Post\Archive
 
         public function execute(AbstractModel $model)
         {
-            /** @var ArchiveModel $model */
+            /** @var PostModel $model */
 
             $post = $model->getPostInfo();
             $archived = $post['archived'];

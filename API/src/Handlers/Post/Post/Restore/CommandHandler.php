@@ -10,7 +10,7 @@
 namespace Timetabio\API\Handlers\Post\Post\Restore
 {
     use Timetabio\API\Commands\Posts\RestorePostCommand;
-    use Timetabio\API\Models\Post\ArchiveModel;
+    use Timetabio\API\Models\Post\PostModel;
     use Timetabio\Framework\Handlers\CommandHandlerInterface;
     use Timetabio\Framework\Models\AbstractModel;
 
@@ -28,7 +28,7 @@ namespace Timetabio\API\Handlers\Post\Post\Restore
 
         public function execute(AbstractModel $model)
         {
-            /** @var ArchiveModel $model */
+            /** @var PostModel $model */
 
             $post = $model->getPostInfo();
 

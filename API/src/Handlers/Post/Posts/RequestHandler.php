@@ -99,7 +99,7 @@ namespace Timetabio\API\Handlers\Post\Posts
             try {
                 return new PostBody($request->getParam('body'));
             } catch (\Exception $exception) {
-                throw new BadRequest('post body limit of 8 kib exceeded', 'invalid_post_body');
+                throw new BadRequest($exception->getMessage(), 'invalid_post_body');
             }
         }
 
