@@ -212,5 +212,16 @@ namespace Timetabio\API\Services
                 'id' => $postId
             ]);
         }
+
+        public function setPostBody(string $postId, string $body): void
+        {
+            $this->databaseBackend->execute(
+                'UPDATE posts SET body = :body WHERE id = :id',
+                [
+                    'id' => $postId,
+                    'body' => $body
+                ]
+            );
+        }
     }
 }
