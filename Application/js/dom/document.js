@@ -15,14 +15,14 @@ const MESSAGE = 'This page contains unsaved changes. Are you sure you want to le
 
 /**
  *
- * @returns {{release: (function())}}
+ * @template T
+ * @param {(function():(T | Promise<T>))} callbackFn
  */
-export function createReloadLock () {
+export function preventReload (callbackFn) {
   const _listener = (event) => (event.returnValue = MESSAGE)
 
   window.addEventListener('beforeunload', _listener)
 
-  return {
-    release: () => window.removeEventListener('beforeunload', _listener)
-  }
+  Promise.resolve(callbackFn())
+    .then(() => window.removeEventListener('beforeunload', _listener))
 }
