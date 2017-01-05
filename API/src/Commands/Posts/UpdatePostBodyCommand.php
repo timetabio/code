@@ -11,6 +11,7 @@ namespace Timetabio\API\Commands\Posts
 {
     use Timetabio\API\DataStore\DataStoreWriter;
     use Timetabio\API\Services\PostService;
+    use Timetabio\API\ValueObjects\PostBody;
     use Timetabio\Framework\Backends\InkBackend;
 
     class UpdatePostBodyCommand
@@ -37,7 +38,7 @@ namespace Timetabio\API\Commands\Posts
             $this->dataStoreWriter = $dataStoreWriter;
         }
 
-        public function execute(string $postId, string $body): void
+        public function execute(string $postId, PostBody $body): void
         {
             $inkResult = $this->inkBackend->process($body);
 

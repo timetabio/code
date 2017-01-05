@@ -327,5 +327,12 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()
             );
         }
+
+        public function createUpdatePostBodyEndpoint(): \Timetabio\API\Endpoints\Posts\UpdatePostBodyEndpoint
+        {
+            return new \Timetabio\API\Endpoints\Posts\UpdatePostBodyEndpoint(
+                $this->getMasterFactory()
+            );
+        }
     }
 }

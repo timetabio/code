@@ -702,5 +702,17 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()->createFeedAccessControl()
             );
         }
+
+        public function createUpdatePostBodyCommandHandler(): \Timetabio\API\Handlers\Put\Post\Body\CommandHandler
+        {
+            return new \Timetabio\API\Handlers\Put\Post\Body\CommandHandler(
+                $this->getMasterFactory()->createUpdatePostBodyCommand()
+            );
+        }
+
+        public function createUpdatePostBodyRequestHandler(): \Timetabio\API\Handlers\Put\Post\Body\RequestHandler
+        {
+            return new \Timetabio\API\Handlers\Put\Post\Body\RequestHandler;
+        }
     }
 }

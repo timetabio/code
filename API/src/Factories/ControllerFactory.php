@@ -681,5 +681,20 @@ namespace Timetabio\API\Factories
                 new JsonResponse
             );
         }
+
+        public function createUpdatePostBodyController(string $postId): PutController
+        {
+            return new PutController(
+                new \Timetabio\API\Models\Post\UpdateBodyModel($postId),
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createUpdatePostBodyRequestHandler(),
+                $this->getMasterFactory()->createUpdatePostQueryHandler(),
+                $this->getMasterFactory()->createUpdatePostBodyCommandHandler(),
+                $this->getMasterFactory()->createTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
     }
 }
