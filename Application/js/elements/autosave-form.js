@@ -6,8 +6,11 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
-
 import { debounce } from '../dom/time'
+import { getCsrfToken } from '../dom/environment'
+import { rejectHttpErrors } from '../dom/fetch'
+import { formData } from '../dom/form'
+import { handleAjaxError, handleAjaxResponse } from '../app/ajax'
 
 export class AutosaveForm extends HTMLElement {
   constructor () {
@@ -32,7 +35,16 @@ export class AutosaveForm extends HTMLElement {
    * @private
    */
   _onInput (event) {
-    console.log(event.target)
+    const target = event.target
+
+    const uri = target.getAttribute('save-uri')
+    const data = formData({ [target.name]: target.value, token: getCsrfToken() })
+
+    fetch(uri, { method: 'post', data })
+      .then(rejectHttpErrors)
+      .then((resp) => resp.json())
+      .then((data) => handleAjaxResponse(data))
+      .catch(() => handleAjaxError())
   }
 }
 
