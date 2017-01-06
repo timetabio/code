@@ -7,24 +7,50 @@
  * version 3, as published by the Free Software Foundation.
  */
 
-import { FileUpload } from './file-upload'
 import { EventName } from '../dom/custom-events'
 import { createIcon } from '../app/icon'
+import { S3Uploader } from '../app/upload'
+import { createToastMessage } from '../dom/toast'
 
-export class PostAttachment extends FileUpload {
+export class PostAttachment extends HTMLElement {
+
+  constructor () {
+    super()
+
+    this._onProgress = this._onProgress.bind(this)
+    this._uploader = new S3Uploader({ onProgress: this._onProgress })
+
+    this.classList.add('post-attachment')
+  }
+
+  /**
+   *
+   * @param {File} file
+   * @returns {Promise}
+   */
+  upload (file) {
+    this._render(file)
+
+    return this._uploader.upload(file)
+      .then((data) => this._onDone(...data))
+      .catch((error) => this._onError(error))
+  }
+
   /**
    *
    * @private
    */
-  _render () {
-    this.classList.add('post-attachment')
-
+  _render (file) {
     this.appendChild(createIcon('attachment'))
 
     const $name = document.createElement('span')
     $name.classList.add('name')
-    $name.innerText = this._file.name
+    $name.innerText = file.name
+
     this.appendChild($name)
+
+    this._renderInput()
+    this._renderUpload()
   }
 
   /**
@@ -85,7 +111,26 @@ export class PostAttachment extends FileUpload {
    * @private
    */
   _onDone (data) {
-    this._$input.value = data['public_id']
+    this.classList.add('-uploaded')
+    this._$input.value = data[ 'public_id' ]
+    this._dispatchFormValidityChange()
+  }
+
+  /**
+   *
+   * @param {Error} error
+   * @returns {Promise}
+   * @private
+   */
+  _onError (error) {
+    this._$input.parentNode.removeChild(this._$input)
+    this._dispatchFormValidityChange()
+
+    return createToastMessage({ message: error.message })
+      .show()
+  }
+
+  _dispatchFormValidityChange () {
     this.dispatchEvent(new CustomEvent(EventName.formValidityChange, { bubbles: true }))
   }
 }

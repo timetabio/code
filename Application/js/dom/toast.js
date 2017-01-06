@@ -23,8 +23,6 @@ export function createToastMessage({ message, ttl = 3000, action = null }) {
 
   $message.toastTtl = ttl
 
-  console.log(action)
-
   if (action !== null) {
     const $button = new AjaxButton()
 

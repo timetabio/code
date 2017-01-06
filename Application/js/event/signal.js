@@ -10,9 +10,13 @@
 /**
  *
  * @template T
+ * @param {(function(value: T))} [listener]
  * @constructor
  */
-export function Signal () {
+export function Signal (listener) {
+  if (listener != null) {
+    this.addListener(listener)
+  }
 }
 
 /**
