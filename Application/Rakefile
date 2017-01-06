@@ -4,7 +4,7 @@ JS_FILES = FileList['js/**/*.js']
 POLYFILLS = FileList['polyfills/*.js']
 ROLLUP_CONFIG = '.rollup.config.js'
 
-TARGETS = %w(build/application.js build/polyfills.js)
+TARGETS = %w(build/application.js build/polyfills.js build/browser.js)
 CLEAN.concat(TARGETS)
 
 task default: TARGETS
@@ -31,4 +31,10 @@ desc 'Builds the polyfills bundle'
 file 'build/polyfills.js' => POLYFILLS do |t|
     mkdir_p 'build'
     sh 'uglifyjs', '-o', t.name, *t.prerequisites
+end
+
+desc 'Builds the browser check file'
+file 'build/browser.js' => 'js/browser.js' do |t|
+    mkdir_p 'build'
+    cp *t.prerequisites, t.name
 end
