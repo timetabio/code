@@ -8,6 +8,7 @@ fi
 FILES=(
   /js/polyfills.js
   /js/application.js
+  /js/browser.js
   /css/application.css
 )
 

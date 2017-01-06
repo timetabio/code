@@ -13,7 +13,6 @@ import { FormError } from '../elements/form-error'
 import { AutoTextarea } from '../elements/auto-textarea'
 import { AjaxButton } from '../elements/ajax-button'
 import { FileDrop } from '../elements/file-drop'
-import { FileUpload } from '../elements/file-upload'
 import { PostAttachment } from '../elements/post-attachment'
 import { FilePick } from '../elements/file-pick'
 import { ValidatedInput } from '../elements/validated-input'
@@ -43,7 +42,6 @@ window.customElements.define('pagination-button', PaginationButton, { extends: '
 window.customElements.define('user-menu', UserMenu)
 window.customElements.define('user-menu-button', UserMenuButton, { extends: 'button' })
 
-window.customElements.define('file-upload', FileUpload)
 window.customElements.define('post-attachment', PostAttachment)
 
 window.customElements.define('relative-time', RelativeTimeElement)
