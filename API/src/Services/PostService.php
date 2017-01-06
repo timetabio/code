@@ -223,5 +223,16 @@ namespace Timetabio\API\Services
                 ]
             );
         }
+
+        public function setPostTitle(string $postId, string $title): void
+        {
+            $this->databaseBackend->execute(
+                'UPDATE posts SET title = :title WHERE id = :id',
+                [
+                    'id' => $postId,
+                    'title' => $title
+                ]
+            );
+        }
     }
 }
