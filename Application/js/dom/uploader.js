@@ -10,12 +10,16 @@
 import { Signal } from '../event/signal'
 
 export class Uploader {
-  constructor () {
+  /**
+   *
+   * @param {(function(value: { loaded: number, total: number }))} [onProgress]
+   */
+  constructor ({ onProgress } = {}) {
     /**
      *
      * @type {Signal<{ loaded: number, total: number }>}
      */
-    this.onProgress = new Signal()
+    this.onProgress = new Signal(onProgress)
 
     /**
      *
@@ -35,7 +39,7 @@ export class Uploader {
    *
    * @param {string} url
    * @param {FormData} data
-   * @returns {Promise}
+   * @returns {Promise<string>}
    */
   execute (url, data) {
     return new Promise((resolve, reject) => {
@@ -44,7 +48,7 @@ export class Uploader {
       this._xhr = xhr
 
       xhr.addEventListener('load', () => {
-        resolve()
+        resolve(xhr.responseText)
       })
 
       xhr.upload.addEventListener('progress', (event) => {
@@ -52,7 +56,7 @@ export class Uploader {
       })
 
       xhr.addEventListener('abort', () => {
-        reject()
+        reject(new Error('upload aborted'))
       })
 
       xhr.open('POST', url)

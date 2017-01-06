@@ -56,8 +56,7 @@ export class FileDrop extends HTMLElement {
     Array.from(files).forEach((file) => {
       const $file = document.createElement(this.fileElement)
 
-      $file.setFile(file)
-      $file.upload()
+      $file.upload(file)
 
       $appendTo.appendChild($file)
     })
