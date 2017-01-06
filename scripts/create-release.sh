@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if [ -z "${1}" ]; then
   echo "Usage: ${0} VERSION"
   exit 1
@@ -14,9 +13,12 @@ printf "${MESSAGE}" > ${FILE}
 ${EDITOR} "${FILE}"
 
 MESSAGE=$(cat "${FILE}")
+rm "${FILE}"
 
 printf "${MESSAGE}\n\n"
 
 read -p "Release? [ENTER] "
 
 printf "${MESSAGE}" | hub release create ${1} -f -
+
+git fetch
