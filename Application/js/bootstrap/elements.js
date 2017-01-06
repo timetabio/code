@@ -23,6 +23,7 @@ import { PaginationButton } from '../elements/pagination-button'
 import { ToastMessage } from '../elements/toast-message'
 import { UserMenu } from '../elements/user-menu'
 import { UserMenuButton } from '../elements/user-menu-button'
+import { AutosaveForm } from '../elements/autosave-form'
 
 window.customElements.define('ajax-form', AjaxForm, { extends: 'form' })
 window.customElements.define('ajax-select', AjaxSelect, { extends: 'select' })
@@ -43,6 +44,7 @@ window.customElements.define('user-menu', UserMenu)
 window.customElements.define('user-menu-button', UserMenuButton, { extends: 'button' })
 
 window.customElements.define('post-attachment', PostAttachment)
+window.customElements.define('autosave-form', AutosaveForm)
 
 window.customElements.define('relative-time', RelativeTimeElement)
 window.customElements.define('time-ago', TimeAgoElement)
