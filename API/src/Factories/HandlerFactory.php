@@ -714,5 +714,17 @@ namespace Timetabio\API\Factories
         {
             return new \Timetabio\API\Handlers\Put\Post\Body\RequestHandler;
         }
+
+        public function createUpdatePostTitleCommandHandler(): \Timetabio\API\Handlers\Put\Post\Title\CommandHandler
+        {
+            return new \Timetabio\API\Handlers\Put\Post\Title\CommandHandler(
+                $this->getMasterFactory()->createUpdatePostTitleCommand()
+            );
+        }
+
+        public function createUpdatePostTitleRequestHandler(): \Timetabio\API\Handlers\Put\Post\Title\RequestHandler
+        {
+            return new \Timetabio\API\Handlers\Put\Post\Title\RequestHandler;
+        }
     }
 }
