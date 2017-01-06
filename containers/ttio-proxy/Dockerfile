@@ -14,6 +14,7 @@ COPY Styles/icons /var/www/html/icons
 COPY Styles/fonts /var/www/html/fonts
 COPY Application/build/application.js /var/www/html/js/application-${VERSION}.js
 COPY Application/build/polyfills.js /var/www/html/js/polyfills-${VERSION}.js
+COPY Application/build/browser.js /var/www/html/js/browser-${VERSION}.js
 
 VOLUME /data/ssl
 VOLUME /data/certs
