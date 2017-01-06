@@ -16,7 +16,7 @@ export function debounce (callbackFn, delay = 500) {
   let timer
 
   return (...args) => {
-    if (timer !== null) {
+    if (timer !== undefined) {
       clearTimeout(timer)
     }
 
