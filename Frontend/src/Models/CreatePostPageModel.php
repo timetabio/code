@@ -9,6 +9,7 @@
  */
 namespace Timetabio\Frontend\Models
 {
+    // TODO: Move this to Page\
     class CreatePostPageModel extends PageModel
     {
         /**
