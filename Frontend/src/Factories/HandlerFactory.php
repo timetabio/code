@@ -291,6 +291,13 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createEditPostPageTransformationHandler(): \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Get\Page\TransformationHandler(
+                $this->getMasterFactory()->createEditPostPageRenderer()
+            );
+        }
+
         public function createCreateBetaRequestCommandHandler(): \Timetabio\Frontend\Handlers\Post\CreateBetaRequest\CommandHandler
         {
             return new \Timetabio\Frontend\Handlers\Post\CreateBetaRequest\CommandHandler(

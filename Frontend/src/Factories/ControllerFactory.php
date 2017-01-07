@@ -306,6 +306,21 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createEditPostPageController(array $post): GetController
+        {
+            return new GetController(
+                new \Timetabio\Frontend\Models\PostPageModel($post),
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createRequestHandler(),
+                $this->getMasterFactory()->createGetPostPageQueryHandler(),
+                $this->getMasterFactory()->createCommandHandler(),
+                $this->getMasterFactory()->createEditPostPageTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new HtmlResponse
+            );
+        }
+
         public function createCreateBetaRequestController(): PostController
         {
             return new PostController(
