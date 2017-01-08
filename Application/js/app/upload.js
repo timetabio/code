@@ -6,6 +6,7 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
+
 import { Uploader } from '../dom/uploader'
 import { preventReload } from '../dom/document'
 import { getCsrfToken } from '../dom/environment'
