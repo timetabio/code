@@ -14,6 +14,7 @@ namespace Timetabio\Frontend\Renderers\Page
     use Timetabio\Frontend\Models\PostPageModel;
     use Timetabio\Frontend\Renderers\Snippet\IconSnippet;
     use Timetabio\Library\Builders\UriBuilder;
+    use Timetabio\Library\ValueObjects\DisplayName;
 
     class EditPostPageRenderer implements PageRendererInterface
     {
@@ -47,6 +48,7 @@ namespace Timetabio\Frontend\Renderers\Page
             $main->appendChild($wrapperElement);
 
             $formElement = $template->createElement('autosave-form');
+            $formElement->setAttribute('post-data', json_encode(['post_id' => $post['id']]));
             $wrapperElement->appendChild($formElement);
 
             $cardElement = $template->createElement('file-drop');
@@ -59,13 +61,10 @@ namespace Timetabio\Frontend\Renderers\Page
             $headerElement->setClassName('header');
             $cardElement->appendChild($headerElement);
 
-            $timeElement = $template->createElement('local-time');
+            $timeElement = $template->createElement('time-ago');
             $timeElement->setClassName('time');
-            $timeElement->setAttribute('month', 'long');
-            $timeElement->setAttribute('day', 'numeric');
-            $timeElement->setAttribute('year', 'numeric');
-            $timeElement->setAttribute('datetime', date('c'));
-            $timeElement->appendText(date('d.m.Y'));
+            $timeElement->setAttribute('datetime', gmdate('c', $post['created']));
+            $timeElement->appendText(gmdate('d.m.Y'));
             $headerElement->appendChild($timeElement);
 
             $bodyElement = $template->createElement('div');
@@ -78,13 +77,14 @@ namespace Timetabio\Frontend\Renderers\Page
             $titleInputElement->setAttribute('name', 'title');
             $titleInputElement->setAttribute('autocomplete', 'off');
             $titleInputElement->setAttribute('value', $post['title']);
+            $titleInputElement->setAttribute('save-uri', '/action/post/update-title');
             $bodyElement->appendChild($titleInputElement);
 
             $subtitle = $template->createElement('div');
             $subtitle->setClassName('subtitle');
             $bodyElement->appendChild($subtitle);
 
-            $subtitle->appendText($model->getUser()->getDisplayName());
+            $subtitle->appendText(new DisplayName($post['author']));
             $subtitle->appendText(' • ');
 
             $feedLink = $template->createElement('a');
@@ -98,6 +98,7 @@ namespace Timetabio\Frontend\Renderers\Page
             $textareaElement->setAttribute('is', 'auto-textarea');
             $textareaElement->setAttribute('name', 'body');
             $textareaElement->setAttribute('placeholder', 'Write something...');
+            $textareaElement->setAttribute('save-uri', '/action/post/update-description');
             $textareaElement->appendText($post['body']);
             $bodyElement->appendChild($textareaElement);
 
@@ -111,6 +112,10 @@ namespace Timetabio\Frontend\Renderers\Page
             $buttonsElement = $template->createElement('div');
             $buttonsElement->setClassName('buttons');
             $cardElement->appendChild($buttonsElement);
+
+            $autosaveMessage = $template->createElement('autosave-message');
+            $autosaveMessage->setClassName('autosave-message');
+            $buttonsElement->appendChild($autosaveMessage);
 
             $uploadMessage = $template->createElement('div');
             $uploadMessage->setClassName('post-card-outside-text');

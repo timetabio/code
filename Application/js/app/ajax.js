@@ -8,7 +8,14 @@
  */
 
 import { createToastMessage } from '../dom/toast'
+import { getCsrfToken } from '../dom/environment'
 import { sessionStorage, StorageKey } from '../dom/storage'
+
+/**
+ *
+ * @type {string}
+ */
+export const genericErrorMessage = 'Oops. Something went wrong. Please retry a little later.'
 
 /**
  * @typedef {{ message: string, ttl?: number, reload: boolean, action?: { icon?: string, label: string, uri: string, data: {} } }} JsonToast
@@ -16,10 +23,20 @@ import { sessionStorage, StorageKey } from '../dom/storage'
 
 /**
  *
+ * @param {FormData} formData
+ * @returns {FormData}
+ */
+export function addCsrfToken(formData) {
+  formData.append('token', getCsrfToken())
+  return formData
+}
+
+/**
+ *
  * @returns {Promise}
  */
 export function handleAjaxError () {
-  return createToastMessage({ message: 'Oops. Something went wrong. Please retry a little later.', ttl: 4000 })
+  return createToastMessage({ message: genericErrorMessage, ttl: 4000 })
     .show()
 }
 

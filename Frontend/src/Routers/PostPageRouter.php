@@ -54,7 +54,7 @@ namespace Timetabio\Frontend\Routers
                 return $this->factory->createGetPostPageController($post);
             }
 
-            if ($parts[2] === 'edit') {
+            if ($parts[2] === 'edit' && $post['feed']['access']['post']) {
                 return $this->factory->createEditPostPageController($post);
             }
 

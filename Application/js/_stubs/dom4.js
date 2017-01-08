@@ -6,6 +6,14 @@ HTMLElement.prototype.remove = function () {
 }
 
 /**
+ *
+ * @param {...Node} nodes
+ */
+HTMLElement.prototype.replaceWith = function (...nodes) {
+
+}
+
+/**
  * @typedef {{capture?: boolean, once?: boolean, passive?: boolean}} EventListenerOptions
  */
 

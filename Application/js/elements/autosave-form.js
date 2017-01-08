@@ -6,17 +6,26 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
+
 import { debounce } from '../dom/time'
-import { getCsrfToken } from '../dom/environment'
 import { rejectHttpErrors } from '../dom/fetch'
 import { formData } from '../dom/form'
-import { handleAjaxError, handleAjaxResponse } from '../app/ajax'
+import { genericErrorMessage, handleAjaxResponse, addCsrfToken } from '../app/ajax'
+
+export const AutosaveState = {
+  Initial: 0,
+  Saving: 1,
+  Saved: 2,
+  Error: 3
+}
 
 export class AutosaveForm extends HTMLElement {
   constructor () {
     super()
 
     this._onInput = debounce(this._onInput.bind(this))
+    this._onSuccess = this._onSuccess.bind(this)
+    this._onError = this._onError.bind(this)
   }
 
   connectedCallback () {
@@ -38,13 +47,50 @@ export class AutosaveForm extends HTMLElement {
     const target = event.target
 
     const uri = target.getAttribute('save-uri')
-    const data = formData({ [target.name]: target.value, token: getCsrfToken() })
+    const body = addCsrfToken(formData(Object.assign(this.postData, { [target.name]: target.value })))
 
-    fetch(uri, { method: 'post', data })
+    this.$message.state = AutosaveState.Saving
+
+    fetch(uri, { method: 'post', body })
       .then(rejectHttpErrors)
       .then((resp) => resp.json())
-      .then((data) => handleAjaxResponse(data))
-      .catch(() => handleAjaxError())
+      .then((data) => handleAjaxResponse(data, this._onError))
+      .then(() => this._onSuccess())
+      .catch(() => this._onError(genericErrorMessage))
+  }
+
+  /**
+   *
+   * @private
+   */
+  _onSuccess () {
+    this.$message.state = AutosaveState.Saved
+  }
+
+  /**
+   *
+   * @param {string} error
+   * @returns boolean
+   * @private
+   */
+  _onError (error) {
+    this.$message.error = error
+  }
+
+  /**
+   * @returns {{}}
+   */
+  get postData () {
+    return JSON.parse(this.getAttribute('post-data'))
+  }
+
+  /**
+   *
+   * @returns {AutosaveMessage}
+   */
+  get $message () {
+    // noinspection JSValidateTypes
+    return this.querySelector('autosave-message')
   }
 }
 
