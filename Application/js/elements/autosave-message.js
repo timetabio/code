@@ -31,7 +31,7 @@ const states = {
   },
   [AutosaveState.Saved]() {
     return {
-      icon: 'check',
+      icon: 'done',
       text: 'Your changes have been saved.'
     }
   }
