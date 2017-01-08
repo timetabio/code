@@ -11,6 +11,7 @@ import { debounce } from '../dom/time'
 import { rejectHttpErrors } from '../dom/fetch'
 import { formData } from '../dom/form'
 import { genericErrorMessage, handleAjaxResponse, addCsrfToken } from '../app/ajax'
+import { preventReload } from '../dom/document'
 
 export const AutosaveState = {
   Initial: 0,
@@ -51,12 +52,15 @@ export class AutosaveForm extends HTMLElement {
 
     this.$message.state = AutosaveState.Saving
 
-    fetch(uri, { method: 'post', body })
+    const complete = fetch(uri, { method: 'post', body, credentials: 'same-origin' })
       .then(rejectHttpErrors)
       .then((resp) => resp.json())
       .then((data) => handleAjaxResponse(data, this._onError))
       .then(() => this._onSuccess())
       .catch(() => this._onError(genericErrorMessage))
+
+
+    preventReload(() => complete)
   }
 
   /**
