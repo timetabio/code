@@ -11,7 +11,7 @@ namespace Timetabio\Framework\Curl
 {
     use Timetabio\Framework\Curl\Credentials\CredentialsInterface;
     use Timetabio\Framework\Curl\RequestMethods\{
-        Delete, Get, Head, Patch, Post
+        Delete, Get, Head, Patch, Post, Put
     };
     use Timetabio\Framework\ValueObjects\Uri;
 
@@ -30,6 +30,11 @@ namespace Timetabio\Framework\Curl
         public function post(Uri $url, array $params = [], CredentialsInterface $credentials = null): Response
         {
             return $this->handler->executeRequest($url, new Post, $params, $credentials);
+        }
+
+        public function put(Uri $url, array $params = [], CredentialsInterface $credentials = null): Response
+        {
+            return $this->handler->executeRequest($url, new Put, $params, $credentials);
         }
 
         public function patch(Uri $url, array $params = [], CredentialsInterface $credentials = null): Response

@@ -37,6 +37,11 @@ namespace Timetabio\Frontend\Backends
             return new ApiResponse($this->curl->post($this->buildUrl($endpoint), $params, $credentials));
         }
 
+        public function put(string $endpoint, array $params, CredentialsInterface $credentials = null): ApiResponse
+        {
+            return new ApiResponse($this->curl->put($this->buildUrl($endpoint), $params, $credentials));
+        }
+
         public function patch(string $endpoint, array $params, CredentialsInterface $credentials = null): ApiResponse
         {
             return new ApiResponse($this->curl->patch($this->buildUrl($endpoint), $params, $credentials));
