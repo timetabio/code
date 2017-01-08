@@ -162,6 +162,7 @@ namespace Timetabio\Frontend\Renderers\Snippet
 
             if (isset($feed['access']['post']) && $feed['access']['post']) {
                 $buttons->appendChild($this->renderDeleteButton($template, $post));
+                $buttons->appendChild($this->renderEditButton($template, $post));
             }
 
             return $card;
@@ -188,6 +189,15 @@ namespace Timetabio\Frontend\Renderers\Snippet
             $button->setAttribute('is', 'ajax-button');
             $button->setAttribute('post-uri', $action);
             $button->setAttribute('post-data', json_encode($buttonData));
+
+            return $button;
+        }
+
+        private function renderEditButton(Dom\Document $template, array $post): Dom\Element
+        {
+            $button = $this->iconButtonSnippet->render($template, 'actions/post', 'Edit', '', false);
+
+            $button->setAttribute('href', $this->uriBuilder->buildEditPostPageUri($post['id']));
 
             return $button;
         }
