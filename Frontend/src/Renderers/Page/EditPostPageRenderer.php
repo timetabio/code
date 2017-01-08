@@ -98,16 +98,13 @@ namespace Timetabio\Frontend\Renderers\Page
             $textareaElement->setAttribute('is', 'auto-textarea');
             $textareaElement->setAttribute('name', 'body');
             $textareaElement->setAttribute('placeholder', 'Write something...');
-            $textareaElement->setAttribute('save-uri', '/action/post/update-description');
+            $textareaElement->setAttribute('save-uri', '/action/post/update-body');
             $textareaElement->appendText($post['body']);
             $bodyElement->appendChild($textareaElement);
 
             $attachmentsElement = $template->createElement('div');
             $attachmentsElement->setClassName('attachments');
             $cardElement->appendChild($attachmentsElement);
-
-            $formError = $template->createElement('form-error');
-            $cardElement->appendChild($formError);
 
             $buttonsElement = $template->createElement('div');
             $buttonsElement->setClassName('buttons');

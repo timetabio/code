@@ -494,5 +494,29 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createResetCommand()
             );
         }
+
+        public function createUpdatePostTitleRequestHandler(): \Timetabio\Frontend\Handlers\Post\UpdatePostTitle\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdatePostTitle\RequestHandler;
+        }
+
+        public function createUpdatePostTitleCommandHandler(): \Timetabio\Frontend\Handlers\Post\UpdatePostTitle\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdatePostTitle\CommandHandler(
+                $this->getMasterFactory()->createUpdatePostTitleCommand()
+            );
+        }
+
+        public function createUpdatePostBodyRequestHandler(): \Timetabio\Frontend\Handlers\Post\UpdatePostBody\RequestHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdatePostBody\RequestHandler;
+        }
+
+        public function createUpdatePostBodyCommandHandler(): \Timetabio\Frontend\Handlers\Post\UpdatePostBody\CommandHandler
+        {
+            return new \Timetabio\Frontend\Handlers\Post\UpdatePostBody\CommandHandler(
+                $this->getMasterFactory()->createUpdatePostBodyCommand()
+            );
+        }
     }
 }

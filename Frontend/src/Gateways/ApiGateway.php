@@ -165,6 +165,28 @@ namespace Timetabio\Frontend\Gateways
             );
         }
 
+        public function updatePostTitle(string $postId, string $title): ApiResponse
+        {
+            return $this->apiBackend->put(
+                '/posts/' . urlencode($postId) . '/title',
+                [
+                    'title' => $title
+                ],
+                $this->getAccessToken()
+            );
+        }
+
+        public function updatePostBody(string $postId, string $body): ApiResponse
+        {
+            return $this->apiBackend->put(
+                '/posts/' . urlencode($postId) . '/body',
+                [
+                    'body' => $body
+                ],
+                $this->getAccessToken()
+            );
+        }
+
         public function restorePost(string $postId): ApiResponse
         {
             return $this->apiBackend->post(

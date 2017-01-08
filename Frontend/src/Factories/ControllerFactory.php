@@ -549,5 +549,35 @@ namespace Timetabio\Frontend\Factories
                 new JsonResponse
             );
         }
+
+        public function createUpdatePostTitleController(): PostController
+        {
+            return new PostController(
+                new \Timetabio\Frontend\Models\Action\UpdatePostTitleModel,
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createUpdatePostTitleRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createUpdatePostTitleCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
+        public function createUpdatePostBodyController(): PostController
+        {
+            return new PostController(
+                new \Timetabio\Frontend\Models\Action\UpdatePostBodyModel,
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createUpdatePostBodyRequestHandler(),
+                $this->getMasterFactory()->createQueryHandler(),
+                $this->getMasterFactory()->createUpdatePostBodyCommandHandler(),
+                $this->getMasterFactory()->createPostTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
     }
 }
