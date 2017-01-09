@@ -9,7 +9,7 @@ task :default => TARGETS
 
 desc 'Run tests'
 task :test do
-    # run tests here
+    sh 'lessc --lint less/application.less'
 end
 
 desc 'Build css bundle'
