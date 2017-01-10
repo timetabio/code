@@ -82,6 +82,7 @@ namespace Timetabio\Survey\Bootstrap
 
             $router->addRouter($this->getFactory()->createBetaSurveyRouter());
             $router->addRouter($this->getFactory()->createSurveyActionRouter());
+            $router->addRouter($this->getFactory()->createPostSurveyRouter());
             $router->addRouter($this->getFactory()->createNotFoundRouter());
 
             return $router;

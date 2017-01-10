@@ -33,6 +33,16 @@ namespace Timetabio\Survey\Models\Action
          */
         private $rawAnswers;
 
+        /**
+         * @var string
+         */
+        private $version;
+
+        /**
+         * @var string
+         */
+        private $comment;
+
         public function getBetaRequest(): string
         {
             return $this->betaRequest;
@@ -71,6 +81,31 @@ namespace Timetabio\Survey\Models\Action
         public function setRawAnswers(array $rawAnswers)
         {
             $this->rawAnswers = $rawAnswers;
+        }
+
+        public function getVersion(): string
+        {
+            return $this->version;
+        }
+
+        public function setVersion(string $version)
+        {
+            $this->version = $version;
+        }
+
+        public function hasComment(): bool
+        {
+            return $this->comment !== null;
+        }
+
+        public function getComment(): ?string
+        {
+            return $this->comment;
+        }
+
+        public function setComment(string $comment)
+        {
+            $this->comment = $comment;
         }
     }
 }

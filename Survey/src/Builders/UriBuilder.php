@@ -16,13 +16,17 @@ namespace Timetabio\Survey\Builders
          */
         private $uriHost;
 
-        public function __construct($uriHost)
+        public function __construct(string $uriHost)
         {
             $this->uriHost = $uriHost;
         }
 
-        public function buildSurveyThanksPage(): string
+        public function buildSurveyThanksPage(string $version): string
         {
+            if ($version === 'post') {
+                return $this->uriHost;
+            }
+
             return $this->uriHost . '/survey/thanks';
         }
     }

@@ -21,6 +21,14 @@ namespace Timetabio\Survey\Factories
             );
         }
 
+        public function createPostSurveyRouter(): \Timetabio\Survey\Routers\PostSurveyRouter
+        {
+            return new \Timetabio\Survey\Routers\PostSurveyRouter(
+                $this->getMasterFactory(),
+                $this->getMasterFactory()->createFetchBetaRequestQuery()
+            );
+        }
+
         public function createSurveyActionRouter(): \Timetabio\Survey\Routers\ActionRouter
         {
             return new \Timetabio\Survey\Routers\ActionRouter(

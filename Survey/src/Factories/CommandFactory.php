@@ -26,5 +26,12 @@ namespace Timetabio\Survey\Factories
                 $this->getMasterFactory()->createPostgresBackend()
             );
         }
+
+        public function createInsertCommentCommand(): \Timetabio\Survey\Commands\InsertCommentCommand
+        {
+            return new \Timetabio\Survey\Commands\InsertCommentCommand(
+                $this->getMasterFactory()->createPostgresBackend()
+            );
+        }
     }
 }

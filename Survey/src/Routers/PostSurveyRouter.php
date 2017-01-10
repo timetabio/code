@@ -16,7 +16,7 @@ namespace Timetabio\Survey\Routers
     use Timetabio\Framework\Routers\RouterInterface;
     use Timetabio\Survey\Queries\FetchBetaRequestQuery;
 
-    class BetaSurveyRouter implements RouterInterface
+    class PostSurveyRouter implements RouterInterface
     {
         /**
          * @var MasterFactoryInterface
@@ -38,17 +38,17 @@ namespace Timetabio\Survey\Routers
         {
            $parts = $request->getUri()->getPathSegments();
 
-           if ($parts[0] !== 'beta' || count($parts) !== 2) {
+           if ($parts[0] !== 'post' || count($parts) !== 2) {
                throw new RouterException;
            }
 
            $betaRequest = $this->fetchBetaRequestQuery->execute($parts[1]);
 
-           if ($betaRequest === null || $betaRequest['survey_before_completed']) {
+           if ($betaRequest === null) {
                throw new RouterException;
            }
 
-           return $this->factory->createSurveyPageController($betaRequest, 'beta');
+           return $this->factory->createSurveyPageController($betaRequest, 'post');
         }
 
         public function canHandle(RequestInterface $request): bool

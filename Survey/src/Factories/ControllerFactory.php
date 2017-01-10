@@ -15,10 +15,10 @@ namespace Timetabio\Survey\Factories
 
     class ControllerFactory extends AbstractChildFactory
     {
-        public function createSurveyPageController(array $survey): \Timetabio\Framework\Controllers\GetController
+        public function createSurveyPageController(array $survey, string $version): \Timetabio\Framework\Controllers\GetController
         {
             return new \Timetabio\Framework\Controllers\GetController(
-                new \Timetabio\Survey\Models\Page\SurveyPageModel($survey),
+                new \Timetabio\Survey\Models\Page\SurveyPageModel($survey, $version),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
                 $this->getMasterFactory()->createSurveyPageQueryHandler(),

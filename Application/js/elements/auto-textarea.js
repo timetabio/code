@@ -46,6 +46,6 @@ export class AutoTextarea extends window.HTMLTextAreaElement {
   }
 
   get maxSize () {
-    return Number.parseInt(this.getAttribute('max-size'))
+    return Number.parseInt(this.getAttribute('max-size')) || Infinity
   }
 }

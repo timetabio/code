@@ -13,6 +13,7 @@ namespace Timetabio\Survey\Handlers\Post\Survey
     use Timetabio\Framework\Models\AbstractModel;
     use Timetabio\Survey\Commands\ApproveBetaRequestCommand;
     use Timetabio\Survey\Commands\InsertAnswerCommand;
+    use Timetabio\Survey\Commands\InsertCommentCommand;
     use Timetabio\Survey\Models\Action\SurveyActionModel;
 
     class CommandHandler implements CommandHandlerInterface
@@ -27,10 +28,16 @@ namespace Timetabio\Survey\Handlers\Post\Survey
          */
         private $insertAnswerCommand;
 
-        public function __construct(ApproveBetaRequestCommand $approveBetaRequestCommand, InsertAnswerCommand $insertAnswerCommand)
+        /**
+         * @var InsertCommentCommand
+         */
+        private $insertCommentCommand;
+
+        public function __construct(ApproveBetaRequestCommand $approveBetaRequestCommand, InsertAnswerCommand $insertAnswerCommand, InsertCommentCommand $insertCommentCommand)
         {
             $this->approveBetaRequestCommand = $approveBetaRequestCommand;
             $this->insertAnswerCommand = $insertAnswerCommand;
+            $this->insertCommentCommand = $insertCommentCommand;
         }
 
         public function execute(AbstractModel $model)
@@ -40,10 +47,14 @@ namespace Timetabio\Survey\Handlers\Post\Survey
             $betaRequest = $model->getBetaRequest();
 
             foreach ($model->getAnswers() as $id => $value) {
-                $this->insertAnswerCommand->execute($id, $value, $betaRequest);
+                $this->insertAnswerCommand->execute($id, $value, $betaRequest, $model->getVersion());
             }
 
             $this->approveBetaRequestCommand->execute($betaRequest);
+
+            if ($model->hasComment()) {
+                $this->insertCommentCommand->execute($model->getComment(), $betaRequest);
+            }
         }
     }
 }
