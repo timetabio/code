@@ -2,7 +2,6 @@
 
 Styles have been bootstrapped with [donut](https://github.com/bash/donut) as boilerplate by Ruben Schmidmeister, released under the [WTFPL](https://github.com/bash/donut/blob/master/LICENSE)
 
-
 ## License
 
 If not mentioned otherwise, code in this repository comes without any warranty, to
