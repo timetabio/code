@@ -1,6 +1,6 @@
 # code
 
-[![Build Status](https://travis-ci.org/timetabio/code.svg?branch=master)](https://travis-ci.org/timetabio/code)
+[![Build Status](https://travis-ci.com/timetabio/code.svg?token=W8o5L3HCbrzYGBDzh4dy&branch=master)](https://travis-ci.com/timetabio/code)
 
 This repository contains the code of our IDPA project in the vocational school BBBaden which all the students have to do in their third year.
 
