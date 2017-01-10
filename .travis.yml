@@ -23,6 +23,7 @@ before_script:
 
 script:
 - ./scripts/rake.sh test
+- ./scripts/push-subprojects.sh
 
 before_deploy:
 - eval "$(ssh-agent -s)"
