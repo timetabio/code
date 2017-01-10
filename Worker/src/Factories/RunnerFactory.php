@@ -175,5 +175,22 @@ namespace Timetabio\Worker\Factories
                 $this->getMasterFactory()->createMailgunBackend()
             );
         }
+
+        public function createSendSurveyMailsRunner(): \Timetabio\Worker\Runners\SendSurveyMailsRunner
+        {
+            return new \Timetabio\Worker\Runners\SendSurveyMailsRunner(
+                $this->getMasterFactory()->createBetaRequestService(),
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
+
+        public function createSendSurveyMailRunner(): \Timetabio\Worker\Runners\SendSurveyMailRunner
+        {
+            return new \Timetabio\Worker\Runners\SendSurveyMailRunner(
+                $this->getMasterFactory()->createBetaRequestService(),
+                $this->getMasterFactory()->createSurveyMail(),
+                $this->getMasterFactory()->createMailgunBackend()
+            );
+        }
     }
 }
