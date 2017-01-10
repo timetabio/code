@@ -26,7 +26,10 @@ namespace Timetabio\Survey\Queries
         public function execute(string $id)
         {
             return $this->databaseBackend->fetch(
-                'SELECT * FROM beta_requests WHERE id = :id',
+                'SELECT beta_requests.* FROM beta_requests
+                      LEFT OUTER JOIN users ON beta_requests.email = users.email
+                      WHERE beta_requests.id = :id OR users.id = :id
+                      ',
                 [
                     'id' => $id
                 ]
