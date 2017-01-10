@@ -91,11 +91,26 @@ namespace Timetabio\Survey\Renderers\PageContent
                 }
             }
 
+            if ($model->getVersion() === 'post') {
+                $commentBox = $template->createElement('textarea');
+                $commentBox->setClassName('basic-input -textarea _margin-after-l');
+                $commentBox->setAttribute('is', 'auto-textarea');
+                $commentBox->setAttribute('name', 'comment');
+                $commentBox->setAttribute('placeholder', '(Optional) Write a comment ...');
+                $form->appendChild($commentBox);
+            }
+
             $betaRequest = $template->createElement('input');
             $betaRequest->setAttribute('type', 'hidden');
             $betaRequest->setAttribute('name', 'beta_request');
             $betaRequest->setAttribute('value', $model->getBetaRequest()['id']);
             $form->appendChild($betaRequest);
+
+            $version = $template->createElement('input');
+            $version->setAttribute('type', 'hidden');
+            $version->setAttribute('name', 'version');
+            $version->setAttribute('value', $model->getVersion());
+            $form->appendChild($version);
 
             $submitButton = $template->createElement('button');
             $submitButton->setClassName('basic-button -full-width');

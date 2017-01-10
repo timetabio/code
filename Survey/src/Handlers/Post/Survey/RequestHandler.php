@@ -26,8 +26,13 @@ namespace Timetabio\Survey\Handlers\Post\Survey
             try {
                 $model->setRawAnswers($request->getParam('answers'));
                 $model->setBetaRequest($request->getParam('beta_request'));
+                $model->setVersion($request->getParam('version'));
             } catch (\Exception $exception) {
                 throw new BadRequest('missing or invalid parameters');
+            }
+
+            if ($request->hasParam('comment')) {
+                $model->setComment($request->getParam('comment'));
             }
         }
     }
