@@ -9,6 +9,7 @@
  */
 namespace Timetabio\API\Commands\Posts
 {
+    use Timetabio\API\DataStore\DataStoreWriter;
     use Timetabio\API\Services\PostService;
     use Timetabio\Framework\Backends\ElasticBackend;
 
@@ -24,10 +25,16 @@ namespace Timetabio\API\Commands\Posts
          */
         private $elasticBackend;
 
-        public function __construct(PostService $postService, ElasticBackend $elasticBackend)
+        /**
+         * @var DataStoreWriter
+         */
+        private $dataStoreWriter;
+
+        public function __construct(PostService $postService, ElasticBackend $elasticBackend, DataStoreWriter $dataStoreWriter)
         {
             $this->postService = $postService;
             $this->elasticBackend = $elasticBackend;
+            $this->dataStoreWriter = $dataStoreWriter;
         }
 
         public function execute(string $postId): void
@@ -35,8 +42,13 @@ namespace Timetabio\API\Commands\Posts
             $this->postService->restorePost($postId);
 
             $this->elasticBackend->updateDocument('post', $postId, [
-                'archived' => null
+                'archived' => null,
+                'meta' => [
+                    'delete_timestamp' => null
+                ]
             ]);
+
+            $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\IndexPostTask($postId));
         }
     }
 }
