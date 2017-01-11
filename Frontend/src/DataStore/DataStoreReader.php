@@ -45,5 +45,13 @@ namespace Timetabio\Frontend\DataStore
         {
             return $this->getDataStore()->getFromHash('static_routes', $path);
         }
+
+        /**
+         * @deprecated
+         */
+        public function hasSurveyCompleted(string $version, string $email): bool
+        {
+            return $this->getDataStore()->hasInSet('survey_completed:' . $version, $email);
+        }
     }
 }

@@ -57,7 +57,7 @@ namespace Timetabio\Frontend\Factories
         public function createSurveyBannerTransformation(): \Timetabio\Frontend\Transformations\SurveyBannerTransformation
         {
             return new \Timetabio\Frontend\Transformations\SurveyBannerTransformation(
-                $this->getMasterFactory()->createDomBackend()
+                $this->getMasterFactory()->createDataStoreReader()
             );
         }
 

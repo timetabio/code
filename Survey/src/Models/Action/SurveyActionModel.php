@@ -21,6 +21,11 @@ namespace Timetabio\Survey\Models\Action
         /**
          * @var array
          */
+        private $betaRequestInfo;
+
+        /**
+         * @var array
+         */
         private $questions;
 
         /**
@@ -51,6 +56,16 @@ namespace Timetabio\Survey\Models\Action
         public function setBetaRequest(string $betaRequest)
         {
             $this->betaRequest = $betaRequest;
+        }
+
+        public function getBetaRequestInfo(): array
+        {
+            return $this->betaRequestInfo;
+        }
+
+        public function setBetaRequestInfo(array $betaRequestInfo)
+        {
+            $this->betaRequestInfo = $betaRequestInfo;
         }
 
         public function getQuestions(): array

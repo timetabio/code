@@ -26,12 +26,18 @@ namespace Timetabio\Frontend\DataObjects
         /**
          * @var string
          */
+        private $email;
+
+        /**
+         * @var string
+         */
         private $name;
 
-        public function __construct(string $userId, string $username, string $name = null)
+        public function __construct(string $userId, string $username, string $email, string $name = null)
         {
             $this->userId = $userId;
             $this->username = $username;
+            $this->email = $email;
             $this->name = $name;
         }
 
@@ -43,6 +49,11 @@ namespace Timetabio\Frontend\DataObjects
         public function getUsername(): string
         {
             return $this->username;
+        }
+
+        public function getEmail(): string
+        {
+            return $this->email;
         }
 
         public function getName()

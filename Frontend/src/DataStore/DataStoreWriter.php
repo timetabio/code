@@ -33,5 +33,13 @@ namespace Timetabio\Frontend\DataStore
         {
             $this->dataStore->setTimeout('session_data_' . $sessionId, $ttl);
         }
+
+        /**
+         * @deprecated
+         */
+        public function setSurveyCompleted(string $version, string $email): void
+        {
+            $this->dataStore->addToSet('survey_completed:' . $version, $email);
+        }
     }
 }

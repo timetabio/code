@@ -14,6 +14,7 @@ namespace Timetabio\Survey\Handlers\Post\Survey
     use Timetabio\Survey\Commands\ApproveBetaRequestCommand;
     use Timetabio\Survey\Commands\InsertAnswerCommand;
     use Timetabio\Survey\Commands\InsertCommentCommand;
+    use Timetabio\Frontend\DataStore\DataStoreWriter;
     use Timetabio\Survey\Models\Action\SurveyActionModel;
 
     class CommandHandler implements CommandHandlerInterface
@@ -33,11 +34,17 @@ namespace Timetabio\Survey\Handlers\Post\Survey
          */
         private $insertCommentCommand;
 
-        public function __construct(ApproveBetaRequestCommand $approveBetaRequestCommand, InsertAnswerCommand $insertAnswerCommand, InsertCommentCommand $insertCommentCommand)
+        /**
+         * @var DataStoreWriter
+         */
+        private $dataStoreWriter;
+
+        public function __construct(ApproveBetaRequestCommand $approveBetaRequestCommand, InsertAnswerCommand $insertAnswerCommand, InsertCommentCommand $insertCommentCommand, DataStoreWriter $dataStoreWriter)
         {
             $this->approveBetaRequestCommand = $approveBetaRequestCommand;
             $this->insertAnswerCommand = $insertAnswerCommand;
             $this->insertCommentCommand = $insertCommentCommand;
+            $this->dataStoreWriter = $dataStoreWriter;
         }
 
         public function execute(AbstractModel $model)
@@ -55,6 +62,8 @@ namespace Timetabio\Survey\Handlers\Post\Survey
             if ($model->hasComment()) {
                 $this->insertCommentCommand->execute($model->getComment(), $betaRequest);
             }
+
+            $this->dataStoreWriter->setSurveyCompleted($model->getVersion(), $model->getBetaRequestInfo()['email']);
         }
     }
 }

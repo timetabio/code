@@ -11,11 +11,22 @@
 namespace Timetabio\Frontend\Transformations
 {
     use Timetabio\Framework\Dom\Document;
+    use Timetabio\Frontend\DataStore\DataStoreReader;
     use Timetabio\Frontend\Models\PageModel;
     use Timetabio\Library\Transformations\TransformationInterface;
 
     class SurveyBannerTransformation implements TransformationInterface
     {
+        /**
+         * @var DataStoreReader
+         */
+        private $dataStoreReader;
+
+        public function __construct(DataStoreReader $dataStoreReader)
+        {
+            $this->dataStoreReader = $dataStoreReader;
+        }
+
         public function apply(PageModel $model, Document $template)
         {
             if (!$model->hasUser()) {
@@ -25,6 +36,10 @@ namespace Timetabio\Frontend\Transformations
             $headerElement = $template->queryOne('//header[@class="page-header"]');
 
             if ($headerElement === null) {
+                return;
+            }
+
+            if ($this->dataStoreReader->hasSurveyCompleted('post', $model->getUser()->getEmail())) {
                 return;
             }
 
