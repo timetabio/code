@@ -19,18 +19,29 @@ namespace Timetabio\Survey\Models\Page
         private $betaRequest;
 
         /**
+         * @var string
+         */
+        private $version;
+
+        /**
          * @var array
          */
         private $questions;
 
-        public function __construct(array $betaRequest)
+        public function __construct(array $betaRequest, string $version)
         {
             $this->betaRequest = $betaRequest;
+            $this->version = $version;
         }
 
         public function getBetaRequest(): array
         {
             return $this->betaRequest;
+        }
+
+        public function getVersion(): string
+        {
+            return $this->version;
         }
 
         public function getQuestions(): array

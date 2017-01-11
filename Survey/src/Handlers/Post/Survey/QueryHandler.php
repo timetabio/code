@@ -50,7 +50,7 @@ namespace Timetabio\Survey\Handlers\Post\Survey
             $rawAnswers = $model->getRawAnswers();
             $betaRequest = $this->fetchBetaRequestQuery->execute($betaRequestId);
 
-            if ($betaRequest === null || $betaRequest['survey_before_completed']) {
+            if ($betaRequest === null) {
                 throw new BadRequest('beta request not found');
             }
 
@@ -73,7 +73,7 @@ namespace Timetabio\Survey\Handlers\Post\Survey
             }
 
             $model->setData([
-               'redirect' => $this->uriBuilder->buildSurveyThanksPage()
+               'redirect' => $this->uriBuilder->buildSurveyThanksPage($model->getVersion())
             ]);
         }
     }

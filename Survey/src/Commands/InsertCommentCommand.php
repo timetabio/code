@@ -7,11 +7,11 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
-namespace Timetabio\Survey\Queries
+namespace Timetabio\Survey\Commands
 {
     use Timetabio\Framework\Backends\PostgresBackend;
 
-    class FetchBetaRequestQuery
+    class InsertCommentCommand
     {
         /**
          * @var PostgresBackend
@@ -23,15 +23,14 @@ namespace Timetabio\Survey\Queries
             $this->databaseBackend = $databaseBackend;
         }
 
-        public function execute(string $id)
+        public function execute(string $body, string $betaRequest)
         {
-            return $this->databaseBackend->fetch(
-                'SELECT beta_requests.* FROM beta_requests
-                      LEFT OUTER JOIN users ON beta_requests.email = users.email
-                      WHERE beta_requests.id = :id OR users.id = :id
-                      ',
+            return $this->databaseBackend->insert(
+                'INSERT INTO survey_comments (body, beta_request_id)
+                 VALUES (:body, :beta_request_id)',
                 [
-                    'id' => $id
+                    'body' => $body,
+                    'beta_request_id' => $betaRequest
                 ]
             );
         }

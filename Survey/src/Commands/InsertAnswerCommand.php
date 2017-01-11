@@ -23,16 +23,17 @@ namespace Timetabio\Survey\Commands
             $this->databaseBackend = $databaseBackend;
         }
 
-        public function execute(string $question, int $value, string $betaRequest)
+        public function execute(string $question, int $value, string $betaRequest, string $version)
         {
             return $this->databaseBackend->insert(
                 'INSERT INTO survey_answers (value, survey_question_id, beta_request_id, version)
-                 VALUES (:value, :survey_question_id, :beta_request_id, :version)',
+                 VALUES (:value, :survey_question_id, :beta_request_id, :version)
+                 ON CONFLICT (version, survey_question_id, beta_request_id) DO NOTHING',
                 [
                     'value' => $value,
                     'survey_question_id' => $question,
                     'beta_request_id' => $betaRequest,
-                    'version' => 'before'
+                    'version' => $version
                 ]
             );
         }

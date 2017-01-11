@@ -43,5 +43,12 @@ namespace Timetabio\Worker\Factories
                 $this->getMasterFactory()->createDomBackend()->loadXml(__DIR__ . '/../../data/mails/beta-invitation.xhtml')
             );
         }
+
+        public function createSurveyMail(): \Timetabio\Worker\Mails\SurveyMail
+        {
+            return new \Timetabio\Worker\Mails\SurveyMail(
+                $this->getMasterFactory()->createDomBackend()->loadXml(__DIR__ . '/../../data/mails/survey.xhtml')
+            );
+        }
     }
 }

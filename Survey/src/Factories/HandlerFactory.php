@@ -45,7 +45,8 @@ namespace Timetabio\Survey\Factories
         {
             return new \Timetabio\Survey\Handlers\Post\Survey\CommandHandler(
                 $this->getMasterFactory()->createApproveBetaRequestCommand(),
-                $this->getMasterFactory()->createInsertAnswerCommand()
+                $this->getMasterFactory()->createInsertAnswerCommand(),
+                $this->getMasterFactory()->createInsertCommentCommand()
             );
         }
     }
