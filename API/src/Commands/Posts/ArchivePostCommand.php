@@ -11,6 +11,7 @@ namespace Timetabio\API\Commands\Posts
 {
     use Timetabio\API\Services\PostService;
     use Timetabio\Framework\Backends\ElasticBackend;
+    use Timetabio\Framework\ValueObjects\StringDateTime;
 
     class ArchivePostCommand
     {
@@ -35,7 +36,7 @@ namespace Timetabio\API\Commands\Posts
             $archived = $this->postService->archivePost($postId);
 
             $this->elasticBackend->updateDocument('post', $postId, [
-                'archived' => $archived
+                'archived' => (new StringDateTime($archived))->getTimestamp()
             ]);
 
             return $archived;

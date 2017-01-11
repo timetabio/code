@@ -67,7 +67,9 @@ namespace Timetabio\Framework\Backends
                 'index' => $this->index,
                 'type' => $type,
                 'id' => $id,
-                'body' => $updates
+                'body' => [
+                    'doc' => $updates
+                ]
             ]);
         }
 
