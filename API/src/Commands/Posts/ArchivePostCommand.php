@@ -9,8 +9,8 @@
  */
 namespace Timetabio\API\Commands\Posts
 {
-    use Timetabio\API\DataStore\DataStoreWriter;
     use Timetabio\API\Services\PostService;
+    use Timetabio\Framework\Backends\ElasticBackend;
 
     class ArchivePostCommand
     {
@@ -20,21 +20,23 @@ namespace Timetabio\API\Commands\Posts
         private $postService;
 
         /**
-         * @var DataStoreWriter
+         * @var ElasticBackend
          */
-        private $dataStoreWriter;
+        private $elasticBackend;
 
-        public function __construct(PostService $postService, DataStoreWriter $dataStoreWriter)
+        public function __construct(PostService $postService, ElasticBackend $elasticBackend)
         {
             $this->postService = $postService;
-            $this->dataStoreWriter = $dataStoreWriter;
+            $this->elasticBackend = $elasticBackend;
         }
 
         public function execute(string $postId): string
         {
             $archived = $this->postService->archivePost($postId);
 
-            $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\IndexPostTask($postId));
+            $this->elasticBackend->updateDocument('post', $postId, [
+                'archived' => $archived
+            ]);
 
             return $archived;
         }

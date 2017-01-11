@@ -61,6 +61,16 @@ namespace Timetabio\Framework\Backends
             ]);
         }
 
+        public function updateDocument(string $type, string $id, array $updates): array
+        {
+            return $this->client->update([
+                'index' => $this->index,
+                'type' => $type,
+                'id' => $id,
+                'body' => $updates
+            ]);
+        }
+
         public function deleteDocument(string $type, string $id): array
         {
             return $this->client->delete([
