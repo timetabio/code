@@ -61,12 +61,13 @@ namespace Timetabio\Framework\Backends
             ]);
         }
 
-        public function updateDocument(string $type, string $id, array $updates): array
+        public function updateDocument(string $type, string $id, array $updates, bool $refresh = false): array
         {
             return $this->client->update([
                 'index' => $this->index,
                 'type' => $type,
                 'id' => $id,
+                'refresh' => $refresh,
                 'body' => [
                     'doc' => $updates
                 ]

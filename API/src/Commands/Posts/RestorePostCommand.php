@@ -41,12 +41,14 @@ namespace Timetabio\API\Commands\Posts
         {
             $this->postService->restorePost($postId);
 
-            $this->elasticBackend->updateDocument('post', $postId, [
+            $document = [
                 'archived' => null,
                 'meta' => [
                     'delete_timestamp' => null
                 ]
-            ]);
+            ];
+
+            $this->elasticBackend->updateDocument('post', $postId, $document, true);
 
             $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\IndexPostTask($postId));
         }

@@ -36,12 +36,14 @@ namespace Timetabio\API\Commands\Posts
             $archived = $this->postService->archivePost($postId);
             $timestamp = (new StringDateTime($archived))->getTimestamp();
 
-            $this->elasticBackend->updateDocument('post', $postId, [
+            $document = [
                 'archived' => $timestamp,
                 'meta' => [
                     'delete_timestamp' => $timestamp + 3600 * 24 * 30
                 ]
-            ]);
+            ];
+
+            $this->elasticBackend->updateDocument('post', $postId, $document, true);
 
             return $archived;
         }
