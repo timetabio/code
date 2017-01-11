@@ -214,7 +214,7 @@ namespace Timetabio\API\Factories
         {
             return new \Timetabio\API\Commands\Posts\ArchivePostCommand(
                 $this->getMasterFactory()->createPostService(),
-                $this->getMasterFactory()->createDataStoreWriter()
+                $this->getMasterFactory()->createElasticBackend()
             );
         }
 
@@ -222,7 +222,7 @@ namespace Timetabio\API\Factories
         {
             return new \Timetabio\API\Commands\Posts\RestorePostCommand(
                 $this->getMasterFactory()->createPostService(),
-                $this->getMasterFactory()->createDataStoreWriter()
+                $this->getMasterFactory()->createElasticBackend()
             );
         }
     }
