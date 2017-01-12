@@ -14,12 +14,13 @@ namespace Timetabio\Frontend\Routers
     use Timetabio\Framework\Factories\MasterFactoryInterface;
     use Timetabio\Framework\Http\Request\RequestInterface;
     use Timetabio\Framework\Routers\RouterInterface;
+    use Timetabio\Frontend\Factories\FactoryTypeHint;
     use Timetabio\Frontend\Queries\Post\FetchPostQuery;
 
     class PostPageRouter implements RouterInterface
     {
         /**
-         * @var MasterFactoryInterface
+         * @var FactoryTypeHint
          */
         private $factory;
 
@@ -39,17 +40,25 @@ namespace Timetabio\Frontend\Routers
             $parts = $request->getUri()->getPathSegments();
             $count = count($parts);
 
-            if ($count !== 2 || $parts[0] !== 'post') {
+            if ($count < 2 || $parts[0] !== 'post') {
                 throw new RouterException;
             }
 
             $post = $this->fetchPostQuery->execute($parts[1]);
 
             if ($post === null) {
-               throw new RouterException;
+                throw new RouterException;
             }
 
-            return $this->factory->createGetPostPageController($post);
+            if ($count === 2) {
+                return $this->factory->createGetPostPageController($post);
+            }
+
+            if ($parts[2] === 'edit' && $post['feed']['access']['post']) {
+                return $this->factory->createEditPostPageController($post);
+            }
+
+            throw new RouterException;
         }
 
         public function canHandle(RequestInterface $request): bool

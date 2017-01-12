@@ -226,5 +226,22 @@ namespace Timetabio\API\Factories
                 $this->getMasterFactory()->createDataStoreWriter()
             );
         }
+
+        public function createUpdatePostBodyCommand(): \Timetabio\API\Commands\Posts\UpdatePostBodyCommand
+        {
+            return new \Timetabio\API\Commands\Posts\UpdatePostBodyCommand(
+                $this->getMasterFactory()->createInkBackend(),
+                $this->getMasterFactory()->createPostService(),
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
+
+        public function createUpdatePostTitleCommand(): \Timetabio\API\Commands\Posts\UpdatePostTitleCommand
+        {
+            return new \Timetabio\API\Commands\Posts\UpdatePostTitleCommand(
+                $this->getMasterFactory()->createPostService(),
+                $this->getMasterFactory()->createDataStoreWriter()
+            );
+        }
     }
 }

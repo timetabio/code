@@ -30,8 +30,10 @@ export class AutoTextarea extends window.HTMLTextAreaElement {
   }
 
   _resize () {
-    this.style.height = 'auto'
-    this.style.height = `${this.scrollHeight}px`
+    requestAnimationFrame(() => {
+      this.style.height = '0'
+      this.style.height = `${this.scrollHeight}px`
+    })
   }
 
   _validate () {

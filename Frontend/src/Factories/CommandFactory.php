@@ -178,5 +178,19 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createApiGateway()
             );
         }
+
+        public function createUpdatePostTitleCommand(): Commands\UpdatePostTitleCommand
+        {
+            return new Commands\UpdatePostTitleCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
+
+        public function createUpdatePostBodyCommand(): Commands\UpdatePostBodyCommand
+        {
+            return new Commands\UpdatePostBodyCommand(
+                $this->getMasterFactory()->createApiGateway()
+            );
+        }
     }
 }

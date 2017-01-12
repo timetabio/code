@@ -11,6 +11,7 @@ namespace Timetabio\Frontend\Models
 {
     use Timetabio\Frontend\ValueObjects\PaginatedResult;
 
+    // TODO: Move this to Page\
     class FeedsPageModel extends PageModel
     {
         /**

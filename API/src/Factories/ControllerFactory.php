@@ -655,10 +655,10 @@ namespace Timetabio\API\Factories
         public function createArchivePostController(string $postId): PostController
         {
             return new PostController(
-                new \Timetabio\API\Models\Post\ArchiveModel($postId),
+                new \Timetabio\API\Models\Post\PostModel($postId),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
-                $this->getMasterFactory()->createArchivePostQueryHandler(),
+                $this->getMasterFactory()->createUpdatePostQueryHandler(),
                 $this->getMasterFactory()->createArchivePostCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
@@ -670,11 +670,41 @@ namespace Timetabio\API\Factories
         public function createRestorePostController(string $postId): PostController
         {
             return new PostController(
-                new \Timetabio\API\Models\Post\ArchiveModel($postId),
+                new \Timetabio\API\Models\Post\PostModel($postId),
                 $this->getMasterFactory()->createPreHandler(),
                 $this->getMasterFactory()->createRequestHandler(),
-                $this->getMasterFactory()->createArchivePostQueryHandler(),
+                $this->getMasterFactory()->createUpdatePostQueryHandler(),
                 $this->getMasterFactory()->createRestorePostCommandHandler(),
+                $this->getMasterFactory()->createTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
+        public function createUpdatePostBodyController(string $postId): PutController
+        {
+            return new PutController(
+                new \Timetabio\API\Models\Post\UpdateBodyModel($postId),
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createUpdatePostBodyRequestHandler(),
+                $this->getMasterFactory()->createUpdatePostQueryHandler(),
+                $this->getMasterFactory()->createUpdatePostBodyCommandHandler(),
+                $this->getMasterFactory()->createTransformationHandler(),
+                $this->getMasterFactory()->createResponseHandler(),
+                $this->getMasterFactory()->createPostHandler(),
+                new JsonResponse
+            );
+        }
+
+        public function createUpdatePostTitleController(string $postId): PutController
+        {
+            return new PutController(
+                new \Timetabio\API\Models\Post\UpdateTitleModel($postId),
+                $this->getMasterFactory()->createPreHandler(),
+                $this->getMasterFactory()->createUpdatePostTitleRequestHandler(),
+                $this->getMasterFactory()->createUpdatePostQueryHandler(),
+                $this->getMasterFactory()->createUpdatePostTitleCommandHandler(),
                 $this->getMasterFactory()->createTransformationHandler(),
                 $this->getMasterFactory()->createResponseHandler(),
                 $this->getMasterFactory()->createPostHandler(),

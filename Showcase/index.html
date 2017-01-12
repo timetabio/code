@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <meta name="csrf-token" content="" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans:400,600,400i,700" />
         <link rel="stylesheet" href="/css/application.css" />
         <link rel="icon" href="/favicon.ico" />
@@ -112,16 +113,20 @@
                 </section>
 
                 <section>
-                    <label class="form-field">
-                        <span class="label">Email</span>
-                        <input type="email" placeholder="peanuts@timetab.io" class="basic-input input"/>
-                    </label>
+                    <autosave-form>
+
+                        <label class="form-field">
+                            <span class="label">Email</span>
+                            <input type="text" placeholder="Enter a title" value="Lorem Ipsum" name="title" class="basic-input input" save-uri="/action/post/update-title"/>
+                        </label>
+
+                    </autosave-form>
                 </section>
             </div>
         </main>
 
         <section class="toast-container">
-            <toast-message class="toast-message -error">
+            <!--<toast-message class="toast-message -error">
 
                 <button class="action">
                     <span class="inner">
@@ -133,7 +138,7 @@
                 <span class="message">
                     The post has been archived, it will be deleted after 30 days.
                 </span>
-            </toast-message>
+            </toast-message>-->
         </section>
 
         <script src="/js/polyfills.js"></script>

@@ -18,6 +18,11 @@ namespace Timetabio\API\Models\Post
          */
         private $postId;
 
+        /**
+         * @var array
+         */
+        private $postInfo;
+
         public function __construct(string $postId)
         {
             $this->postId = $postId;
@@ -26,6 +31,16 @@ namespace Timetabio\API\Models\Post
         public function getPostId(): string
         {
             return $this->postId;
+        }
+
+        public function getPostInfo(): array
+        {
+            return $this->postInfo;
+        }
+
+        public function setPostInfo(array $postInfo)
+        {
+            $this->postInfo = $postInfo;
         }
     }
 }

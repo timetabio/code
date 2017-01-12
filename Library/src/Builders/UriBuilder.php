@@ -64,6 +64,11 @@ namespace Timetabio\Library\Builders
             return $this->uriHost . '/post/' . $postId;
         }
 
+        public function buildEditPostPageUri(string $postId): string
+        {
+            return $this->uriHost . '/post/' . $postId . '/edit';
+        }
+
         public function buildSearchPageUri(string $query): string
         {
             return $this->uriHost . '/search?' . http_build_query(['q' => $query]);

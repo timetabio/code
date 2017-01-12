@@ -211,6 +211,23 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
+        public function createEditPostPageContentRenderer(): \Timetabio\Frontend\Renderers\Page\EditPostPageRenderer
+        {
+            return new \Timetabio\Frontend\Renderers\Page\EditPostPageRenderer(
+                $this->getMasterFactory()->createIconSnippet(),
+                $this->getMasterFactory()->createUriBuilder()
+            );
+        }
+
+        public function createEditPostPageRenderer(): \Timetabio\Frontend\Renderers\Renderer
+        {
+            return new \Timetabio\Frontend\Renderers\PageRenderer(
+                $this->getTemplate(),
+                $this->getMasterFactory()->createEditPostPageContentRenderer(),
+                $this->getMasterFactory()->createTransformer()
+            );
+        }
+
         public function createFeedSettingsPageContentRenderer(): \Timetabio\Frontend\Renderers\Page\Feed\FeedSettingsPageRenderer
         {
             return new \Timetabio\Frontend\Renderers\Page\Feed\FeedSettingsPageRenderer(

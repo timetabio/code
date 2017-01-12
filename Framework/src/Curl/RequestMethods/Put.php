@@ -7,23 +7,18 @@
  * and/or modify it under the terms of the GNU Affero General Public License,
  * version 3, as published by the Free Software Foundation.
  */
-namespace Timetabio\API\Models\Post
+namespace Timetabio\Framework\Curl\RequestMethods
 {
-    class ArchiveModel extends PostModel
+    class Put implements RequestMethodInterface
     {
-        /**
-         * @var array
-         */
-        private $postInfo;
-
-        public function getPostInfo(): array
+        public function __toString(): string
         {
-            return $this->postInfo;
+            return 'PUT';
         }
 
-        public function setPostInfo(array $postInfo)
+        public function hasBody(): bool
         {
-            $this->postInfo = $postInfo;
+            return true;
         }
     }
 }

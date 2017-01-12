@@ -20,7 +20,7 @@ namespace Timetabio\API\ValueObjects
         {
             // 8 KiB = 8192 B
             if (strlen($value) > 8192) {
-                throw new \Exception('post max size exceeded');
+                throw new \Exception('post body limit of 8 kib exceeded');
             }
 
             $this->value = $value;

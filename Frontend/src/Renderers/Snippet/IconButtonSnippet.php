@@ -25,15 +25,20 @@ namespace Timetabio\Frontend\Renderers\Snippet
             $this->iconSnippet = $iconSnippet;
         }
 
-        public function render(Document $document, string $icon, string $label, string $variant = null): Element
+        public function render(Document $document, string $icon, string $label, string $variant = null, bool $button = true): Element
         {
             $className = 'light-button';
+            $tagName = 'button';
 
             if ($variant !== null) {
                 $className = 'light-button ' . $variant;
             }
 
-            $button = $document->createElement('button');
+            if (!$button) {
+                $tagName = 'a';
+            }
+
+            $button = $document->createElement($tagName);
             $button->setClassName($className);
 
             $buttonInner = $document->createElement('span');

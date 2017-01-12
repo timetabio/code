@@ -681,14 +681,6 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createArchivePostQueryHandler(): \Timetabio\API\Handlers\Post\Post\Archive\QueryHandler
-        {
-            return new \Timetabio\API\Handlers\Post\Post\Archive\QueryHandler(
-                $this->getMasterFactory()->createFetchPostInfoQuery(),
-                $this->getMasterFactory()->createFeedAccessControl()
-            );
-        }
-
         public function createArchivePostCommandHandler(): \Timetabio\API\Handlers\Post\Post\Archive\CommandHandler
         {
             return new \Timetabio\API\Handlers\Post\Post\Archive\CommandHandler(
@@ -701,6 +693,38 @@ namespace Timetabio\API\Factories
             return new \Timetabio\API\Handlers\Post\Post\Restore\CommandHandler(
                 $this->getMasterFactory()->createRestorePostCommand()
             );
+        }
+
+        public function createUpdatePostQueryHandler(): \Timetabio\API\Handlers\UpdatePostQueryHandler
+        {
+            return new \Timetabio\API\Handlers\UpdatePostQueryHandler(
+                $this->getMasterFactory()->createFetchPostInfoQuery(),
+                $this->getMasterFactory()->createFeedAccessControl()
+            );
+        }
+
+        public function createUpdatePostBodyCommandHandler(): \Timetabio\API\Handlers\Put\Post\Body\CommandHandler
+        {
+            return new \Timetabio\API\Handlers\Put\Post\Body\CommandHandler(
+                $this->getMasterFactory()->createUpdatePostBodyCommand()
+            );
+        }
+
+        public function createUpdatePostBodyRequestHandler(): \Timetabio\API\Handlers\Put\Post\Body\RequestHandler
+        {
+            return new \Timetabio\API\Handlers\Put\Post\Body\RequestHandler;
+        }
+
+        public function createUpdatePostTitleCommandHandler(): \Timetabio\API\Handlers\Put\Post\Title\CommandHandler
+        {
+            return new \Timetabio\API\Handlers\Put\Post\Title\CommandHandler(
+                $this->getMasterFactory()->createUpdatePostTitleCommand()
+            );
+        }
+
+        public function createUpdatePostTitleRequestHandler(): \Timetabio\API\Handlers\Put\Post\Title\RequestHandler
+        {
+            return new \Timetabio\API\Handlers\Put\Post\Title\RequestHandler;
         }
     }
 }
