@@ -53,6 +53,13 @@ namespace Timetabio\Survey\Renderers\PageContent
             $logoImage->setAttribute('height', '60px');
             $logoLink->appendChild($logoImage);
 
+            if ($model->getVersion() === 'post') {
+                $text = $template->createElement('p');
+                $text->setClassName('basic-heading-b _margin-after-s');
+                $text->appendText('After using timetab.io for a while what has improved?');
+                $logoContainer->appendChild($text);
+            }
+
             $form = $template->createElement('form');
             $form->setAttribute('is', 'ajax-form');
             $form->setAttribute('action', '/action/survey');

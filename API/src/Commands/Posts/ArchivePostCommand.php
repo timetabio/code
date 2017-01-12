@@ -9,8 +9,9 @@
  */
 namespace Timetabio\API\Commands\Posts
 {
-    use Timetabio\API\DataStore\DataStoreWriter;
     use Timetabio\API\Services\PostService;
+    use Timetabio\Framework\Backends\ElasticBackend;
+    use Timetabio\Framework\ValueObjects\StringDateTime;
 
     class ArchivePostCommand
     {
@@ -20,21 +21,29 @@ namespace Timetabio\API\Commands\Posts
         private $postService;
 
         /**
-         * @var DataStoreWriter
+         * @var ElasticBackend
          */
-        private $dataStoreWriter;
+        private $elasticBackend;
 
-        public function __construct(PostService $postService, DataStoreWriter $dataStoreWriter)
+        public function __construct(PostService $postService, ElasticBackend $elasticBackend)
         {
             $this->postService = $postService;
-            $this->dataStoreWriter = $dataStoreWriter;
+            $this->elasticBackend = $elasticBackend;
         }
 
         public function execute(string $postId): string
         {
             $archived = $this->postService->archivePost($postId);
+            $timestamp = (new StringDateTime($archived))->getTimestamp();
 
-            $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\IndexPostTask($postId));
+            $document = [
+                'archived' => $timestamp,
+                'meta' => [
+                    'delete_timestamp' => $timestamp + 3600 * 24 * 30
+                ]
+            ];
+
+            $this->elasticBackend->updateDocument('post', $postId, $document, true);
 
             return $archived;
         }

@@ -42,6 +42,7 @@ namespace Timetabio\Frontend\Commands
             $this->session->setUser(new User(
                 $userInfo['id'],
                 $userInfo['username'],
+                $userInfo['email'],
                 $userInfo['name']
             ));
 

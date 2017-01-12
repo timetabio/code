@@ -72,6 +72,8 @@ namespace Timetabio\Survey\Handlers\Post\Survey
                 $model->addAnswer($id, $value->getValue());
             }
 
+            $model->setBetaRequestInfo($betaRequest);
+
             $model->setData([
                'redirect' => $this->uriBuilder->buildSurveyThanksPage($model->getVersion())
             ]);
