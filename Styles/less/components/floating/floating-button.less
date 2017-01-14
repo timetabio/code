@@ -14,11 +14,15 @@
 
   display: flex;
   align-items: center;
+  flex-grow: 1;
+  flex-basis: 0;
+  justify-content: center;
+  max-width: 160px;
   background-color: @brand-green;
   color: #fff;
   padding: @padding-h @padding-v;
   cursor: pointer;
-  transition: transform .2s, background-color .125s;
+  transition: background-color .125s;
 
   > .icon {
     width: 1em;
@@ -26,42 +30,12 @@
     margin-right: @margin-xs-h;
   }
 
-  &:active {
-    background-color: darken(@brand-green, 10%);
-  }
-
+  &:hover,
   &:focus {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 3px fade(@brand-green, 70%);
+    background-color: darken(@brand-green, 2%);
   }
 
-  @media (min-width: @smaller-device-width-min) {
-    & {
-      border-top-left-radius: @card-border-radius;
-      border-bottom-left-radius: @card-border-radius;
-      transform: translateX(100%) translateX((-2 * @padding-v - @font-size-s));
-    }
-
-    > .label {
-      opacity: 0;
-      transition: opacity .2s;
-    }
-
-    &:hover > .label,
-    &:focus > .label {
-      opacity: 1;
-    }
-
-    &:hover,
-    &:focus {
-      transform: translateX(0);
-    }
-  }
-
-  @media (max-width: @smaller-device-width-max) {
-    & {
-      flex-grow: 1;
-      flex-basis: 0;
-      justify-content: center;
-    }
+  &:active {
+    background-color: darken(@brand-green, 5%);
   }
 }

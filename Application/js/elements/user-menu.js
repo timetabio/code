@@ -9,6 +9,20 @@
 
 import { EventName } from '../dom/custom-events'
 
+/**
+ *
+ * @param {Element} element
+ * @param {string} attribute
+ * @param {string} value
+ */
+function toggleAttribute (element, attribute, value = '') {
+  if (element.hasAttribute(attribute)) {
+    element.removeAttribute(attribute)
+  } else {
+    element.setAttribute(attribute, value)
+  }
+}
+
 export class UserMenu extends HTMLElement {
   constructor () {
     super()
@@ -29,6 +43,7 @@ export class UserMenu extends HTMLElement {
 
   _onToggle () {
     this.classList.toggle('-open')
+    toggleAttribute(this._$nav, 'inert')
   }
 
   /**
@@ -42,5 +57,14 @@ export class UserMenu extends HTMLElement {
     }
 
     this.classList.remove('-open')
+  }
+
+  /**
+   *
+   * @returns {Element}
+   * @private
+   */
+  get _$nav () {
+    return this.querySelector('.nav')
   }
 }
