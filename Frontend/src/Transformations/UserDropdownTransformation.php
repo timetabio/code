@@ -68,6 +68,7 @@ namespace Timetabio\Frontend\Transformations
 
             $userNav = $template->createElement('nav');
             $userNav->setClassName('nav');
+            $userNav->setAttribute('inert', '');
             $userMenu->appendChild($userNav);
 
             $postsPageLink = $template->createElement('a');

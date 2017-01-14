@@ -22,3 +22,13 @@ body {
     flex-grow: 1;
   }
 }
+
+// source: https://github.com/WICG/inert/blob/master/src/inert.js
+[inert] {
+  pointer-events: none;
+  cursor: default;
+}
+
+[inert] * {
+  user-select: none;
+}
