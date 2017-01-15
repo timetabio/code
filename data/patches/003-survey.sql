@@ -1,3 +1,10 @@
+CREATE TABLE beta_requests (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  created TIMESTAMP NOT NULL DEFAULT utc_now(),
+  approved BOOLEAN NOT NULL DEFAULT FALSE,
+  email VARCHAR(255) NOT NULL UNIQUE
+);
+
 CREATE TABLE survey_questions (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   title VARCHAR(255),
