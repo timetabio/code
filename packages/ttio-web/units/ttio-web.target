@@ -5,7 +5,6 @@ Requires=docker.service
 Wants=ttio-api.service \
       ttio-frontend.service \
       ttio-proxy.service \
-      ttio-survey.service \
       ttio-workers.target
 
 [Install]

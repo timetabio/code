@@ -6,4 +6,3 @@ set -e
 
 docker build -t ttio-dev-proxy "${BASE_DIR}/containers/ttio-dev-proxy"
 docker build -t ttio-dev-frontend "${BASE_DIR}/containers/ttio-dev-frontend"
-docker build -t ttio-dev-survey "${BASE_DIR}/containers/ttio-dev-survey"

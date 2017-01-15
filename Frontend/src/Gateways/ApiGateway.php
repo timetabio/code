@@ -236,17 +236,6 @@ namespace Timetabio\Frontend\Gateways
             return $this->apiBackend->post('/revoke', [], new BearerToken($token));
         }
 
-        public function createBetaRequest(string $email): ApiResponse
-        {
-            return $this->apiBackend->post(
-                '/beta_requests',
-                [
-                    'email' => $email
-                ],
-                $this->systemToken
-            );
-        }
-
         public function search(string $query, string $type): ApiResponse
         {
             return $this->apiBackend->get(

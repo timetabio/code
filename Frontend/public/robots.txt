@@ -3,5 +3,3 @@ Allow: *
 Disallow: /account/*
 Disallow: /register/confirmation
 Disallow: /register/resend-verification
-Disallow: /beta/thanks
-Disallow: /survey/thanks

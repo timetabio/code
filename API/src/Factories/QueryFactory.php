@@ -78,13 +78,6 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createIsInvitedQuery(): \Timetabio\API\Queries\User\IsInvitedQuery
-        {
-            return new \Timetabio\API\Queries\User\IsInvitedQuery(
-                $this->getMasterFactory()->createBetaRequestService()
-            );
-        }
-
         public function createFetchFeedsQuery(): \Timetabio\API\Queries\Feeds\FetchFeedsQuery
         {
             return new \Timetabio\API\Queries\Feeds\FetchFeedsQuery(
@@ -202,13 +195,6 @@ namespace Timetabio\API\Factories
         {
             return new \Timetabio\API\Queries\Post\FetchPostAttachmentsQuery(
                 $this->getMasterFactory()->createPostService()
-            );
-        }
-
-        public function createFetchBetaRequestByEmailQuery(): \Timetabio\API\Queries\BetaRequest\FetchBetaRequestByEmailQuery
-        {
-            return new \Timetabio\API\Queries\BetaRequest\FetchBetaRequestByEmailQuery(
-                $this->getMasterFactory()->createBetaRequestService()
             );
         }
 

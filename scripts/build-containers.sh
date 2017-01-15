@@ -47,12 +47,6 @@ docker build --build-arg VERSION=${VERSION} -t docker.ttio.cloud:5000/web/fronte
 docker tag docker.ttio.cloud:5000/web/frontend:latest docker.ttio.cloud:5000/web/frontend:${VERSION}
 fold_end "Frontend"
 
-fold_start "Survey"
-log "Building survey"
-docker build --build-arg VERSION=${VERSION} -t docker.ttio.cloud:5000/web/survey:latest -f "${BASE_DIR}/containers/ttio-survey/Dockerfile" ${BASE_DIR}
-docker tag docker.ttio.cloud:5000/web/survey:latest docker.ttio.cloud:5000/web/survey:${VERSION}
-fold_end "Survey"
-
 fold_start "Proxy"
 log "Building proxy"
 docker build --build-arg VERSION=${VERSION} -t docker.ttio.cloud:5000/web/proxy:latest -f "${BASE_DIR}/containers/ttio-proxy/Dockerfile" ${BASE_DIR}

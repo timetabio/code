@@ -37,8 +37,6 @@ namespace Timetabio\Frontend\Routers
                     return $this->factory->createLoginController();
                 case '/action/resend-verification':
                     return $this->factory->createResendVerificationController();
-                case '/action/beta-request':
-                    return $this->factory->createCreateBetaRequestController();
                 case '/action/begin-reset':
                     return $this->factory->createBeginResetController();
                 case '/action/reset':

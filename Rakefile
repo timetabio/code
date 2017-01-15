@@ -1,4 +1,4 @@
-DIRS = %w(API Framework Frontend Styles Application Worker Library Ink Locale Survey packages)
+DIRS = %w(API Framework Frontend Styles Application Worker Library Ink Locale packages)
 
 task default: DIRS.map(&:downcase)
 

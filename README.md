@@ -27,10 +27,6 @@ and/or modify it under the terms of the GNU Affero General Public License, versi
 
 A copy of the GNU Affero General Public License, version 3 is provided in [LICENSE](LICENSE).
 
-## Beta
-
-If you would like to join our upcoming beta, a sign up form can be found [here](https://beta.timetab.io).
-
 ## Designs
 
 The latest designs can be found at [https://sketch.cloud/s/V1mq/p/feed](https://sketch.cloud/s/V1mq/p/feed)

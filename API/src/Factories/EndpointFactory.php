@@ -258,13 +258,6 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createCreateBetaRequestEndpoint(): \Timetabio\API\Endpoints\BetaRequest\CreateBetaRequestEndpoint
-        {
-            return new \Timetabio\API\Endpoints\BetaRequest\CreateBetaRequestEndpoint(
-                $this->getMasterFactory()
-            );
-        }
-
         public function createCreateFeedInvitationEndpoint(): \Timetabio\API\Endpoints\Feeds\CreateInvitationEndpoint
         {
             return new \Timetabio\API\Endpoints\Feeds\CreateInvitationEndpoint(

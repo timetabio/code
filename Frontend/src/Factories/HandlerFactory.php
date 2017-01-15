@@ -298,18 +298,6 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createCreateBetaRequestCommandHandler(): \Timetabio\Frontend\Handlers\Post\CreateBetaRequest\CommandHandler
-        {
-            return new \Timetabio\Frontend\Handlers\Post\CreateBetaRequest\CommandHandler(
-                $this->getMasterFactory()->createCreateBetaRequestCommand()
-            );
-        }
-
-        public function createCreateBetaRequestRequestHandler(): \Timetabio\Frontend\Handlers\Post\CreateBetaRequest\RequestHandler
-        {
-            return new \Timetabio\Frontend\Handlers\Post\CreateBetaRequest\RequestHandler;
-        }
-
         public function createSearchPageRequestHandler(): \Timetabio\Frontend\Handlers\Get\SearchPage\RequestHandler
         {
             return new \Timetabio\Frontend\Handlers\Get\SearchPage\RequestHandler;

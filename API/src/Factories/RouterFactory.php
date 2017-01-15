@@ -57,7 +57,6 @@ namespace Timetabio\API\Factories
             $router->registerEndpoint($this->getMasterFactory()->createGetUserTodoEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createCreateFeedUploadUrlEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createRevokeEndpoint());
-            $router->registerEndpoint($this->getMasterFactory()->createCreateBetaRequestEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createCreateFeedInvitationEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createGetFeedInvitationsEndpoint());
             $router->registerEndpoint($this->getMasterFactory()->createUpdateFeedInvitationEndpoint());

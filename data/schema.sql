@@ -109,25 +109,6 @@ CREATE VIEW aggregated_posts AS
   JOIN users ON posts.author_id = users.id
   JOIN feeds ON posts.feed_id = feeds.id;
 
--- TODO: define sorting (NOTE: timestamp might be null, so consider that as well)
-CREATE VIEW uncompleted_tasks AS
-  SELECT posts.*, feed_users.user_id
-  FROM posts
-  JOIN feed_users
-    ON feed_users.feed_id = posts.feed_id
-  LEFT OUTER JOIN post_annotations AS meta
-    ON meta.post_id = posts.id
-  WHERE posts.type = 'task'
-    AND meta.is_checked IS NOT TRUE;
-
-CREATE VIEW upcoming_events AS
-  SELECT posts.*, feed_users.user_id FROM posts
-  JOIN feed_users
-    ON feed_users.feed_id = posts.feed_id
-  WHERE posts.type = 'event'
-    AND posts.timestamp > utc_now()
-  ORDER BY posts.timestamp ASC;
-
 CREATE TRIGGER update_posts_timestamp_column BEFORE UPDATE ON posts FOR EACH ROW EXECUTE PROCEDURE update_timestamp_column();
 
 CREATE TABLE IF NOT EXISTS post_annotations (
@@ -202,13 +183,6 @@ CREATE TABLE IF NOT EXISTS collection_posts (
   PRIMARY KEY (collection_id, post_id)
 );
 
-CREATE TABLE beta_requests (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  created TIMESTAMP NOT NULL DEFAULT utc_now(),
-  approved BOOLEAN NOT NULL DEFAULT FALSE,
-  email VARCHAR(255) NOT NULL UNIQUE
-);
-
 CREATE TABLE feed_invitations (
   feed_id UUID NOT NULL REFERENCES feeds (id) ON DELETE CASCADE,
   user_id UUID NOT NULL REFERENCES users (id) ON DELETE CASCADE,
@@ -219,3 +193,22 @@ CREATE TABLE feed_invitations (
 );
 
 CREATE TRIGGER update_feed_invitations_timestamp BEFORE UPDATE ON feed_invitations FOR EACH ROW EXECUTE PROCEDURE update_timestamp_column();
+
+-- TODO: define sorting (NOTE: timestamp might be null, so consider that as well)
+CREATE VIEW uncompleted_tasks AS
+  SELECT posts.*, feed_users.user_id
+  FROM posts
+    JOIN feed_users
+      ON feed_users.feed_id = posts.feed_id
+    LEFT OUTER JOIN post_annotations AS meta
+      ON meta.post_id = posts.id
+  WHERE posts.type = 'task'
+        AND meta.is_checked IS NOT TRUE;
+
+CREATE VIEW upcoming_events AS
+  SELECT posts.*, feed_users.user_id FROM posts
+    JOIN feed_users
+      ON feed_users.feed_id = posts.feed_id
+  WHERE posts.type = 'event'
+        AND posts.timestamp > utc_now()
+  ORDER BY posts.timestamp ASC;
