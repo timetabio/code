@@ -164,7 +164,6 @@ start_containers () {
     --name ttio-elastic \
     --net ttio-dev-net \
     -v ${ROOT}/persistent/elastic:/usr/share/elasticsearch/data \
-    -v ${ROOT}/containers/ttio-elastic/mappings.json:/data/mappings.json \
     -p 9200:9200 \
     docker.ttio.cloud:5000/library/elastic &
 
