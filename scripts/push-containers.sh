@@ -5,7 +5,6 @@ CONTAINERS=(
   web/api
   web/frontend
   web/proxy
-  web/survey
 )
 
 if [ -z ${VERSION} ]; then

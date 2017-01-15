@@ -9,8 +9,5 @@
   "/account/begin-reset": "begin-reset",
   "/account/begin-reset/sent": "reset-sent",
   "/account/reset-complete": "reset-complete",
-  "/account/feeds/new": "create-feed",
-  "/beta": "beta",
-  "/beta/thanks": "beta-thanks",
-  "/survey/thanks": "survey-thanks"
+  "/account/feeds/new": "create-feed"
 }

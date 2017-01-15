@@ -532,21 +532,6 @@ namespace Timetabio\API\Factories
             );
         }
 
-        public function createCreateBetaRequestController(): PostController
-        {
-            return new PostController(
-                new \Timetabio\API\Models\BetaRequest\CreateModel,
-                $this->getMasterFactory()->createPreHandler(),
-                $this->getMasterFactory()->createCreateBetaRequestRequestHandler(),
-                $this->getMasterFactory()->createCreateBetaRequestQueryHandler(),
-                $this->getMasterFactory()->createCreateBetaRequestCommandHandler(),
-                $this->getMasterFactory()->createTransformationHandler(),
-                $this->getMasterFactory()->createResponseHandler(),
-                $this->getMasterFactory()->createPostHandler(),
-                new JsonResponse
-            );
-        }
-
         public function createCreateFeedInvitationController(): PostController
         {
             return new PostController(

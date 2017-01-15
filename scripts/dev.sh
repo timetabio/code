@@ -26,7 +26,6 @@ CONTAINERS=(
   ttio-dev-proxy
   ttio-dev-api
   ttio-dev-frontend
-  ttio-dev-survey
   ttio-dev-redis
   ttio-dev-postgres
   ttio-elastic
@@ -103,7 +102,6 @@ prepare_environment () {
   touch ${ROOT}/persistent/nsalog/api.txt
   touch ${ROOT}/persistent/nsalog/frontend.txt
   touch ${ROOT}/persistent/nsalog/worker.txt
-  touch ${ROOT}/persistent/nsalog/survey.txt
 
   if [ -z $(docker network inspect --format '{{.Name}}' ttio-dev-net 2> /dev/null) ]; then
     log "Creating network"
@@ -186,14 +184,6 @@ start_containers () {
     -v ${ROOT}/persistent/nsalog/frontend.txt:/data/nsalog.txt \
     ttio-dev-frontend &
 
-  log "Starting survey"
-  docker run -d \
-    --name ttio-dev-survey \
-    --net ttio-dev-net \
-    -v ${ROOT}:/data/code \
-    -v ${ROOT}/persistent/nsalog/survey.txt:/data/nsalog.txt \
-    ttio-dev-survey &
-
   wait
 
   log "Starting nginx"
@@ -209,7 +199,6 @@ start_containers () {
   PROXY_IP=$(docker inspect --format '{{with index .NetworkSettings.Networks "ttio-dev-net"}}{{.IPAddress}}{{end}}' ttio-dev-proxy)
 
   docker exec -it ttio-dev-frontend bash -c "echo '${PROXY_IP} devapi.timetab.io' >> /etc/hosts"
-  docker exec -it ttio-dev-survey bash -c "echo '${PROXY_IP} devapi.timetab.io' >> /etc/hosts"
 
   generate_sys_token
 

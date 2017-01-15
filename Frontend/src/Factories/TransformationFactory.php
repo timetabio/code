@@ -54,13 +54,6 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createSurveyBannerTransformation(): \Timetabio\Frontend\Transformations\SurveyBannerTransformation
-        {
-            return new \Timetabio\Frontend\Transformations\SurveyBannerTransformation(
-                $this->getMasterFactory()->createDataStoreReader()
-            );
-        }
-
         public function createTransformer(): \Timetabio\Frontend\Transformations\Transformer
         {
             $transformations = [
@@ -69,8 +62,7 @@ namespace Timetabio\Frontend\Factories
                 $this->getMasterFactory()->createUserDropdownTransformation(),
                 $this->getMasterFactory()->createTranslateTransformation(),
                 $this->getMasterFactory()->createCanonicalUriTransformation(),
-                $this->getMasterFactory()->createNextUriTransformation(),
-                $this->getMasterFactory()->createSurveyBannerTransformation()
+                $this->getMasterFactory()->createNextUriTransformation()
             ];
 
             if (!$this->getMasterFactory()->getConfiguration()->isDevelopmentMode()) {

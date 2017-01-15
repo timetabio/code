@@ -34,14 +34,6 @@ namespace Timetabio\Worker\Locators
                     return new \Timetabio\Library\Tasks\IndexUsersTask;
                 case 'DeleteArchivedPosts':
                     return new \Timetabio\Library\Tasks\DeleteArchivedPostsTask;
-                case 'SendBetaInvitations':
-                    return new \Timetabio\Library\Tasks\SendBetaInvitationsTask;
-                case 'SendBetaInvitation':
-                    return new \Timetabio\Library\Tasks\SendBetaInvitationTask($args[0]);
-                case 'SendSurveyMails':
-                    return new \Timetabio\Library\Tasks\SendSurveyMailsTask;
-                case 'SendSurveyMail':
-                    return new \Timetabio\Library\Tasks\SendSurveyMailTask($args[0]);
             }
 
             throw new \Exception('could not locate task \'' . $taskName . '\'');

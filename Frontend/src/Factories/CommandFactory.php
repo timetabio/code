@@ -116,13 +116,6 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createCreateBetaRequestCommand(): \Timetabio\Frontend\Commands\CreateBetaRequestCommand
-        {
-            return new \Timetabio\Frontend\Commands\CreateBetaRequestCommand(
-                $this->getMasterFactory()->createApiGateway()
-            );
-        }
-
         public function createDeleteFeedUserCommand(): \Timetabio\Frontend\Commands\DeleteFeedUserCommand
         {
             return new \Timetabio\Frontend\Commands\DeleteFeedUserCommand(

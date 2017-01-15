@@ -321,21 +321,6 @@ namespace Timetabio\Frontend\Factories
             );
         }
 
-        public function createCreateBetaRequestController(): PostController
-        {
-            return new PostController(
-                new \Timetabio\Frontend\Models\Action\CreateBetaRequestModel,
-                $this->getMasterFactory()->createPostPreHandler(),
-                $this->getMasterFactory()->createCreateBetaRequestRequestHandler(),
-                $this->getMasterFactory()->createQueryHandler(),
-                $this->getMasterFactory()->createCreateBetaRequestCommandHandler(),
-                $this->getMasterFactory()->createPostTransformationHandler(),
-                $this->getMasterFactory()->createResponseHandler(),
-                $this->getMasterFactory()->createPostHandler(),
-                new JsonResponse
-            );
-        }
-
         public function createSearchPageController(\Timetabio\Library\SearchTypes\SearchType $type): GetController
         {
             return new GetController(

@@ -38,9 +38,6 @@ msgstr "You have to enter a post title"
 msgid "email_already_added"
 msgstr "This email has already been added"
 
-msgid "email_not_invited"
-msgstr "This email has not been approved for the private beta"
-
 msgid "invitation_exists"
 msgstr "This user is already invited"
 

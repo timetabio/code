@@ -69,8 +69,7 @@ namespace Timetabio\API\Factories
         {
             return new \Timetabio\API\Handlers\Post\Users\QueryHandler(
                 $this->getMasterFactory()->createFetchUserByEmailQuery(),
-                $this->getMasterFactory()->createFetchUserByUsernameQuery(),
-                $this->getMasterFactory()->createIsInvitedQuery()
+                $this->getMasterFactory()->createFetchUserByUsernameQuery()
             );
         }
 
@@ -543,25 +542,6 @@ namespace Timetabio\API\Factories
         {
             return new \Timetabio\API\Handlers\Post\Revoke\CommandHandler(
                 $this->getMasterFactory()->createDeleteAccessTokenCommand()
-            );
-        }
-
-        public function createCreateBetaRequestRequestHandler(): \Timetabio\API\Handlers\Post\BetaRequest\RequestHandler
-        {
-            return new \Timetabio\API\Handlers\Post\BetaRequest\RequestHandler;
-        }
-
-        public function createCreateBetaRequestCommandHandler(): \Timetabio\API\Handlers\Post\BetaRequest\CommandHandler
-        {
-            return new \Timetabio\API\Handlers\Post\BetaRequest\CommandHandler(
-                $this->getMasterFactory()->createCreateBetaRequestCommand()
-            );
-        }
-
-        public function createCreateBetaRequestQueryHandler(): \Timetabio\API\Handlers\Post\BetaRequest\QueryHandler
-        {
-            return new \Timetabio\API\Handlers\Post\BetaRequest\QueryHandler(
-                $this->getMasterFactory()->createFetchBetaRequestByEmailQuery()
             );
         }
 

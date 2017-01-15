@@ -202,13 +202,6 @@ CREATE TABLE IF NOT EXISTS collection_posts (
   PRIMARY KEY (collection_id, post_id)
 );
 
-CREATE TABLE beta_requests (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  created TIMESTAMP NOT NULL DEFAULT utc_now(),
-  approved BOOLEAN NOT NULL DEFAULT FALSE,
-  email VARCHAR(255) NOT NULL UNIQUE
-);
-
 CREATE TABLE feed_invitations (
   feed_id UUID NOT NULL REFERENCES feeds (id) ON DELETE CASCADE,
   user_id UUID NOT NULL REFERENCES users (id) ON DELETE CASCADE,

@@ -57,9 +57,6 @@ docker tag docker.ttio.cloud:5000/web/api:%{version} docker.ttio.cloud:5000/web/
 docker pull docker.ttio.cloud:5000/web/frontend:%{version}
 docker tag docker.ttio.cloud:5000/web/frontend:%{version} docker.ttio.cloud:5000/web/frontend:current
 
-docker pull docker.ttio.cloud:5000/web/survey:%{version}
-docker tag docker.ttio.cloud:5000/web/survey:%{version} docker.ttio.cloud:5000/web/survey:current
-
 docker pull docker.ttio.cloud:5000/web/worker:%{version}
 docker tag docker.ttio.cloud:5000/web/worker:%{version} docker.ttio.cloud:5000/web/worker:current
 
