@@ -81,7 +81,6 @@ namespace Timetabio\Framework\Factories
             return new \Timetabio\Framework\Backends\InkBackend(
                 $factory->createParser(),
                 $factory->createDomGenerator($options),
-                $factory->createPreviewTransformation(),
                 $factory->createTextGenerator()
             );
         }

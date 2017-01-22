@@ -54,7 +54,6 @@ namespace Timetabio\Worker\Runners
             $rendered = $this->inkBackend->process($post['body']);
 
             $this->dataStoreWriter->setPostBody($post['id'], $rendered->getBody());
-            $this->dataStoreWriter->setPostPreview($post['id'], $rendered->getPreview());
             $this->dataStoreWriter->setPostText($post['id'], $rendered->getPlainText());
         }
     }

@@ -11,7 +11,6 @@ namespace Timetabio\Framework\Backends
 {
     use Ink\Generators\Dom\Generator;
     use Ink\Parser;
-    use Ink\Transformations\PreviewTransformation;
     use Timetabio\Framework\ValueObjects\InkResult;
 
     class InkBackend
@@ -31,22 +30,15 @@ namespace Timetabio\Framework\Backends
          */
         private $textGenerator;
 
-        /**
-         * @var PreviewTransformation
-         */
-        private $previewTransformation;
-
         public function __construct(
             Parser $parser,
             Generator $generator,
-            PreviewTransformation $previewTransformation,
             \Ink\Generators\Text\Generator $textGenerator
         )
         {
             $this->parser = $parser;
             $this->generator = $generator;
             $this->textGenerator = $textGenerator;
-            $this->previewTransformation = $previewTransformation;
         }
 
         public function process(string $text): InkResult
@@ -55,7 +47,6 @@ namespace Timetabio\Framework\Backends
 
             return new InkResult(
                 $this->generator->generate($ast),
-                $this->generator->generate($this->previewTransformation->apply($ast)),
                 $this->textGenerator->generate($ast)
             );
         }

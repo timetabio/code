@@ -43,14 +43,6 @@ namespace Timetabio\Worker\DataStore
             $this->getDataStore()->set('post_body:' . $postId, $body);
         }
 
-        /**
-         * @deprecated
-         */
-        public function setPostPreview(string $postId, string $body)
-        {
-            $this->getDataStore()->set('post_preview:' . $postId, $body);
-        }
-
         public function setPostText(string $postId, string $body)
         {
             $this->getDataStore()->set('post_text:' . $postId, $body);

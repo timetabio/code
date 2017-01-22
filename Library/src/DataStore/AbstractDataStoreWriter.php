@@ -96,14 +96,6 @@ namespace Timetabio\Library\DataStore
         /**
          * @deprecated
          */
-        public function removePostPreview(string $postId)
-        {
-            $this->getDataStore()->remove('post_preview:' . $postId);
-        }
-
-        /**
-         * @deprecated
-         */
         public function removePostText(string $postId)
         {
             $this->getDataStore()->remove('post_text:' . $postId);

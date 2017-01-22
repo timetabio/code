@@ -35,7 +35,6 @@ namespace Timetabio\API\Commands\Posts
             $this->postService->deletePost($postId);
 
             $this->dataStoreWriter->removePostBody($postId);
-            $this->dataStoreWriter->removePostPreview($postId);
             $this->dataStoreWriter->removePostText($postId);
 
             $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\IndexPostTask($postId));

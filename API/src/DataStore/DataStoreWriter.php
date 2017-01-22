@@ -109,14 +109,6 @@ namespace Timetabio\API\DataStore
         /**
          * @deprecated
          */
-        public function setPostPreview(string $postId, string $body)
-        {
-            $this->getDataStore()->set('post_preview:' . $postId, $body);
-        }
-
-        /**
-         * @deprecated
-         */
         public function setPostText(string $postId, string $body)
         {
             $this->getDataStore()->set('post_text:' . $postId, $body);
