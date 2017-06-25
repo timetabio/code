@@ -2,10 +2,7 @@
 Description=timetab.io Web
 After=docker.service
 Requires=docker.service
-Wants=ttio-api.service \
-      ttio-frontend.service \
-      ttio-proxy.service \
-      ttio-workers.target
+Wants=ttio-proxy.service
 
 [Install]
 WantedBy=default.target

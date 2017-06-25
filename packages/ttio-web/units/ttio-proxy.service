@@ -1,7 +1,7 @@
 [Unit]
 Description=timetab.io Proxy
-After=ttio-frontend.service ttio-api.service docker.service
-Requires=ttio-frontend.service ttio-api.service docker.service
+After=docker.service
+Requires=docker.service
 BindsTo=ttio-web.target
 
 [Service]
