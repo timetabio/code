@@ -93,8 +93,6 @@ namespace Timetabio\Frontend\Renderers\Page
 
         private function renderPostCard(Document $template, array $post): Element
         {
-            $post['rendered_body'] = $post['preview'];
-
             return $this->postSnippet->render($template, $post, $post['feed']);
         }
     }

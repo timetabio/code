@@ -63,7 +63,6 @@ namespace Timetabio\Worker\Runners
 
             $post['body'] = $this->dataStoreReader->getPostText($postId);
             $post['rendered_body'] = $this->dataStoreReader->getPostBody($postId);
-            $post['preview'] = $this->dataStoreReader->getPostPreview($postId);
 
             $mapped = $this->postMapper->map($post);
 

@@ -64,7 +64,6 @@ namespace Timetabio\API\Commands\Posts
             }
 
             $this->dataStoreWriter->setPostBody($postId, $inkResult->getBody());
-            $this->dataStoreWriter->setPostPreview($postId, $inkResult->getPreview());
             $this->dataStoreWriter->setPostText($postId, $inkResult->getPlainText());
 
             $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\IndexPostTask($postId));

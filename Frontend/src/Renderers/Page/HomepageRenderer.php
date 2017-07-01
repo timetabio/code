@@ -86,9 +86,6 @@ namespace Timetabio\Frontend\Renderers\Page
             $listElement->appendChild($postsElement);
 
             foreach ($posts as $post) {
-                // TODO: this needs changing
-                $post['rendered_body'] = $post['preview'];
-
                 $postsElement->appendChild(
                     $this->postSnippet->render($template, $post, $post['feed'])
                 );

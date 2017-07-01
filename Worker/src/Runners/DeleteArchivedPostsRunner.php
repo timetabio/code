@@ -42,7 +42,6 @@ namespace Timetabio\Worker\Runners
 
             foreach($posts as $post) {
                 $this->dataStoreWriter->removePostBody($post);
-                $this->dataStoreWriter->removePostPreview($post);
                 $this->dataStoreWriter->removePostText($post);
                 $this->dataStoreWriter->queueTask(new \Timetabio\Library\Tasks\IndexPostTask($post));
             }

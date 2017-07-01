@@ -38,16 +38,6 @@ namespace Timetabio\Library\DataStore
             return $this->dataStore->get('post_body:' . $postId);
         }
 
-        public function hasPostPreview(string $postId): bool
-        {
-            return $this->dataStore->has('post_preview:' . $postId);
-        }
-
-        public function getPostPreview(string $postId): string
-        {
-            return $this->dataStore->get('post_preview:' . $postId);
-        }
-
         public function hasFeedVanity(string $feedId): bool
         {
             return $this->dataStore->has('feed_vanity:' . $feedId);

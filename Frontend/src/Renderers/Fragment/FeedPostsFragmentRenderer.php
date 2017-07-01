@@ -36,8 +36,6 @@ namespace Timetabio\Frontend\Renderers\Fragment
             $feed = $model->getFeed();
 
             foreach ($model->getPosts() as $post) {
-                $post['rendered_body'] = $post['preview'];
-
                 $fragment->appendChild(
                     $this->postSnippet->render($document, $post, $feed)
                 );
